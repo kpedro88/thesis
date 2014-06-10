@@ -1,0 +1,23 @@
+create local copy of repository:
+git init
+git clone git@github.com:kpedro88/thesis
+
+commit specific files:
+git add [file]
+git commit -m "blah"
+
+commit all modified files:
+git commit -a -m "blah"
+
+push:
+git push origin master
+
+pull (update local copy of repository):
+git pull origin master
+
+------------------------------------------
+
+notes:
+git status -s | shows modified files
+git branch | shows available branches
+git remote -v | shows remote URLs
