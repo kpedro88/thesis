@@ -1,0 +1,66 @@
+Thesis Outline
+
+0. Acknowledgements
+1. Introduction
+2. Theoretical Motivations
+	2.0 Standard Model
+	2.1 Leptoquarks
+	2.2 RPV SUSY
+3. Compact Muon Solenoid Experiment
+	3.0 LHC
+	3.1 Tracker
+	3.2 ECAL
+	3.3 HCAL
+	3.4 Solenoid
+	3.5 Muon system
+	3.6 Trigger
+	3.7 Luminosity
+4. Event Reconstruction
+	4.1 Event generation
+	4.2 Detector simulation
+	4.3 Particle Flow
+	4.4 Tracks and vertices
+	4.5 Electrons
+	4.6 Muons
+	4.7 Jets
+	4.8 B-tagging
+5. Data Analysis
+	5.1 Data samples
+		5.1.1 Observed data
+		5.1.2 Monte Carlo
+	5.2 Selection & optimization
+		5.2.1 Object ID (triggers, muons, electrons, taus, jets)
+		5.2.2 Event selection (preselection, main selection, final selections)
+	5.3 Background estimations
+		5.3.1 ttbar
+		5.3.2 fake tau
+		5.3.3 QCD
+		5.3.4 other
+	5.4 Systematic uncertainties
+	5.5 Results
+6. Calorimeter Upgrades
+	6.1 Phase 1 simulations
+		6.1.1 HE radiation damage model
+		6.1.2 Jet studies
+	6.2 Phase 2 simulations
+		6.2.1 Validation of standalone simulation vs CMSSW
+		6.2.2 Tests of physics effects on pion response/resolution
+		6.2.3 HE rebuild/extension + shashlik jet studies
+	6.3 Hadronic fast sim 
+		6.3.1 Retuning of hadronic response
+		6.3.2 MIP fraction in hadronic showers
+	6.4 Dose rate effects
+		6.4.1 Dose rate effect models
+		6.4.2 Scintillator radiation damage studies
+7. Conclusions (and future prospects)
+
+Appendices:
+A. Full CLs shape-based limits
+B. Event displays
+C. Table of Monte Carlo datasets
+D. The CMS Collaboration
+
+Notes:
+Section 5 from AN-12-426
+Section 6.1 from AN-13-268
+Section 6.2 from AN-12-447
