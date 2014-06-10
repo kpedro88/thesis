@@ -14,15 +14,25 @@
 \usepackage{cite}
 \usepackage{lscape}
 \usepackage{indentfirst}
-\usepackage{latexsym}
+%\usepackage{latexsym}
 \usepackage{multirow}
 \usepackage{tabls}
 \usepackage{wrapfig}
 \usepackage{slashbox}
 \usepackage{longtable}
 \usepackage{supertabular}
-\usepackage{subeqn}
+%\usepackage{subeqn}
 \usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{setspace}
+\usepackage{longtable}
+
+%%%%%%%%%%%%% ptdr definitions %%%%%%%%%%%%%%%%%%%%%
+\usepackage{ptdr-definitions}
+%%%%%%%%%%%%% Symbols %%%%%%%%%%%%%%%%%%%
+\input{symbols}
 
 \newcommand{\tbsp}{\rule{0pt}{18pt}} %used to get a vertical distance after \hline
 \renewcommand{\baselinestretch}{2}
@@ -54,8 +64,8 @@
 \small\normalsize
 \tableofcontents %(required, lower-case Roman)
 \newpage
-%\listoftables %(if present, lower-case Roman)
-%\newpage
+\listoftables %(if present, lower-case Roman)
+\newpage
 \listoffigures %(if present, lower-case Roman)
 \newpage
 % LIST OF ABBREVIATIONS

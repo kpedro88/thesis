@@ -1,0 +1,381 @@
+\def\BAL{\ensuremath{B_{\met}}}
+\def\MET{\ensuremath{{E\!\!\!/}_{\mathrm{T}}}}
+\def\METV{\ensuremath{\vec{E\!\!\!/}_{\mathrm{T}}}}
+\def\QT{\ensuremath{{q}_{\mathrm{T}}}}
+\def\QTV{\ensuremath{\vec{q}_{\mathrm{T}}}}
+\def\PT{\ensuremath{{p}_{\mathrm{T}}}}
+\def\ET{\ensuremath{{E}_{\mathrm{T}}}}
+
+
+\def\eslash{\ensuremath{{\hbox{$E$\kern-0.6em\lower-.05ex\hbox{/}\kern0.10em}}}}
+\def\vecmet{\mbox{$\vec{\eslash}_T$}\xspace} %missing ET vector
+\def\vecet{\mbox{$\vec{E}_T$}\xspace} % ET vector
+\def\vecpt{\mbox{$\vec{p}_T$}\ } % PT vector
+\def\met{\mbox{$\eslash_T$}\xspace} %missing ET, no space
+\def\mex{\mbox{$\eslash_x$}\xspace} %missing Ex
+\def\mey{\mbox{$\eslash_y$}\xspace} %missing Ey
+\def\mepar{\mbox{$\eslash_\parallel$}\xspace}
+\def\meperp{\mbox{$\eslash_\perp$}\xspace}
+\def\metvec{\mbox{$\vec{\met}$}\xspace}
+\def\metvecrec{\mbox{$\vec{\met}^{\rm rec}$}\xspace}
+\def\metvecgen{\mbox{$\vec{\met}^{\rm gen}$}\xspace}
+\def\metgen{\mbox{$\met^{\rm gen}$}\xspace}
+\def\metparl{\mbox{$\mepar^{\rm rec}$}\xspace}
+\def\metperp{\mbox{$\meperp^{\rm rec}$}\xspace}
+\def\deltamet{\mbox{$\Delta\met$}\xspace}
+\def\pthat{\mbox{$\hat{p}_T$}\xspace}
+\def\hslash{{\hbox{$H$\kern-0.8em\lower-.05ex\hbox{/}\kern0.10em}}}
+\def\MHT{\mbox{$\hslash_T$}\xspace}
+\def\mht{\mbox{$\hslash_T$}\xspace}
+\def\sumet{\mbox{$\sum E_\text{T}$}\xspace}
+\def\scalht{\mbox{$H_\text{T}$}\xspace}
+\def\etmiss{\eslash_T}
+\def\qt{\ensuremath{{q}_{\mathrm{T}}}}
+\def\bigeslash{{\hbox{$E$\kern-0.38em\lower-.05ex\hbox{/}\kern0.10em}}}  
+\def\bigmet{\mbox{$\bigeslash_T$}\xspace} 
+\def\bighslash{{\hbox{$H$\kern-0.6em\lower-.05ex\hbox{/}\kern0.10em}}}  
+\def\bigmht{\mbox{$\bighslash_T$}\xspace} 
+\def\vecut{\mbox{$\vec{u}_T$}\xspace}
+
+\def\Lum{\mbox{$\mathcal{L}$}\xspace}
+\def\Acc{\mbox{$\mathcal{A}$}\xspace}
+\def\eps{\mbox{$\epsilon$}\xspace}
+
+%%%%
+%%%% Additional definitions by GHM
+%%%%
+\def\ERROR#1#2{ \ensuremath{ \pm #1\, (\textrm{#2}) }  }
+\def\RESA#1#2#3{ \ensuremath{ #1 \ERROR{#2}{#3} } }
+\def\RESB#1#2#3#4#5{ \ensuremath{ \RESA{#1}{#2}{#3} \ERROR{#4}{#5} } }
+\def\RESC#1#2#3#4#5#6#7{ \ensuremath{ \RESB{#1}{#2}{#3}{#4}{#5} \ERROR{#6}{#7} } }
+\def\RESD#1#2{ \ensuremath{ #1 \pm #2 } }
+\def\EFF#1#2{ \ensuremath{ ( \RESA{#1}{#2}{stat.} )\% } }
+\def\EFFA#1#2{ \ensuremath{ ( {#1} \pm {#2} )\% } }
+\def\EFFB#1#2#3{ \ensuremath{ ( \RESA{#1}{#2}{stat.} \ERROR{#3}{syst.} )\% } }
+\def\SIGBR#1#2{  \ensuremath{ \sigma \left( \pp \to #1 X \right) \times {\cal{B}} \left( #1 \to #2 \right) } }
+\def\SIGBRSHORT#1{\ensuremath{ [\, \sigma\times{\cal{B}}\, ](#1) }}
+\def\SIGSHORT#1{\ensuremath{ \sigma(#1) }}
+\def\RESE#1#2#3#4{ \ensuremath{ \RESC{#1}{#2}{stat.}{#3}{syst.}{#4}{lumi.} }}
+\def\RESF#1#2#3{ \ensuremath{ \RESB{#1}{#2}{stat.}{#3}{syst.} }}
+\def\RATWZ#1#2{ \ensuremath{ {
+ \frac{ \sigma(\pp\rightarrow \PW X)\times {\cal{B}}(\PW\rightarrow #1)  }
+      { \sigma(\pp\rightarrow \PZ X)\times {\cal{B}}(\PZ\rightarrow #2)  }   }  } }
+\def\RESRATWZ#1#2#3#4#5{ \ensuremath{ \RATWZ{#1}{#2} &=& 
+                                   #3 \ERROR{#4}{stat.} \ERROR{#5}{syst.} } }
+\def\RATWW#1#2{ \ensuremath{ {
+ \frac{ \sigma(\pp\rightarrow \PWp X)\times {\cal{B}}(\PWp\rightarrow #1)  }
+      { \sigma(\pp\rightarrow \PWm X)\times {\cal{B}}(\PWm\rightarrow #2)  }   }  } }
+\def\RESRATWW#1#2#3#4#5{ \ensuremath{ \RATWW{#1}{#2} &=& 
+                                   #3 \ERROR{#4}{stat.} \ERROR{#5}{syst.} } }
+\def\THEORYRATIO#1#2{\ensuremath{ \RESD{#1}{#2} }}
+\def\EPS#1{ \ensuremath{ \epsilon_{\textrm{#1}} } }
+\def\EPSTNPALL#1{ \ensuremath{ \EPS{TNP-WP{#1}-ALL}  }  }
+\def\EPSTNPREC{ \ensuremath{ \EPS{TNP-REC} }  }
+\def\EPSTNPTRG{ \ensuremath{ \EPS{TNP-TRG} }  }
+\def\EPSTNPWP#1{ \ensuremath{ \EPS{TNP-WP{#1} } }  }
+\def\EPSTNPTRGWP#1{ \ensuremath{ \EPS{TNP-TRG{#1}} }  } 
+\def\XVL#1#2{ \ensuremath{#1_{#2}} }
+\def\NSIG#1{ \ensuremath{\XVL{N}{#1} } }
+\def\EPSB#1{ \ensuremath{\XVL{\varepsilon}{#1} } }
+\def\RHO#1{ \ensuremath{\XVL{\rho}{#1} } }
+\def\AGEN#1{ \ensuremath{\XVL{A}{#1} } }
+\def\APRIM#1{ \ensuremath{\XVL{ {F} }{#1} } }
+\def\RPM{\ensuremath{R_{\scriptscriptstyle{+/-}} }}
+\def\RWZ{\ensuremath{R_{\scriptscriptstyle{\PW/\PZ}} }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\THELUMI} {\ensuremath{{2.88\pm 0.32}~\mathrm{pb}^{-1}}}%
+
+
+%%%%%%%%%%%%%%%  Additional definitions %%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\PJgy}{\ensuremath{\mathrm{J}\hspace{-.08em}/\hspace{-.14em}\psi}}
+\renewcommand{\ttbar}{\ensuremath{\mathrm{t}\overline{\mathrm{t}}}\xspace}
+\newcommand{\singletop}{\ensuremath{\mathrm{single-t}}}
+\newcommand{\pp}{\ensuremath{{\Pp\Pp}}\xspace}%
+\newcommand{\PZ}{\ensuremath{{\mathrm{Z}}}\xspace}%
+\newcommand{\PV}{\ensuremath{{\mathrm{V}}}\xspace}%
+\newcommand{\rts}{\ensuremath{\sqrt{s}}\xspace}%
+\newcommand{\ra}{\ensuremath{\rightarrow}}%
+
+
+%\def\Zll{\ensuremath{Z \to \ell\ell}\xspace}
+%\def\Wmn{\ensuremath{W \to \mu\nu}\xspace}
+%\def\Wen{\ensuremath{W \to e\nu}\xspace}
+%\def\Wln{\ensuremath{W \to \ell\nu}\xspace}
+
+\newcommand{\MN}{\ensuremath{\Pgm\nu}}%
+\newcommand{\MpN}{\ensuremath{\Pgmp\nu}}%
+\newcommand{\MmN}{\ensuremath{\Pgmm\overline{\nu}}}%
+\newcommand{\EN}{\ensuremath{\Pe\nu}}%
+\newcommand{\EpN}{\ensuremath{\Pep\nu}}%
+\newcommand{\EmN}{\ensuremath{\Pem\overline{\nu}}}%
+\newcommand{\TN}{\ensuremath{\Pgt\nu}}%
+\newcommand{\TpN}{\ensuremath{\Pgt^+\nu}}%
+\newcommand{\TmN}{\ensuremath{\Pgt^-\overline{\nu}}}%
+\newcommand{\LN}{\ensuremath{\ell\nu}}%
+\newcommand{\LpN}{\ensuremath{\ell^+\nu}}%
+\newcommand{\LmN}{\ensuremath{\ell^-\overline{\nu}}}%
+
+\newcommand{\EpEm}{\ensuremath{\Pep\Pem}}%
+\newcommand{\MpMm}{\ensuremath{\Pgmm\Pgmp}}%
+\newcommand{\TpTm}{\ensuremath{\tau^+\tau^-}}%
+\newcommand{\LpLm}{\ensuremath{\ell^+\ell^-}}%
+%\newcommand{\EE}{\ensuremath{\Pe\Pe}}%
+%\newcommand{\MM}{\ensuremath{\Pgm\Pgm}}%
+%\newcommand{\TT}{\ensuremath{\tau\tau}}%
+%\newcommand{\LL}{\ensuremath{\ell\ell}}%
+\newcommand{\MW}{\ensuremath{{m}_\PW}}%
+\newcommand{\MZ}{\ensuremath{{m}_\PZ}}%
+\newcommand{\MT}{\ensuremath{{M}_{\mathrm{T}}}}%
+\newcommand{\MLL}{\ensuremath{{M}_{\LpLm}}}%
+
+\newcommand{\Wmn}{\ensuremath{\PW \ra \MN}}%
+\newcommand{\Wpmn}{\ensuremath{\PWp \ra \MpN}}%
+\newcommand{\Wmmn}{\ensuremath{\PWm \ra \MmN}}%
+\newcommand{\Zmm}{\ensuremath{\PZ \ra \MpMm}\xspace}%
+\newcommand{\Znn}{\ensuremath{\PZ \ra \nu\nu}}%
+\newcommand{\ZLL}{\ensuremath{\PZ \ra \ell\ell}\xspace}%
+\newcommand{\ppWmn}{\pp \ra \PW + X \ra \MN + X}%
+\newcommand{\ppWpmn}{\pp \ra \PWp + X \ra \MpN + X}%
+\newcommand{\ppWmmn}{\pp \ra \PWm + X \ra \MmN + X}%
+\newcommand{\ppZmm}{\pp \ra \PZ + X \ra \MpMm + X}%
+
+\newcommand{\Wen}{\ensuremath{\PW \ra \EN}}%
+\newcommand{\Wpen}{\ensuremath{\PWp \ra \EpN}}%
+\newcommand{\Wmen}{\ensuremath{\PWm \ra \EmN}}%
+\newcommand{\Zee}{\ensuremath{\PZ \ra \EpEm}}%
+\newcommand{\ppWen}{\pp \ra \PW + X \ra \EN + X}%
+\newcommand{\ppWpen}{\pp \ra \PWp + X \ra \EpN  + X}%
+\newcommand{\ppWmen}{\pp \ra \PWm + X \ra \EmN + X}%
+\newcommand{\ppZee}{\pp \ra \PZ + X \ra \EpEm + X}%
+
+\newcommand{\Wtn}{\ensuremath{\PW \ra \TN}}%
+\newcommand{\Wptn}{\ensuremath{\PWp \ra \TpN}}%
+\newcommand{\Wmtn}{\ensuremath{\PWm \ra \TmN}}%
+\newcommand{\Ztt}{\ensuremath{\PZ \ra \TpTm}\xspace}%
+\newcommand{\Zttll}{\ensuremath{\PZ \ra \TpTm/\LpLm}\xspace}%
+
+\newcommand{\Wln}{\ensuremath{\PW \ra \LN}}%
+\newcommand{\Wpln}{\ensuremath{\PWp \ra \LpN}}%
+\newcommand{\Wmln}{\ensuremath{\PWm \ra \LmN}}%
+\newcommand{\Zll}{\ensuremath{\PZ \ra \LpLm}\xspace}%
+\newcommand{\ppZll}{\pp \ra \PZ + X \ra \LpLm + X}%
+\newcommand{\ppWln}{\pp \ra \PW + X \ra \LN + X}%
+\newcommand{\ppWpln}{\pp \ra \PWp + X \ra \LpN  + X}%
+\newcommand{\ppWmln}{\pp \ra \PWm + X \ra \LmN + X}%
+
+\newcommand{\gammaZ}{\ensuremath{\PZ/\gamma^{*}}}
+\newcommand{\gammaZmm}{\mbox{$ \gammaZ\rightarrow \MpMm$}}
+\newcommand{\gammaZee}{\mbox{$ \gammaZ\rightarrow \EpEm$}}
+\newcommand{\gammaZtt}{\mbox{$ \gammaZ\rightarrow \TpTm$}}
+\newcommand{\gammaZll}{\mbox{$ \gammaZ\rightarrow \LpLm$}}
+
+\def\ZZ{\ensuremath{\PZ\PZ}\xspace}
+\def\WZ{\ensuremath{\PW\PZ}\xspace}
+\def\WW{\ensuremath{\PW\PW}\xspace}
+\def\NN{\ensuremath{\nu \nu }\xspace }
+\def\ZZllnn{\ensuremath{\ZZ \to \ell\ell\nu\nu}\xspace}
+\def\ZZllll{\ensuremath{\ZZ \to 4\ell}\xspace}
+\def\ZZeenn{\ensuremath{\ZZ \to \Pe\Pe\nu\nu}\xspace}
+\def\ZZmmnn{\ensuremath{\ZZ \to \Pgm\Pgm\nu\nu}\xspace}
+\def\WWllnn{\ensuremath{\WW \to \LN\LN}\xspace}
+\def\WWeenn{\ensuremath{\WW \to \Pe\nu\Pe\nu}\xspace}
+\def\WWmmnn{\ensuremath{\WW \to \Pgm\nu\Pgm\nu}\xspace}
+\def\WWemnn{\ensuremath{\WW \to \Pe\nu\Pgm\nu}\xspace}
+\def\WZllln{\ensuremath{\WZ \to \LN\ell\ell}\xspace}
+\def\Zllj{\ensuremath{\ZLL + X}\xspace}
+\def\WJ{\ensuremath{\PW+{\mathrm{jets}} }\xspace}
+\def\WJo{\ensuremath{\PW+{\mathrm{1-jet}} }\xspace}
+\def\ZJ{\ensuremath{\PZ+{\mathrm{jets}} }\xspace}
+\def\VJ{\ensuremath{\PV+{\mathrm{jets}} }\xspace}
+\def\GJ{\ensuremath{\gamma+{\mathrm{jets}} }\xspace}
+\def\GamJ{\ensuremath{\gamma+{\mathrm{jets}} }\xspace}
+\def\VGam{\ensuremath{\PV+\Pgg }\xspace}
+\def\WGam{\ensuremath{\PW+\Pgg }\xspace}
+\def\ZGam{\ensuremath{\PZ+\Pgg }\xspace}
+
+
+\newcommand{\mz}{\mbox{$m_{\PZ}$}}
+\newcommand{\hta}{\mbox{$\eta$}}
+\newcommand{\fh}{\mbox{$\phi$}}
+\newcommand{\etot}{\mbox{$\epsilon_{tot}$}}
+\newcommand{\eclustering}{\mbox{$ \epsilon_{clustering}$}}
+\newcommand{\etracking}{\mbox{$ \epsilon_{tracking}$}}
+\newcommand{\egsfele}{\mbox{$ \epsilon_{gsfele}$}}
+\newcommand{\epreselection}{\mbox{$ \epsilon_{preselection}$}}
+\newcommand{\eisolation}{\mbox{$ \epsilon_{isolation}$}}
+\newcommand{\eclassification}{\mbox{$ \epsilon_{classification}$}}
+\newcommand{\eelID}{\mbox{$ \epsilon_{elID}$}}
+\newcommand{\etrigger}{\mbox{$ \epsilon_{trigger}$}}
+
+\newcommand{\DE}{$\Delta\eta_{in}$}
+\newcommand{\DP}{$\Delta\phi_{in}$}
+\newcommand{\SEE}{$\sigma_{\eta\eta}$~}
+\newcommand{\SEP}{$\sigma_{\eta\phi}$}
+\newcommand{\SPP}{$\sigma_{\phi\phi}$}
+\newcommand{\SXY}{$\sigma_{XY}$}
+\newcommand{\pth}{\hat{p}_{\perp}}
+\newcommand{\Lint}{\ensuremath{{\cal L}_{\mathrm{int}}}}
+\newcommand{\IECAL}    {I^{\textrm{rel}}_{\scriptscriptstyle{\textrm{ECAL}}}}%
+\newcommand{\IHCAL}    {I^{\textrm{rel}}_{\scriptscriptstyle{\textrm{HCAL}}}}%
+\newcommand{\ITRK}     {I^{\textrm{rel}}_{\scriptscriptstyle{\textrm{trk}}}}%
+\newcommand{\IRelComb} {I^{\textrm{rel}}_{\scriptscriptstyle{\textrm{comb}}}}%
+\newcommand{\Nev}    {N_{\mathrm{ev}}}
+\newcommand{\Nsig}   {N_{\mathrm{sig}}}
+\newcommand{\Nsel}   {N_{\mathrm{sel}}}
+\newcommand{\Nbg}    {N_{\mathrm{bg}}}
+\newcommand{\rhoeff} {\rho_{\mathrm{eff}}}
+\newcommand{\etaSC}  {\eta_{\mathrm{SC}}}
+
+
+\def\effmc{\ensuremath{\epsilon_{\mathrm{sim}}}\xspace}
+\def\effdt{\ensuremath{\epsilon_{\mathrm{data}}}\xspace}
+\def\PUMET{\ensuremath{{\MET}^{\mathrm{PU}}}}
+\def\PUMETMIN{\ensuremath{{\MET}^{\mathrm{PU,min}}}}
+\def\CORRMET{\ensuremath{{\MET}^{\mathrm{corr}}}}
+
+\def\sieie{\ensuremath{\sigma_{i\eta i\eta}}}
+\def\sipip{\ensuremath{\sigma_{i\phi i\phi}}}
+
+\def\ST{\ensuremath{S_{\text{T}}}\xspace}
+
+\def\MassTJ{\ensuremath{\mathrm{M}(\tau,\mbox{j})}\xspace}
+\def\MassLJ{\ensuremath{\mathrm{M}(\ell,\mbox{j})}\xspace}
+
+\def\mutau{\ensuremath{\mu\tau}\xspace}
+\def\etau{\ensuremath{e\tau}\xspace}
+\def\emu{\ensuremath{e\mu}\xspace}
+\def\ltau{\ensuremath{\ell\tau}\xspace}
+
+\def\tauf{\ensuremath{\tau_{f}}\xspace}
+
+%\def\symexamp{stone}{\stone}
+%\def\symexamp{sttwo}{\sttwo}
+\def\stone{\ensuremath{\tilde{\rm{t}}_1}}
+\def\sttwo{\ensuremath{\tilde{\rm{t}}_2}}
+
+%\def\effdt{\ensuremath{\varepsilon_{\rm data}}\xspace}
+%\def\effmc{\ensuremath{\varepsilon_{\rm MC }}\xspace}
+
+%
+% results
+%
+
+
+
+% yields
+
+% integrated luminosity
+\newcommand{\thelumi}{\ensuremath{19.7~\fbinv}\xspace}
+
+%acceptance, efficiencies
+
+
+
+% fake rate numbers
+
+\def\tfmc{\ensuremath{2.22 \pm 0.50 \%}\xspace}
+\def\tfd{\ensuremath{2.44 \pm 0.53 \%}\xspace} 
+
+
+
+% background Numbers
+\def\ttbbkgElLMass{\ensuremath{ 11.0\pm1.48 \ \mathrm{(stat.)} }\xspace}
+\def\dibbkgElLMass{\ensuremath{ 2.14\pm0.81 \ \mathrm{(stat.)} }\xspace}
+\def\zttbkgElLMass{\ensuremath{ 0.31\pm0.09 \ \mathrm{(stat.)} }\xspace}
+
+\def\ttbbkgElHMass{\ensuremath{ 6.89\pm1.12 \ \mathrm{(stat.)} }\xspace}
+\def\dibbkgElHMass{\ensuremath{ 2.14\pm0.81 \ \mathrm{(stat.)} }\xspace}
+\def\zttbkgElHMass{\ensuremath{ 0.17\pm0.07 \ \mathrm{(stat.)} }\xspace}
+
+
+\def\ttbbkgMuLMass{\ensuremath{ 38.1\pm2.87 \ \mathrm{(stat.)} }\xspace}
+\def\dibbkgMuLMass{\ensuremath{ 5.02\pm1.51 \ \mathrm{(stat.)} }\xspace}
+\def\zttbkgMuLMass{\ensuremath{ 0.51\pm0.12 \ \mathrm{(stat.)} }\xspace}
+
+\def\ttbbkgMuHMass{\ensuremath{ 27\pm2.42 \ \mathrm{(stat.)} }\xspace}
+\def\dibbkgMuHMass{\ensuremath{ 5.02\pm1.51 \ \mathrm{(stat.)} }\xspace}
+\def\zttbkgMuHMass{\ensuremath{ 0.41\pm0.11 \ \mathrm{(stat.)} }\xspace}
+
+% uncertainty numbsers
+
+\def\UncPUMax{\ensuremath{6 \%}\xspace}
+\def\UncPU{\ensuremath{ 3 \% }\xspace}
+
+\def\UncBTS{\ensuremath{ 3 \% }\xspace}
+\def\UncBTB{\ensuremath{ 2 \% }\xspace}
+\def\UncBSF{\ensuremath{ 4 \% }\xspace}
+\def\UncLSF{\ensuremath{ 10 \% }\xspace}
+\def\UncBT{\ensuremath{ 2\mbox{-}3 \% }\xspace}
+\def\UncBTSEff{\ensuremath{ 1 \% }\xspace}
+\def\UncBTBEff{\ensuremath{ 2 \% }\xspace}
+\def\UncBSFSig{\ensuremath{ 2 \% }\xspace}
+\def\UncBSFtt{\ensuremath{ 2 \% }\xspace}
+\def\UncBSFsinglet{\ensuremath{ 1 \% }\xspace}
+\def\UncBSFZtt{\ensuremath{ <1 \% }\xspace}
+\def\UncBSFEWK{\ensuremath{ 1 \% }\xspace}
+\def\UncLSFSig{\ensuremath{ 2 \% }\xspace}
+\def\UncLSFtt{\ensuremath{ 2 \% }\xspace}
+\def\UncLSFZtt{\ensuremath{ 7 \% }\xspace}
+\def\UncLSFEWK{\ensuremath{ 6 \% }\xspace}
+\def\UncLSFsinglet{\ensuremath{ 3 \% }\xspace}
+
+\def\UncBMTS{\ensuremath{ 2 \% }\xspace}
+\def\UncBMTB{\ensuremath{ 5 \%  }\xspace}
+\def\UncBMT{\ensuremath{ 2\mbox{-}5 \% }\xspace}
+\def\UncBMTSEff{\ensuremath{ 1\% }\xspace}
+\def\UncBMTBEff{\ensuremath{ 2\mbox{-}12\% }\xspace}
+
+\def\UncTTBNorm{\ensuremath{ 19\mbox{-}22\% }\xspace}
+\def\UncZttNorm{\ensuremath{ 2 \%}\xspace}
+\def\UncDibNorm{\ensuremath{ 5-14 \% }\xspace} %5,9,14 -> WZ,WW,ZZ
+\def\UncSingleTopNorm{\ensuremath{ 14 \% }\xspace} %14 -> t data ; 4-6-9 MC (s,tW,t)
+
+\def\UncFake{\ensuremath{ 16\mbox{-}24\% }\xspace}
+\def\UncFakeSEff{\ensuremath{ 0\% }\xspace}
+\def\UncFakeBEff{\ensuremath{ 22\% }\xspace}
+%\def\UncFakeMu{\ensuremath{ \% }\xspace}
+
+\def\UncElESEB{\ensuremath{ 1 \% }\xspace}
+\def\UncElESEE{\ensuremath{ 2.5 \% }\xspace}
+
+
+\def\UncMuES{\ensuremath{ 1 \% }\xspace}
+\def\UncTauES{\ensuremath{ 3 \% }\xspace}
+\def\UncTauER{\ensuremath{ 10 \% }\xspace}
+\def\UncJES{\ensuremath{ \sim 4 \% }\xspace}
+\def\UncJER{\ensuremath{ 5\mbox{-}10 \% }\xspace}
+
+\def\UncLumi{\ensuremath{2.6 \% }\xspace}
+\def\UncTrig{\ensuremath{ 2 \% }\xspace}
+
+\def\UncElId{\ensuremath{ 2 \% }\xspace}
+\def\UncElIdSEff{\ensuremath{ 2 \% }\xspace}
+\def\UncElIdBEff{\ensuremath{ 2 \% }\xspace}
+
+\def\UncMuId{\ensuremath{ 2 \% }\xspace}
+\def\UncMuIdSEff{\ensuremath{ 2 \% }\xspace}
+\def\UncMuIdBEff{\ensuremath{ 2 \% }\xspace}
+
+\def\UncTauId{\ensuremath{ 6 \% }\xspace}
+\def\UncTauIdSEff{\ensuremath{ 6 \% }\xspace}
+\def\UncTauIdBEff{\ensuremath{ 6 \% }\xspace}
+
+%\def\TotUncSig{\ensuremath{ 6.5 \% }\xspace}
+\def\TotUncSig{\ensuremath{ 8.6-13.9 \% }\xspace}
+\def\TotUncBkg{\ensuremath{ 23-32\%}\xspace}
+\def\TotUncBkgFake{ \ensuremath{ 16\mbox{-}24\%}\xspace}
+\def\TotUncBkgTtb{ \ensuremath{ 13\mbox{-}17\%}\xspace}
+
+
+%% tau/jet ES ER
+\def\UncJESBkg{\ensuremath{0-7\%}\xspace}
+\def\UncJERBkg{\ensuremath{0-5\%}\xspace}
+\def\UncTESBkg{\ensuremath{5-19\%}\xspace}
+\def\UncTERBkg{\ensuremath{20 \%}\xspace}
+
+\def\UncJESSig{\ensuremath{\sim 1\%}\xspace}
+\def\UncJERSig{\ensuremath{\sim 1\%}\xspace}
+\def\UncTESSig{\ensuremath{0-5\%}\xspace}
+\def\UncTERSig{\ensuremath{1-9\%}\xspace}
