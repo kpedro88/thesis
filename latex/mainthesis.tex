@@ -79,22 +79,23 @@
 %Pages from this point start at Arabic numeral 1
 \setcounter{page}{1}
 \pagenumbering{arabic}
-%\include{Chapter1}
-%\include{Chapter1-subfigures}
-%\include{supertabular}
-%\include{Chapter2}
-%\include{Chapter3}
-%\include{AppendixA}
-%\include{AppendixB}
+\include{introduction}
+\include{theory}
+\include{cmsexperiment}
+\include{reconstruction}
+\include{analysis}
+\include{upgrades}
+\include{conclusions}
+\appendix
+\include{limits}
+\include{displays}
+\include{datasets}
+\include{collaboration}
 
 \renewcommand{\baselinestretch}{1}
 \small\normalsize
+\newpage
+\bibliographystyle{lucas_unsrt} 
 \bibliography{mybib}
-%When using Bibtex, delete the previous line and use the following
-%three lines.  
-%\newpage
-%\bibliographystyle{unsrt} 
-%\bibliography{Galactic,Dottie} %replace "Galactic,Dottie" with the
-%                 file name(s) of your bib file(s)
 
 \end{document}
