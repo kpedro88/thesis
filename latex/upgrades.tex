@@ -113,10 +113,135 @@ Equation \eqref{eq:Leff} accounts for the planned installation of the SiPMs afte
 \section{Phase 2 Simulations}
 
 \subsection{Validation of Upgrade Standalone Simulation}
+\label{sec:newdetval}
+
+In order to simulate different options for new calorimeters, the FCAL Task Force created a standalone Geant4 simulation with a simplified geometry based on the CMS endcap detector specifications as given in Ref.~\cite{cmsatcern}. The simulation geometry uses the same coordinate system as the real CMS geometry, with $z$ as the beamline and $x, y$ as the transverse directions. The detector components all have the shape of rectangular prisms with transverse dimensions $540\unit{cm} \times 540\unit{cm}$. The preshower is simulated as 3\unit{cm} of aluminum, 1.5\unit{cm} of lead, and a G10 cryogenic plate. The EE is constructed as a 22\unit{cm} deep homogeneous medium of $\text{PbWO}_{4}$. Between the EE and the HE, there is a section of dead material, which is modeled as 23.4\unit{cm} of a mixture of copper and polymer to simulate cables. The HE is 149.6\unit{cm} deep with 17 sampling layers, each consisting of 79\unit{mm} brass, 3.7\unit{mm} plastic scintillator, air gaps, and aluminum shielding. At the front of the HE there is a 15\unit{mm} zero layer, including 9\unit{mm} plastic scintillator, air gaps, and aluminum shielding. Energy deposits in the zero layer are weighted with a factor of 0.5 to account for its larger size.  Figure \ref{fig:showers} shows a side view of the simulated geometry with particle showers propagating through the calorimeters.
+
+%figure: standalone showers
+\begin{figure}[hbtp]
+\begin{center}
+%placeholder (filesize)
+\includegraphics[width=0.75\textwidth]{figures/showers-labeled.png}
+\caption{Geant4 visualization of the standalone simulation with particle showers from a 500\GeV pion (top) and 500\GeV electron (bottom). From left to right: preshower (dark blue), EE (gold), dead material (purple), HE (blue and white).}
+\label{fig:showers}
+\end{center}
+\end{figure}
+
+To ensure that the essential physics and detector behavior are present in the standalone simulation, it was validated against the CMSSW full simulation using pions and the settings given in Sec. \ref{sec:newdetvalcmssw}. The validation compared the pion response and resolution from SimHits, since the standalone simulation does not include a simulation of electronics or event reconstruction. Several subtle effects and details had to be taken into account in order to reproduce the CMSSW full simulation results in the standalone simulation.
+
+\subsubsection{Sampling Factors}
+\label{sec:newdetvalsam}
+
+The HCAL is a sampling calorimeter which collects only a fraction of the total energy of incident particles. A conversion factor is needed to estimate how the collected energy corresponds to the original particle's energy. There are numerous methods for calculating this sampling factor, and variations in it can lead to significant differences in energy response. To ensure similarity to the CMSSW full simulation, the sampling factor algorithm for the standalone simulation follows the CMSSW algorithm, described in Ref.~\cite{hcalsam}, as closely as possible. The simplified geometry of the standalone simulation means that there is no structure of $i\eta$ towers and therefore no need to iterate the algorithm to account for the spread of energy over different towers.
+
+Sampling factors are calculated by selecting from a sample of 50\GeV pions only the pions which act as minimum ionizing particles (mips) in the ECAL, so each shower is largely contained within the HCAL and a comparison to the incident energy of 50\GeV is appropriate. Based on the energy distribution of pions in the ECAL, a mip threshold of $E_{\text{ecal}} < 1\GeV$ was chosen. The sampling factor is calculated from a sample of pions which pass this threshold:
+\begin{equation} \label{fsam} f_{\text{hcal}} = \frac{E_{\text{gen}}}{E_{\text{hcal}}^{*}}\,, \end{equation}
+where $E_{\text{hcal}}^{*}$ is the peak, or most probable, energy deposited in the HCAL from that pion sample. Applying Eq. \eqref{fsam} to both the standalone simulation and the CMSSW full simulation, with settings which will be specified below, gives values $f_{\text{hcal}}^{\text{standalone}} = 178$ and $f_{\text{hcal}}^{\text{CMSSW}} = 183$, showing good agreement.
+
+\subsubsection{Birks' Law for the Electromagnetic Calorimeter}
+\label{sec:newdetvalbirks}
+
+Organic scintillators have a nonlinear energy response due to quenching. Birks' Law \cite{birks} describes this nonlinearity with several parameterizations comparing the scintillator light output to the energy deposited by a particle. Inorganic scintillators, too, may have a nonlinear energy response, which requires a different parameterization. During the development of the CMSSW full simulation, it was found that the agreement of simulation with data for the ECAL improved when using the parameterization developed for the BGO detector at the L3 experiment~\cite{datadriven}. The BGO values must be used directly, as the nonlinearity of $\text{PbWO}_{4}$ has not been measured. This parameterization has also been included in the standalone simulation:
+\begin{align}
+\label{ecalbirks} \frac{dL}{dr} &= w\frac{dE}{dr}\,, \\
+\label{ecalbirksw} w &= 1 - s \cdot \text{log}\left(k\frac{dE}{dr}\right)\,,
+\end{align}
+where $dL/dr$ is the light output, $dE/dr$ is the energy deposited, and $w$ is the weight factor which introduces the nonlinearity. The parameter $s$ is an empirical slope factor, and $k$ is related to Birks' constant $kB$. After $w$ is calculated in Eq. \eqref{ecalbirksw}, its bounds are checked: if it is lower than a parameter $c$, it is set equal to $c$; if it is higher than 1, it is set equal to 1. The BGO values of these parameters, which are applied to $\text{PbWO}_{4}$, are $k = 0.03333$, $s = 0.253694$, and $c = 0.1$.
+
+\subsubsection{Dead Material}
+\label{sec:newdetvaldead}
+
+Initial versions of the standalone geometry included only a small amount, 1.5\unit{mm}, of dead material between the ECAL and the HCAL. However, in the real detector there is a much larger amount of dead material, consisting of cables, support structures, and cooling systems. Using the material budget tool described in Ref.~\cite{matbudget}, the CMSSW full simulation geometry was scanned at $\eta = 2$, roughly the center of the endcap, for various $\phi$ values. The depths of all materials between the end of the ECAL crystals and the start of the HCAL structure are summed to find a range of dead material varying in $\phi$ between 0.57 $\lambda_{0}$ and 0.63 $\lambda_{0}$. Geant4 has an internal formula for the nuclear interaction length, which calculated $\lambda_{0} = 389.98\unit{mm}$ for the copper-polymer material used to simulate the dead material. The depth of this material was increased to $234\unit{mm} = 0.6~\lambda_{0}$, the average of the scanned material budget range, and the volume was placed to be centered between the ECAL and the HCAL as depicted in Fig. \ref{fig:showers}.
+
+\subsubsection{CMSSW Settings}
+\label{sec:newdetvalcmssw}
+
+There are several settings in the CMSSW full simulation which can be modified to increase the similarity with the standalone simulation. A calorimeter-only geometry was selected in order to remove the tracker, which is not included in the standalone simulation. The magnetic field was turned off; though a magnetic field could instead be turned on in the standalone simulation, turning off the field prevents lower-energy particles from being deflected away from the center of the endcap, $\eta = 2$, where the CMSSW calorimeter geometry most closely resembles the standalone geometry. Finally, by default CMSSW uses a customized physics list QGSP\_FTFP\_BERT\_EML \cite{calotf}, which was changed to the standard QGSP\_BERT\_EMV to match the standalone simulation.
+
+\subsubsection{Pion Results}
+\label{sec:newdetvalres}
+
+Using the sampling factors given in Sec. \ref{sec:newdetvalsam}, reconstructed energies for pions are calculated as:
+\begin{equation} \label{Erec} E_{\text{rec}} = E_{\text{ecal}} + f_{\text{hcal}} \cdot E_{\text{hcal}}\,. \end{equation}
+Energy response and resolution are calculated from a Gaussian fit based on the mean $m$ and standard deviation $s$ of the energy distributions, over a range $[m-2s, m+s]$ to account for the high tail. Figure \ref{fig:valfits} shows example energy distributions and fits for 50\GeV pions, and Fig. \ref{fig:valbanana} shows two-dimensional plots of the ECAL energy vs. the HCAL energy. Both figures show good agreement between the standalone simulation and the CMSSW full simulation. This agreement extends over a large range of pion energies, 1\GeV to 3\TeV, as demonstrated in Fig. \ref{fig:valplots}.
+
+%figure: pion fit example
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/g4_hcal_tot_res_fit_50gev.pdf}
+\includegraphics[width=0.49\textwidth]{figures/fs_hcal_tot_res_fit_50gev.pdf}
+\caption{Energy distributions from 10\,000 pions at 50\GeV, fit with Gaussians, for the standalone simulation (left) and the CMSSW full simulation (right).}
+\label{fig:valfits}
+\end{center}
+\end{figure}
+
+%figure: pion banana plots
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/g4_banana_plot_tot_50gev.pdf}
+\includegraphics[width=0.49\textwidth]{figures/fs_banana_plot_tot_50gev.pdf}
+\caption{The ECAL energy vs. the HCAL energy from 10\,000 pions at 50\GeV, for the standalone simulation (left) and the CMSSW full simulation (right).}
+\label{fig:valbanana}
+\end{center}
+\end{figure}
+
+%figure: pion validation plots
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/hcal_mu_comp_tot.pdf}
+\includegraphics[width=0.49\textwidth]{figures/hcal_sigma_comp_tot.pdf}
+\caption{Comparison between the standalone simulation and the CMSSW full simulation for pion energy response (left) and resolution (right).}
+\label{fig:valplots}
+\end{center}
+\end{figure}
 
 \subsection{Tests of Physics Effects on Pion Response and Resolution}
+\label{sec:newdettests}
+
+The pion response shown in Fig. \ref{fig:valplots} is highly nonlinear, especially at lower energies. The simplicity and flexibility of the standalone simulations makes it straightforward to test the various physics and geometrical effects identified in the preceding section. In order to test each effect individually, the simulation starts from the ``old default'' settings of the standalone simulation, before the validation against the CMSSW full simulation. The ``old default'' settings are: no preshower, minimal dead material (1.5\unit{mm}), and no Birks' Law in the ECAL or the zero layer. From here, each test setting is turned on by itself, without any of the others. Setting 5 is an additional test, removing Birks' Law from all of the HCAL scintillating layers. Changing the zero layer weight from 0.5 to 1.0 was also tested. The ``new default'' settings are those which were used to validate the standalone simulation; they consist of the ``old default'' settings with test settings 1, 2, 3, 4 applied in concert. For each test, the sampling factor $f_{\text{hcal}}$ was recalculated from 50\GeV pions simulated with the appropriate settings.
+
+\begin{table}[hbtp]
+\begin{center}
+\caption{List of test settings}
+\label{tab:testlist}
+\begin{tabular}{l l}
+0. & Old default: no preshower, no Birks' law in the ECAL or zero layer, \\
+   & 1.5\unit{mm} of dead material \\
+1. & 0 + inclusion of preshower \\
+2. & 0 + Birks' Law in the ECAL \\
+3. & 0 + dead material increased to 234\unit{mm} \\
+4. & 0 + Birks' Law in the zero layer \\
+5. & 0 + no Birks' Law in the HCAL \\
+6. & New default: 0 + 1 + 2 + 3 + 4
+\end{tabular}
+\end{center}
+\end{table}
+
+Figure \ref{fig:testresp} shows the energy response from a Gaussian fit for 8\GeV and 50\GeV pions. The dead material between the ECAL and the HCAL has the largest effect on response, and Birks' Law in the HCAL scintillators also has a large effect. The preshower detector in front of the ECAL has a larger effect on the lower-energy pion response, as expected. Weighting the zero layer equal to the other layers increases the response and also improves the resolution for higher-energy pions when dead material is present, as shown in Fig. \ref{fig:testreso}. The presence of the preshower detector is the largest contribution to the resolution for lower-energy pions.
+
+%figure: test response plots
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/hcal_test_8gev_mu_tot.pdf}
+\includegraphics[width=0.49\textwidth]{figures/hcal_test_50gev_mu_tot.pdf}
+\caption{Comparison of energy response for pions at 8\GeV (left) and 50\GeV (right), using test settings given in Table \ref{tab:testlist}.}
+\label{fig:testresp}
+\end{center}
+\end{figure}
+
+%figure: test resolution plots
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/hcal_test_8gev_sigma_tot.pdf}
+\includegraphics[width=0.49\textwidth]{figures/hcal_test_50gev_sigma_tot.pdf}
+\caption{Comparison of energy resolution for pions at 8\GeV (left) and 50\GeV (right), using test settings given in Table \ref{tab:testlist}.}
+\label{fig:testreso}
+\end{center}
+\end{figure}
 
 \subsection{HE Rebuild/Extension + Shashlik ECAL Jet Studies}
+
+%needs to be rewritten from version in AN-12-447, todo
 
 \section{Hadronic Fast Simulation}
 
