@@ -239,41 +239,41 @@ Figure \ref{fig:testresp} shows the energy response from a Gaussian fit for 8\Ge
 \end{center}
 \end{figure}
 
-\subsection{HE Rebuild/Extension + Shashlik ECAL Jet Studies}
+\subsection{HE Rebuild/Extension + Shashlik ECAL Physics Studies}
 
 %needs to be rewritten from version in AN-12-447, todo
 
 \section{Hadronic Fast Simulation}
 
+The CMS hadronic fast simulation is based on the mean shower parameterization from GFLASH \cite{gflash}, containing one term for the hadronic component and another term for the $\pi^{0}$ (electromagnetic) component. Various random fluctuations for the longitudinal and transverse development and the energy deposition of the shower are included in the simulation. However, the GFLASH parameterization for hadronic showers was only developed for single homogeneous calorimeters. The CMS HCAL is a sampling calorimeter with a non-compensating homogeneous crystal ECAL and dead material in front of it. The final energy measured by this combined calorimeter system for a given event is the product of not just shower fluctuations, but also sampling fluctuations, non-linearity, and geometric effects. To include these other effects, the energy deposits from the fast simulation must be multiplied by a random factor generated according to hadronic energy distributions from the full simulation (``smeared'').
+
 %will be heavily expanded with plots, etc...
 \subsection{Retuning of Hadronic Response}
 
-PDF and CDF definitions:
+At first, Gaussian distributions were used for the hadronic energy response smearing. The parameters for the Gaussian distributions were taken from the means and standard deviations of energy distributions for single pion samples from the full simulation. The energy distributions were constructed by collecting reconstructed calorimeter hits in a cone of $\Delta R < 0.5$, divided into bins of $\Delta \eta = 0.1$ based on the incident pion direction. These samples were simulated at different energies and the Gaussian parameters were linearly interpolated for intermediate energies. Additional $\eta$- and energy-dependent factors were derived to improve agreement with the full simulation, accounting for any remaining differences between the simulations in an ad-hoc, rather than physical, way.
+
+The fast simulation of the calorimeters originally used a custom reconstruction process. However, to make the simulations easier to maintain and upgrade, the fast simulation was changed to use the full digitization and reconstruction, which are described in Ch. \ref{ch:digireco}, without significant loss in speed. This change invalidated the ad-hoc correction factors described above, which were derived from the custom reconstruction process for the response smearing based on reconstructed hits. A new, more precise tuning, based on simulated hits, would ideally work well enough to omit any ad-hoc correction factors.
+
+A simple Gaussian distribution does not capture potential large tails in the pion energy distributions. To account for the behavior of both the low- and high-energy tails, a double-sided Crystal Ball function is used. This function has a Gaussian core with two power-law tails. The Crystal Ball function is continuous, and despite being defined in a piecewise manner, so is its first derivative. In order to generate random numbers distributed according to a double-sided Crystal Ball function, inversion sampling is used. The cumulative distribution function of the double-sided Crystal Ball function is invertible, enabling the random generation to be computed analytically, up to the calculation of the error function erf.
+
+To describe this method, first the probability distribution function (PDF) $f(x)$ and the cumulative distribution function (CDF) $F(x)$ must be defined in general:
 \begin{align}
 \int_{-\infty}^{\infty} f(x)dx &= 1 \\
-F(x) &= \int_{-\infty}^{x} f(x^{\prime})dx^{\prime} \\
-y \equiv F(x) &\rightarrow F^{-1}(y) = x
+F(x) &= \int_{-\infty}^{x} f(x^{\prime})dx^{\prime} \label{eq:generalCDF} \\
+y \equiv F(x) &\rightarrow F^{-1}(y) = x \label{eq:inverseCDF}
 \end{align}
+Equation \eqref{eq:inverseCDF} shows the basis of inversion sampling: the inverted CDF $F^{-1}(y)$ produces a random number distributed according to the PDF $f(x)$.
 
-Parameters:
+The double-sided Crystal Ball function has six parameters as noted below, with a few additional definitions and conditions:
 \begin{align}
 \vec{p} &= (\mu,\sigma,a_{L},n_{L},a_{R},n_{R}) \\
 d_{L} &= n_{L}/a_{L} \\
-d_{R} &= n_{R}/a_{R}
-\end{align}
-
-Parameter conditions:
-\begin{align}
+d_{R} &= n_{R}/a_{R} \\
 n_{L}, n_{R} &> 1\\
 a_{L}, a_{R} &> 0
 \end{align}
+Here, $\mu$ is the mean of the Gaussian core, $\sigma$ is the width of the Gaussian core, $a_{L}$ is the starting location of the left tail, $n_{L}$ is the steepness of the left tail, and $a{R}$ and $n_{R}$ act similarly for the left tail. The parameter combinations $d_{L}$ and $d_{R}$ appear frequently in the definition of the Crystal Ball function, so it is useful to define them. The conditions on $n_{L}$ and $n_{R}$ ensure that the Crystal Ball function has a finite integral and can be used as a PDF, while the conditions on $a_{L}$ and $a_{R}$ ensure that the function is continuous. The PDF of the Crystal Ball, using these parameters, is given in Eq. \eqref{eq:cballPDF}, with the normalization given in Eq. \eqref{eq:cballnorm}.
 
-Normalization:
-\begin{equation}
-N = \frac{1}{\sigma\left[\frac{d_{L}}{n_{L}-1} \cdot \text{exp}\left(-\frac{a_{L}^{2}}{2}\right) + \sqrt{\frac{\pi}{2}}\left(\text{erf}\left(\frac{a_{L}}{\sqrt{2}}\right)+\text{erf}\left(\frac{a_{R}}{\sqrt{2}}\right)\right) + \frac{d_{R}}{n_{R}-1} \cdot \text{exp}\left(-\frac{a_{R}^{2}}{2}\right)  \right]}
-\end{equation}
-
-Probability density function:
 \begin{equation}
 f(x;\vec{p}) = N \cdot \begin{cases}
 \text{exp}\left(-\frac{a_{L}^{2}}{2}\right) \cdot \left[\frac{1}{d_{L}}\left(d_{L} - a_{L} - \frac{x-\mu}{\sigma}\right)\right]^{-n_{L}} & \text{for $\frac{x-\mu}{\sigma} \leq -a_{L}$} \\
@@ -282,10 +282,16 @@ f(x;\vec{p}) = N \cdot \begin{cases}
 \\
 \text{exp}\left(-\frac{a_{R}^{2}}{2}\right) \cdot \left[\frac{1}{d_{R}}\left(d_{R} - a_{R} + \frac{x-\mu}{\sigma}\right)\right]^{-n_{R}} & \text{for $\frac{x-\mu}{\sigma} \geq a_{R}$}
 \end{cases}
+\label{eq:cballPDF}
 \end{equation}
-\newpage
 
-Cumulative distribution function:
+\begin{equation}
+N = \frac{1}{\sigma\left[\frac{d_{L}}{n_{L}-1} \cdot \text{exp}\left(-\frac{a_{L}^{2}}{2}\right) + \sqrt{\frac{\pi}{2}}\left(\text{erf}\left(\frac{a_{L}}{\sqrt{2}}\right)+\text{erf}\left(\frac{a_{R}}{\sqrt{2}}\right)\right) + \frac{d_{R}}{n_{R}-1} \cdot \text{exp}\left(-\frac{a_{R}^{2}}{2}\right)  \right]}
+\label{eq:cballnorm}
+\end{equation}
+
+The PDF can be integrated according to Eq. \eqref{eq:generalCDF} to produce the CDF in Eq. \eqref{eq:cballCDF}. The same CDF is shown in shortened form in Eq. \eqref{eq:cballCDF2}, with some abbreviations defined to make the inverse CDF in Eq. \eqref{eq:cballCDFinv} more readable.
+
 \begin{align}
 F(x;\vec{p}) &= \sigma N \cdot \begin{cases}
 \frac{d_{L}}{n_{L}-1}\text{exp}\left(-\frac{a_{L}^2}{2}\right) \left[\frac{1}{d_{L}}\left(d_{L}-a_{L}-\frac{x-\mu}{\sigma}\right)\right]^{-n_{L}+1} & \text{for $\frac{x-\mu}{\sigma} \leq -a_{L}$} \\
@@ -295,7 +301,7 @@ F(x;\vec{p}) &= \sigma N \cdot \begin{cases}
 \frac{d_{L}}{n_{L}-1}\text{exp}\left(-\frac{a_{L}^2}{2}\right) + \sqrt{\frac{\pi}{2}}\text{erf}\left(\frac{a_{L}}{\sqrt{2}}\right)\\
  + \sqrt{\frac{\pi}{2}}\text{erf}\left(\frac{a_{R}}{\sqrt{2}}\right) + \frac{d_{R}}{n_{R}-1}\text{exp}\left(-\frac{a_{R}^2}{2}\right) \\
  + \frac{d_{R}}{1-n_{R}}\text{exp}\left(-\frac{a_{R}^2}{2}\right) \left[\frac{1}{d_{R}}\left(d_{R}-a_{R}+\frac{x-\mu}{\sigma}\right)\right]^{-n_{R}+1} & \text{for $\frac{x-\mu}{\sigma} \geq a_{R}$}
-\end{cases}\\
+\end{cases}\label{eq:cballCDF}\\
  &= \sigma N \cdot \begin{cases}
 B_{L} \left[\frac{1}{d_{L}}\left(d_{L}-a_{L}-\frac{x-\mu}{\sigma}\right)\right]^{-n_{L}+1} & \text{for $\frac{x-\mu}{\sigma} \leq -a_{L}$} \\
 \\
@@ -303,10 +309,9 @@ A_{L} + C_{L} + \sqrt{\frac{\pi}{2}}\left(1-\text{erfc}\left(\frac{x-\mu}{\sigma
 \\
 A_{L} + C_{L} + C_{R} + A_{R} \\
  + B_{R} \left[\frac{1}{d_{R}}\left(d_{R}-a_{R}+\frac{x-\mu}{\sigma}\right)\right]^{-n_{R}+1} & \text{for $\frac{x-\mu}{\sigma} \geq a_{R}$} \\
-\end{cases}
+\end{cases}\label{eq:cballCDF2}
 \end{align}
 
-Inverse cumulative distribution function:
 \begin{equation}
 x = \begin{cases}
 \mu + \sigma \left(-d_{L}\left[\frac{y}{\sigma N}/B_{L}\right]^{\frac{1}{-n_{L}+1}}-a_{L}+d_{L} \right) & \text{for $y < \sigma N A_{L}$} \\
@@ -315,11 +320,24 @@ x = \begin{cases}
 \\
 \mu + \sigma \left(d_{R}\left[\frac{\frac{y}{\sigma N} - A_{L} - C_{L} - C_{R} - A_{R}}{B_{R}}\right]^{\frac{1}{-n_{R}+1}}+a_{R}-d_{R}\right) & \text{for $y > \sigma N (A_{L} + C_{L} + C_{R})$}
 \end{cases}
+\label{eq:cballCDFinv}
 \end{equation}
+
+This inverse CDF is used for the inversion sampling procedure. A uniform random number $y$ is generated and used as the input to Eq. \eqref{eq:cballCDFinv}, producing $x$ which is distributed according to the double-sided Crystal Ball function.
+
+Charged pion events are used to determine the double-sided Crystal Ball parameter values for the hadronic response smearing. For each of several energy values (1, 2, 3, 5, 9, 11, 15, 20, 30, 50, 100, 150, 225, 300, 1000, 3000\GeV), a sample of 500,000 pion events was generated, uniformly distributed in $|\eta|<5.0$, and simulated using the full simulation. Vertex smearing and the magnetic field were disabled, so the direction of the incident pion would directly predict the location of energy deposits in the calorimeter. Energy from ECAL and HCAL simulated hits was collected in a cone of $\Delta R < 0.5$. The HCAL energy was calibrated by multiplying by the $\eta$-dependent sampling factors determined in the full simulation.
+
+For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each resulting energy distribution was fit to a double-sided Crystal Ball function. For these fits, the default energy range was $[0.1E,2E]$, and the parameter limits were: $\mu, \sigma > 0$; $0 \leq a_{L}, a_{R} \leq 10$; $1.01 \leq n_{L}, n_{R} \leq 200$. Technically, the Crystal Ball function approaches a Gaussian function when $a \rightarrow \infty$. However, because the $a$ parameters are in units of $\sigma$, $a = 10$ is effectively infinite in practice. The chance of a $10\sigma$ event occurring randomly, if the events are normally distributed, is approximately 1 in 66 sextillion. The energy range and parameter values were slightly altered in some cases when the $\chi^{2}$ value of the fit indicated that the fitting algorithm was trapped in a bad local minimum.
+
+For the response smearing, the parameter values resulting from the fits are linearly interpolated for intermediate energies that were not explicitly simulated. The parameter values, including this linear interpolation, are shown in Fig...
+
+%todo: remake figures with z-axis labels
+%todo: add section about low-energy HF, Reza's work (poisson fits, iron material)
+%todo: add validation plots
 
 %Results from Reza should be added here
 %Also, remember that there is another section "MIP Energy in Hadronic Fast Simulation"
-%but this is only a proposal, not actually implement, so not included here (yet)
+%but this is only a proposal, not actually implemented, so not included here (yet)
 \subsection{MIP Fraction in Hadronic Showers}
 
 In the CMS hadronic shower fast simulation, the shower starting depth $s$ is simulated using an exponential distribution. Integrate to find the cumulative distribution for inversion sampling, where $x \in [0,1]$ is a uniformly distributed random number:
