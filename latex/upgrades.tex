@@ -327,11 +327,48 @@ This inverse CDF is used for the inversion sampling procedure. A uniform random 
 
 Charged pion events are used to determine the double-sided Crystal Ball parameter values for the hadronic response smearing. For each of several energy values (1, 2, 3, 5, 9, 11, 15, 20, 30, 50, 100, 150, 225, 300, 1000, 3000\GeV), a sample of 500,000 pion events was generated, uniformly distributed in $|\eta|<5.0$, and simulated using the full simulation. Vertex smearing and the magnetic field were disabled, so the direction of the incident pion would directly predict the location of energy deposits in the calorimeter. Energy from ECAL and HCAL simulated hits was collected in a cone of $\Delta R < 0.5$. The HCAL energy was calibrated by multiplying by the $\eta$-dependent sampling factors determined in the full simulation.
 
-For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each resulting energy distribution was fit to a double-sided Crystal Ball function. For these fits, the default energy range was $[0.1E,2E]$, and the parameter limits were: $\mu, \sigma > 0$; $0 \leq a_{L}, a_{R} \leq 10$; $1.01 \leq n_{L}, n_{R} \leq 200$. Technically, the Crystal Ball function approaches a Gaussian function when $a \rightarrow \infty$. However, because the $a$ parameters are in units of $\sigma$, $a = 10$ is effectively infinite in practice. The chance of a $10\sigma$ event occurring randomly, if the events are normally distributed, is approximately 1 in 66 sextillion. The energy range and parameter values were slightly altered in some cases when the $\chi^{2}$ value of the fit indicated that the fitting algorithm was trapped in a bad local minimum.
+For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each resulting energy distribution was fit to a double-sided Crystal Ball function. For these fits, the default energy range was $[0.1E,2E]$, and the parameter limits were: $\mu, \sigma > 0$; $0 \leq a_{L}, a_{R} \leq 10$; $1.01 \leq n_{L}, n_{R} \leq 200$. Technically, the Crystal Ball function approaches a Gaussian function when $a \rightarrow \infty$. However, because the $a$ parameters are in units of $\sigma$, $a = 10$ is effectively infinite in practice. The chance of a $10\sigma$ event occurring randomly, if the events are normally distributed, is approximately 1 in 66 sextillion. The energy range and parameter values were slightly altered in some cases when the $\chi^{2}$ value of the fit indicated that the fitting algorithm was trapped in a bad local minimum. Examples of the energy distributions and double-sided Crystal Ball fits are shown in Fig. \ref{fig:cballD-fits}.
 
-For the response smearing, the parameter values resulting from the fits are linearly interpolated for intermediate energies that were not explicitly simulated. The parameter values, including this linear interpolation, are shown in Fig...
+%figure: cballD fit examples
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_9gev_ieta5.pdf}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_9gev_ieta20.pdf}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_50gev_ieta5.pdf}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_50gev_ieta20.pdf}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_1000gev_ieta5.pdf}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_1000gev_ieta20.pdf}
+\caption{Examples of double-sided Crystal Ball fits to simulated pion energy distributions. Low (top), medium (middle), and high (bottom) energies are displayed for $\eta$ ranges in the barrel (left) and endcap (right).}
+\label{fig:cballD-fits}
+\end{center}
+\end{figure}
 
-%todo: remake figures with z-axis labels
+For the response smearing, the parameter values resulting from the fits are linearly interpolated for intermediate energies that were not explicitly simulated. This linear interpolation routine includes safety checks when used for extrapolation beyond the simulated energy range, to prevent any unphysical parameter values. The parameter values, including the linear interpolation, are shown in Fig. \ref{fig:cballD-params}. The values of the $\mu$ and $\sigma$ parameters are shown in the more familiar forms of fractional response $\mu/E_{\text{true}}$ and fractional resolution $\sigma/\mu$. Some trends can be observed in these parameter values. The expected nonlinearity in fractional response versus energy is present, and the boundaries between different subdetectors are apparent. The expected decrease in fractional resolution as energy increases is also present. The $a_{R}$ and $n_{R}$ plots show the disappearance of the right-side tail with increasing energy in the barrel and endcap. The $a_{R}$ values increase, indicating that the tail starts further from the Gaussian peak and contains fewer events, and the $n_{R}$ values also increase, indicating that the tail becomes steeper. The reduced $\chi^{2}$ values for each fit are shown in Fig. \ref{fig:cballD-chi2}.
+
+%figure: cballD parameter values
+%currently using the PNG versions because the PDFs are huge and take forever to load
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/mu_tot_interp.png}
+\includegraphics[width=0.49\textwidth]{figures/sigma_tot_interp.png}
+\includegraphics[width=0.49\textwidth]{figures/aL_tot_interp.png}
+\includegraphics[width=0.49\textwidth]{figures/nL_tot_interp.png}
+\includegraphics[width=0.49\textwidth]{figures/aR_tot_interp.png}
+\includegraphics[width=0.49\textwidth]{figures/nR_tot_interp.png}
+\caption{Parameter values for the double-sided Crystal Ball fits, with linear interpolation for intermediate energy values: fractional response $\mu/E_{\text{true}}$ (top left), fractional resolution $\sigma/\mu$ (top right), $a_{L}$ (middle left), $n_{L}$ (middle right), $a_{R}$ (bottom left), $n_{R}$ (bottom right).}
+\label{fig:cballD-params}
+\end{center}
+\end{figure}
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.98\textwidth]{figures/chi2_tot.pdf}
+    \caption{Reduced $\chi^{2}$ values for each double-sided Crystal Ball fit.}
+    \label{fig:cballD-chi2}
+  \end{center}
+\end{figure}
+
+%todo: remake param value plots without low-energy HF? (similar to chi2 plot)
 %todo: add section about low-energy HF, Reza's work (poisson fits, iron material)
 %todo: add validation plots
 
@@ -351,9 +388,9 @@ In the last step, the fact that $x$ is a uniformly distributed random number in 
 The condition which decides if the shower will start in ECAL is based on a comparison between the depth of ECAL $d_{\text{ecal}}$ and the starting depth $s$. If the shower does not start in ECAL, the incident hadron is considered to be a MIP (minimum ionizing particle) in ECAL.
 \begin{align}
 \frac{d_{\text{ecal}}-s}{d_{\text{ecal}}} > 0.1 &\\
-\rightarrow 0.9 d_{\text{ecal}} > s &\text{(for pion showers starting in ECAL)} \\
-\rightarrow 0.9 d_{\text{ecal}} \leq s &\text{(for pions which are MIPs in ECAL)} \\
-\rightarrow d \equiv 0.9 d_{\text{ecal}} &\text{(the minimum starting distance for MIPs)}
+\rightarrow 0.9 d_{\text{ecal}} > s~&\text{(for pion showers starting in ECAL)} \\
+\rightarrow 0.9 d_{\text{ecal}} \leq s~&\text{(for pions which are MIPs in ECAL)} \\
+\rightarrow d \equiv 0.9 d_{\text{ecal}}~&\text{(the minimum starting distance for MIPs)}
 \end{align}
 
 Since $f(s)$ is a probability distribution, it has area 1 in $[0,\infty]$. The area for $s = d..\infty$, i.e. when $s \geq d$, should be equal to the probability $p$ that the particle is a MIP. In order to solve this problem, the distribution must be transformed to introduce a free parameter:
