@@ -327,7 +327,7 @@ This inverse CDF is used for the inversion sampling procedure. A uniform random 
 
 Charged pion events are used to determine the double-sided Crystal Ball parameter values for the hadronic response smearing. For each of several energy values (1, 2, 3, 5, 9, 11, 15, 20, 30, 50, 100, 150, 225, 300, 1000, 3000\GeV), a sample of 500,000 pion events was generated, uniformly distributed in $|\eta|<5.0$, and simulated using the full simulation. Vertex smearing and the magnetic field were disabled, so the direction of the incident pion would directly predict the location of energy deposits in the calorimeter. Energy from ECAL and HCAL simulated hits was collected in a cone of $\Delta R < 0.5$. The HCAL energy was calibrated by multiplying by the $\eta$-dependent sampling factors determined in the full simulation.
 
-For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each resulting energy distribution was fit to a double-sided Crystal Ball function. For these fits, the default energy range was $[0.1E,2E]$, and the parameter limits were: $\mu, \sigma > 0$; $0 \leq a_{L}, a_{R} \leq 10$; $1.01 \leq n_{L}, n_{R} \leq 200$. Technically, the Crystal Ball function approaches a Gaussian function when $a \rightarrow \infty$. However, because the $a$ parameters are in units of $\sigma$, $a = 10$ is effectively infinite in practice. The chance of a $10\sigma$ event occurring randomly, if the events are normally distributed, is approximately 1 in 66 sextillion. The energy range and parameter values were slightly altered in some cases when the $\chi^{2}$ value of the fit indicated that the fitting algorithm was trapped in a bad local minimum. Examples of the energy distributions and double-sided Crystal Ball fits are shown in Fig. \ref{fig:cballD-fits}.
+For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each resulting energy distribution was fit to a double-sided Crystal Ball function. For these fits, the default energy range was $[0.1E,2E]$ where $E$ is the true energy, and the parameter limits were: $\mu, \sigma > 0$; $0 \leq a_{L}, a_{R} \leq 10$; $1.01 \leq n_{L}, n_{R} \leq 200$. Technically, the Crystal Ball function approaches a Gaussian function when $a \rightarrow \infty$. However, because the $a$ parameters are in units of $\sigma$, $a = 10$ is effectively infinite in practice. The chance of a $10\sigma$ event occurring randomly, if the events are normally distributed, is approximately 1 in 66 sextillion. The energy range and parameter values were slightly altered in some cases when the $\chi^{2}$ value of the fit indicated that the fitting algorithm was trapped in a bad local minimum. Examples of the energy distributions and double-sided Crystal Ball fits are shown in Fig. \ref{fig:cballD-fits}.
 
 %figure: cballD fit examples
 \begin{figure}[hbtp]
@@ -338,7 +338,7 @@ For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each r
 \includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_50gev_ieta20.pdf}
 \includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_1000gev_ieta5.pdf}
 \includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_1000gev_ieta20.pdf}
-\caption{Examples of double-sided Crystal Ball fits to simulated pion energy distributions. Low (top), medium (middle), and high (bottom) energies are displayed for $\eta$ ranges in the barrel (left) and endcap (right).}
+\caption{Examples of double-sided Crystal Ball fits to simulated pion energy distributions. Low (top), medium (middle), and high (bottom) energies are displayed for $\eta$ ranges in the barrel (left) and endcap (right). The blue dotted lines show the locations of the transition from the Gaussian core to the power-law tails, and the red dotted lines show a continuation of the Gaussian core for comparison to the power-law tails.}
 \label{fig:cballD-fits}
 \end{center}
 \end{figure}
@@ -346,15 +346,14 @@ For each energy, the sample was divided into bins of $\Delta \eta = 0.1$. Each r
 For the response smearing, the parameter values resulting from the fits are linearly interpolated for intermediate energies that were not explicitly simulated. This linear interpolation routine includes safety checks when used for extrapolation beyond the simulated energy range, to prevent any unphysical parameter values. The parameter values, including the linear interpolation, are shown in Fig. \ref{fig:cballD-params}. The values of the $\mu$ and $\sigma$ parameters are shown in the more familiar forms of fractional response $\mu/E_{\text{true}}$ and fractional resolution $\sigma/\mu$. Some trends can be observed in these parameter values. The expected nonlinearity in fractional response versus energy is present, and the boundaries between different subdetectors are apparent. The expected decrease in fractional resolution as energy increases is also present. The $a_{R}$ and $n_{R}$ plots show the disappearance of the right-side tail with increasing energy in the barrel and endcap. The $a_{R}$ values increase, indicating that the tail starts further from the Gaussian peak and contains fewer events, and the $n_{R}$ values also increase, indicating that the tail becomes steeper. The reduced $\chi^{2}$ values for each fit are shown in Fig. \ref{fig:cballD-chi2}.
 
 %figure: cballD parameter values
-%currently using the PNG versions because the PDFs are huge and take forever to load
 \begin{figure}[hbtp]
 \begin{center}
-\includegraphics[width=0.49\textwidth]{figures/mu_tot_interp.png}
-\includegraphics[width=0.49\textwidth]{figures/sigma_tot_interp.png}
-\includegraphics[width=0.49\textwidth]{figures/aL_tot_interp.png}
-\includegraphics[width=0.49\textwidth]{figures/nL_tot_interp.png}
-\includegraphics[width=0.49\textwidth]{figures/aR_tot_interp.png}
-\includegraphics[width=0.49\textwidth]{figures/nR_tot_interp.png}
+\includegraphics[width=0.49\textwidth]{figures/mu_tot_interp.pdf}
+\includegraphics[width=0.49\textwidth]{figures/sigma_tot_interp.pdf}
+\includegraphics[width=0.49\textwidth]{figures/aL_tot_interp.pdf}
+\includegraphics[width=0.49\textwidth]{figures/nL_tot_interp.pdf}
+\includegraphics[width=0.49\textwidth]{figures/aR_tot_interp.pdf}
+\includegraphics[width=0.49\textwidth]{figures/nR_tot_interp.pdf}
 \caption{Parameter values for the double-sided Crystal Ball fits, with linear interpolation for intermediate energy values: fractional response $\mu/E_{\text{true}}$ (top left), fractional resolution $\sigma/\mu$ (top right), $a_{L}$ (middle left), $n_{L}$ (middle right), $a_{R}$ (bottom left), $n_{R}$ (bottom right).}
 \label{fig:cballD-params}
 \end{center}
@@ -368,16 +367,48 @@ For the response smearing, the parameter values resulting from the fits are line
   \end{center}
 \end{figure}
 
-%todo: remake param value plots without low-energy HF? (similar to chi2 plot)
-%todo: add section about low-energy HF, Reza's work (poisson fits, iron material)
-%todo: add validation plots
+The low-energy region in the HF is excluded from Figs. \ref{fig:cballD-params} and \ref{fig:cballD-chi2}. The HF detects particles using Cherenkov light rather than scintillation light, so the yield of photoelectrons is much lower, typically 1 photoelectron per 4\GeV. Therefore, the energy distribution in the HF is Poissonian rather than Gaussian for low energy particles, so the double-sided Crystal Ball fit is not appropriate. An alternate approach is used in this region. The overall photoelectron distribution is fit with a Poissonian function, and a second Poissonian function is used to model the spread of values between integer numbers of photoelectrons. Examples of these fits are shown in Fig. \ref{fig:poissonHF-fits}. As with the Crystal Ball fits, the parameter values are interpolated when calculating response smearing factors for intermediate energy values. For energies below 5\GeV, the 5\GeV parameter values are used.
 
-%Results from Reza should be added here
-%Also, remember that there is another section "MIP Energy in Hadronic Fast Simulation"
-%but this is only a proposal, not actually implemented, so not included here (yet)
+%figure: HF poisson fits from Reza
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/finaltaskreport_Page_5_Image_0004.png}
+\includegraphics[width=0.49\textwidth]{figures/finaltaskreport_Page_5_Image_0005.png}
+\caption{Poisson fits for low-energy photoelectron distributions in the HF \cite{Reza:HF}. The red histogram is the distribution, the red curve is the overall Poisson fit, and the blue hatched histogram is the result of randomly generated points using the Poisson fits. Plots are shown for 5\GeV (left) and 11\GeV (right) charged pion samples with $\eta$ ranges in the HF.}
+\label{fig:poissonHF-fits}
+\end{center}
+\end{figure}
+
+For higher energy particles in the HF, the distributions approach a Gaussian shape with possible large tails, so the double-sided Crystal Ball fit is used for these cases. Examples of the energy distributions and fits for the HF are shown in Fig. \ref{fig:cballD-fits-HF}.
+
+%figure: cballD fit examples for HF
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_50gev_ieta37.pdf}
+\includegraphics[width=0.49\textwidth]{figures/pion_response_tot_cballD_1000gev_ieta37.pdf}
+\caption{Examples of double-sided Crystal Ball fits to simulated pion energy distributions in the HF. Medium (left) and high (right) energies are displayed for $\eta$ ranges in the HF. The blue dotted lines show the locations of the transition from the Gaussian core to the power-law tails, and the red dotted lines show a continuation of the Gaussian core for comparison to the power-law tails.}
+\label{fig:cballD-fits-HF}
+\end{center}
+\end{figure}
+
+Samples of \ttbar events were used to validate this new hadronic response tuning against the full simulation. A few of the validation plots, comparing the performance of both the old tuning and the new tuning to the full simulation, are shown in Fig. \ref{fig:cballD-relvals}. The new tuning is able to achieve comparable performance to the old tuning, without the use of any ad-hoc correction factors.
+
+%figure: relvals
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/Eta_full_vs_fast_old.png}
+\includegraphics[width=0.49\textwidth]{figures/pTScale_d_30_pT_200_full_vs_fast_old.png}
+\includegraphics[width=0.49\textwidth]{figures/Eta_full_vs_fast_new.png}
+\includegraphics[width=0.49\textwidth]{figures/pTScale_d_30_pT_200_full_vs_fast_new.png}
+\caption{Plots of the $\eta$ distribution (left) and \pt response vs. $\eta$ (right) for PF jets in \ttbar samples, comparing the full simulation (red) to the fast simulation (black) with the old hadronic response tuning (top) and the new hadronic response tuning (bottom).}
+\label{fig:cballD-relvals}
+\end{center}
+\end{figure}
+
+%Results from Reza could be added here
 \subsection{MIP Fraction in Hadronic Showers}
 
-In the CMS hadronic shower fast simulation, the shower starting depth $s$ is simulated using an exponential distribution. Integrate to find the cumulative distribution for inversion sampling, where $x \in [0,1]$ is a uniformly distributed random number:
+In the CMS hadronic shower fast simulation, the shower starting depth $s$ is simulated using an exponential distribution. This distribution can be treated as a PDF integrated to find the CDF for inversion sampling, where $x \in [0,1]$ is a uniformly distributed random number:
 \begin{align}
 f(s) &= e^{-s}\\
 F(s) &= \int_{0}^{s} f(s^{\prime})ds^{\prime} = 1 - e^{-s}\\
@@ -385,15 +416,15 @@ x \equiv F(s) &\rightarrow F^{-1}(x) = -\text{ln}(1-x) = \text{ln}\left(\frac{1}
 \end{align}
 In the last step, the fact that $x$ is a uniformly distributed random number in $[0,1]$ is used to take $(1-x) \rightarrow x$.
 
-The condition which decides if the shower will start in ECAL is based on a comparison between the depth of ECAL $d_{\text{ecal}}$ and the starting depth $s$. If the shower does not start in ECAL, the incident hadron is considered to be a MIP (minimum ionizing particle) in ECAL.
+The condition which decides if the shower will start in the ECAL is based on a comparison between the depth of the ECAL $d_{\text{ecal}}$ and the starting depth $s$. If the shower does not start in the ECAL, the incident hadron is considered to be a minimum ionizing particle (MIP) in the ECAL.
 \begin{align}
 \frac{d_{\text{ecal}}-s}{d_{\text{ecal}}} > 0.1 &\\
-\rightarrow 0.9 d_{\text{ecal}} > s~&\text{(for pion showers starting in ECAL)} \\
-\rightarrow 0.9 d_{\text{ecal}} \leq s~&\text{(for pions which are MIPs in ECAL)} \\
-\rightarrow d \equiv 0.9 d_{\text{ecal}}~&\text{(the minimum starting distance for MIPs)}
+0.9 d_{\text{ecal}} > s~&\text{(for pion showers starting in ECAL)} \\
+0.9 d_{\text{ecal}} \leq s~&\text{(for pions which are MIPs in ECAL)} \\
+d \equiv 0.9 d_{\text{ecal}}~&\text{(the minimum starting distance for MIPs)}
 \end{align}
 
-Since $f(s)$ is a probability distribution, it has area 1 in $[0,\infty]$. The area for $s = d..\infty$, i.e. when $s \geq d$, should be equal to the probability $p$ that the particle is a MIP. In order to solve this problem, the distribution must be transformed to introduce a free parameter:
+Since $f(s)$ is a probability distribution, it has area 1 in $[0,\infty]$. The area for $s = d..\infty$, when $s \geq d$, is equal to the probability $p$ that the particle is a MIP. In order to solve this problem, the distribution must be transformed to introduce a free parameter:
 \begin{align}
 f(s,\lambda) &= \lambda e^{-\lambda s}\\
 s &= \frac{1}{\lambda}\text{ln}\left(\frac{1}{x}\right)
@@ -405,7 +436,7 @@ p = \int_{d}^{\infty} ds \lambda e^{-\lambda s} &= e^{-\lambda d}\\
 \rightarrow \lambda &= \frac{1}{d}\text{ln}\left(\frac{1}{p}\right)
 \end{align}
 
-Since $d$ is determined by detector geometry, for any $p \in (0,1)$, $\lambda$ can be found to ensure the correct MIP fraction. The final result is just a scaling by $1/\lambda$ of the original equation for randomly generating $s$ from the uniform random number $x$. In practice, $p$ can be determined from full simulation as a function of incident particle energy and $\eta$. The easiest way to do this would be to store values for each $\eta$ and the same energy points that are used in HCALResponse, and then interpolate for intermediate energies. (See Figures \ref{fig:mippct} and \ref{fig:allmippct} for examples.) For energies outside that range, the first or last values should be used rather than extrapolating, since extrapolating could produce $p \leq 0$ or $p \geq 1$, which would create unphysical values of $\lambda$, i.e. $\lambda \not\in (0,\infty)$.
+Since $d$ is determined by detector geometry, for any $p \in (0,1)$, $\lambda$ can be found to ensure the correct MIP fraction. The final result is just a scaling by $1/\lambda$ of the original equation for randomly generating $s$ from the uniform random number $x$. In practice, $p$ can be determined from the full simulation as a function of the incident particle energy and $\eta$. The pion samples used for the new hadronic response tuning were also used to determine these probability values, classifying a particle as a MIP if it deposits less than 0.8\GeV of energy in the ECAL. Figure \ref{fig:mippct} shows two examples of the MIP fraction versus energy. Figure \ref{fig:allmippct} shows the MIP fractions for the entire energy and $\eta$ range of the calorimeter system, including linear interpolation for intermediate energies. For energies outside the simulated range, the first or last values are used instead of extrapolating, as extrapolating could produce $p \leq 0$ or $p \geq 1$, which would create unphysical values $\lambda \not\in (0,\infty)$.
 
 \begin{figure}[hbtp]
 \begin{center}
@@ -418,11 +449,16 @@ Since $d$ is determined by detector geometry, for any $p \in (0,1)$, $\lambda$ c
 
 \begin{figure}[hbtp]
 \begin{center}
-\includegraphics[width=0.95\textwidth]{figures/all_mip.pdf}
+\includegraphics[width=0.95\textwidth]{figures/all_mip_interp.pdf}
 \caption{Plots of MIP percentage vs. energy and $\eta$ for the entire calorimeter system.}
 \label{fig:allmippct}
 \end{center}
 \end{figure}
+
+Modeling the MIP fraction correctly in the fast simulation is one step toward using more precise response tuning by fitting separate distributions for MIP and non-MIP pions. This option is available in the fast simulation, but disabled by default. Another step is needed to complete the implementation of this option. Currently, when the hadronic shower fast simulation decides that a particle is a MIP in the ECAL, that particle deposits zero energy in the ECAL. However, this is not physically accurate; the MIP particle should actually deposit some small but non-zero amount of energy. Fixing this in the fast simulation is a difficult proposition, due to the structure of the algorithm for simulating shower energy fluctuations and the use of response smearing factors after the shower simulation.
+
+%Also, remember that there is another section "MIP Energy in Hadronic Fast Simulation"
+%but this is only a proposal, not actually implemented, so not included here (yet)
 
 \section{Dose Rate Effects}
 
