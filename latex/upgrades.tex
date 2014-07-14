@@ -440,9 +440,9 @@ Since $d$ is determined by detector geometry, for any $p \in (0,1)$, $\lambda$ c
 
 \begin{figure}[hbtp]
 \begin{center}
-\includegraphics[width=0.49\textwidth]{figures/fs_plot_mip_ieta1.pdf}
+\includegraphics[width=0.49\textwidth]{figures/fs_plot_mip_ieta10.pdf}
 \includegraphics[width=0.49\textwidth]{figures/fs_plot_mip_ieta20.pdf}
-\caption{Plots of MIP percentage vs. energy for $i\eta = 1$ (in the barrel) and $i\eta = 20$ (in the endcap).}
+\caption{Plots of MIP percentage vs. energy for $\eta$ ranges in the barrel (left) and endcap (right).}
 \label{fig:mippct}
 \end{center}
 \end{figure}
@@ -452,6 +452,17 @@ Since $d$ is determined by detector geometry, for any $p \in (0,1)$, $\lambda$ c
 \includegraphics[width=0.95\textwidth]{figures/all_mip_interp.pdf}
 \caption{Plots of MIP percentage vs. energy and $\eta$ for the entire calorimeter system.}
 \label{fig:allmippct}
+\end{center}
+\end{figure}
+
+The procedure described in this section was implemented in the fast simulation. The implementation was validated by counting the number of pions which are considered by the fast simulation to be MIPs in the ECAL for several energies and comparing to the full simulation values. The results of the validation are shown in Fig. \ref{fig:mipvalidate}, demonstrating significant improvement in the agreement with the full simulation.
+
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.49\textwidth]{figures/final_mip_validate_ieta10.png}
+\includegraphics[width=0.49\textwidth]{figures/final_mip_validate_ieta20.png}
+\caption{Validation of MIP percentages vs. energy in the fast simulation, comparing full simulation (green), old fast simulation (red), and new fast simulation (blue) for $\eta$ ranges in the barrel (left) and endcap (right).}
+\label{fig:mipvalidate}
 \end{center}
 \end{figure}
 
