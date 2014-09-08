@@ -21,6 +21,32 @@ The CMS experiment uses detailed simulations to predict the performance of the d
 
 \section{Event Generation}
 
+Protons are most basically considered to be composed of two up quarks and one down quark. However, as a QCD bound state, it is more accurate to consider those three quarks as valence quarks, the most prominent features in a quark-gluon sea of virtual particles. At high energies such as those present in LHC collisions, the presence of additional quarks and gluons, collectively called partons, becomes significant. The fraction of the momentum of a proton $A$ carried by a parton $a$ is defined as $x_a$, and the parton distribution function (PDF) for that parton is $f_{a/A}(x_a,Q^2)$, where $Q^2$ is the momentum scale of the interaction, typically the square of the total four-momentum in a collision. PDFs are calculated using experimental data sets, with different groups taking different approaches to analyzing the data and modeling proton behavior. The CMS experiment primarily uses PDFs from Martin-Stirling-Thorne-Watt (MSTW) and the Coordinated Theoretical-Experimental Project on QCD (CTEQ). Figure \ref{fig:pdf-mstw} shows an example set of PDFs calculated at NLO by MSTW \cite{MSTW09}. At high momentum scales, even bottom quarks may be present in the quark-gluon sea of a proton. The dependence of the PDFs on $Q^2$ is given by the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) equations \cite{QuarkGluon}.
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures/mstw2008nlo68cl_allpdfs.pdf}
+\caption{PDFs calculated at NLO by MSTW, plotted against momentum fraction $x$ for two different values of the momentum scale $Q^2$ \cite{MSTW09}.}
+\label{fig:pdf-mstw}
+\end{center}
+\end{figure}
+
+The DGLAP equations allow large logarithmic factors, for example from collinear emission of gluons, to be included in the definition of the PDFs. This statement is the QCD factorization theorem, which applies to all hard-scattering processes. With this theorem, the interaction of parton $a$ in proton $A$ with parton $b$ in proton $B$, producing the final state $X$, can be written simply:
+\begin{equation} \label{eq:hard-scatter}
+\sigma_{AB \rightarrow X}(s) = \int{\text{dx}_{a}\text{dx}_{b} f_{a/A}(x_a,\mu_{F}^{2}) f_{b/A}(x_b,\mu_{F}^{2}) \hat{\sigma}_{ab \rightarrow X}(\hat{s},\mu_{R}^{2})}
+\end{equation}
+For such an interaction at high energy, the center-of-mass energy is $\sqrt{\hat{s}} = \sqrt{x_a x_b s}$, where $\sqrt{s}$ is the center-of-mass energy of the proton-proton system. There are two scales in Eq. \ref{eq:hard-scatter}: the factorization scale $\mu_{F}$ which separates long-distance physics from short-distance physics, and the renormalization scale $\mu_{R}$ of the QCD running coupling. Values for these scales are typically chosen to be characteristic of the hard scattering, with $\mu_{F} = \mu_{R}$. In addition to the primary hard-scattering process, the incoming protons and outgoing final state particles may radiate photons and gluons in processes called, respectively, initial state radiation (ISR) and final state radiation (FSR). The remnant partons which did not participate in the primary hard scatter may undergo soft interactions; these are collectively considered to be the ``underlying event''. All of these possible interactions in a proton-proton collision are visualized in Fig. \ref{fig:pp-collision}.
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures/pp_collision_schematic.pdf}
+\caption{An artistic depiction of a proton-proton collision, showing the hard scatter, ISR, FSR, and the underlying event \cite{QuarkGluon}.}
+\label{fig:pp-collision}
+\end{center}
+\end{figure}
+
+
+
 \section{Detector Simulation}
 
 \section{Tracks and Vertices
