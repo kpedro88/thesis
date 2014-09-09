@@ -1246,7 +1246,7 @@ FUNCTION {unpublished}
   new.sentence
   format.eprint output
   new.sentence
-  note "note" output.check
+  note output
   new.sentence
   format.SLACcitation output
   fin.entry
