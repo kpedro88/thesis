@@ -17,7 +17,7 @@ In the second step, global reconstruction, the RecHits from the different subsys
 
 High-level reconstruction is the final step, in which information from all subdetectors is used to reconstruct various types of particles as precisely as possible. The particle types used in this search include electrons, muons, taus, jets, and b-jets. The reconstruction algorithms for these particles will be described in more detail in the following sections of this chapter. Many of these algorithms use a particle flow technique that is unique to CMS and will be described in Sec. \ref{sec:particle-flow}.
 
-The CMS experiment uses detailed simulations to predict the performance of the detector and reconstruction algorithms and to model various physics processes. Each simulated event is generated from the interaction of partons in proton-proton collisions and the decays of the resulting particles, based on theoretical calculations. The traversal of the final state particles through the CMS detector is simulated to create simulated hits or ``SimHits''. The effects of photodetectors and readout electronics on these SimHits are also simulated. After that processing, the results can be treated identically to the raw data from real events and used as input for the reconstruction software.
+The CMS experiment uses detailed simulations to predict the performance of the detector and reconstruction algorithms and to model various physics processes. Each simulated event is generated from the interaction of partons in proton-proton collisions and the decays of the resulting particles, based on theoretical calculations. The traversal of the final state particles through the CMS detector is simulated, and after some processing, the results can be treated identically to the raw data from real events and used as input for the reconstruction software.
 
 \section{Event Generation}
 
@@ -40,14 +40,16 @@ For such an interaction at high energy, the center-of-mass energy is $\sqrt{\hat
 \begin{figure}[hbt]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{figures/pp_collision_schematic.pdf}
-\caption{An artistic depiction of a proton-proton collision, showing the hard scatter, ISR, FSR, and the underlying event \cite{QuarkGluon}.}
+\caption{An illustration of a proton-proton collision, showing the hard scattering, ISR, FSR, and the underlying event \cite{QuarkGluon}.}
 \label{fig:pp-collision}
 \end{center}
 \end{figure}
 
-
+Various event generation programs exist to simulate proton-proton collisions. The simulation of the hard scattering relies on a $2\rightarrow2$ matrix element to calculate $\hat{\sigma}_{ab \rightarrow X}(\hat{s},\mu_{R}^{2})$. Usually, the LO matrix element and PDFs are used for the simulation, and the results are scaled to NLO or NNLO using a $K$-factor derived from the ratio of the relevant cross sections. The program {\sc Pythia} \cite{Sjostrand:2006za} uses a parton showering approach to model ISR and FSR. Other generators such as {\sc MadGraph} \cite{MadGraph} use alternate approaches which more accurately simulate additional hard radiation outside of the primary hard scattering process, but must be combined with a program like {\sc Pythia} for showering from soft and collinear radiation. {\sc POWHEG} \cite{Alioli:2010xd} is a generator which uses NLO matrix elements and PDFs by matching them with parton shower contributions to prevent double counting. After the initial event generation, {\sc MadGraph} and {\sc POWHEG} are interfaced with {\sc Pythia} for hadronization. In addition, a specialized program called {\sc Tauola} \cite{TAUOLA} can be applied for accurate handling of tau lepton decays.
 
 \section{Detector Simulation}
+
+The response of the CMS detector to a proton-proton collision event is simulated using the stable final state particles output by event generators. The progression of each particle through the detector is tracked using the {\sc Geant4} software \cite{geant4nim,geant4ieee}. The geometry of every subdetector and subsystem is carefully simulated to ensure the accuracy of the simulation. The conditions of the real detector, including alignment and calibration changes, are measured periodically and stored in a database which can be used to configure the simulation. {\sc Geant4} includes customizable physics lists containing models of various physical processes to simulate the interactions of particles with matter. The detector simulation creates simulated hits or ``SimHits'' for each subdetector from the deposition of energy or charge based on those interactions. The effects of photodetectors and readout electronics on these SimHits are then simulated, mimicing the real subdetectors' data acquisition processes.
 
 \section{Tracks and Vertices
 \label{sec:tracks}}
@@ -57,7 +59,7 @@ Hits from the different tracker subsystems are reconstructed into charged-partic
 \item A seed is generated using only a few hits.
 \item Additional hits are added to the track based on the extrapolated trajectory of the seed.
 \item The parameters of the track are estimated using a fit which considers all hits in the trajectory.
-\item Selection criteria are applied to determine the quality of the track, excluding those tracks which do not pass the selection.
+\item Selection criteria are applied to determine the quality of the track, and tracks which do not pass the selection are excluded.
 \end{enumerate}
 
 The types of seeds are categorized based on the number of hits included and the source of those hits. Initial iterations use pixel triplet and pair seeds, created from three and two pixel hits, respectively. These are the highest-quality seeds and are used to reconstruct prompt tracks, those emitting from primary vertices near the IP. A subsequent iteration uses a mixed triplet seed, containing 1--3 pixel hits and ${<}3$ strip hits. This iteration typically finds displaced tracks from heavy flavor decays, nuclear interactions, and photons which convert to \EpEm\xspace pairs in the tracker. The final iterations use strip pair seeds, consisting of two matched hits from the strip detectors, usually generated by charged particles which did not enter the pixel detector.
