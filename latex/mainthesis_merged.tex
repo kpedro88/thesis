@@ -30,6 +30,7 @@
 \usepackage{xspace}
 \usepackage{setspace}
 \usepackage[pagebackref=true,breaklinks=true,linktocpage=true,pdfstartview=FitH,plainpages=false,pdfpagelabels]{hyperref}
+\usepackage{array}
 
 %%%%%%%%%%%%% ptdr definitions %%%%%%%%%%%%%%%%%%%%%
 \usepackage{ptdr-definitions}
@@ -645,6 +646,7 @@ ECAL       & Electromagnetic Calorimeter \\
 EE         & ECAL Endcap \\
 EM         & Electromagnetic \\
 ES         & ECAL Preshower \\
+EWSB       & Electroweak Symmetry Breaking \\
 FCNC       & Flavor-Changing Neutral Current \\
 FPGA       & Field-Programmable Gate Array \\
 FSR        & Final-State Radiation \\
@@ -707,6 +709,7 @@ TID        & Tracker Inner Disks \\
 TOB        & Tracker Outer Barrel \\
 TPG        & Trigger Primitive Generator \\
 TTC        & Timing, Trigger and Control \\
+VEV        & Vacuum Expectation Value \\
 VPT        & Vacuum Phototriode \\
 WLS        & Wavelength-Shifting \\
 \end{longtable}
@@ -729,6 +732,55 @@ WLS        & Wavelength-Shifting \\
 \setcounter{section}{-1}
 
 \section{The Standard Model}
+
+The standard model (SM) of particle physics includes three fundamental forces and all of the particles of ordinary matter using a quantum field theory framework. When forces are weak enough, quantum field theory calculations use a perturbative method in which the leading order (LO) term is calculated, then the next-to-leading order (NLO) correction is added, then the next-to-next-to-leading order correction (NNLO), and so forth. The three fundamental forces are electromagnetism, the weak force, and the strong force. These forces are carried by spin-1 gauge bosons, while the matter particles consist of quarks and leptons, two categories of spin-1/2 fermions. In addition, the standard model contains a scalar spin-0 boson, the Higgs boson, which is part of the Higgs field that provides masses to certain gauge bosons and fermions. Figure \ref{fig:sm-particles} summarizes the particles in the standard model, including the spin, electric charge, and mass values of each particle.
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures/Standard_Model_of_Elementary_Particles.pdf}
+\caption{A table of all the elementary particles in the standard model, with the spin, electric charge, and mass values of each particle \cite{MissMJ}. The faint gray lines indicate which gauge bosons interact with which fermions.}
+\label{fig:sm-particles}
+\end{center}
+\end{figure}
+
+The electromagnetic force is mediated by photons ($\gamma$), spin-1 gauge bosons which have no mass or electric charge $Q$. This force causes interactions between electrically charged particles and has infinite range due to the masslessness of the photon. Quantum electrodynamics (QED) is the quantum field theory description of electromagnetism, which can be represented by a $U(1)$ symmetry group. The weak force is mediated by the massive \Wpm and \Z bosons and can be represented by an $SU(2)$ symmetry group. The weak force acts on particles carrying weak isospin $T$. Weak isospin is a quantum number whose third component $T_3$ is conserved in all interactions and which can be mathematically treated in the same way as angular momentum, though the two quantities are physically distinct. The massiveness of the weak carrier bosons means that the weak force has a limited range, approximately $10^{-18}\unit{m}$. The charged current weak interaction, mediated by the \Wpm bosons, is sensitive to the chirality of fermions; only left-handed fermions and right-handed antifermions participate in this interaction. The neutral current weak interaction, mediated by the \Z boson, is not sensitive to chirality.
+
+As suggested by the inclusion of both forces in the previous paragraph, the electromagnetic and weak forces can be unified to form the electroweak force, represented by the symmetry group $SU(2) \times U(1)$. In this unification, the quantum numbers of electromagnetism and the weak force are related by a new conserved quantum number, weak hypercharge $Y = 2(Q - T_3)$. The Higgs mechanism is responsible for electroweak symmetry breaking (EWSB). In order for the electroweak theory to be gauge invariant, the gauge bosons must be massless, but the \Wpm and \Z bosons are observed to have mass. The Higgs mechanism solves this dilemma via spontaneous EWSB due to its non-zero vacuum expectation value (VEV). The Higgs field consists of a doublet, with two charged particles and two neutral particles, all scalar bosons. The two charged particles and one of the neutral particles act as Goldstone bosons, combining with the \Wpm and \Z bosons to produce their masses. The remaining neutral particle is the Higgs boson, which was discovered at the LHC in 2012 \cite{NewBoson}.
+
+The strong force, quantum chromodynamics (QCD), is mediated by gluons (\cPg) and can be represented by an $SU(3)$ symmetry group. Gluons, like photons, are spin-1 gauge bosons without mass or electric charge. However, gluons do possess color charge, the quantum number on which the strong force acts. Color charge is so named because the charge has three possible values, which are labeled red, green, or blue. Because gluons both mediate and participate in the strong interaction, the force between quarks does not decrease as they become spatially separated. The energy in the gluon field between the separated quarks can become large enough to form one or more quark-antiquark pairs. This phenomenon is known as confinement and prevents quarks or gluons from existing in a bare state. Correspondingly, the range of the strong force is limited to $\sim 10^{-15}\unit{m}$. Bound states of quarks and gluons, the only way they have ever been observed in nature, are called hadrons, and the formation of those bound states is called hadronization. States with one quark and one antiquark are mesons, while states with three quarks are baryons. Mesons and baryons are the two allowed types of bound states because they represent color singlets. Complementarily, as quarks get closer together, the strong force between them weakens. This behavior is known as asymptotic freedom; because short distances are equivalent to high energies, the strong interactions of quarks at a high-energy collider like the LHC can be calculated perturbatively. A residual form of the strong force acts on nucleons, protons and neutrons, to form atomic nuclei.
+
+As mentioned, fermions are the particles of matter, which are separated into two groups: quarks and leptons. Quarks have fractional electric charge, weak isospin, and color charge, so they are affected by all three fundamental forces. There are two types of quarks: up-type quarks that have $Q = 2/3$ and down-type quarks that have $Q = -1/3$. Leptons consist of charged leptons and neutrinos. Charged leptons possess electric charge and weak isospin, while neutrinos only possess weak isospin. Three generations exist for each type of particle, with the different particles called flavors. The flavors of up-type quarks are the up, charm, and top quarks; of down-type quarks are the down, strange, and bottom quarks; of charged leptons are the electron, muon, and tau lepton; and of the neutrinos are the electron, muon, and tau neutrinos. The top quark is the heaviest elementary particle and is so heavy that it decays before hadronizing, making it an exception to the rule that bare quarks are not observed. Quarks possess an additively conserved quantum number called baryon number $B$, which is defined as $B = \frac{1}{3}(n_{\cPq} - n_{\bar{\cPq}})$. Similarly, lepton number $L$ is defined for leptons as $L = n_{\ell} - n_{\bar{\ell}}$. Specific lepton flavor numbers $L_{\Pe}$, $L_{\mu}$, $L_{\tau}$ are defined for each flavor pair of leptons.
+
+The fermions are arranged into multiplets based on their chirality. The left-handed up- and down-type quarks are grouped together in a doublet $\cPq_L$, as are the left-handed charged leptons and neutrinos in $\ell_L$. The right-handed particles are singlets. It is important to note that right-handed neutrinos, and correspondingly left-handed antineutrinos, do not exist in the standard model. The Higgs field spontaneously provides masses to the quarks and charged leptons through a Yukawa interaction which couples the left- and right-handed versions of each flavor of particle. The quantum numbers of each type of particle are summarized in Table \ref{tab:q-num}, and the interactions among all the particles are illustrated in Fig. \ref{fig:sm-interactions}.
+
+\begin{table}[htb]
+  \begin{center}
+    \def\arraystretch{2.0} %1 is the default
+    \begin{tabular}{|l||l|c|c|c|c|c|}
+\hline
+      & Particle & $Q$ & $T_3$ & $Y$ & $B$ & $L$ \\
+\hline
+\hline
+\multirow{3}{*}{Quarks}  & $\cPq_L = \displaystyle\binom{\cPqu}{\cPqd}_L$ & $\displaystyle\binom{2/3}{-1/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $1/3$  & $1/3$ & 0 \\
+                         & $\cPqu_R$                                      & $2/3$                            & 0                                & $4/3$  & $1/3$ & 0 \\
+                         & $\cPqd_R$                                      & $-1/3$                           & 0                                & $-2/3$ & $1/3$ & 0 \\
+\hline
+\multirow{2}{*}{Leptons} & $\ell_L = \displaystyle\binom{\nu}{\Pe}_L$     & $\displaystyle\binom{0}{-1}$     & $\displaystyle\binom{1/2}{-1/2}$ & $-1$   & 0     & 1 \\
+                         & $\Pe_R$                                        & $-1$                             & 0                                & $-2$   & 0     & 1 \\
+\hline
+    \end{tabular}
+    \caption{The quantum numbers of each category of fermions, based on chirality and particle type: up-type quarks, down-type quarks, charged leptons, and neutrinos. The various flavors of each category, also called the first, second, and third generations of matter, possess the same quantum numbers and differ only in their masses.}
+    \label{tab:q-num}
+  \end{center}
+\end{table}
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures/Elementary_particle_interactions_in_the_Standard_Model.png}
+\caption{A diagram illustrating the leading order interactions between particles in the standard model, including self-interactions \cite{Drexler}.}
+\label{fig:sm-interactions}
+\end{center}
+\end{figure}
 
 \section{Leptoquarks}
 
@@ -977,11 +1029,11 @@ For such an interaction at high energy, the center-of-mass energy is $\sqrt{\hat
 \end{center}
 \end{figure}
 
-Various event generation programs exist to simulate proton-proton collisions. The simulation of the hard scattering relies on a $2\rightarrow2$ matrix element to calculate $\hat{\sigma}_{ab \rightarrow X}(\hat{s},\mu_{R}^{2})$. Usually, the LO matrix element and PDFs are used for the simulation, and the results are scaled to NLO or NNLO using a $K$-factor derived from the ratio of the relevant cross sections. The program {\sc Pythia} \cite{Sjostrand:2006za} uses a parton showering approach to model ISR and FSR. Other generators such as {\sc MadGraph} \cite{MadGraph} use alternate approaches which more accurately simulate additional hard radiation outside of the primary hard scattering process, but must be combined with a program like {\sc Pythia} for showering from soft and collinear radiation. {\sc POWHEG} \cite{Alioli:2010xd} is a generator which uses NLO matrix elements and PDFs by matching them with parton shower contributions to prevent double counting. After the initial event generation, {\sc MadGraph} and {\sc POWHEG} are interfaced with {\sc Pythia} for hadronization. In addition, a specialized program called {\sc Tauola} \cite{TAUOLA} can be applied for accurate handling of tau lepton decays.
+Various event generation programs exist to simulate proton-proton collisions. The simulation of the hard scattering relies on a $2\rightarrow2$ matrix element to calculate $\hat{\sigma}_{ab \rightarrow X}(\hat{s},\mu_{R}^{2})$. Usually, the LO matrix element and PDFs are used for the simulation, and the results are scaled to NLO or NNLO using a $K$-factor derived from the ratio of the relevant cross sections. The program \PYTHIA \cite{Sjostrand:2006za} uses a parton showering approach to model ISR and FSR. Other generators such as \MADGRAPH \cite{MadGraph} use alternate approaches which more accurately simulate additional hard radiation outside of the primary hard scattering process, but must be combined with a program like \PYTHIA for showering from soft and collinear radiation. \POWHEG \cite{Alioli:2010xd} is a generator which uses NLO matrix elements and PDFs by matching them with parton shower contributions to prevent double counting. After the initial event generation, \MADGRAPH and \POWHEG are interfaced with \PYTHIA for hadronization. In addition, a specialized program called \TAUOLA \cite{TAUOLA} can be applied for accurate handling of tau lepton decays.
 
 \section{Detector Simulation}
 
-The response of the CMS detector to a proton-proton collision event is simulated using the stable final state particles output by event generators. The progression of each particle through the detector is tracked using the {\sc Geant4} software \cite{geant4nim,geant4ieee}. The geometry of every subdetector and subsystem is carefully simulated to ensure the accuracy of the simulation. The conditions of the real detector, including alignment and calibration changes, are measured periodically and stored in a database which can be used to configure the simulation. {\sc Geant4} includes customizable physics lists containing models of various physical processes to simulate the interactions of particles with matter. The detector simulation creates simulated hits or ``SimHits'' for each subdetector from the deposition of energy or charge based on those interactions. The effects of photodetectors and readout electronics on these SimHits are then simulated, mimicing the real subdetectors' data acquisition processes.
+The response of the CMS detector to a proton-proton collision event is simulated using the stable final state particles output by event generators. The progression of each particle through the detector is tracked using the \GEANTfour software \cite{geant4nim,geant4ieee}. The geometry of every subdetector and subsystem is carefully simulated to ensure the accuracy of the simulation. The conditions of the real detector, including alignment and calibration changes, are measured periodically and stored in a database which can be used to configure the simulation. \GEANTfour includes customizable physics lists containing models of various physical processes to simulate the interactions of particles with matter. The detector simulation creates simulated hits or ``SimHits'' for each subdetector from the deposition of energy or charge based on those interactions. The effects of photodetectors and readout electronics on these SimHits are then simulated, mimicing the real subdetectors' data acquisition processes.
 
 \section{Tracks and Vertices
 \label{sec:tracks}}
@@ -1131,7 +1183,7 @@ The HPS algorithm uses the absolute isolation $I^{\text{PF}}_{\tauh}$ for the di
 
 Bottom quarks are associated with many interesting physical signatures, including decays of top quarks and Higgs bosons, as well as many BSM theories, including supersymmetry, that privilege or otherwise relate to third-generation fermions. Jets generated by bottom quark hadronization, b-jets, can be identified using certain properties which set them apart from jets from lighter quarks or gluons \cite{BTV-12-001}. Bottom quarks form hadrons with relatively long lifetimes whose decay products tend to have high \pt. Numerous algorithms have been created to identify b-jets based on information from tracks or reconstructed secondary vertices from b-hadron decays. The most successful of these algorithms is the Combined Secondary Vertex (CSV) algorithm, which uses secondary vertices and adds information from the tracks. The CSV algorithm calculates a likelihood-based discriminator to separate b-jets and other jets. Loose, medium, and tight working points are defined for this discriminator, based on setting the probability of misidentifying a light quark or gluon jet as a b-jet to be 10\%, 1\%, and 0.1\%, respectively \cite{CMS-PAS-BTV-13-001}.
 
-For a given jet, the CSV algorithm subjects the tracks within that jet to additional purity requirements, beyond those specified in Sec. \ref{sec:tracks}. The track must fall within a cone of $\Delta R < 0.3$ relative to the direction of the jet and the distance between the track and the jet at closest approach must be less than 0.07\cm. The track must include at least two pixel hits and at least eight total tracker hits, with $\chi^2/n_{dof} < 5$. The impact parameters between the track and the primary vertex must satisfy $d_0 < 0.2\cm$ and $d_z < 17\cm$. Finally, the track must have $\pt>1\GeVc$ and decay length less than 5\cm, where decay length is the distance between the primary vertex and the closest approach of the track and the jet. The significance of the track's impact parameter $S_{\text{ip}}$, defined as the value of the impact parameter divided by its uncertainty, is a powerful observable. The number of high-quality tracks in the jet is also used.
+For a given jet, the CSV algorithm subjects the tracks within that jet to additional purity requirements, beyond those specified in Sec. \ref{sec:tracks}. The track must fall within a cone of $\Delta R < 0.3$ relative to the direction of the jet and the distance between the track and the jet at closest approach must be less than 0.07\cm. The track must include at least two pixel hits and at least eight total tracker hits, with $\chi^2/n_{\text{dof}} < 5$. The impact parameters between the track and the primary vertex must satisfy $d_0 < 0.2\cm$ and $d_z < 17\cm$. Finally, the track must have $\pt>1\GeVc$ and decay length less than 5\cm, where decay length is the distance between the primary vertex and the closest approach of the track and the jet. The significance of the track's impact parameter $S_{\text{ip}}$, defined as the value of the impact parameter divided by its uncertainty, is a powerful observable. The number of high-quality tracks in the jet is also used.
 
 Secondary vertices are reconstructed using the adaptive vertex fitter, which was described in Sec. \ref{sec:tracks}. Candidates are rejected if ${\geq}65\%$ of their tracks are also associated with the primary vertex; if they are outside a cone $\Delta R < 0.5$ with respect to the jet direction; or if they are radially separated from the primary vertex by more than 2.5\cm with an invariant mass close to the $\cmsSymbolFace{K}^{0}$ mass. The CSV algorithm assigns jets into one of three categories based on the presence of a secondary vertex: real vertex, pseudo-vertex, and no vertex. In the pseudo-vertex case, the algorithm uses tracks with $S_{\text{ip}} > 2$ to create an effective secondary vertex when the adaptive vertex fitter fails. In the no vertex case, the algorithm defaults to use only the track-based variables described previously. Otherwise, the vertex variables used include:
 \begin{itemize}
@@ -1256,6 +1308,27 @@ To set a mass limit on the signal hypothesis, the calculation of $\text{CL}_{s}$
 \providecommand{\hrefCMSnoop }[0]{\@secondoftwo}%
 \makeatother
 \providecommand{\doi}{\texttt{doi:}\begingroup \urlstyle{tt}\Url}
+
+\bibitem{MissMJ}
+\hrefCMSnoop {} {{MissMJ} {et~al.}, ``Standard Model of Elementary
+  Particles''.} Creative Commons Attribution 3.0 Unported License,
+  \url{http://creativecommons.org/licenses/by/3.0/deed.en}, Jul, 2014.
+\newblock
+  \url{http://en.wikipedia.org/wiki/File:Standard_Model_of_Elementary_Particles.svg}.
+
+\bibitem{NewBoson}
+\hrefCMSnoop {} {{ CMS} Collaboration, ``Observation of a new boson at a mass
+  of 125 GeV with the \{CMS\} experiment at the \{LHC\}'',} \textit{ Phys.
+  Lett. B} \textbf{ 716} (2012) 30,
+  \href{http://dx.doi.org/http://dx.doi.org/10.1016/j.physletb.2012.08.021}{\doi{http://dx.doi.org/10.1016/j.physletb.2012.08.021}},
+  \href{http://www.arXiv.org/abs/1207.7235}{\texttt{ arXiv:1207.7235}}.
+
+\bibitem{Drexler}
+\hrefCMSnoop {} {E.~Drexler, ``Elementary particle interactions in the Standard
+  Model''.} Creative Commons CC0 1.0 Universal Public Domain Dedication,
+  \url{http://creativecommons.org/publicdomain/zero/1.0/deed.en}, May, 2014.
+\newblock
+  \url{http://en.wikipedia.org/wiki/File:Elementary_particle_interactions_in_the_Standard_Model.png}.
 
 \bibitem{LHCmachine}
 \hrefCMSnoop {} {L.~Evans and P.~Bryant, ``{LHC Machine}'',} \textit{ JINST}
