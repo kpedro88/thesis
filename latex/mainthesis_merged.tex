@@ -622,12 +622,14 @@ APV        & Atomic Parity Violation \\
 ASIC       & Application-Specific Integrated Circuits \\
 ATLAS      & A Toroidal LHC ApparatuS \\
 BDT        & Boosted Decision Tree \\
+BICEP      & Background Imaging of Cosmic Extragalactic Polarization \\
 BPTX       & Beam Pick-up Timing for the eXperiments \\
 BRW        & Buchm\"{u}ller-R\"{u}ckl-Wyler \\
 BSM        & Beyond Standard Model \\
 CDF        & Cumulative Distribution Function \\
 CERN       & European Organization for Nuclear Research \\
 CH         & Charged Hadron \\
+CKM        & Cabibbo-Kobayashi-Maskawa \\
 CL         & Confidence Level \\
 CMS        & Compact Muon Solenoid \\
 CMSSW      & CMS Software \\
@@ -668,8 +670,9 @@ LEIR       & Low Energy Ion Ring \\
 LEP        & Large Electron-Positron Collider \\
 LHC        & Large Hadron Collider \\
 LHCb       & Large Hadron Collider beauty \\
-LQ         & Leptoquark \\
 LO         & Leading Order \\
+LQ         & Leptoquark \\
+LSP        & Lightest Supersymmetric Particle \\
 LUT        & Lookup Table \\
 mBRW       & minimal Buchm\"{u}ller-R\"{u}ckl-Wyler \\
 MB         & Muon Barrel \\
@@ -686,6 +689,7 @@ PD         & Primary Dataset \\
 PF         & Particle Flow \\
 PDF        & Parton Distribution Function \\
 PDF        & Probability Density Function \\
+PMNS       & Pontecorvo-Maki-Nakagawa-Sakata \\
 PMT        & Photomultiplier Tube \\
 PS         & Proton Synchrotron \\
 PSB        & Proton Synchrotron Booster \\
@@ -711,6 +715,7 @@ TPG        & Trigger Primitive Generator \\
 TTC        & Timing, Trigger and Control \\
 VEV        & Vacuum Expectation Value \\
 VPT        & Vacuum Phototriode \\
+WIMP       & Weakly Interacting Massive Particle \\
 WLS        & Wavelength-Shifting \\
 \end{longtable}
 
@@ -733,7 +738,7 @@ WLS        & Wavelength-Shifting \\
 
 \section{The Standard Model}
 
-The standard model (SM) of particle physics includes three fundamental forces and all of the particles of ordinary matter using a quantum field theory framework. When forces are weak enough, quantum field theory calculations use a perturbative method in which the leading order (LO) term is calculated, then the next-to-leading order (NLO) correction is added, then the next-to-next-to-leading order correction (NNLO), and so forth. The three fundamental forces are electromagnetism, the weak force, and the strong force. These forces are carried by spin-1 gauge bosons, while the matter particles consist of quarks and leptons, two categories of spin-1/2 fermions. In addition, the standard model contains a scalar spin-0 boson, the Higgs boson, which is part of the Higgs field that provides masses to certain gauge bosons and fermions. Figure \ref{fig:sm-particles} summarizes the particles in the standard model, including the spin, electric charge, and mass values of each particle.
+The standard model (SM) of particle physics includes three fundamental forces and all of the particles of ordinary matter using a quantum field theory framework. When forces are weak enough, quantum field theory calculations use a perturbative method in which the leading order (LO) term is calculated, then the next-to-leading order (NLO) correction is added, then the next-to-next-to-leading order correction (NNLO), and so forth. The three fundamental forces are electromagnetism, the weak force, and the strong force. These forces are carried by spin-1 gauge bosons, while the matter particles consist of quarks and leptons, two categories of spin-1/2 fermions. In addition, the standard model contains a scalar spin-0 boson, the Higgs boson, which is part of the Higgs field that provides masses to certain gauge bosons and fermions. Figure \ref{fig:sm-particles} summarizes the particles in the standard model, including the spin, electric charge, and mass values of each particle. The standard model and quantum field theory are described in more detail in \cite{Griffiths} and \cite{Peskin}.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -747,9 +752,9 @@ The electromagnetic force is mediated by photons ($\gamma$), spin-1 gauge bosons
 
 As suggested by the inclusion of both forces in the previous paragraph, the electromagnetic and weak forces can be unified to form the electroweak force, represented by the symmetry group $SU(2) \times U(1)$. In this unification, the quantum numbers of electromagnetism and the weak force are related by a new conserved quantum number, weak hypercharge $Y = 2(Q - T_3)$. The Higgs mechanism is responsible for electroweak symmetry breaking (EWSB). In order for the electroweak theory to be gauge invariant, the gauge bosons must be massless, but the \Wpm and \Z bosons are observed to have mass. The Higgs mechanism solves this dilemma via spontaneous EWSB due to its non-zero vacuum expectation value (VEV). The Higgs field consists of a doublet, with two charged particles and two neutral particles, all scalar bosons. The two charged particles and one of the neutral particles act as Goldstone bosons, combining with the \Wpm and \Z bosons to produce their masses. The remaining neutral particle is the Higgs boson, which was discovered at the LHC in 2012 \cite{NewBoson}.
 
-The strong force, quantum chromodynamics (QCD), is mediated by gluons (\cPg) and can be represented by an $SU(3)$ symmetry group. Gluons, like photons, are spin-1 gauge bosons without mass or electric charge. However, gluons do possess color charge, the quantum number on which the strong force acts. Color charge is so named because the charge has three possible values, which are labeled red, green, or blue. Because gluons both mediate and participate in the strong interaction, the force between quarks does not decrease as they become spatially separated. The energy in the gluon field between the separated quarks can become large enough to form one or more quark-antiquark pairs. This phenomenon is known as confinement and prevents quarks or gluons from existing in a bare state. Correspondingly, the range of the strong force is limited to $\sim 10^{-15}\unit{m}$. Bound states of quarks and gluons, the only way they have ever been observed in nature, are called hadrons, and the formation of those bound states is called hadronization. States with one quark and one antiquark are mesons, while states with three quarks are baryons. Mesons and baryons are the two allowed types of bound states because they represent color singlets. Complementarily, as quarks get closer together, the strong force between them weakens. This behavior is known as asymptotic freedom; because short distances are equivalent to high energies, the strong interactions of quarks at a high-energy collider like the LHC can be calculated perturbatively. A residual form of the strong force acts on nucleons, protons and neutrons, to form atomic nuclei.
+The strong force, quantum chromodynamics (QCD), is mediated by gluons (\cPg) and can be represented by an $SU(3)$ symmetry group. Gluons, like photons, are spin-1 gauge bosons without mass or electric charge. However, gluons do possess color charge, the quantum number on which the strong force acts. Color charge is so named because the charge has three possible values, which are labeled red, green, or blue. Because gluons both mediate and participate in the strong interaction, the force between quarks does not decrease as they become spatially separated. The energy in the gluon field between the separated quarks can become large enough to form one or more quark-antiquark pairs. This phenomenon is known as confinement and prevents quarks or gluons from existing in a bare state. Correspondingly, the range of the strong force is limited to ${\sim} 10^{-15}\unit{m}$. Bound states of quarks and gluons, the only way they have ever been observed in nature, are called hadrons, and the formation of those bound states is called hadronization. States with one quark and one antiquark are mesons, while states with three quarks are baryons. Mesons and baryons are the two allowed types of bound states because they represent color singlets. Complementarily, as quarks get closer together, the strong force between them weakens. This behavior is known as asymptotic freedom; because short distances are equivalent to high energies, the strong interactions of quarks at a high-energy collider like the LHC can be calculated perturbatively. A residual form of the strong force acts on nucleons, protons and neutrons, to form atomic nuclei.
 
-As mentioned, fermions are the particles of matter, which are separated into two groups: quarks and leptons. Quarks have fractional electric charge, weak isospin, and color charge, so they are affected by all three fundamental forces. There are two types of quarks: up-type quarks that have $Q = 2/3$ and down-type quarks that have $Q = -1/3$. Leptons consist of charged leptons and neutrinos. Charged leptons possess electric charge and weak isospin, while neutrinos only possess weak isospin. Three generations exist for each type of particle, with the different particles called flavors. The flavors of up-type quarks are the up, charm, and top quarks; of down-type quarks are the down, strange, and bottom quarks; of charged leptons are the electron, muon, and tau lepton; and of the neutrinos are the electron, muon, and tau neutrinos. The top quark is the heaviest elementary particle and is so heavy that it decays before hadronizing, making it an exception to the rule that bare quarks are not observed. Quarks possess an additively conserved quantum number called baryon number $B$, which is defined as $B = \frac{1}{3}(n_{\cPq} - n_{\bar{\cPq}})$. Similarly, lepton number $L$ is defined for leptons as $L = n_{\ell} - n_{\bar{\ell}}$. Specific lepton flavor numbers $L_{\Pe}$, $L_{\mu}$, $L_{\tau}$ are defined for each flavor pair of leptons.
+As mentioned, fermions are the particles of matter, which are separated into two groups: quarks and leptons. Quarks have fractional electric charge, weak isospin, and color charge, so they are affected by all three fundamental forces. There are two types of quarks: up-type quarks that have $Q = 2/3$ and down-type quarks that have $Q = -1/3$. Leptons consist of charged leptons and neutrinos. Charged leptons possess electric charge and weak isospin, while neutrinos only possess weak isospin. Three generations exist for each type of particle, with the different particles called flavors. The flavors of up-type quarks are the up, charm, and top quarks; of down-type quarks are the down, strange, and bottom quarks; of charged leptons are the electron, muon, and tau lepton; and of the neutrinos are the electron, muon, and tau neutrinos. The charged current weak interaction mixes the different flavors of quarks, with the amount of mixing between any two flavors given by the unitary Cabibbo-Kobayashi-Maskawa (CKM) matrix. The top quark is the heaviest elementary particle and is so heavy that it decays before hadronizing, making it an exception to the rule that bare quarks are not observed. Quarks possess an additively conserved quantum number called baryon number $B$, which is defined as $B = \frac{1}{3}(n_{\cPq} - n_{\overline{\cPq}})$. Similarly, lepton number $L$ is defined for leptons as $L = n_{\ell} - n_{\overline{\ell}}$. Specific lepton flavor numbers $L_{\Pe}$, $L_{\mu}$, $L_{\tau}$ are defined for each flavor pair of leptons.
 
 The fermions are arranged into multiplets based on their chirality. The left-handed up- and down-type quarks are grouped together in a doublet $\cPq_L$, as are the left-handed charged leptons and neutrinos in $\ell_L$. The right-handed particles are singlets. It is important to note that right-handed neutrinos, and correspondingly left-handed antineutrinos, do not exist in the standard model. The Higgs field spontaneously provides masses to the quarks and charged leptons through a Yukawa interaction which couples the left- and right-handed versions of each flavor of particle. The quantum numbers of each type of particle are summarized in Table \ref{tab:q-num}, and the interactions among all the particles are illustrated in Fig. \ref{fig:sm-interactions}.
 
@@ -781,6 +786,19 @@ The fermions are arranged into multiplets based on their chirality. The left-han
 \label{fig:sm-interactions}
 \end{center}
 \end{figure}
+
+\addtocounter{section}{-1}
+\renewcommand{\thesection}{\thechapter.{$\frac{1}{2}$}}
+\section{Beyond the Standard Model}
+\renewcommand{\thesection}{\thechapter.\arabic{section}} % back to regular numbering
+
+The predictions of the standard model have been confirmed by decades of precise experimental tests. However, as an effective field theory, its domain of applicability is ultimately limited; at a high enough energy, the theory will break down. Further, the standard model is unable to account for some observations. These limitations and indications of new phenomena motivate various searches for physics beyond the standard model (BSM), include the searches which will be presented in this analysis.
+
+The most obvious limitation of the standard model is that it depends on 19 free parameters which must be determined by experiment. These parameters include the 9 fermion masses, the Higgs mass and VEV, the gauge couplings for the three forces, the three mixing angles and one phase from the CKM matrix, and finally the QCD vacuum angle. It is conceivable that a BSM theory could reduce the number of free parameters. Electroweak unification and charge quantization suggest that a Grand Unified Theory (GUT) could unify all three fundamental forces, at an expected energy scale of ${\sim} 10^{16}\GeV$. The observation of neutrino oscillations is now well established, indicating that neutrinos have small but non-zero masses. The oscillation of neutrinos between mass and flavor eigenstates is described by the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix. Like the CKM matrix for quarks, the PMNS matrix is unitary and has four parameters: three mixing angles and one phase. The values of the neutrino masses have not been directly measured, but are indirectly limited to the \eVns scale. Because right-handed neutrinos do not exist in the Standard Model, neutrinos cannot gain mass via a Yukawa interaction with the Higgs field. Though the Higgs mass is a parameter of the SM, it can be calculated in many BSM theories. Unless unnatural fine-tuning occurs, the presence of new massive particles makes this calculation produce a value near the Planck scale of $10^{19}\GeV$, orders of magnitude higher than the observed value of 125\GeV, which characterizes the electroweak scale. This is known as the hierarchy problem. To construct a natural theory which avoids such fine-tuning while making predictions that agree with observation, it is necessary to cancel divergent contributions to the Higgs mass. The hierarchy problem is an important motivation to search for new physics at the LHC \cite{Morrissey20121}.
+
+Astrophysics provides numerous indications of the need for BSM theories. Most notably, gravity is not included in the standard model. A successful unification of general relativity and quantum field theory has not been achieved, due to the difficulty of constructing a renormalizable theory for the spin-2 graviton. At the Planck scale, gravitational effects become comparable to SM interactions, which calls for a new theory. The measurement of galactic rotation curves and galaxy cluster collisions \cite{BulletCluster} indicates that ${\sim} 85\%$ of the matter in the universe is dark matter, which interacts gravitationally but not electromagnetically. Dark matter is likely to be a new particle not present in the standard model. The most popular type of dark matter candidate is a weakly interacting massive particle (WIMP) \cite{Morrissey20121}, but many other candidates have been proposed. The dearth of antimatter relative to the amount of matter in the universe requires greater violation of charge-parity (CP) symmetry than is contained in the SM. The accelerating expansion of the universe, observed using standard candle supernovae \cite{Supernova98,Supernova99}, implies that ${\sim} 70\%$ of the energy of the universe exists in a unknown form called dark energy. Dark energy may be due to the cosmological constant of the universe, which can be related to the energy of the vacuum in quantum field theory. However, the standard model predicts that this cosmological constant would be $10^{120}$ times larger than the observed value, a clear failure of the theory. The recent tentative evidence for cosmic inflation from the BICEP experiment \cite{BICEP} implies the existence of the inflaton, a new scalar field.
+
+The following sections discuss the theories of leptoquarks (LQs) and R-parity violating (RPV) supersymmetry (SUSY). Leptoquarks are motivated by grand unification and the parallels between leptons and quarks in the standard model. Numerous theories contain some form of LQs. SUSY is motivated by basic considerations of quantum field theory, the hierarchy problem, grand unification, and dark matter. The introduction of R-parity violation in SUSY evades existing limits on signatures with large missing transverse energy due to the stability of the lightest supersymmetric particle (LSP), while retaining the other desirable characteristics of SUSY. RPV SUSY can also act as a signature generator to suggest novel searches which might discover or rule out other BSM theories \cite{EvansSigGen}.
 
 \section{Leptoquarks}
 
@@ -1309,26 +1327,78 @@ To set a mass limit on the signal hypothesis, the calculation of $\text{CL}_{s}$
 \makeatother
 \providecommand{\doi}{\texttt{doi:}\begingroup \urlstyle{tt}\Url}
 
+\bibitem{Griffiths}
+D.~Griffiths, ``{Introduction to Elementary Particles}''.
+\newblock Wiley-VCH, 2008.
+
+\bibitem{Peskin}
+M.~E. Peskin and D.~V. Schroeder, ``{An Introduction To Quantum Field
+  Theory}''.
+\newblock Westview Press, 1995.
+
 \bibitem{MissMJ}
 \hrefCMSnoop {} {{MissMJ} {et~al.}, ``Standard Model of Elementary
-  Particles''.} Creative Commons Attribution 3.0 Unported License,
-  \url{http://creativecommons.org/licenses/by/3.0/deed.en}, Jul, 2014.
+  Particles''.}
+  \href{http://creativecommons.org/licenses/by/3.0/deed.en}{Creative Commons
+  Attribution 3.0 Unported License}, July, 2014.
 \newblock
   \url{http://en.wikipedia.org/wiki/File:Standard_Model_of_Elementary_Particles.svg}.
 
 \bibitem{NewBoson}
 \hrefCMSnoop {} {{ CMS} Collaboration, ``Observation of a new boson at a mass
-  of 125 GeV with the \{CMS\} experiment at the \{LHC\}'',} \textit{ Phys.
-  Lett. B} \textbf{ 716} (2012) 30,
+  of 125 GeV with the {CMS} experiment at the {LHC}'',} \textit{ Phys. Lett. B}
+  \textbf{ 716} (2012) 30,
   \href{http://dx.doi.org/http://dx.doi.org/10.1016/j.physletb.2012.08.021}{\doi{http://dx.doi.org/10.1016/j.physletb.2012.08.021}},
   \href{http://www.arXiv.org/abs/1207.7235}{\texttt{ arXiv:1207.7235}}.
 
 \bibitem{Drexler}
 \hrefCMSnoop {} {E.~Drexler, ``Elementary particle interactions in the Standard
-  Model''.} Creative Commons CC0 1.0 Universal Public Domain Dedication,
-  \url{http://creativecommons.org/publicdomain/zero/1.0/deed.en}, May, 2014.
+  Model''.}
+  \href{http://creativecommons.org/publicdomain/zero/1.0/deed.en}{Creative
+  Commons CC0 1.0 Universal Public Domain Dedication}, May, 2014.
 \newblock
   \url{http://en.wikipedia.org/wiki/File:Elementary_particle_interactions_in_the_Standard_Model.png}.
+
+\bibitem{Morrissey20121}
+\hrefCMSnoop {} {D.~E. Morrissey, T.~Plehn, and T.~M. Tait, ``Physics searches
+  at the {LHC}'',} \textit{ Phys. Rept.} \textbf{ 515} (2012) 1,
+  \href{http://dx.doi.org/10.1016/j.physrep.2012.02.007}{\doi{10.1016/j.physrep.2012.02.007}},
+  \href{http://www.arXiv.org/abs/0912.3259}{\texttt{ arXiv:0912.3259}}.
+
+\bibitem{BulletCluster}
+D.~Clowe\hrefCMSnoop {} { {et~al.}, ``A Direct Empirical Proof of the Existence
+  of Dark Matter'',} \textit{ ApJL} \textbf{ 648} (2006) L109,
+  \href{http://dx.doi.org/10.1086/508162}{\doi{10.1086/508162}},
+  \href{http://www.arXiv.org/abs/astro-ph/0608407}{\texttt{
+  arXiv:astro-ph/0608407}}.
+
+\bibitem{Supernova98}
+A.~G. Riess\hrefCMSnoop {} { {et~al.}, ``Observational Evidence from Supernovae
+  for an Accelerating Universe and a Cosmological Constant'',} \textit{ AJ}
+  \textbf{ 116} (1998) 1009,
+  \href{http://dx.doi.org/10.1086/300499}{\doi{10.1086/300499}},
+  \href{http://www.arXiv.org/abs/astro-ph/9805201}{\texttt{
+  arXiv:astro-ph/9805201}}.
+
+\bibitem{Supernova99}
+S.~Perlmutter\hrefCMSnoop {} { {et~al.}, ``Measurements of $\Omega$ and
+  $\Lambda$ from 42 High-Redshift Supernovae'',} \textit{ ApJ} \textbf{ 517}
+  (1999) 565, \href{http://dx.doi.org/10.1086/307221}{\doi{10.1086/307221}},
+  \href{http://www.arXiv.org/abs/astro-ph/9812133}{\texttt{
+  arXiv:astro-ph/9812133}}.
+
+\bibitem{BICEP}
+\hrefCMSnoop {} {{ BICEP2} Collaboration, ``Detection of $B$-Mode Polarization
+  at Degree Angular Scales by BICEP2'',} \textit{ Phys. Rev. Lett.} \textbf{
+  112} (Jun, 2014) 241101,
+  \href{http://dx.doi.org/10.1103/PhysRevLett.112.241101}{\doi{10.1103/PhysRevLett.112.241101}},
+  \href{http://www.arXiv.org/abs/1403.3985}{\texttt{ arXiv:1403.3985}}.
+
+\bibitem{EvansSigGen}
+\hrefCMSnoop {} {J.~A. Evans and Y.~Kats, ``LHC coverage of RPV MSSM with light
+  stops'',} \textit{ JHEP} \textbf{ 2013} (2013)
+  \href{http://dx.doi.org/10.1007/JHEP04(2013)028}{\doi{10.1007/JHEP04(2013)028}},
+  \href{http://www.arXiv.org/abs/1209.0764}{\texttt{ arXiv:1209.0764}}.
 
 \bibitem{LHCmachine}
 \hrefCMSnoop {} {L.~Evans and P.~Bryant, ``{LHC Machine}'',} \textit{ JINST}
