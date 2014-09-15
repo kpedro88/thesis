@@ -27,17 +27,20 @@ The fermions are arranged into multiplets based on their chirality. The left-han
 
 \begin{table}[htb]
   \begin{center}
-    \def\arraystretch{2.0} %1 is the default
+%    \def\arraystretch{2.0} %1 is the default
     \begin{tabular}{|l||l|c|c|c|c|c|}
 \hline
       & Particle & $Q$ & $T_3$ & $Y$ & $B$ & $L$ \\
 \hline
 \hline
-\multirow{3}{*}{Quarks}  & $\cPq_L = \displaystyle\binom{\cPqu}{\cPqd}_L$ & $\displaystyle\binom{2/3}{-1/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $1/3$  & $1/3$ & 0 \\
+\multirow{3}{*}{Quarks}  
+\rule{0pt}{24pt}         & $\cPq_L = \displaystyle\binom{\cPqu}{\cPqd}_L$ & $\displaystyle\binom{2/3}{-1/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $1/3$  & $1/3$ & 0 \\
                          & $\cPqu_R$                                      & $2/3$                            & 0                                & $4/3$  & $1/3$ & 0 \\
                          & $\cPqd_R$                                      & $-1/3$                           & 0                                & $-2/3$ & $1/3$ & 0 \\
 \hline
-\multirow{2}{*}{Leptons} & $\ell_L = \displaystyle\binom{\nu}{\Pe}_L$     & $\displaystyle\binom{0}{-1}$     & $\displaystyle\binom{1/2}{-1/2}$ & $-1$   & 0     & 1 \\
+\hline
+\multirow{2}{*}{Leptons} 
+\rule{0pt}{24pt}         & $\ell_L = \displaystyle\binom{\nu}{\Pe}_L$     & $\displaystyle\binom{0}{-1}$     & $\displaystyle\binom{1/2}{-1/2}$ & $-1$   & 0     & 1 \\
                          & $\Pe_R$                                        & $-1$                             & 0                                & $-2$   & 0     & 1 \\
 \hline
     \end{tabular}
@@ -89,17 +92,49 @@ Further consideration of experimental limits imposes two additional constraints,
 The Lagrangian terms are given for scalar LQs in Eq. \eqref{eq:Lagrangian-SLQ} and for vector LQs in Eq. \eqref{eq:Lagrangian-VLQ} below, using the ``Aachen'' notation as specified in Ref. \cite{ModelIndLQ}.
 \begin{align}
 \label{eq:Lagrangian-SLQ}
-\mathcal{L}_{S} &= \left(\lambda_{L,S_{0}} \overline{\cPq}_{L}^{c} i\sigma_{2} \ell_{L} + \lambda_{R,S_{0}} \overline{\cPqu}_{R}^{c} \Pe_{R}\right)S_{0}^{\dagger}
-+ \lambda_{R,\widetilde{S}_{0}} \overline{\cPqd}_{R}^{c} \Pe_{R} \widetilde{S}_{0}^{\dagger}
-+ \left(\lambda_{L,S_{1/2}} \overline{\cPqu}_{R} \ell_{L} + \lambda_{R,S_{1/2}} \overline{\cPq}_{L} i\sigma_{2} \Pe_{R}\right)S_{1/2}^{\dagger}
-+ \lambda_{L,\widetilde{S}_{1/2}} \overline{\cPqd}_{R} \ell_{L} \widetilde{S}_{1/2}^{\dagger}
-+ \lambda_{L,S_{1}} \overline{\cPq}_{L}^{c} i\sigma_{2}\boldsymbol{\sigma} \ell_{L} \cdot \boldsymbol{S}_{1}^{\dagger} + \text{h.c.} \\
-\label{eq:Lagrangian-VLQ}
-\mathcal{L}_{V} &= \left(\lambda_{L,V_{0}} \overline{\cPq}_{L} \gamma_{\mu} \ell_{L} + \lambda_{R,V_{0}} \overline{\cPqd}_{R} \gamma_{\mu} \Pe_{R}\right)V_{0}^{\mu\dagger}
-+ \lambda_{R,\widetilde{V}_{0}} \overline{\cPqu}_{R} \gamma_{\mu} \Pe_{R} \widetilde{V}_{0}^{\mu\dagger}
-+ \left(\lambda_{L,V_{1/2}} \overline{\cPqd}_{R}^{c} \gamma_{\mu} \ell_{L} + \lambda_{R,V_{1/2}} \overline{\cPq}_{L}^{c} \gamma_{\mu} \Pe_{R}\right)V_{1/2}^{\mu\dagger}
-+ \lambda_{L,\widetilde{V}_{1/2}} \overline{\cPqu}_{R}^{c} \gamma_{\mu} \ell_{L} \widetilde{V}_{1/2}^{\mu\dagger}
-+ \lambda_{L,V_{1}} \overline{\cPq}_{L} \gamma_{\mu}\boldsymbol{\sigma} \ell_{L} \cdot \boldsymbol{V}_{1}^{\mu\dagger} + \text{h.c.}
+\mathcal{L}_{S} = &\hphantom{+~}(\lambda_{L,S_{0}} \overline{\cPq}_{L}^{c} i\sigma_{2} \ell_{L} + \lambda_{R,S_{0}} \overline{\cPqu}_{R}^{c} \Pe_{R})S_{0}^{\dagger}
++ \lambda_{R,\widetilde{S}_{0}} \overline{\cPqd}_{R}^{c} \Pe_{R} \widetilde{S}_{0}^{\dagger} \nonumber \\
+&+ (\lambda_{L,S_{1/2}} \overline{\cPqu}_{R} \ell_{L} + \lambda_{R,S_{1/2}} \overline{\cPq}_{L} i\sigma_{2} \Pe_{R})S_{1/2}^{\dagger}
++ \lambda_{L,\widetilde{S}_{1/2}} \overline{\cPqd}_{R} \ell_{L} \widetilde{S}_{1/2}^{\dagger} \nonumber \\
+&+ \lambda_{L,S_{1}} \overline{\cPq}_{L}^{c} i\sigma_{2}\boldsymbol{\sigma} \ell_{L} \cdot \boldsymbol{S}_{1}^{\dagger} + \text{h.c.}
 \end{align}
+\begin{align}
+\label{eq:Lagrangian-VLQ}
+\mathcal{L}_{V} = &\hphantom{+~}(\lambda_{L,V_{0}} \overline{\cPq}_{L} \gamma_{\mu} \ell_{L} + \lambda_{R,V_{0}} \overline{\cPqd}_{R} \gamma_{\mu} \Pe_{R})V_{0}^{\mu\dagger}
++ \lambda_{R,\widetilde{V}_{0}} \overline{\cPqu}_{R} \gamma_{\mu} \Pe_{R} \widetilde{V}_{0}^{\mu\dagger} \nonumber \\
+&+ (\lambda_{L,V_{1/2}} \overline{\cPqd}_{R}^{c} \gamma_{\mu} \ell_{L} + \lambda_{R,V_{1/2}} \overline{\cPq}_{L}^{c} \gamma_{\mu} \Pe_{R})V_{1/2}^{\mu\dagger}
++ \lambda_{L,\widetilde{V}_{1/2}} \overline{\cPqu}_{R}^{c} \gamma_{\mu} \ell_{L} \widetilde{V}_{1/2}^{\mu\dagger} \nonumber \\
+&+ \lambda_{L,V_{1}} \overline{\cPq}_{L} \gamma_{\mu}\boldsymbol{\sigma} \ell_{L} \cdot \boldsymbol{V}_{1}^{\mu\dagger} + \text{h.c.}
+\end{align}
+In these equations, scalar leptoquarks are denoted by $S$ and vector leptoquarks are denoted by $V$. The subscripts 0, 1/2, and 1 denote singlet, doublet, and triplet states, respectively. The $\widetilde{S}$ and $\widetilde{V}$ leptoquarks have different quantum numbers compared to the corresponding $S$ and $V$ leptoquarks. The coupling constants for the Yukawa couplings between leptoquarks, leptons, and quarks are represented by $\lambda$, with the chirality $L$ or $R$ and the leptoquark type indicated in the subscript. The generation indices for the couplings and fermion multiplets are suppressed. The Pauli matrices are denoted by $\sigma_{i}$ and the Dirac matrices by $\gamma_{\mu}$. The quantum numbers for the different types of mBRW leptoquarks are listed in Table \ref{tab:lq-num}.
+
+\begin{table}[htb]
+  \begin{center}
+%    \def\arraystretch{3.0} %1 is the default
+    \begin{tabular}{|l||l|c|c|c|c|}
+\hline
+      & Particle & $Q$ & $T_3$ & $Y$ & $F$ \\
+\hline
+\hline
+\multirow{10}{*}{Scalar} & $S_{0}$               & $-1/3$                            & $0$                              & $-2/3$ & $2$ \\
+                         & $\widetilde{S}_{0}$   & $-4/3$                            & $0$                              & $-8/3$ & $2$ \\
+\rule{0pt}{24pt}         & $S_{1/2}$             & $\displaystyle\binom{-2/3}{-5/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $-7/3$ & $0$ \\
+\rule{0pt}{24pt}         & $\widetilde{S}_{1/2}$ & $\displaystyle\binom{1/3}{-2/3}$  & $\displaystyle\binom{1/2}{-1/2}$ & $-1/3$ & $0$ \\
+\rule{0pt}{36pt}         & $S_{1}$               & $\triplet{2/3}{-1/3}{-4/3}$       & $\triplet{1\vphantom{/}}{0\vphantom{/}}{-1\vphantom{/}}$             & $-2/3$ & $2$ \\
+\hline
+\hline
+\multirow{10}{*}{Vector} & $V_{0}$               & $-2/3$                            & $0$                              & $-4/3$  & $0$ \\
+                         & $\widetilde{V}_{0}$   & $-5/3$                            & $0$                              & $-10/3$ & $0$ \\
+\rule{0pt}{24pt}         & $V_{1/2}$             & $\displaystyle\binom{-1/3}{-4/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $-5/3$  & $2$ \\
+\rule{0pt}{24pt}         & $\widetilde{V}_{1/2}$ & $\displaystyle\binom{2/3}{-1/3}$  & $\displaystyle\binom{1/2}{-1/2}$ & $1/3$   & $2$ \\
+\rule{0pt}{36pt}         & $V_{1}$               & $\triplet{1/3}{-2/3}{-5/3}$       & $\triplet{1\vphantom{/}}{0\vphantom{/}}{-1\vphantom{/}}$             & $-4/3$  & $0$ \\
+\hline
+    \end{tabular}
+    \caption{The quantum numbers of the different types of scalar and vector leptoquarks in the mBRW model.}
+    \label{tab:lq-num}
+  \end{center}
+\end{table}
+
+As color-charged particles, leptoquarks are primarily produced by strong interactions in $\Pp\Pp$ collisions. These interactions include gluon-gluon fusion and quark-antiquark annihilation. An additional contribution to quark-antiquark annihilation may proceed through the Yukawa coupling $\lambda$ of the leptoquark to the quark and lepton pair. However, the ratio $\MLQ/\lambda$, where $\MLQ$ is the leptoquark mass, is restricted by limits from low-energy processes including...
 
 \section{R-Parity Violating Supersymmetry}
