@@ -1,5 +1,15 @@
 %math
-\newcommand\triplet[3]{\left(\genfrac{}{}{0pt}{0}{#1}{\genfrac{}{}{0pt}{0}{#2}{#3}}\right)}
+%\newcommand\triplet[3]{\left(\genfrac{}{}{0pt}{0}{#1}{\genfrac{}{}{0pt}{0}{#2}{#3}}\right)}
+\newcommand\triplet[4][c]{\left(%
+        \begin{array}{@{}#1@{}}#2\\#3\\#4%
+\end{array}%
+\right)%
+}
+\newcommand\doublet[3][c]{\left(%
+        \begin{array}{@{}#1@{}}#2\\#3%
+\end{array}%
+\right)%
+}
 
 \newcommand{\tauh}{\ensuremath{\tau_{\text{h}}}\xspace}
 \newcommand{\Pe}{\ensuremath{\cmsSymbolFace{e}}\xspace}

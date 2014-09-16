@@ -28,20 +28,20 @@ The fermions are arranged into multiplets based on their chirality. The left-han
 \begin{table}[htb]
   \begin{center}
 %    \def\arraystretch{2.0} %1 is the default
-    \begin{tabular}{|l||l|c|c|c|c|c|}
+    \begin{tabular}{|l||l|r|r|r|r|r|}
 \hline
-      & Particle & $Q$ & $T_3$ & $Y$ & $B$ & $L$ \\
+      & \multicolumn{1}{c|}{Particle} & \multicolumn{1}{c|}{$Q$} & \multicolumn{1}{c|}{$T_3$} & \multicolumn{1}{c|}{$Y$} & \multicolumn{1}{c|}{$B$} & \multicolumn{1}{c|}{$L$} \\
 \hline
 \hline
 \multirow{3}{*}{Quarks}  
-\rule{0pt}{24pt}         & $\cPq_L = \displaystyle\binom{\cPqu}{\cPqd}_L$ & $\displaystyle\binom{2/3}{-1/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $1/3$  & $1/3$ & 0 \\
-                         & $\cPqu_R$                                      & $2/3$                            & 0                                & $4/3$  & $1/3$ & 0 \\
-                         & $\cPqd_R$                                      & $-1/3$                           & 0                                & $-2/3$ & $1/3$ & 0 \\
+\rule{0pt}{24pt}         & $\cPq_L = \doublet[r]{\cPqu}{\cPqd}_L$ & $\doublet[r]{2/3}{-1/3}$ & $\doublet[r]{1/2}{-1/2}$ & $1/3$  & $1/3$ & 0 \\
+                         & $\cPqu_R$                              & $2/3\hphantom{\bigg)}$   & $0\hphantom{\bigg)}$     & $4/3$  & $1/3$ & 0 \\
+                         & $\cPqd_R$                              & $-1/3\hphantom{\bigg)}$  & $0\hphantom{\bigg)}$     & $-2/3$ & $1/3$ & 0 \\
 \hline
 \hline
 \multirow{2}{*}{Leptons} 
-\rule{0pt}{24pt}         & $\ell_L = \displaystyle\binom{\nu}{\Pe}_L$     & $\displaystyle\binom{0}{-1}$     & $\displaystyle\binom{1/2}{-1/2}$ & $-1$   & 0     & 1 \\
-                         & $\Pe_R$                                        & $-1$                             & 0                                & $-2$   & 0     & 1 \\
+\rule{0pt}{24pt}         & $\ell_L = \doublet[r]{\nu}{\Pe}_L$     & $\doublet[r]{0}{-1}$     & $\doublet[r]{1/2}{-1/2}$ & $-1$   & 0     & 1 \\
+                         & $\Pe_R$                                & $-1\hphantom{\bigg)}$    & $0\hphantom{\bigg)}$     & $-2$   & 0     & 1 \\
 \hline
     \end{tabular}
     \caption{The quantum numbers of each category of fermions, based on chirality and particle type: up-type quarks, down-type quarks, charged leptons, and neutrinos. The various flavors of each category, also called the first, second, and third generations of matter, possess the same quantum numbers and differ only in their masses.}
@@ -111,23 +111,23 @@ In these equations, scalar leptoquarks are denoted by $S$ and vector leptoquarks
 \begin{table}[htb]
   \begin{center}
 %    \def\arraystretch{3.0} %1 is the default
-    \begin{tabular}{|l||l|c|c|c|c|}
+    \begin{tabular}{|l||l|r|r|r|r|}
 \hline
-      & Particle & $Q$ & $T_3$ & $Y$ & $F$ \\
-\hline
-\hline
-\multirow{10}{*}{Scalar} & $S_{0}$               & $-1/3$                            & $0$                              & $-2/3$ & $2$ \\
-                         & $\widetilde{S}_{0}$   & $-4/3$                            & $0$                              & $-8/3$ & $2$ \\
-\rule{0pt}{24pt}         & $S_{1/2}$             & $\displaystyle\binom{-2/3}{-5/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $-7/3$ & $0$ \\
-\rule{0pt}{24pt}         & $\widetilde{S}_{1/2}$ & $\displaystyle\binom{1/3}{-2/3}$  & $\displaystyle\binom{1/2}{-1/2}$ & $-1/3$ & $0$ \\
-\rule{0pt}{36pt}         & $S_{1}$               & $\triplet{2/3}{-1/3}{-4/3}$       & $\triplet{1\vphantom{/}}{0\vphantom{/}}{-1\vphantom{/}}$             & $-2/3$ & $2$ \\
+      & \multicolumn{1}{c|}{Particle} & \multicolumn{1}{c|}{$Q$} & \multicolumn{1}{c|}{$T_3$} & \multicolumn{1}{c|}{$Y$} & \multicolumn{1}{c|}{$F$} \\
 \hline
 \hline
-\multirow{10}{*}{Vector} & $V_{0}$               & $-2/3$                            & $0$                              & $-4/3$  & $0$ \\
-                         & $\widetilde{V}_{0}$   & $-5/3$                            & $0$                              & $-10/3$ & $0$ \\
-\rule{0pt}{24pt}         & $V_{1/2}$             & $\displaystyle\binom{-1/3}{-4/3}$ & $\displaystyle\binom{1/2}{-1/2}$ & $-5/3$  & $2$ \\
-\rule{0pt}{24pt}         & $\widetilde{V}_{1/2}$ & $\displaystyle\binom{2/3}{-1/3}$  & $\displaystyle\binom{1/2}{-1/2}$ & $1/3$   & $2$ \\
-\rule{0pt}{36pt}         & $V_{1}$               & $\triplet{1/3}{-2/3}{-5/3}$       & $\triplet{1\vphantom{/}}{0\vphantom{/}}{-1\vphantom{/}}$             & $-4/3$  & $0$ \\
+\multirow{10}{*}{Scalar} & $S_{0}$               & $-1/3\hphantom{\bigg)}$                            & $0\hphantom{\bigg)}$                              & $-2/3$ & $2$ \\
+                         & $\widetilde{S}_{0}$   & $-4/3\hphantom{\bigg)}$                            & $0\hphantom{\bigg)}$                              & $-8/3$ & $2$ \\
+\rule{0pt}{24pt}         & $S_{1/2}$             & $\doublet[r]{-2/3}{-5/3}$ & $\doublet[r]{1/2}{-1/2}$ & $-7/3$ & $0$ \\
+\rule{0pt}{24pt}         & $\widetilde{S}_{1/2}$ & $\doublet[r]{1/3}{-2/3}$  & $\doublet[r]{1/2}{-1/2}$ & $-1/3$ & $0$ \\
+\rule{0pt}{36pt}         & $S_{1}$               & $\triplet[r]{2/3}{-1/3}{-4/3}$       & $\triplet[r]{1\vphantom{/}}{0\vphantom{/}}{-1\vphantom{/}}$             & $-2/3$ & $2$ \\
+\hline
+\hline
+\multirow{10}{*}{Vector} & $V_{0}$               & $-2/3\hphantom{\bigg)}$                            & $0\hphantom{\bigg)}$                              & $-4/3$  & $0$ \\
+                         & $\widetilde{V}_{0}$   & $-5/3\hphantom{\bigg)}$                            & $0\hphantom{\bigg)}$                              & $-10/3$ & $0$ \\
+\rule{0pt}{24pt}         & $V_{1/2}$             & $\doublet[r]{-1/3}{-4/3}$ & $\doublet[r]{1/2}{-1/2}$ & $-5/3$  & $2$ \\
+\rule{0pt}{24pt}         & $\widetilde{V}_{1/2}$ & $\doublet[r]{2/3}{-1/3}$  & $\doublet[r]{1/2}{-1/2}$ & $1/3$   & $2$ \\
+\rule{0pt}{36pt}         & $V_{1}$               & $\triplet[r]{1/3}{-2/3}{-5/3}$       & $\triplet[r]{1\vphantom{/}}{0\vphantom{/}}{-1\vphantom{/}}$             & $-4/3$  & $0$ \\
 \hline
     \end{tabular}
     \caption{The quantum numbers of the different types of scalar and vector leptoquarks in the mBRW model.}
