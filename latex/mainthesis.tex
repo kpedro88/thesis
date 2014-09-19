@@ -49,6 +49,16 @@
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 
+%adjust spacing between equations and text
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{0.1\baselineskip}
+  \setlength\belowdisplayskip{0.1\baselineskip}
+  \setlength\abovedisplayshortskip{0.1\baselineskip}
+  \setlength\belowdisplayshortskip{0.1\baselineskip}
+}
+\makeatother
+
 \begin{document}
 
 \include{Abstract} %(must be first, required, non-numbered)
