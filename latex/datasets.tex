@@ -1,2 +1,86 @@
 \chapter{Table of Monte Carlo Datasets
 \label{ch:datasets}}
+
+Tables \ref{tab:mcsamplesLQ} and \ref{tab:mcsamplesBG} list all MC samples for the LQ signal and SM background processes, respectively. These samples are centrally produced by the CMS collaboration and stored in a database called the Data Aggregation System (DAS). The location of each sample in DAS is given by the ``Dataset Name'' field in the tables.
+
+\afterpage{
+\begin{landscape}
+\begin{table}[hbt]
+\begin{center}
+{\footnotesize
+\begin{tabular}{|l|l|c|l|}
+\hline
+\multicolumn{4}{|c|}{Signal Processes} \\
+\hline
+\MLQ [\GeVns] & Dataset Name & $\sigma$ [pb] & $\alpha_{s}$ order \\
+\hline
+200  & /LQToTauB\_M-200\_beta-1\_TuneZ2star\_8TeV-pythia6  & 17.4     & NLO \\
+250  & /LQToTauB\_M-250\_beta-1\_TuneZ2star\_8TeV-pythia6  & 5.26     & NLO \\
+300  & /LQToTauB\_M-300\_beta-1\_TuneZ2star\_8TeV-pythia6  & 1.89     & NLO \\
+350  & /LQToTauB\_M-350\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.77     & NLO \\
+400  & /LQToTauB\_M-400\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.342    & NLO \\
+450  & /LQToTauB\_M-450\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.163    & NLO \\
+500  & /LQToTauB\_M-500\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.082    & NLO \\
+550  & /LQToTauB\_M-550\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.0431   & NLO \\
+600  & /LQToTauB\_M-600\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.0235   & NLO \\
+650  & /LQToTauB\_M-650\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.0132   & NLO \\
+700  & /LQToTauB\_M-700\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00761  & NLO \\
+750  & /LQToTauB\_M-750\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00448  & NLO \\
+800  & /LQToTauB\_M-800\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00269  & NLO \\
+850  & /LQToTauB\_M-850\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00164  & NLO \\
+900  & /LQToTauB\_M-900\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00101  & NLO \\
+950  & /LQToTauB\_M-950\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.000634 & NLO \\
+1000 & /LQToTauB\_M-1000\_beta-1\_TuneZ2star\_8TeV-pythia6 & 0.000401 & NLO \\
+\hline
+\end{tabular}
+}
+\caption{The full list of MC samples for the LQ signal used in the analysis. Each dataset name should be followed by \emph{/Summer12\_DR53X-PU\_S10\_START53\_V7A-v1/AODSIM}. Cross sections $\sigma$ are given at the specified perturbative order in $\alpha_{s}$ for each process.}
+\label{tab:mcsamplesLQ}
+\end{center}
+\end{table}
+\end{landscape}
+}
+
+\afterpage{
+\begin{landscape}
+\begin{table}[hbt]
+\begin{center}
+{\footnotesize
+\begin{tabular}{|l|l|c|l|}
+\hline
+\multicolumn{4}{|c|}{Background Processes} \\
+\hline
+Process                            &   Dataset Name  & $\sigma$ [pb] & $\alpha_{s}$ order \\
+\hline
+$t\bar{t}$                                  & /TTJets\_MassiveBinDECAY\_TuneZ2star\_8TeV-madgraph-tauola  & 234      & NNLL \\
+$t\bar{t} \rightarrow b\ell\nu b\ell\nu$    & /TTJets\_FullLeptMGDecays\_8TeV-madgraph-tauola             & 24.56    & NNLL  \\
+$t\bar{t} \rightarrow b\ell\nu bqq^{\prime}$         & /TTJets\_SemiLeptMGDecays\_8TeV-madgraph-tauola    & 102.51   & NNLL  \\
+$t\bar{t} \rightarrow bqq^{\prime} bqq^{\prime}$              & /TTJets\_HadronicMGDecays\_8TeV-madgraph  & 106.96   & NNLL  \\
+$t\rightarrow b\ell\nu$ ($s$-channel)       & /T\_s-channel\_TuneZ2star\_8TeV-powheg-tauola               & 1.76     & NNLL \\
+$t\rightarrow b\ell\nu$ ($t$-channel)       & /T\_t-channel\_TuneZ2star\_8TeV-powheg-tauola               & 30.7     & NNLL \\
+$t\rightarrow X$ ($tW$)                     & /T\_tW-channel-DR\_TuneZ2star\_8TeV-powheg-tauola           & 11.1     & NNLL \\
+$\bar{t}\rightarrow b\ell\nu$ ($s$-channel) & /Tbar\_s-channel\_TuneZ2star\_8TeV-powheg-tauola            & 3.79     & NNLL \\
+$\bar{t}\rightarrow b\ell\nu$ ($t$-channel) & /Tbar\_t-channel\_TuneZ2star\_8TeV-powheg-tauola            & 56.4     & NNLL \\
+$\bar{t}\rightarrow X$ ($tW$)               & /Tbar\_tW-channel-DR\_TuneZ2star\_8TeV-powheg-tauola        & 11.1     & NNLL \\
+$W + \text{jets}$                           & /WJetsToLNu\_TuneZ2Star\_8TeV-madgraph-tarball              & 37509.0  & NNLO \\
+$W + 1~\text{jet}$                          & /W1JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 6440.58  & LO  \\
+$W + 2~\text{jets}$                         & /W2JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 2087.225 & LO  \\
+$W + 3~\text{jets}$                         & /W3JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 619.0113 & LO  \\
+$W + 4~\text{jets}$                         & /W4JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 255.2378 & LO  \\
+$Z + \text{jets}$                           & /DYJetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph-tarball        & 3503.7   & NNLO \\
+$Z + 1~\text{jet}$                          & /DY1JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 666.3    & LO \\
+$Z + 2~\text{jets}$                         & /DY2JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 214.97   & LO \\
+$Z + 3~\text{jets}$                         & /DY3JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 60.69    & LO \\
+$Z + 4~\text{jets}$                         & /DY4JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 27.36    & LO \\
+$WW$                                        & /WW\_TuneZ2star\_8TeV\_pythia6\_tauola                      & 55.47    & NLO \\
+$WZ$                                        & /WZ\_TuneZ2star\_8TeV\_pythia6\_tauola                      & 33.59    & NLO \\
+$ZZ$                                        & /ZZ\_TuneZ2star\_8TeV\_pythia6\_tauola                      & 8.27     & NLO \\
+\hline
+\end{tabular}
+}
+\caption{The full list of MC samples for the SM background used in the analysis. Each dataset name should be followed by \emph{/Summer12\_DR53X-PU\_S10\_START53\_V7A-v1/AODSIM}. Cross sections $\sigma$ are given at the specified perturbative order in $\alpha_{s}$ for each process.}
+\label{tab:mcsamplesBG}
+\end{center}
+\end{table}
+\end{landscape}
+}
