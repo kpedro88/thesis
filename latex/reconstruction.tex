@@ -90,6 +90,8 @@ The reconstructed tracks are used to reconstruct the primary vertices from the e
 
 Once the deterministic annealing algorithm produces a list of vertex candidates, an adaptive vertex fitter is applied to each vertex candidate. This fitter weights each track in the vertex based on the agreement between the track and vertex positions. Using those weights, it fits the parameters of the vertex, including the $(x,y,z)$ position, the covariance matrix, and the number of degrees of freedom, $n_{\text{dof}} = -3 + 2 \sum{w_i}$, where $w_i$ is the weight for the $i$th track. The variable $n_{\text{dof}}$ can be used to select vertices which correspond to actual proton-proton interactions, as it is closely related to the number of tracks compatible with the vertex.
 
+Several requirements are applied to the reconstructed primary vertices to ensure high quality \cite{CMS-PAS-TRK-10-005}. The number of degrees of freedom $n_{\text{dof}}$ must be greater than 4. The longitudinal position $z$ of the vertex must obey $|z|<24\mm$, and the transverse position $\rho$ must obey $|\rho|<2\mm$. In addition, the vertex must be reconstructed by a fit to tracks. The other reconstructed objects described below can be assigned to a reconstructed vertex. The closest vertex to the track associated with the object is chosen as its vertex. For electrons, the GSF track is used; for muons, the best track is used; and for hadronically decaying tau leptons, the track of the leading charged hadron is used.
+
 %add 2012 performance (efficiency, fake rate, vtx resolution)? references only have 2011 performance...
 
 \section{Particle Flow
@@ -108,11 +110,38 @@ The remaining tracks are linked to clusters to form PF charged hadrons, if the t
 
 The electron candidates reconstructed by the PF algorithm are considered to be ``tracker-driven'' \cite{CMS-PAS-EGM-10-004}. This approach is suitable for low-\pt electrons and electrons produced by jets. For higher-\pt electrons, an alternative ``ECAL-driven'' approach is used. ECAL clusters are grouped into superclusters to account for bremsstrahlung photons radiated by electrons as they traverse the tracker, as well as the spread of energy in the $\phi$-direction due to the magnetic field \cite{ElectronReco}. Similarly to the PF algorithm, these superclusters are matched with track seeds and a GSF is used to reconstruct the trajectory of the electron track. Using a mixture of Gaussians to select the electron track better accounts for the energy loss from bremsstrahlung, as compared to the standard CMS track finding procedure \cite{ElectronGSF}. The lists of tracker-driven and ECAL-driven electron candidates are compared to avoid double counting.
 
-Quality cuts on various kinematic variables are applied to the GSF electron candidates to identify whether or not they are genuine electrons \cite{ElectronCutBased}. A set of cut values is called a working point, and multiple working points are defined based on the strictness of the cut values. The kinematic variables used in the quality cuts are described here, and the specific values of the quality cuts used in the dissertation will be listed in Sec. \ref{sec:ele-obj}. The $\eta$ width of the supercluster, $\sigma_{i\eta i\eta}$, is taken from the covariance matrix of the $\eta$ positions of the included crystals compared to the seed cluster. A modified $\eta$ variable which accounts for the crystal spacing is used, and each crystal's contribution is weighted using the logarithm of the ratio of its energy to the seed cluster energy \cite{EgammaShowerShape}. The differences in position of the supercluster, $(\eta_{\text{sc}},\phi_{\text{sc}})$, and the extrapolated track, $(\eta_{\text{in}}^{\text{extrap}},\phi_{\text{in}}^{\text{extrap}})$, are defined as $|\Delta \eta_{\text{in}}| = |\eta_{\text{sc}} - \eta_{\text{in}}^{\text{extrap}}|$ and $|\Delta \phi_{\text{in}}| = |\phi_{\text{sc}} - \phi_{\text{in}}^{\text{extrap}}|$. The leakage energy $H$ in the HCAL tower located behind the ECAL seed cluster is compared to the energy of the seed cluster $E$ in the variable $H/E$. The transverse and longitudinal impact parameters of the vertex associated with the electron, $d_{0}^{\text{vtx}}$ and $z_{0}^{\text{vtx}}$, are used. The variable $|1/E - 1/p|$, comparing the electron energy and momentum, is also considered. Finally, the isolation is computed by summing the \pt of charged hadron (CH), neutral hadron (NH), and photon ($\gamma$) PF candidates within a cone of $\Delta R < 0.3$ of the electron candidate, including a correction for contributions from pileup based on the median energy per area $\rho$ and the effective area of the electron $A_{\text{eff}}$:
+Quality cuts on various kinematic variables are applied to the GSF electron candidates to identify whether or not they are genuine electrons \cite{ElectronCutBased}. A set of cut values is called a working point, and multiple working points are defined based on the strictness of the cut values. The $\eta$ width of the supercluster, $\sigma_{i\eta i\eta}$, is taken from the covariance matrix of the $\eta$ positions of the included crystals compared to the seed cluster. A modified $\eta$ variable which accounts for the crystal spacing is used, and each crystal's contribution is weighted using the logarithm of the ratio of its energy to the seed cluster energy \cite{EgammaShowerShape}. The differences in position of the supercluster, $(\eta_{\text{sc}},\phi_{\text{sc}})$, and the extrapolated track, $(\eta_{\text{in}}^{\text{extrap}},\phi_{\text{in}}^{\text{extrap}})$, are defined as $|\Delta \eta_{\text{in}}| = |\eta_{\text{sc}} - \eta_{\text{in}}^{\text{extrap}}|$ and $|\Delta \phi_{\text{in}}| = |\phi_{\text{sc}} - \phi_{\text{in}}^{\text{extrap}}|$. The leakage energy $H$ in the HCAL tower located behind the ECAL seed cluster is compared to the energy of the seed cluster $E$ in the variable $H/E$. The transverse and longitudinal impact parameters of the vertex associated with the electron, $d_{0}^{\text{vtx}}$ and $z_{0}^{\text{vtx}}$, are used. The variable $|1/E - 1/p|$, comparing the electron energy and momentum, is also considered. Finally, the isolation is computed by summing the \pt of charged hadron (CH), neutral hadron (NH), and photon ($\gamma$) PF candidates within a cone of $\Delta R < 0.3$ of the electron candidate, including a correction for contributions from pileup based on the median energy per area $\rho$ and the effective area of the electron $A_{\text{eff}}$:
 \begin{equation}
 I^{\text{PF}}_{\Pe} = \sum_{\Delta R < 0.3}{\pt^{(\text{CH})}} + \text{max}\left( \sum_{\Delta R < 0.3}{\pt^{(\text{NH})}} + \sum_{\Delta R < 0.3}{\pt^{(\gamma)}} - \rho A_{\text{eff}}, 0 \right).
 \end{equation}
 The relative isolation $I^{\text{PF}}_{\Pe}/\pt^{(\Pe)}$, scaled by the \pt of the electron, is used for the quality cuts.
+
+Two working points for the quality cuts described in Sec. \ref{sec:ele-reco} are used to identify reconstructed electrons in this dissertation. Table \ref{tab:eleWP} lists the various requirements for each working point. Electrons are required to be in the barrel with $|\eta|<1.444$ or in the endcap with $1.56<|\eta|<2.5$. The leading electron in the \etau channel is selected with the medium working point. In addition to these quality cuts, it is required to have $\pt>30\GeV$ to match the specifications of the HLT criterion used to collect the primary dataset, as described in Sec. \ref{sec:obsdatasamples}. The loose working point is used to veto additional electrons and for selections in some control regions. The less restrictive kinematic cut $\pt>20\GeV$ is applied to electrons identified with the loose working point.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|r|c|c|c|c|}
+      \hline
+      \multirow{3}{*}{Cut Variable} & \multicolumn{4}{|c|}{Cut Value} \\
+      \cline{2-5}
+                                    & \multicolumn{2}{|c|}{Medium} & \multicolumn{2}{|c|}{Loose} \\
+      \cline{2-5}
+                                    & Barrel & Endcap & Barrel  & Endcap    \\
+      \hline
+      $I^{\text{PF}}_{\Pe}/\pt<$    & 0.15     & 0.15     & 0.15      & 0.15      \\      
+      $\sigma_{i\eta i\eta}<$       & 0.01     & 0.03     & 0.01      & 0.03    \\ 
+      $|\Delta\phi_{\text{in}}|<$   & 0.06     & 0.03     & 0.15      & 0.10    \\ 
+      $|\Delta\eta_{\text{in}}|<$   & 0.004    & 0.007    & 0.007     & 0.009    \\ 
+      $H/E<$                        & 0.12     & 0.10     & 0.12      & 0.10     \\ 
+      $|d_0^{\text{vtx}}|<$         & 0.02     & 0.02     & 0.02      & 0.02     \\              
+      $|d_z^{\text{vtx}}|<$         & 0.1      & 0.1      & 0.2       & 0.2      \\              
+      $|1/E - 1/p|<$                & 0.05     & 0.05     & 0.05      & 0.05     \\
+      \hline
+    \end{tabular}
+    \caption{The quality cuts for the medium and loose working points of the electron identification. }
+    \label{tab:eleWP}
+  \end{center}
+\end{table}
 
 \section{Muons
 \label{sec:muon-reco}}
@@ -123,7 +152,47 @@ As with electrons, working points are defined based on sets of quality cuts with
 \begin{equation}
 I^{\text{PF}}_{\mu} = \sum_{\Delta R < 0.4}{\pt^{(\text{CH})}} + \text{max}\left( \sum_{\Delta R < 0.4}{\pt^{(\text{NH})}} + \sum_{\Delta R < 0.4}{\pt^{(\gamma)}} - \Delta\beta \sum_{\Delta R < 0.4}{\pt^{(\text{PU})}}, 0 \right).
 \end{equation}
-A $\Delta\beta$ pileup (PU) correction is applied using the \pt of PU particles, which are identified as charged PF candidates from a different vertex than the muon. The $\Delta\beta$ factor is assigned a value of 0.5 based on the expected ratio of charged to neutral particles in pileup \cite{CMS-PAS-PFT-10-002}. Again, cuts are made on the relative isolation $I^{\text{PF}}_{\mu}/\pt^{(\mu)}$. The selections on these quantities are intended to minimize the contribution from cosmic ray muons, muons from heavy flavor decays, and leakage from hadronic showers. They also ensure precise measurement of the muon \pt. Section \ref{sec:muon-obj} will provide the specific cuts for the working points used in the dissertation.
+A $\Delta\beta$ pileup (PU) correction is applied using the \pt of PU particles, which are identified as charged PF candidates from a different vertex than the muon. The $\Delta\beta$ factor is assigned a value of 0.5 based on the expected ratio of charged to neutral particles in pileup \cite{CMS-PAS-PFT-10-002}. Again, cuts are made on the relative isolation $I^{\text{PF}}_{\mu}/\pt^{(\mu)}$. The selections on these quantities are intended to minimize the contribution from cosmic ray muons, muons from heavy flavor decays, and leakage from hadronic showers. They also ensure precise measurement of the muon \pt.
+
+Two working points for these quality cuts are used to identify reconstructed muons in this dissertation. Table \ref{tab:muonWP} lists the various requirements for each working point. The leading muon in the \mutau channel is selected with the tight working point. In addition to these quality cuts, it is required to have $\pt>30\GeV$ and $|\eta|<2.1$ to match the specifications of the HLT criterion used to collect the primary dataset, as described in Sec. \ref{sec:obsdatasamples}. The loose working point is used to veto additional muons and for selections in some control regions. Less restrictive kinematic cuts $\pt>20\GeV$ and $|\eta|<2.4$ are applied to muons identified with the loose working point.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{Working Point}\\
+\hline
+\multicolumn{1}{|c|}{Tight} & \multicolumn{1}{c|}{Loose} \\
+\hline
+PF muon & PF muon \\
+Global muon & Global muon OR tracker muon \\
+$\begin{aligned}
+I^{\text{PF}}_{\mu}/\pt &< 0.12 \\
+d_0 &< 0.2\cm \\
+d_z &< 0.5\cm \\
+\text{Global track fit } \chi^2/n_{\text{dof}} &< 10 \\
+\text{Global track fit } n_{\text{muon segment}} &> 0 \\
+n_{\text{hits}}(\text{pixel}) &> 0 \\
+n_{\text{layers}}(\text{tracker}) &> 5 \\
+n_{\text{stations}}(\text{muon}) &> 1
+\end{aligned}$
+&
+$\begin{aligned}
+I^{\text{PF}}_{\mu}/\pt &< 0.3 \\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\end{aligned}$ \\
+\hline
+    \end{tabular}
+    \caption{The quality cuts for the tight and loose working points of the muon identification.}
+    \label{tab:muonWP}
+  \end{center}
+\end{table}
 
 \section{Jets}
 
@@ -147,7 +216,28 @@ CMS chooses the value $R = 0.5$ for the size parameter and uses PF candidates fo
 
 Once a jet is reconstructed, several important types of corrections are applied to its energy response \cite{CMS-JEC}. First, minimum bias events are used to estimate the contributions from electronic noise and pileup, and those are subtracted in the offset correction. Next, the energy response is made uniform in $\eta$ using the multiplicative relative correction, derived from dijet events. Finally, the multiplicative absolute correction is derived from \GZJ events, exploiting the precise energy resolution of the ECAL and the tracker, and applied to make the energy response uniform in \pt.
 
-To ensure the quality of reconstructed jets used in data analysis, a set of variables is used for PF jet identification \cite{CMS-AN-2010-003}. These variables include: the fraction of neutral hadrons in the jet, the fraction of neutral EM particles, the fraction of charged hadrons, the fraction of charged EM particles, the number of constituents, and the multiplicity of charged particles. Multiple sets of cuts on these variables are defined as working points \cite{PFJetID}. The specific working point used in this dissertation will be given in Sec. \ref{sec:jet-obj}.
+To ensure the quality of reconstructed jets used in data analysis, a set of variables is used for PF jet identification \cite{CMS-AN-2010-003}. These variables include: the fraction of neutral hadrons in the jet $f_{\text{NH}}$, the fraction of neutral EM particles $f_{\gamma}$, the fraction of charged hadrons $f_{\text{CH}}$, the fraction of charged EM particles $f_{\text{EM}}$, the number of constituents $n_{\text{constituents}}$, and the multiplicity of charged particles $n_{\text{charged}}$. Multiple sets of cuts on these variables are defined as working points \cite{PFJetID}. The loose working point of the PF jet identification algorithm is used to identify reconstructed jets in this dissertation. The requirements for the loose working point are summarized in Table \ref{tab:jetWP}. To eliminate jets from pileup interactions, each selected jet is required to have $\pt>30\GeV$. The cut $|\eta|<2.4$ is also applied, in order to include only jets measured in the best-performing regions of the detector.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|r|c|}
+      \hline
+      \multirow{2}{*}{Cut Variable} & Cut Value \\
+      \cline{2-2}
+                                    & Loose \\
+      \hline
+      $f_{\text{CH}}>$              & 0.0 \\
+      $f_{\text{NH}}<$              & 0.99 \\
+      $f_{\gamma}<$                 & 0.99 \\
+      $f_{\text{EM}}<$              & 0.99 \\
+      $n_{\text{charged}}>$         & 0 \\
+      $n_{\text{constituents}}>$    & 1 \\
+      \hline
+    \end{tabular}
+    \caption{The quality cuts for the loose working point of the jet identification. }
+    \label{tab:jetWP}
+  \end{center}
+\end{table}
 
 \section{Taus
 \label{sec:hpstau}}
@@ -195,13 +285,33 @@ Isolation is an important tool in discriminating between $\tauh$s and jets. The 
 \begin{equation}
 I^{\text{PF}}_{\tauh} = \sum_{\Delta R < 0.5}{\pt^{(\text{CH})}} + \text{max}\left( \sum_{\Delta R < 0.5}{\pt^{(\gamma)}} - \Delta\beta \sum_{\Delta R < 0.8}{\pt^{(\text{PU})}}, 0 \right).
 \end{equation}
-The HPS algorithm uses the absolute isolation $I^{\text{PF}}_{\tauh}$ for the different working point quality cuts. The isolation discrimination also requires that each track associated with the \tauh contain at least three hits in the tracker. In addition to isolation, it is necessary to discriminate against electrons and muons which are misidentified as $\tauh$s. The anti-electron discriminator uses a multivariate (MVA) approach, training boosted decision trees (BDTs) using numerous variables depending on different cases of \tauh. These cases include: the possible association of the primary charged hadron in the \tauh with a GSF track; the possible association of the \tauh with a GSF electron within a cone of $\Delta R < 0.3$; whether or not the \tauh includes strips; and whether the \tauh $\eta$ coordinate lies in the EB or EE range. Multiple trainings for the anti-electron MVA discriminator were performed and multiple working points are defined. The anti-muon discriminator uses a cut-based approach, with multiple sets of cuts and working points defined. The cuts include requirements to minimize the activity in the muon system in the direction of the \tauh and to veto MIP muons based on energy and momentum. The specific working points for each discriminator used in this dissertation will be described in Sec. \ref{sec:tau-obj}.
+The HPS algorithm uses the absolute isolation $I^{\text{PF}}_{\tauh}$ for the different working point quality cuts. The isolation discrimination also requires that each track associated with the \tauh contain at least three hits in the tracker. In addition to isolation, it is necessary to discriminate against electrons and muons which are misidentified as $\tauh$s. The electron-tau discriminator uses a multivariate (MVA) approach, training boosted decision trees (BDTs) using numerous variables depending on different cases of \tauh. These cases include: the possible association of the primary charged hadron in the \tauh with a GSF track; the possible association of the \tauh with a GSF electron within a cone of $\Delta R < 0.3$; whether or not the \tauh includes strips; and whether the \tauh $\eta$ coordinate lies in the EB or EE range. Multiple trainings for the anti-electron MVA discriminator were performed and multiple working points are defined. The muon-tau discriminator uses a cut-based approach, with multiple sets of cuts and working points defined. The cuts include requirements to minimize the activity in the muon system in the direction of the \tauh and to veto MIP muons based on energy and momentum. 
 %The \tauh candidate must not match any muon track segments or any hits in the two outermost muon stations within a cone of $\Delta R < 0.5$. In the single hadron decay mode, the charged hadron in the \tauh must have $(E_{\text{ECAL}} + E_{\text{ECAL}})/p_{\text{track}} > 0.2$.
+
+In this dissertation, the working points for each discriminator can differ for each channel, as listed in Table \ref{tab:tauWP}. The loose working point for the combined isolation requires $I^{\text{PF}}_{\tauh}<2\GeV$. A tighter working point for the muon-tau discriminator is used in the \mutau channel to increase the rejection of muons misidentified as tau leptons from, e.g., the $\Z \rightarrow \mu\mu$ process. The loose working point for the electron-tau discriminator was found to be optimal for both channels. In addition to these discriminators, each reconstructed tau lepton is required to have $\pt>30\GeV$ and $|\eta|<2.3$.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \multirow{2}{*}{Discriminator} & \multicolumn{2}{|c|}{Working Point} \\
+      \cline{2-3}
+                                    & \etau & \mutau \\
+      \hline
+      Isolation                     & Loose (3 hits)   & Loose (3 hits) \\
+      $\Pe$-$\tau$                  & Loose MVA (v3)   & Loose MVA (v3) \\
+      $\mu$-$\tau$                  & Loose (v2)       & Tight (v2) \\
+      \hline
+    \end{tabular}
+    \caption{The working points for the different tau discriminators used in the tau lepton identification. }
+    \label{tab:tauWP}
+  \end{center}
+\end{table}
 
 \section{b-tagging
 \label{sec:b-tagging}}
 
-Bottom quarks are associated with many interesting physical signatures, including decays of top quarks and Higgs bosons, as well as many BSM theories, including supersymmetry, that privilege or otherwise relate to third-generation fermions. Jets generated by bottom quark hadronization, b-jets, can be identified using certain properties which set them apart from jets from lighter quarks or gluons \cite{BTV-12-001}. Bottom quarks form hadrons with relatively long lifetimes whose decay products tend to have high \pt. Numerous algorithms have been created to identify b-jets based on information from tracks or reconstructed secondary vertices from b-hadron decays. The most successful of these algorithms is the Combined Secondary Vertex (CSV) algorithm, which uses secondary vertices and adds information from the tracks. The CSV algorithm calculates a likelihood-based discriminator to separate b-jets and other jets. Loose, medium, and tight working points are defined for this discriminator, based on setting the probability of misidentifying a light quark or gluon jet as a b-jet to be 10\%, 1\%, and 0.1\%, respectively \cite{CMS-PAS-BTV-13-001}.
+Bottom quarks are associated with many interesting physical signatures, including decays of top quarks and Higgs bosons, as well as many BSM theories, including supersymmetry, that privilege or otherwise relate to third-generation fermions. Jets generated by bottom quark hadronization, b-jets, can be identified using certain properties which set them apart from jets from lighter quarks or gluons \cite{BTV-12-001}. Bottom quarks form hadrons with relatively long lifetimes whose decay products tend to have high \pt. Numerous algorithms have been created to identify b-jets based on information from tracks or reconstructed secondary vertices from b-hadron decays. The most successful of these algorithms is the Combined Secondary Vertex (CSV) algorithm, which uses secondary vertices and adds information from the tracks. The CSV algorithm calculates a likelihood-based discriminator to separate b-jets and other jets. Loose, medium, and tight working points are defined for this discriminator, based on setting the probability of misidentifying a light quark or gluon jet as a b-jet to be 10\%, 1\%, and 0.1\%, respectively \cite{CMS-PAS-BTV-13-001}. In this dissertation, the loose working point is used to select b-tagged jets, which requires the discriminator calculated by the CSV algorithm to have a value greater than 0.244.
 
 For a given jet, the CSV algorithm subjects the tracks within that jet to additional purity requirements, beyond those specified in Sec. \ref{sec:tracks}. The track must fall within a cone of $\Delta R < 0.3$ relative to the direction of the jet and the distance between the track and the jet at closest approach must be less than 0.07\cm. The track must include at least two pixel hits and at least eight total tracker hits, with $\chi^2/n_{\text{dof}} < 5$. The impact parameters between the track and the primary vertex must satisfy $d_0 < 0.2\cm$ and $d_z < 17\cm$. Finally, the track must have $\pt>1\GeVc$ and decay length less than 5\cm, where decay length is the distance between the primary vertex and the closest approach of the track and the jet. The significance of the track's impact parameter $S_{\text{ip}}$, defined as the value of the impact parameter divided by its uncertainty, is a powerful observable. The number of high-quality tracks in the jet is also used.
 
