@@ -57,10 +57,13 @@ The fermions are arranged into multiplets based on their chirality. The left-han
 \end{center}
 \end{figure}
 
-\addtocounter{section}{-1}
+%\addtocounter{section}{-1}
 \renewcommand{\thesection}{\thechapter.{$\frac{1}{2}$}}
 \section{Beyond the Standard Model}
-\renewcommand{\thesection}{\thechapter.\arabic{section}} % back to regular numbering
+\newcounter{sectionprime}
+\addtocounter{sectionprime}{\value{section}}
+\addtocounter{sectionprime}{-1}
+\renewcommand{\thesection}{\thechapter.\arabic{sectionprime}} % use offset numbering
 
 The predictions of the standard model have been confirmed by decades of precise experimental tests. However, as an effective field theory, its domain of applicability is ultimately limited; at a high enough energy, the theory will break down. Further, the standard model is unable to account for some observations. These limitations and indications of new phenomena motivate various searches for physics beyond the standard model (BSM), include the searches which will be presented in this dissertation.
 
@@ -70,6 +73,7 @@ Astrophysics provides numerous indications of the need for BSM theories. Most no
 
 The following sections discuss the theories of leptoquarks and R-parity violating supersymmetry. The existence of leptoquarks can be a consequence of grand unification or other theories that address the parallels between leptons and quarks in the standard model. Supersymmetry is motivated by basic considerations of quantum field theory, the hierarchy problem, grand unification, and dark matter. The introduction of R-parity violation in supersymmetry evades existing limits on signatures with large missing transverse energy due to the stability of the lightest supersymmetric particle, while retaining some of the other desirable characteristics of supersymmetry. R-parity violating supersymmetry can also act as a signature generator to suggest novel searches which might discover or rule out other BSM theories \cite{EvansSigGen}.
 
+\stepcounter{sectionprime}
 \section{Leptoquarks
 \label{sec:LQ}}
 
@@ -204,6 +208,7 @@ In this dissertation, a search is performed for pair production of scalar leptoq
 
 %talk about reinterpreted search to cover low B?
 
+\stepcounter{sectionprime}
 \section{R-Parity Violating Supersymmetry
 \label{sec:RPVSUSY}}
 
@@ -299,3 +304,5 @@ This dissertation considers the pair production of top squarks with two differen
 In some natural SUSY models, if the higgsinos are lighter than the top squark, or if the RPV couplings that allow direct decays to SM particles are sufficiently small, the top squark decay may preferentially proceed via superpartners \cite{Jared}. This motivates the second search in the dissertation, which focuses on a scenario in which the dominant RPC decay of the top squark is $\sTop \rightarrow \chipm\cPqb$. This requires the mass splitting between the top squark and the chargino to be less than the mass of the top quark, so it is chosen to be 100\GeV. The chargino is assumed to be a pure higgsino and to be nearly degenerate in mass with the neutralino, with a decay $\chipm \rightarrow \sNu\tau^{\pm} \rightarrow \cPq\cPq\tau^{\pm}$. The decay of the sneutrino occurs via the RPV coupling $\lambda_{3jk}^{\prime}$, where the cases $j, k = 1, 2$ are considered. Such a signal can only be probed by searches that do not require large \met, as chiral suppression prevents the other possible decay of the chargino, $\chipm\to\nu\sTau$, from contributing to scenarios involving the $\lambda_{3jk}^{\prime}$ coupling.
 
 The final state from pair production of top squarks undergoing this chargino-mediated RPV decay contains two tau leptons, two b-jets, and at least four additional jets. The search for the signal with this final state is called the top squark search, to distinguish it from the similar but not identical final state in the leptoquark search. As in the leptoquark search, the analysis is divided into two channels \etau and \mutau based on the required leptonic decay of one of the tau leptons. The symbol $B$ in the top squark search is used to represent the branching fraction for the decay $\sTop \rightarrow \chipm\cPqb, \chipm \rightarrow \sNu\tau^{\pm} \rightarrow \cPq\cPq\tau^{\pm}$.  This dissertation presents the first search for the chargino-mediated $\lambda_{3jk}^{\prime}$ decay of the top squark.
+
+\renewcommand{\thesection}{\thechapter.\arabic{section}} % back to regular numbering
