@@ -6,7 +6,7 @@ The events analyzed in this dissertation are selected based on requirements for 
 
 At the preselection stage, a single primary well-identified light lepton $\ell$ is required. In the \etau channel, this is an electron satisfying the medium working point and kinematic criteria described in Sec. \ref{sec:ele-reco}. In the \mutau channel, this is a muon satisfying the tight working point and kinematic criteria described in Sec. \ref{sec:muon-reco}. In addition to the light lepton, the event must contain a hadronic tau identified by the HPS algorithm and associated discriminators as defined in Sec. \ref{sec:hpstau}. The two objects, light lepton and hadronic tau, must have opposite charges, originate from the same vertex, and be separated by $\Delta R > 0.5$. Two jets are also required, satisfying the loose working point and kinematic criteria described in Sec. \ref{sec:jet-reco}. The jets must be separated from the light lepton and the hadronic tau by $\Delta R > 0.5$.
 
-Several cases of additional light leptons are vetoed. To suppress background from the \Z+jets process, events are rejected if they contain additional light leptons satisfying the loose working point and having the same flavor and opposite charge with respect to the primary lepton. This separates the contributions from the $\Z \rightarrow \ell\ell$+jets process into control regions which will be used for background estimation. To avoid overlap between the two channels, events are rejected if they contain additional light leptons satisfying the primary working point and kinematic criteria for leptons (medium for electrons and tight for muons) and having the opposite flavor and opposite charge with respect to the primary lepton. This also defines an \emu control region which will be used for background estimation.
+Several cases of additional light leptons are vetoed. To suppress background from the \Z + jets process, events are rejected if they contain additional light leptons satisfying the loose working point and having the same flavor and opposite charge with respect to the primary lepton. This separates the contributions from the $\Z \rightarrow \ell\ell$+jets process into control regions which will be used for background estimation. To avoid overlap between the two channels, events are rejected if they contain additional light leptons satisfying the primary working point and kinematic criteria for leptons (medium for electrons and tight for muons) and having the opposite flavor and opposite charge with respect to the primary lepton. This also defines an \emu control region which will be used for background estimation.
 
 Figures \ref{fig:preseletau} and \ref{fig:preselmutau} compare the observed data to the MC background simulation after the preselection in the \etau and \mutau channels, respectively. All histograms in this dissertation show the overflow, if any, in the last bin. The event yields for the observed data and the expected SM backgrounds after the preselection are summarized in Table \ref{tab:eventyieldpresel}. The discrepancy between the observed data and simulated background yields in the \etau channel is due to the presence of QCD multijet events in the observed data. This discrepancy is primarily observed at low \pt and high $\eta$, as expected from QCD. This process is not modeled in the MC simulation because of the difficulty in simulating enough events to be comparable to the amount of data collected by the CMS experiment in 2012. Instead, the yield from QCD is estimated using a same-sign/opposite-sign method which is described in detail in Sec. \ref{??}.
 
@@ -38,21 +38,21 @@ Figures \ref{fig:preseletau} and \ref{fig:preselmutau} compare the observed data
 
 \begin{table}[hbt]
   \begin{center}
-    \begin{tabular}{|l|c||c|}
+    \begin{tabular}{|l|r@{$\,\pm\,$}r|r@{$\,\pm\,$}r|}
       \hline
-      & \etau channel & \mutau channel \\
+      & \multicolumn{2}{c|}{\etau channel} & \multicolumn{2}{c|}{\mutau channel} \\
       \hline
-      \W+jets                         &  $4221.6 \pm 188.1$   & $4846.3 \pm 233.6 $ \\
-      \Zttll+jets                     &  $4766.7 \pm 85.1$    & $2369.1 \pm 80.7  $ \\
-      \ttbar                          &  $6272.2 \pm 65.5$    & $6430.5 \pm 69.8  $ \\
-      Single t                        &  $462.9 \pm 14.4$     & $512.3 \pm 16.0   $ \\
-      VV                              &  $223.4 \pm 4.4$      & $212.5 \pm 4.6    $ \\
-      QCD multijets                   &  $(2452.6 \pm 512.1)$ & ---                 \\ 
+      \W + jets                       &  4221.6 & 188.1   & 4846.3 & 233.6  \\
+      \Z + jets                       &  4766.7 & 85.1    & 2369.1 & 80.7   \\
+      \ttbar                          &  6272.2 & 65.5    & 6430.5 & 69.8   \\
+      Single \cPqt                    &  462.9 & 14.4     & 512.3 & 16.0    \\
+      VV                              &  223.4 & 4.4      & 212.5 & 4.6     \\
+      QCD multijets                   &  (2452.6 & 512.1)\neghphantom{)} & \multicolumn{2}{c|}{---} \\ 
       \hline                                                  
-      Total Bkg. (no QCD)             & $15946.8 \pm 232.9$   & $14370.8 \pm 257.3$ \\
+      Total Bkg. (no QCD)             & 15946.8 & 232.9   & 14370.8 & 257.3 \\
       \hline                                                  
       \hline                                                  
-      Data                            & $18177$               & $14351$             \\
+      Data                            & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{18177\hphantom{.0}} & & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{14351\hphantom{.0}} & \\
       \hline
     \end{tabular}
     \caption{The simulated background and observed event yields after the preselection in the \etau and \mutau channels. The statistical uncertainties are given for each simulated background. The contribution from the QCD multijets process is not taken into account in the total background yield. }
@@ -99,21 +99,21 @@ As indicated in Eq. \eqref{eq:STLQ}, this definition of \ST is appropriate for t
 
 \begin{table}[hbt]
   \begin{center}
-    \begin{tabular}{|l|c||c|}
+    \begin{tabular}{|l|r@{$\,\pm\,$}r|r@{$\,\pm\,$}r|}
       \hline
-      & \etau channel & \mutau channel \\
+      & \multicolumn{2}{c|}{\etau channel} & \multicolumn{2}{c|}{\mutau channel} \\
       \hline
-      W + jets                        & $1201.9 \pm 104.0$   & $1285.8 \pm 122.7$ \\
-      \Zttll + jets                   & $1534.0 \pm 49.5$    & $774.4 \pm 46.8  $ \\
-      \ttbar                          & $5783.6 \pm 63.5$    & $5699.5 \pm 64.4 $ \\
-      single-t                        & $390.2 \pm 13.46$    & $418.6 \pm 14.2  $ \\
-      VV                              & $82.9 \pm 2.7$       & $74.1 \pm 2.7    $ \\
-      QCD multijets                   & $(1226 \pm 131.0)$   & ---                \\
+      \W + jets                       & 1201.9 & 104.0   & 1285.8 & 122.7 \\
+      \Z + jets                       & 1534.0 & 49.5    & 774.4 & 46.8   \\
+      \ttbar                          & 5783.6 & 63.5    & 5699.5 & 64.4  \\
+      Single \cPqt                    & 390.2  & 13.5    & 418.6 & 14.2   \\
+      VV                              & 82.9   & 2.7     & 74.1 & 2.7     \\
+      QCD multijets                   & (1226.0 & 131.0)\neghphantom{)}  & \multicolumn{2}{c|}{---}  \\
       \hline                                                 
-      Total Bkg. (no QCD)             & $8992.6 \pm 141.2$   & $8252.3 \pm 147.0$ \\
-      \hline                                                 
-      \hline                                                 
-      Data                            & 10113                & $8866$             \\
+      Total Bkg. (no QCD)             & 8992.6 & 141.2   & 8252.3 & 147.0 \\
+      \hline
+      \hline
+      Data                            & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{10113\hphantom{.0}} & & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{8866\hphantom{.0}} &  \\
       \hline
     \end{tabular}
     \caption{The simulated background and observed event yields after the main selection in the \etau and \mutau channels. The statistical uncertainties are given for each simulated background. The contribution from the QCD multijets process is not taken into account in the total background yield. }
@@ -133,7 +133,7 @@ Slightly different final selection criteria are applied for the top squark searc
 \ST(\sTop) = \pt(\ell) + \pt(\tauh) + \pt(\text{b-jet}) + \sum_{i=1}^{4}\pt(\text{jet }i).
 \end{equation}
 
-Figure \ref{fig:finalcutscombined} shows the final selection variables for each search with both channels combined. Simulated signal distributions are added on top of the background to demonstrate the effect of the final selection cuts in removing background while preserving signal events. The common requirement $\pt(\tauh)>50\GeV$ is applied in these plots, and the major background yields are estimated from observed data. The background estimation techniques will be described in Sec. \ref{??}.
+Figure \ref{fig:finalcutscombined} shows the final selection variables for each search with both channels combined. Simulated signal distributions are added on top of the background to demonstrate the effect of the final selection cuts in removing background while preserving signal events. The common requirement $\pt(\tauh)>50\GeV$ is applied in these plots, and the major background yields are estimated from observed data. The background estimation techniques will be described in Sec. \ref{sec:background}.
 
 \begin{figure}[hbt]
   \begin{center}
