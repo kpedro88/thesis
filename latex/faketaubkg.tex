@@ -1,0 +1,225 @@
+\subsection{Major Reducible Background
+\label{sec:faketaubkg}}
+
+The major reducible background comes from events with jets misidentified as hadronic taus. This background has contributions from the \W + jets, \Z + jets, \ttbar, and QCD multijet processes. The contribution from \W + jets, \Z + jets, and \ttbar is estimated from observed data by measuring the misidentification probability or ``fake rate''. The QCD events contain mostly gluon jets, while the events from the other processes contain mostly quark jets. Gluon jets are wider than quark jets, so they are less likely to pass isolation and therefore have a lower fake rate. The fake rate is measured in a control region that is appropriate for the quark jet processes. Therefore, this fake rate cannot produce an accurate estimate of the contribution from QCD. This contribution is estimated using a same-sign/opposite-sign (SS/OS) method, which is described in Sec. \ref{sec:qcdbkg}. The contribution from QCD is non-negligible only in the \etau channel of the leptoquark search. In this case, the reconstructed electron is also a misidentified jet. A jet is much less likely to be misidentified as a muon, so QCD does not contribute in the \mutau channel. In the top squark search, the high jet multiplicity requirement eliminates any significant contribution from QCD.
+
+The probability for a jet to be misidentified as a hadronic tau is measured from the observed data in a \Zmm + jets control region. The selection of the primary muon uses the same criteria as the \mutau channel in the signal region. The second muon is selected using the loose working point for identification and isolation, along with looser kinematic cuts. The two muons are required to have the same vertex, opposite charges, and a separation of $\Delta R > 0.5$. This ensures the orthogonality of the control region because of the opposite-sign additional lepton veto in the signal region. The selection of hadronic tau candidates, which are misidentified jets in the \Zmm + jets control region, uses the same identification, discriminator working points, and kinematic cuts as the signal selection. However, the hadronic tau candidates are not required to be isolated, as the isolation variable is used to compute the fake rate. All selected hadronic taus must originate from the same vertex as the two muons and must be separated from each muon with $\Delta R > 0.5$. A cut on the invariant mass of the two muons is also applied, $M_{\mu\mu} > 50\GeV$, in order to match the generation of the simulated \Z + jets samples.
+
+This selection produces a control region which consists of $95\%$ \Z + jets events. The simulated \Z + jets sample is normalized to the yield from the observed data, with the yield from the other simulated backgrounds subtracted. The normalization factor is: $N[\text{data}~-~\text{other MC}]/N[\text{Z + jets}] = 0.924 \pm 0.003$. Figure \ref{Bkg:fig:Zregion} shows the dimuon mass $M_{\mu\mu}$ and the multiplicity of extra jets, which are not misidentified as hadronic taus, in the \Zmm + jets control region. Good agreement is seen between data and simulation, demonstrating the validity of the control region. The majority of events contain no extra jets, but an appreciable percentage, around $40\%$, contain one or more extra jets.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/massdimuon.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/njet.pdf}
+    \caption{Comparison of observed data and simulation in the \Zmm + jets control region for $M_{\mu\mu}$ (left) and multiplicity of extra jets, which are not misidentified as hadronic taus (right). \label{Bkg:fig:Zregion}}
+  \end{center}
+\end{figure}
+
+All hadronic tau candidates in the \Zmm + jets control region are considered when calculating the fake rate. These hadronic tau candidates are misidentified jets which pass all selection requirements for hadronic taus, except that isolation is not required. The subset of these candidates which also pass the isolation requirement would be fully misidentified as hadronic taus. The fake rate is therefore the rate at which the hadronic tau candidates pass the isolation requirement. It is parameterized as a function of the transverse momentum of the tau candidates, as shown in Eq. \eqref{Bkg:eq:FR}:
+\begin{equation} f(\pt) = \frac{N_{\text{iso}~\tau}^{(\Zmm)}(\pt)}{N_{\text{all}~\tau}^{(\Zmm)}(\pt)} \label{Bkg:eq:FR} \end{equation}
+
+%When calculating the fake rate from the observed data, the contribution from the residual backgrounds is subtracted from both the numerator and the denominator of Eq. \eqref{Bkg:eq:FR}. The residual backgrounds include the diboson and single top processes. The fake rate from the simulation includes both the \Z + jets and \ttbar contributions. The \ttbar contribution is included in the simulated fake rate rather than in the residual backgrounds because its contribution is enhanced in events with extra jets. Such events more closely resemble the main region where at least two jets are required. The observed data and simulated fake rates calculated from all \Zmm + jets events, from events with one or more extra jets, and from events with two or more extra jets are shown in Fig. \ref{Bkg:fig:fakerate}. The fake rate calculated from all \Zmm + jets events is called the inclusive fake rate, since it includes all events regardless of the number of extra jets.
+
+When calculating the fake rate from the observed data, the contribution from the residual backgrounds is subtracted from both the numerator and the denominator of Eq. \eqref{Bkg:eq:FR}. The residual backgrounds include the \ttbar, diboson, and single top processes. The observed data and simulated fake rates calculated from all \Zmm + jets events, from events with one or more extra jets, and from events with two or more extra jets are shown in Fig. \ref{Bkg:fig:fakerate}. The fake rate calculated from all \Zmm + jets events is called the inclusive fake rate, since it includes all events regardless of the number of extra jets.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_dmc.pdf}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_dmc_1jet.pdf}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_dmc_2jet.pdf}
+    \caption{The fake rates measured in the \Zmm + jets control region, using all events (left), only events with one or more extra jets (middle), only events with two or more extra jets (right). \label{Bkg:fig:fakerate}}
+  \end{center}
+\end{figure}
+
+Events from semileptonic \ttbar decays make up a significant portion of the major reducible background. These events resemble events from the \W + jets process, but with higher jet multiplicities. The relative difference in the fake rate between \Zmm + jets events with $N_{\text{jet}} \geq 1$ and semileptonic \ttbar events is estimated from the simulation and found to be $18\%$. Figure \ref{fig:fakeratettbardiff} shows the simulated fake rates versus hadronic tau \pt and the calculation of the relative difference, which is independent of \pt. This relative difference is multiplied by the percentage of the fake tau background consisting of semileptonic \ttbar events, $35\%$ in the leptoquark search and $95\%$ in the top squark search, and applied as a systematic uncertainty to account for any differences between the types of processes.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/ttbar_fr_comp_final.pdf}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_diff_ttbar_incl.pdf}
+    \caption{Comparison of the fake rates between \Zmm + jets events with at least one extra jet and semileptonic \ttbar events, from the simulation (left). The difference in the two fake rates is found to be 18\%, independent of the hadronic tau \pt (right). \label{fig:fakeratettbardiff}}
+  \end{center}
+\end{figure}
+
+To estimate the total yield of the major reducible background in the signal region, a second control region is needed. This control region is defined identically to the signal region, except that events are rejected if any selected hadronic tau passes isolation. This creates an orthogonal region of events in which all selected hadronic taus fail isolation, called the ``anti-isolated'' region. Figures \ref{Bkg:fig:antiiso} and \ref{Bkg:fig:antiiso-lqd321} shows the hadronic tau \pt spectrum and multiplicity in the anti-isolated region for both channels after the leptoquark and top squark final selections, respectively. There is good agreement between observed data and simulated backgrounds in the \mutau channel. In the \etau channel in the leptoquark search, there is an expected disagreement due to a contribution from QCD multijet events in the observed data, which will be addressed. The simulated contributions labeled \W + jets, \Z + jets, and \ttbar contain only events where the hadronic tau candidates are misidentified jets based on matching between the generated and reconstructed particles. The residual background is defined to include events from two categories. The first category consists of events from the diboson and single-top-quark processes, which are not included in the major reducible background. The second category consists of events from the \W + jets, \Z + jets, and \ttbar processes with genuine hadronic taus that fail isolation.
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_mutau.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_mutau.pdf} \\
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_etau.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_etau.pdf} 
+    \caption{Plots of the anti-isolated control region after the leptoquark final selection, showing the hadronic tau \pt spectrum (left) and multiplicity (right) in the \mutau channel (top) and the \etau channel (bottom). \label{Bkg:fig:antiiso}}
+  \end{center}
+\end{figure}
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_mutau_lqd321.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_mutau_lqd321.pdf} \\
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_etau_lqd321.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_etau_lqd321.pdf}
+    \caption{Plots of the anti-isolated control region after the top squark final selection, showing the hadronic tau \pt spectrum (left) and multiplicity (right) in the \mutau channel (top) and the \etau channel (bottom). \label{Bkg:fig:antiiso-lqd321}}
+  \end{center}
+\end{figure}
+
+The fake rate is used to weight the anti-isolated events in order to extrapolate to the signal region. Because $f(\pt)$ is the probability for a fake hadronic tau candidate to be isolated, $1-f(\pt)$ is the probability for a fake hadronic tau candidate to fail isolation:
+\begin{align}
+P(\tau\text{ w/ given \pt is isolated}) &= f(\pt(\tau)), \\
+P(\tau\text{ w/ given \pt is anti-isolated}) &= 1 - f(\pt(\tau)). \label{Bkg:eq:Pantiiso}
+\end{align}
+The signal region and the anti-isolated region are two complementary parts of a total region containing all events with hadronic tau candidates, passing or failing isolation. The probability that any given event in this total region is part of the anti-isolated region is equivalent to the probability that all hadronic taus in that event fail isolation. The isolation status of each tau in an event is independent, so this probability is given by the product of Eq. \eqref{Bkg:eq:Pantiiso} for each tau, shown in Eq. \eqref{Bkg:eq:Pantiisoall}. The signal region contains all events with at least one isolated hadronic tau. Therefore, the probability that an event in the total region is part of the signal region is given by the complement of the anti-isolated region probability, shown in Eq. \eqref{Bkg:eq:Piso1}.
+\begin{align}
+P(\text{all }\tau\text{s in event are anti-isolated}) &= \prod_{\tau}^{\text{(event)}}[1-f(\pt(\tau))] \label{Bkg:eq:Pantiisoall} \\
+P(\text{at least 1 }\tau\text{ in event is isolated}) &= 1-\prod_{\tau}^{\text{(event)}}[1-f(\pt(\tau))] \label{Bkg:eq:Piso1}
+\end{align}
+Equation \eqref{Bkg:eq:faketauest} sums over all events in the anti-isolated region, using these complementary probabilities to produce a data-driven estimate of the major reducible background in the signal region.
+\begin{equation} N_{\text{misID}~\tau} = \sum_{\text{events}}^{\text{(anti-iso)}} \frac{1 - \prod_{\tau}[1-f(\pt(\tau))]}{\prod_{\tau}[1-f(\pt(\tau))]} \label{Bkg:eq:faketauest} \end{equation}
+
+Events in the signal region from the exclusive samples simulated for the \W + jets, \Z + jets, and \ttbar processes are used to predict the \ST distributions for the major reducible background. Because the dependency of the fake rate on \pt is similar in data and simulation, as shown in Fig. \ref{Bkg:fig:fakerate}, the simulated distributions are expected not to be biased with respect to the observed data. Only the events in which the leading selected hadronic tau is a misidentified jet, based on matching between reconstructed and generated particles, are considered. The simulated distributions are normalized to the data-driven estimation of the major reducible background yield.
+
+In the leptoquark search, the central value for the yield estimation is calculated using the inclusive fake rate from the observed data and the observed events in the anti-isolated region. Systematic errors on this estimation are assigned based on variations in the fake rate and in the anti-isolated region. The inclusive fake rate is varied by the statistical uncertainty $\sigma_{\text{stat}}$ in both directions $f+1\sigma_{\text{stat}}$ and $f-1\sigma_{\text{stat}}$ separately for each bin. Each of the two variations is applied to the observed events in the anti-isolated region. The larger difference between the estimations from the two statistical variations and the central value is taken as a systematic uncertainty. Similarly, the $N_{\text{jet}} \geq 1$ fake rate from the observed data is applied to the observed events in the anti-isolated region, and the difference is taken as a systematic uncertainty. The contribution from residual backgrounds in the anti-isolated region is estimated using the inclusive fake rate from the observed data and included as an additional uncertainty. As mentioned previously, an uncertainty is also assessed due to the systematic difference in fake rates between \Zmm + jets events and semileptonic \ttbar events. In the top squark search, the systematic uncertainties are computed in the same way. However, the central value for the yield estimation is calculated using the $N_{\text{jet}} \geq 1$ fake rate from the observed data, in order to account for the higher jet multiplicity. Correspondingly, the $N_{\text{jet}} \geq 2$ fake rate from the observed data is used for a variation.
+
+Tables \ref{Bkg:tab:faketauresultsmutauLQ} and \ref{Bkg:tab:faketauresultsmutauLQD} show the results of the major reducible background estimation in the \mutau channel for the leptoquark search and the top squark search, respectively. The predictions from the simulation are in agreement with the data-driven values and with the closure test performed using the simulated fake rate and simulated anti-isolated events. These predictions are taken from \W + jets, \Z + jets, and \ttbar events in the signal region with matching between generated jets and reconstructed hadronic taus, normalized to $\lumi = \thelumi$. When contributions from all sources of systematic uncertainty are added in quadrature, the overall uncertainties are $16\%$ for the leptoquark search and $23\%$ for the top squark search. The statistical uncertainty from the anti-isolated region is approximately $1-2\%$ in all cases, which is negligible in comparison.
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|c|r|r|}
+      \multicolumn{4}{c}{\mutau channel} \\
+      \hline
+      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{c|}{LQ Results} \\
+      \hline
+      anti-iso      & fake rate                                           & \multicolumn{1}{c|}{yield}  & \multicolumn{1}{c|}{variation}\\
+      \hline
+      data          & data (incl.)                                        & 117.3 & (central)\\
+      data          & data (incl.) $\pm 1\sigma_{\text{stat}}$            & 128.3 & 11.0 \\
+      data          & data ($N_{\text{jet}} \geq 1$)                      & 106.5 & 10.7    \\
+      residual bkg. & data (incl.)                                        & ---   & 7.0     \\
+      \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times35\%$)} & ---   & 7.4 \\
+      \hline
+      \multicolumn{2}{|c|}{Final Result}         & \multicolumn{2}{c|}{$117.3 \pm 18.5$}\\
+      \multicolumn{2}{|c|}{Simulated Prediction} & \multicolumn{2}{c|}{$117.7 \pm 28.7$}\\
+      \multicolumn{2}{|c|}{Closure Test}         & \multicolumn{2}{c|}{$121.7 \pm \hphantom{1}3.5$}\\
+      \hline
+    \end{tabular}
+    \caption{The results of the data-driven major reducible background estimation for the leptoquark search in the \mutau channel. This table shows all sources of systematic uncertainty and a comparison to the simulated prediction. Only statistical uncertainty is given for the simulated prediction and the closure test.}
+    \label{Bkg:tab:faketauresultsmutauLQ}
+  \end{center}
+\end{table}
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|c|r|r|}
+      \multicolumn{4}{c}{\mutau channel} \\
+      \hline
+      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{c|}{$\sTop$ Results} \\
+      \hline
+      anti-iso    & fake rate                                                  & \multicolumn{1}{c|}{yield}  & \multicolumn{1}{c|}{variation}\\
+      \hline
+      data        & data ($N_{\text{jet}} \geq 1$)                             & 59.8 & (central) \\
+      data        & data ($N_{\text{jet}} \geq 1$) $\pm 1\sigma_{\text{stat}}$ & 67.0 & 7.2 \\
+      data        & data ($N_{\text{jet}} \geq 2$)                             & 54.4 & 5.4     \\
+      residual MC & data ($N_{\text{jet}} \geq 1$)                             & ---  & 2.1      \\
+      \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times95\%$)}      & ---  & 10.2 \\
+      \hline
+      \multicolumn{2}{|c|}{Final Result}         & \multicolumn{2}{c|}{$59.8 \pm 13.8$}\\
+      \multicolumn{2}{|c|}{Simulated Prediction} & \multicolumn{2}{c|}{$57.5 \pm \hphantom{1}6.5$} \\
+      \multicolumn{2}{|c|}{Closure Test}         & \multicolumn{2}{c|}{$58.0 \pm \hphantom{1}1.3$} \\
+      \hline
+    \end{tabular}
+    \caption{The results of the data-driven major reducible background estimation for the top squark search in the \mutau channel. This table shows all sources of systematic uncertainty and a comparison to the simulated prediction. Only statistical uncertainty is given for the simulated prediction and the closure test.}
+    \label{Bkg:tab:faketauresultsmutauLQD}
+  \end{center}
+\end{table}
+
+
+
+
+
+% \subsubsection{Fake tau background from W, Z and ttbar processes in etau channel}
+% \label{sec:faketaubkgetau}
+
+% In the \etau channel, there is a significant contribution from QCD events in the anti-isolated region. As described previously at the beginning of Sec.~\ref{subsec:faketaubkg}, the fake rate calculated from the \Zmm control region is not appropriate for QCD events. The QCD contribution must be subtracted from the fake tau background estimation performed with the fake rate method. The same sign opposite sign (SS/OS) method is used to estimate the number of QCD events in the anti-isolated region. 
+
+% The SS/OS method estimates the QCD background in the opposite sign region, starting from a measurement of the QCD background yield in the same sign region:
+% \begin{eqnarray}
+% N_{\text{QCD}}^{\text{SS}} & = & N_{\text{data}}^{\text{SS}} - N_{\text{MC}}^{\text{SS}} \label{bkg:QCDss}\\
+% N_{\text{QCD}}^{\text{OS}} & = & 1.06 N_{\text{QCD}}^{\text{SS}} \label{bkg:QCDos}
+% \end{eqnarray}
+% where $N_{\text{QCD}}^{\text{SS}}$ ($N_{\text{QCD}}^{\text{OS}}$) is the number of QCD events in the same sign (opposite sign) region. The factor of 1.06 is applied to account for the difference in jet composition in opposite sign and same sign events \cite{AN-13-178}.
+% The SS/OS method predicts a yield of $3026 \pm 210$ QCD events for the LQ final selection (Fig. \ref{fig:QCDSSAiso}) and $152 \pm 15$ events for the LQD321 final selection.
+
+
+% \begin{figure}[htbp]
+%   \begin{center}
+%     \includegraphics[width=0.6\textwidth]{figures/etau/eMETTMassSSAIsoFinal.pdf}
+%     \caption{Transverse mass of the electron and missing transverse energy system for the same sign anti-isolated control region, after the \MassTJ cut. The overall excess in data, not localized in a specific region of the spectrum, indicates the presence of QCD background.}
+%     \label{fig:QCDSSAiso}
+%   \end{center}
+% \end{figure}
+
+% Since the excess in data attributed to the QCD background contains only events with one tau, the contribution from the QCD process, weighted by the fake rate, is given by the simplified formula:
+
+% \begin{equation} N_{\mathrm{fake}~\tau}^{(\text{QCD})} = N_{\text{anti-iso}}^{(\text{QCD})} \sum_{\pt} \frac{\text{FR}(\pt)}{1-\text{FR}(\pt)} \label{Bkg:eq:NfakeQCD} \end{equation}
+
+% The residual tau \pt distribution is computed by subtracting MC from data in the anti-isolated region. This distribution is used in Eq. \eqref{Bkg:eq:NfakeQCD} to calculate a QCD contribution of $38.5 \pm 2.7$ events for the LQ final selection and $1.5\pm 0.1$ for the LQD321 final selection. These events have to be subtracted from the fake tau background estimation.
+
+% Tables \ref{Bkg:tab:faketauresultsetauLQ} and \ref{Bkg:tab:faketauresultsetauLQD} show the results of the fake tau background estimation for the different final selections in the \etau channel, with the QCD contribution already subtracted. The sources of systematic uncertainty are the same as those considered in the \mutau channel (Sec. \ref{subsubsec:faketaubkgmutau}), with the uncertainty on the subtracted QCD contribution included as an additional systematic uncertainty. The results from the fake rate method are consistent with the MC predictions. The total uncertainty on the fake tau background yield is $17\%$ for the LQ final selection and $24\%$ for the LQD321 final selection.
+
+% \begin{table}[!ht]
+%   \begin{center}
+%     \begin{tabular}{|c|c|c|c|}
+%       \multicolumn{4}{c}{\etau channel} \\
+%       \hline
+%       \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{|c|}{LQ Results} \\
+%       \hline
+%       anti-iso    & fake rate                                & yield  & variation \\
+%       \hline
+%       data        & data (incl.)                             & 124.2 & (central)   \\
+%       data        & data (incl.) $\pm 1\sigma_{\text{stat}}$ & 138.5 $\text{*}$ & 14.3 \\
+%       data        & data ($N_{\text{jet}} \geq 1$)           & 113.9 & 10.3         \\ 
+%       residual MC & data (incl.)                             & ---   & 7.1              \\
+%       QCD         & data (incl.)                             & ---   & 2.7 $\text{**}$  \\
+%       \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times35\%$)} & --- & 7.8 \\
+%       \hline
+%       \multicolumn{2}{|c|}{final result} & \multicolumn{2}{|c|}{124.2 $\pm$ 20.7} \\
+%       \multicolumn{2}{|c|}{MC prediction} & \multicolumn{2}{|c|}{106.8 $\pm$ 27.3} \\
+%       \multicolumn{2}{|c|}{MC closure} & \multicolumn{2}{|c|}{129.5 $\pm$ 3.6} \\
+%       \hline
+%     \end{tabular}
+%     \caption{Results of the data-driven fake tau background estimation for the LQ final selection in the \etau channel. 
+% This table shows all sources of systematic uncertainty and a comparison to the generator-level MC prediction. 
+% Only statistical uncertainty is given for the MC prediction and the MC closure test. $\text{*}$ From $\text{FR}+1\sigma_{\text{stat}}$ and $\text{FR}-1\sigma_{\text{stat}}$, the larger variation from the central value is used. $\text{**}$ The QCD line corresponds to the systematic uncertainty assigned to the QCD subtraction from the fake tau background.}
+%     \label{Bkg:tab:faketauresultsetauLQ}
+%   \end{center}
+% \end{table}
+
+% \begin{table}[!ht]
+%   \begin{center}
+%     \begin{tabular}{|c|c|c|c|}
+%       \multicolumn{4}{c}{\etau channel} \\
+%       \hline
+%       \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{|c|}{LQD321 Results} \\
+%       \hline
+%       anti-iso    & fake rate                                                  & yield  & variation\\
+%       \hline
+%       data        & data ($N_{\text{jet}} \geq 1$)                             & 65.7 & (central) \\
+%       data        & data ($N_{\text{jet}} \geq 1$) $\pm 1\sigma_{\text{stat}}$ & 74.6 $\text{*}$ & 8.9 \\
+%       data        & data ($N_{\text{jet}} \geq 2$)                             & 59.8 & 5.9   \\
+%       residual MC & data ($N_{\text{jet}} \geq 1$)                             & ---  & 1.8      \\
+%       QCD         & data ($N_{\text{jet}} \geq 1$)                             & ---  & 0.1 $\text{**}$ \\
+%       \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times95\%$)}      & ---  & 11.23 \\
+%       \hline
+%       \multicolumn{2}{|c|}{final result} & \multicolumn{2}{|c|}{65.7 $\pm$ 15.6}\\
+%       \multicolumn{2}{|c|}{MC prediction} & \multicolumn{2}{|c|}{66.7 $\pm$ 7.6} \\
+%       \multicolumn{2}{|c|}{MC closure} & \multicolumn{2}{|c|}{61.6 $\pm$ 1.4} \\
+%       \hline
+%     \end{tabular}
+%     \caption{Results of the data-driven fake tau background estimation for the LQD321 final selection in the \etau channel. 
+% This table shows all sources of systematic uncertainty and a comparison to the generator-level MC prediction. 
+% Only statistical uncertainty is given for the MC prediction and MC closure test. $\text{*}$ From $\text{FR}+1\sigma_{\text{stat}}$ and $\text{FR}-1\sigma_{\text{stat}}$, the larger variation from the central value is used. $\text{**}$ The QCD line corresponds to the systematic uncertainty assigned to the QCD subtraction from the fake tau background.}
+%     \label{Bkg:tab:faketauresultsetauLQD}
+%   \end{center}
+% \end{table}
+
+% \input{qcdbkg}
