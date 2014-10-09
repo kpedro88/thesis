@@ -1,6 +1,31 @@
 \subsubsection{QCD background in \etau channel}
 \label{sec:qcdbkg}
 
+The same sign opposite sign (SS/OS) method is used to estimate the number of QCD events in the anti-isolated region. 
+
+The SS/OS method estimates the QCD background in the opposite sign region, starting from a measurement of the QCD background yield in the same sign region:
+\begin{eqnarray}
+N_{\text{QCD}}^{\text{SS}} & = & N_{\text{data}}^{\text{SS}} - N_{\text{MC}}^{\text{SS}} \label{bkg:QCDss}\\
+N_{\text{QCD}}^{\text{OS}} & = & 1.06 N_{\text{QCD}}^{\text{SS}} \label{bkg:QCDos}
+\end{eqnarray}
+where $N_{\text{QCD}}^{\text{SS}}$ ($N_{\text{QCD}}^{\text{OS}}$) is the number of QCD events in the same sign (opposite sign) region. The factor of 1.06 is applied to account for the difference in jet composition in opposite sign and same sign events \cite{AN-13-178}.
+The SS/OS method predicts a yield of $3026 \pm 210$ QCD events for the LQ final selection (Fig. \ref{fig:QCDSSAiso}) and $152 \pm 15$ events for the LQD321 final selection.
+
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/etau/eMETTMassSSAIsoFinal.pdf}
+    \caption{Transverse mass of the electron and missing transverse energy system for the same sign anti-isolated control region, after the \MassTJ cut. The overall excess in data, not localized in a specific region of the spectrum, indicates the presence of QCD background.}
+    \label{fig:QCDSSAiso}
+  \end{center}
+\end{figure}
+
+Since the excess in data attributed to the QCD background contains only events with one tau, the contribution from the QCD process, weighted by the fake rate, is given by the simplified formula:
+
+\begin{equation} N_{\mathrm{fake}~\tau}^{(\text{QCD})} = N_{\text{anti-iso}}^{(\text{QCD})} \sum_{\pt} \frac{\text{FR}(\pt)}{1-\text{FR}(\pt)} \label{Bkg:eq:NfakeQCD} \end{equation}
+
+The residual tau \pt distribution is computed by subtracting MC from data in the anti-isolated region. This distribution is used in Eq. \eqref{Bkg:eq:NfakeQCD} to calculate a QCD contribution of $38.5 \pm 2.7$ events for the LQ final selection and $1.5\pm 0.1$ for the LQD321 final selection. These events have to be subtracted from the fake tau background estimation.
+
 As said at the beginning of the section, the \etau channel contains a significant QCD background that cannot be estimated with the same fake rate due to the difference in quark jet vs. gluon jet composition. The QCD background is estimated independently in the signal region, after the QCD contribution from the fake rate method is subtracted to avoid double counting, as described in the previous section.
 
 The QCD background is estimated using a combination of the SS/OS method and an extrapolation to the final selection using a sample selected without the \MassTJ cut.
