@@ -1,166 +1,81 @@
-\subsubsection{QCD background in \etau channel}
+\subsubsection{QCD Multijet Reducible Background}
 \label{sec:qcdbkg}
 
-The same sign opposite sign (SS/OS) method is used to estimate the number of QCD events in the anti-isolated region. 
+The estimation of the contribution from the QCD multijet process in the \etau channel requires two steps. The presence of QCD events in the observed data in the \etau anti-isolated control region biases the previous estimation, as these events are weighted by the inappropriate quark-jet fake rate. Therefore, the first step must be to estimate the yield and \pt distribution of the QCD events in the anti-isolated observed data, in order to correct that bias by subtracting the inappropriate portion of the fake rate estimation. The second step is to perform an independent estimation of the QCD contribution in the signal region using the observed data.
 
-The SS/OS method estimates the QCD background in the opposite sign region, starting from a measurement of the QCD background yield in the same sign region:
-\begin{eqnarray}
-N_{\text{QCD}}^{\text{SS}} & = & N_{\text{data}}^{\text{SS}} - N_{\text{MC}}^{\text{SS}} \label{bkg:QCDss}\\
-N_{\text{QCD}}^{\text{OS}} & = & 1.06 N_{\text{QCD}}^{\text{SS}} \label{bkg:QCDos}
-\end{eqnarray}
-where $N_{\text{QCD}}^{\text{SS}}$ ($N_{\text{QCD}}^{\text{OS}}$) is the number of QCD events in the same sign (opposite sign) region. The factor of 1.06 is applied to account for the difference in jet composition in opposite sign and same sign events \cite{AN-13-178}.
-The SS/OS method predicts a yield of $3026 \pm 210$ QCD events for the LQ final selection (Fig. \ref{fig:QCDSSAiso}) and $152 \pm 15$ events for the LQD321 final selection.
+In both steps, a same-sign/opposite-sign (SS/OS) method is used to estimate the number of QCD events in a given region of the data. A same-sign control region is defined by requiring that the light lepton and hadronic tau have the same electric charge, instead of the opposite charge. Because both objects are misidentified jets in QCD events, their charge assignments are expected to be random, so the number of events in which both objects have the same charge should be the same as for the opposite charge. In practice, a slight deviation between the numbers of same-sign and opposite-sign events is possible, for example due to charge asymmetries in proton-proton collisions. The scale factor relating the numbers of same-sign and opposite-sign events was measured to be 1.06 in Ref. \cite{CMS-AN-2013-178}.
 
+The non-QCD background in the same-sign control region is estimated using the simulation and subtracted from the observed data; any remaining events are assumed to originate from the QCD process. The scale factor of 1.06 is applied to extrapolate from this yield $N_{\text{QCD}}^{\text{SS}}$ to the opposite-sign region $N_{\text{QCD}}^{\text{OS}}$:
+\begin{align}
+N_{\text{QCD}}^{\text{SS}} & = N_{\text{data}}^{\text{SS}} - N_{\text{MC}}^{\text{SS}}, \label{bkg:QCDss}\\
+N_{\text{QCD}}^{\text{OS}} & = 1.06 N_{\text{QCD}}^{\text{SS}}. \label{bkg:QCDos}
+\end{align}
+The subtraction of non-QCD backgrounds can potentially involve a large number of events. In order to ensure the validity of the subtraction, the normalization of the simulated samples must be carefully checked.
 
-\begin{figure}[htbp]
+To check the normalization of the simulated \W + jets, \Zll, and \Ztt samples, a region of data is defined using the preselection criteria without the cut $N_{\text{jets}}\geq2$. Most of the events at the preselection level are eventually eliminated from the signal region by the stricter main and final selections, so the contents of the signal region make up a relatively small portion of this larger region. The transverse mass of the electron and \met system, $\MT(\Pe,\met)$, is defined in Eq. \eqref{eq:MTdef}:
+\begin{equation}
+\MT(\Pe,\met) = \sqrt{2\pt^{(\Pe)}\met\left[1-\text{cos}\left(\Delta\phi\left(\Pe,\met\right)\right)\right]}. \label{eq:MTdef}
+\end{equation}
+This definition assumes both particles in the system are massless, which is a good approximation for highly relativistic electrons and neutrinos. The \MT distribution in the region defined above is used to determine normalization parameters for the simulated samples by comparing them to the observed data:
+\begin{equation}
+\MT^{\text{(data)}} = r_{\W}\MT^{\text{(\W + jets)}} + r_{\tau}\MT^{(\Ztt)} + r_{\ell}\MT^{(\Zll)} + \MT^{\text{(\ttbar,\cPqt,VV)}}. \label{Bkg:eq:MTmin}
+\end{equation}
+The difference between the sum of the simulated \MT distributions and the observed \MT distribution is minimized by varying the three normalization parameters $r_{\W}$, $r_{\tau}$, and $r_{\ell}$. The normalization of the other processes, \ttbar, single top, and diboson, is not addressed in this minimization. The observed distribution contains a contribution from QCD which is not modeled in the simulation. Therefore, at least one of the normalization parameters will be inflated during the minimization in order to include this contribution. Measurements of the inclusive \W and \Z production cross sections have demonstrated a similarity between the \MT distributions for \Zll and QCD events when using a selection tuned for \Wln events \cite{CMS-AN-2010-359,CMS:2011aa}. Hypothesizing that this similarity holds for the selection considered here, the parameter $r_{\ell}$ should scale the simulated \Zll yield to include the QCD yield.
+
+The minimization in Eq. \eqref{Bkg:eq:MTmin} provides the following values for the $r$ parameters: $r_{W} = 0.86$, $r_{\tau} = 1.21$, $r_{\ell} = 2.02$. Using these parameters, corrected yields $N$ can be defined for the simulated samples, based on the uncorrected yields $N_{\text{MC}}$:
+\begin{align}
+N(\text{\W + jets}) &= r_{\W}N_{\text{MC}}(\text{\W + jets}), \\
+N(\Ztt) &= r_{\tau}N_{\text{MC}}(\text{\Ztt}), \\
+N(\Zll) + N(\text{QCD}) &= r_{\ell}N_{\text{MC}}(\text{\Zll}). \label{Bkg:eq:NZllQCD}
+\end{align}
+Equation \eqref{Bkg:eq:NZllQCD} arises from the hypothesis that the \Zll yield will be scaled to include the QCD yield. This can be used to check the validity of the \MT minimization method for correcting the simulated sample normalizations. The parameter $r_{\tau}$ is assigned to be the normalization correction for both the \Zll and \Ztt samples, in order to solve for $N(\text{QCD})$ in terms of known quantities:
+\begin{align}
+N(\Zll) &= r_{\tau}N_{\text{MC}}(\text{\Zll}), \label{eq:NZll} \\
+N(\text{QCD}) &= r_{\ell}N_{\text{MC}}(\text{\Zll}) - r_{\tau}N_{\text{MC}}(\text{\Zll}). \label{eq:NQCDZ}
+\end{align}
+Equation \eqref{eq:NQCDZ} follows from the combination of Eqs. \eqref{Bkg:eq:NZllQCD} and \eqref{eq:NZll}. This equation produces the value $N(\text{QCD}) = 24765 \pm 1411$ for the region defined by the preselection criteria without the cut $N_{\text{jets}}\geq2$. In comparison, the SS/OS method applied directly to this region predicts the value $N(\text{QCD}) = 26424 \pm 1250$. These two values agree within uncertainties, validating the assumptions made in the \MT minimization method. The normalization parameters $r_{\W}$ and $r_{\tau}$ will be used for the \W + jets and \Z + jets normalizations in the various same-sign and anti-isolated control regions necessary to conduct the two steps of the QCD estimation in the signal region. A separate control region requiring $N_{\text{b-jet}}\geq2$ and $\MT>70\GeV$ is used to check the normalization of the \ttbar simulation, and no correction is found to be necessary.
+
+To measure the QCD portion of the observed data in the anti-isolated region, the SS/OS method described by Eqs. \eqref{bkg:QCDss} and \eqref{bkg:QCDos} is applied, using the normalization parameters. Figure \ref{fig:QCDSSAiso} shows the \MT(\Pe,\met) distribution in the same-sign anti-isolated control region for the leptoquark search, with an overall excess in the observed data indicating the presence of QCD. This method predicts $3026\pm210$ QCD events after the leptoquark final selection and $152\pm15$ events after the top squark final selection. In order to subtract these events' contribution from the reducible background estimation, the \pt distribution of the hadronic tau candidates in the QCD events is needed. Figure \ref{Bkg:fig:antiiso} shows that the QCD events in the \etau anti-isolated region are found primarily in the single tau multiplicity bin. Therefore, it is sufficient to subtract the simulated tau \pt distribution from the observed tau \pt distribution to obtain the QCD tau \pt distribution. A simplified version of Eq. \eqref{Bkg:eq:faketauest} can be used to weight these single-tau events:
+\begin{equation}
+N_{\text{misID}~\tau}^{\text{(QCD)}} = N_{\text{anti-iso}}^{\text{(QCD)}} \sum_{\pt}{\frac{f(\pt)}{1-f(\pt)}}. \label{Bkq:eq:faketausubQCD}
+\end{equation}
+Using Eq. \eqref{Bkq:eq:faketausubQCD}, the QCD yield to subtract is found to be $38.5\pm2.7$ events in the leptoquark search and $1.5\pm0.1$ events in the top squark search. The subtraction of these QCD yields is already included in the results shown in Tables \ref{Bkg:tab:faketauresultsetauLQ} and \ref{Bkg:tab:faketauresultsetauLQ}, with the statistical uncertainties on the QCD yields included as additional systematic uncertainties on the final major reducible background estimation.
+
+\begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=0.6\textwidth]{figures/etau/eMETTMassSSAIsoFinal.pdf}
-    \caption{Transverse mass of the electron and missing transverse energy system for the same sign anti-isolated control region, after the \MassTJ cut. The overall excess in data, not localized in a specific region of the spectrum, indicates the presence of QCD background.}
+    \caption{The transverse mass of the electron and missing transverse energy system for the same-sign anti-isolated control region, after the leptoquark final selection. The overall excess in the observed data, not localized in a specific range of \MT values, indicates the presence of QCD events.}
     \label{fig:QCDSSAiso}
   \end{center}
 \end{figure}
 
-Since the excess in data attributed to the QCD background contains only events with one tau, the contribution from the QCD process, weighted by the fake rate, is given by the simplified formula:
+Having subtracted the improperly estimated QCD contribution, the actual contribution from QCD, if any, must be obtained. Again, the SS/OS method is used, now with the signal region. To decrease the statistical uncertainty in this estimation, the same-sign control region is defined before the final selection. For the leptoquark search, this means that the cut $\MassTJ>250\GeV$ is not applied. Figure \ref{fig:QCDSSMET} shows the \met distribution in this control region, with an excess in the observed data at low \met indicating the presence of QCD. Using the normalization corrections derived previously, the simulated yield in this control region is found to be $474\pm18$ events, while the observed yield is found to be $736\pm27$, which gives $N_{\text{QCD}}^{\text{SS}} = 262\pm32$ and correspondingly $N_{\text{QCD}}^{\text{OS}} = 277\pm34$. To extrapolate this QCD yield to the region defined by the leptoquark final selection, the efficiency of the cut $\MassTJ>250\GeV$ is measured in a same-sign control region which vetoes events containing one or more b-tagged jets, enhancing the contribution from QCD. The QCD yields before and after the mass cut are defined as the subtraction of the simulated yields from the observed yields:
+\begin{alignat}{8}
+N_{\text{QCD}}^{\text{before}} &= N_{\text{data}}^{\text{before}} &&- N_{\text{MC}}^{\text{before}} &&= (793 &&\pm 28) &&- (469 &&\pm 19) &&= 324 &&\pm 34, \\
+N_{\text{QCD}}^{\text{after}} &= N_{\text{data}}^{\text{after}}   &&- N_{\text{MC}}^{\text{after}}  &&= (\hphantom{7}93  &&\pm 10) &&- (\hphantom{4}66  &&\pm \hphantom{1}7)  &&= \hphantom{3}27  &&\pm 12.
+\end{alignat}
+The ratio of these two yields is the efficiency of the cut, $\varepsilon_{\MassTJ}=8.5\%\pm4.0\%$. Thus, Eq. \eqref{eq:NQCDfinal} calculates the final yield from QCD in the leptoquark search:
+\begin{equation}
+N_{\text{QCD}}^{\text{final}} = N_{\text{QCD}}^{\text{OS}} \times \varepsilon_{\MassTJ} = (277\pm 34) \times (8.5\% \pm 4\%) = 23.6 \pm 12. \label{eq:NQCDfinal}
+\end{equation}
+To check this estimation, the SS/OS method is applied to the signal region after the cut $\MassTJ>250\GeV$. This check gives a less precise result $N_{\text{QCD}}^{\text{SS/OS}} = 31.8 \pm 21.2$, which is fully compatible with the above result within uncertainties.
 
-\begin{equation} N_{\mathrm{fake}~\tau}^{(\text{QCD})} = N_{\text{anti-iso}}^{(\text{QCD})} \sum_{\pt} \frac{\text{FR}(\pt)}{1-\text{FR}(\pt)} \label{Bkg:eq:NfakeQCD} \end{equation}
-
-The residual tau \pt distribution is computed by subtracting MC from data in the anti-isolated region. This distribution is used in Eq. \eqref{Bkg:eq:NfakeQCD} to calculate a QCD contribution of $38.5 \pm 2.7$ events for the LQ final selection and $1.5\pm 0.1$ for the LQD321 final selection. These events have to be subtracted from the fake tau background estimation.
-
-As said at the beginning of the section, the \etau channel contains a significant QCD background that cannot be estimated with the same fake rate due to the difference in quark jet vs. gluon jet composition. The QCD background is estimated independently in the signal region, after the QCD contribution from the fake rate method is subtracted to avoid double counting, as described in the previous section.
-
-The QCD background is estimated using a combination of the SS/OS method and an extrapolation to the final selection using a sample selected without the \MassTJ cut.
-
-Before performing the SS/OS extrapolation, the normalization of the MC samples is checked for events selected with a same sign requirement in control regions. The \ttbar process is found to be well normalized. The W + jets and Z + jets processes are found to need correction factors of 0.86 and 1.21, respectively.
-After correcting the normalization, the simulation yield in the same sign region is estimated to be $474\pm 18$ events, while the data yield is measured to be $736\pm 27$, giving $N_{\text{QCD}}^{\text{SS}}=262\pm 29$ (Fig. \ref{fig:QCDSSMET}). The QCD background before the \MassTJ cut is then $N_{\text{QCD}}^{\text{OS}} =277\pm 31$ for the LQ selection, using Eq. \eqref{bkg:QCDos}.
-
-\begin{figure}[htbp]
+\begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=0.6\textwidth]{figures/etau/metPtSSIso.pdf}
-    \caption{Missing transverse energy spectrum for the same sign control sample, selected before the \MassTJ requirement. The excess at low \met is an indication of the presence of QCD background.}
+    \caption{The missing transverse energy spectrum for the same-sign control region selected before the $\MassTJ>250\GeV$ requirement for the leptoquark search. The excess of observed events at low \met is an indication of the presence of QCD events.}
     \label{fig:QCDSSMET}
   \end{center}
 \end{figure}
 
+In addition to the yield, the \ST distribution for the QCD process has to be estimated from the observed data, as no simulated sample is available to produce it. The distribution is obtained by subtracting the simulated \ST distribution from the observed \ST distribution in the same-sign control region after the full leptoquark final selection, as shown in Fig. \ref{fig:residQCD}. The bins with negative values, all of which are equivalent to zero within their statistical uncertainties, are set to be zero to avoid unphysical values in the distribution. The QCD \ST distribution obtained from this method is then added to the major reducible \ST distribution for the \etau channel. The propagated statistical uncertainty on the QCD yield, $\pm 12$ events, is added in quadrature with the systematic uncertainty from the major reducible background estimation.
 
-The extrapolation of the QCD yield to the final selection is done by multiplying $N_{\text{QCD}}^{\text{OS}}$ by the efficiency of the \MassTJ cut on QCD events.
-The efficiency is computed in a control region enriched in QCD events. This control region is selected with a same sign requirement and a veto on events containing at least one b-tagged jet. The QCD yields before and after the mass cut are defined as the subtraction of simulation from data:
-\begin{eqnarray}
-N_{\text{QCD}}^{\text{before}} & = & N_{\text{data}}^{\text{before}} - N_{\text{MC}}^{\text{before}} = (794\pm 28) - (469\pm 19) = 324\pm 34 \\
-N_{\text{QCD}}^{\text{after}} & = & N_{\text{data}}^{\text{after}} - N_{\text{MC}}^{\text{after}} = (93\pm 10) - (66\pm 7) = 27\pm 12
-\end{eqnarray}
-The ratio of these two yields gives an efficiency $\varepsilon_{\text{QCD}} = 8.5\% \pm 4\%$.
-
-Combining $N_{\text{QCD}}^{\text{OS}}$ and $\varepsilon_{\text{QCD}}$, the QCD yield after the final selection is estimated to be:
-\begin{equation}
-N_{\text{QCD}}^{\text{final}} = (277\pm 31) \times (8.5\% \pm 4\%) = 23.6 \pm 12 
-\end{equation}
-A cross check performed with the SS/OS method after the full LQ final selection gives a fully compatible, but less precise result: $N_{\text{QCD}}^{\text{SS/OS}} = 31.8 \pm 21.2$.
-
-In addition to the yield, the QCD \ST distribution has to be defined since no MC sample is able to reproduce this shape. The shape is obtained by selecting events passing the final selection except with a same sign requirement, and subtracting the simulation from the data (Fig. \ref{fig:residQCD}). Negative values are set to zero to avoid negative entries. The obtained QCD \ST distribution is then added to the fake tau distribution obtained for the \etau channel.
-
-\begin{figure}[htbp]
+\begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=0.6\textwidth]{figures/bkgEstim/residualQCD.pdf}
-    \caption{Residual distribution (data -- simulation) for same sign events after the final selection determining the QCD shape. Negative values are set to zero before using the QCD shape.}
+    \caption{The QCD \ST distribution estimated by subtracting the simulated distribution from the observed distribution in the same-sign control region after the leptoquark final selection. The negative values are set to zero when using the distribution.}
     \label{fig:residQCD}
   \end{center}
 \end{figure}
 
-For the LQD321 final selection, the QCD background is found to be $0 \pm 13$ using the SS/OS extrapolation method and $0 \pm 18$ using the simple SS/OS method for a cross check.
-This is expected due to the high jet multiplicity requirement in this selection.
-
-
-
-
-
-
-%\subsubsection{Fake tau background in \etau channel}
-%\label{subsubsec:qcdbkg}
-
-%In the \etau channel, the anti-isolated region contains a significant portion of QCD %multijet events,
-%while the contribution from QCD events in the signal region is negligible.
-%The fake tau objects used to calculate the fake rate are mostly quark jets, while QCD %events 
-%contain mostly gluon jets. Gluon jets are wider than quark jets, so they are less %likely to 
-%pass the tau isolation discriminator and therefore they have a lower fake rate. 
-%Thus, applying the fake rate calculated from the \Zmm region will overestimate the 
-%contribution of these QCD events to the fake tau background in the main region. 
-%The QCD yield in the anti-isolated region must be estimated so that it can be %subtracted from the fake tau background estimation.
-
-%The sample selected with isolated taus at the preselection level, before the jet %multiplicity cut, 
-%is used to determine normalization corrections for \Zll, \Ztt, and W + jets MC %samples. 
-%The distribution of the transverse mass of the electron and $\MET$ system, %$\MT(e,\MET)$, 
-%is hypothesized to be similar for \Zll and QCD events in a W based %selection~\cite{AN-10-359,CMS:2011aa}. 
-%Three normalization parameters are varied in order to minimize the difference between %the data and MC distributions of $\MT$: 
-
-%\begin{equation}
-%\MT^{(\text{data})} = r_{W}\MT^{(\text{W + jets})} + r_{\tau}\MT^{(\text{\Ztt})} + %r_{\ell}\MT^{(\text{\Zll})} + \MT^{(\text{\ttbar,single top, VV})}
-%\label{Bkg:eq:MTmin}
-%\end{equation}
-%where $\MT^{X}$ is the $\MT$ shape for a given process $X$ (simulation on right side) %and $r_{W}$, $r_{\tau}$, $r_{\ell}$ are the three normalization parameters.
-
-%Once the parameters $r$ are found, corrected yields are defined and used to estimate %the yield of QCD events in data.
-%\begin{align}
-%N(\text{W+jets}) &= r_{W}N_{\text{MC}}(\text{W+jets}) \\
-%N(\Ztt) &= r_{\tau}N_{\text{MC}}(\text{\Ztt}) \\
-%N(\Zll) + N(\text{QCD}) &= r_{\ell}N_{\text{MC}}(\text{\Zll}) \label{Bkg:eq:NZllQCD}
-%\end{align}
-
-%Equation \eqref{Bkg:eq:NZllQCD} follows from the hypothesis that the $\MT$ %distribution is similar in \Zll and QCD events. QCD events are not included in MC, so %the minimization in Eq.~\eqref{Bkg:eq:MTmin} scales the \Zll yield to include the QCD %yield. To solve for $N(\text{QCD})$ in terms of known quantities, it is assumed that %the corrected yield $N(\Zll)$ should be calculated using the same normalization %parameter as the corrected yield for $N(\Ztt)$.
-
-%\begin{align}
-%N(\Zll) &= r_{\tau}N_{\text{MC}}(\text{\Zll}) \\
-%N(\text{QCD}) &= r_{\ell}N_{\text{MC}}(\text{\Zll}) - %r_{\tau}N_{\text{MC}}(\text{\Zll})
-%\end{align}
-
-%This method results in the following values: $r_{W} = 0.86$, $r_{\tau} = 1.21$, $r_{\ell} = 2.02$, and $N(\text{QCD}) = 24765 \pm 1411$, which is consistent with a same sign opposite sign (SS/OS) QCD estimation ($N=26424\pm1250$).
-%A separate control region requiring 2 b-tagged jets and $\MT>70\GeV$ is used to find normalization factors for the \ttbar MC sample. The control region is divided into two subregions corresponding to the main region, containing isolated taus, and the anti-isolated region, containing only taus which fail isolation. The \ttbar normalization factors are found to be 0.992 for the main control region and 1.02 for the anti-isolated control region, which are close enough to 1 to be neglected. Another separate control region with $\MT>70\GeV$, $\MET>50\GeV$, and only anti-isolated taus is used to find a normalization factor of 0.96 for the anti-isolated W + jets MC sample. The Z + jets normalization factor of 1.21 is assumed to be appropriate everywhere. The corresponding normalization factors in the same sign regions are found to be very similar to the factors in the opposite sign regions.
-
-%After finding corrected MC normalization factors, the magnitude of QCD events in the anti-isolated region is estimated using 
-%the SS/OS method. A control region is defined in which the electron and tau have the same charge instead of the usual 
-%opposite charge. 
-%The yield of QCD events in this same sign control region is found by subtracting the MC yield from the data yield, with MC 
-%normalization factors applied. The same sign QCD yield is propagated to the opposite sign region by multiplying by a 
-%standard factor of 1.06~\cite{AN-13-178}. This method predicts in the anti-isolated region 
-%$3026 \pm 210$ QCD events for the LQ selection and $152 \pm 15$ events for the LQD selection.
-
-%A residual tau \pt distribution is computed by subtracting MC from data in the anti-isolated region. The fake rate is applied to this distribution in Eq. \eqref{Bkg:eq:NfakeQCD} to calculate the QCD contribution to the fake tau background estimation, which will be subtracted. The result for the LQ final selection is $38.5 \pm 2.7$ events. Similarly, $1.8\pm 0.1$ events have to be subtracted in the LQD selection.
-
-%\begin{equation} N_{\mathrm{fake}~\tau}^{(\text{QCD})} = N_{\text{anti-iso}}^{(\text{QCD})} \sum_{\pt} \frac{\text{FR}(\pt)}{1-\text{FR}(\pt)} \label{Bkg:eq:NfakeQCD} \end{equation}
-
-%After subtracting this overestimated QCD contribution from the fake tau background estimation, 
-%the actual QCD contribution to the main region must be estimated. 
-%Again, the SS/OS method is used, now in the main region. 
-%The same sign QCD yield is found to be $13 \pm 19$ events for the LQ selection and $0 \pm 13.2$ for the LQD selection. 
-%This is compatible with zero, so it is concluded that the QCD background in the main region after the final selection is negligible. 
-%Table \ref{Bkg:tab:faketauresultsetau} shows the final results for the fake tau background in the \etau channel, with the overestimated QCD contribution subtracted from the yields which come from data in the anti-isolated region. 
-%The systematic uncertainty is calculated using the same variations as in the \mutau channel, producing an overall 
-%uncertainty of $21\%$ for the LQ final selection and $19\%$ for the LQD321 final selection.
-
-%\textcolor{red}{Yields for LQD321 selection will be double-checked in the next days.}
-
-%\begin{table}[!ht]
-%  \begin{center}
-%    \begin{tabular}{|c|c|c|c|c|c|}
-%      \multicolumn{6}{c}{\etau channel} \\
-%      \hline
-%      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{|c|}{LQ Results} & \multicolumn{2}{|c|}{LQD321 Results} \\
-%      \hline
-%      anti-iso    & fake rate                      & yield  & variation & yield  & variation\\
-%      \hline
-%      data        & data (incl.)                   & 124.2 & (central)       & 74.6 & (central) \\
-%      data        & data ($N_{\text{jet}} \geq 1$) & 113.9 & 10.3            & 65.7 & 8.9   \\
-%      MC          & MC (incl.)                     & 129.5 & 22.7 $\text{*}$ & 77.2 & 10.5 $\text{*}$   \\
-%      residual MC & data (incl.)                   & ---   & 7.1             & ---  & 2.0      \\
-%      QCD & data (incl.)                           & ---   & 2.7             & ---  & 0.1     \\
-%      \hline
-%      \multicolumn{2}{|c|}{final result} & \multicolumn{2}{|c|}{124.2 $\pm$ 26.1} & \multicolumn{2}{|c|}{74.6$\pm$13.9}\\
-%      \multicolumn{2}{|c|}{MC prediction} & \multicolumn{2}{|c|}{106.8 $\pm$ 27.3} & \multicolumn{2}{|c|}{66.7$\pm$7.6} \\
-%      \hline
- %   \end{tabular}
- %   \caption{Results of the data-driven fake tau background estimation for each final selection in the \etau channel. 
-%This table shows all sources of systematic uncertainty and a comparison to the generator-level MC prediction. 
-%Only statistical uncertainty is given for the MC prediction. $\text{*}$ This variation is computed by comparing the MC closure test and the MC prediction.}
-%    \label{Bkg:tab:faketauresultsetau}
-%  \end{center}
-%\end{table}
-%we need to add the LQD321 final sel numbers here
+In the top squark search, the QCD background is found to be $0 \pm 13$ using the SS/OS method with an extrapolation of the efficiency of the cut $N_{\text{jets}}\geq5$. Applying the SS/OS method after the final selection to check that prediction finds $0 \pm 18$. These predictions agree and are both equivalent to zero events, so no QCD background is added to the \etau channel in the top squark search. This lack of QCD background is expected due to the high jet multiplicity requirement in this selection.
