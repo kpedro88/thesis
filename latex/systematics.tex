@@ -1,0 +1,60 @@
+\section{Systematic Uncertainties
+\label{sec:systematics}}
+
+There are a number of systematic uncertainties associated with both the background estimations and the simulation of the signals. For the simulated backgrounds and signals, these uncertainties arise from several sources, including discrepancies between the observed data and the simulation in the performance of reconstruction algorithms. Some sources of uncertainty affect both the \ST distributions and the simulated yields. Table \ref{tab:systunc} summarizes all of the systematic uncertainties in the simulated samples. For the data-driven background estimations, variations and uncertainties in the components of the methods used for the estimations are combined to compute the overall systematic uncertainties, as discussed in Secs. \ref{sec:ttbarbkg} and \ref{sec:faketaubkg}. The overall systematic uncertainties in the data-driven background estimations are listed in Table \ref{tab:systuncdd}.
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|l|r|r|r|r|r|}
+    \hline
+    \multirow{2}{*}{Source} & \multirow{2}{*}{Uncertainty} & \multicolumn{4}{c|}{Effect on:} \\
+    \cline{3-6}
+    & & \multicolumn{1}{c|}{Signal} & \multicolumn{1}{c|}{\Z + jets} & \multicolumn{1}{c|}{Single \cPqt} & \multicolumn{1}{c|}{VV} \\
+    \hline
+    $(\Pe,\mu)$ ID, iso, HLT &   2\% & 2\% &  2\% & 2\% & 2\% \\
+    \tauh ID, iso            &   6\% & 6\% &  6\% & 6\% & 6\% \\
+    b-tagging                & ${\sim}4\%$ & 3\% &  1\% & 3\% & 1\% \\
+    mistagging               & ${\sim}10\%$ & 1\% &  4\% & 1\% & 2\% \\
+    pileup                   &   6\% & 3\% &  3\% & 3\% & 3\% \\
+    luminosity               & 2.6\% & 2.6\% & 2.6\% & 2.6\% & 2.6\% \\
+    cross section            &    -- &  -- & 2\% & 14\% & 5--15\% \\
+    statistical              &    -- &  -- & 20--40\% & 20--40\% & 20--40\% \\ %needs to be checked
+    ISR/FSR                  &    -- & 4\% &   -- &  -- &  -- \\
+    \tauh energy scale       &   3\% & 0--5\% & 5--19\% & 5--19\% & 5--19\% \\ %needs to be checked
+    \tauh energy resolution  &  10\% & 1--9\% & 20\% & 20\% & 20\% \\ %needs to be checked
+    jet energy scale         &  ${\sim}4\%$ & 1\% & 0--7\% & 0--7\% & 0--7\% \\ %needs to be checked
+    jet energy resolution    &  5--10\%  & 1\% & 0--5\% & 0--5\% & 0--5\% \\ %needs to be checked
+    \hline
+    \end{tabular}
+    \caption{The relative systematic uncertainties on the yields of the simulated signal and the simulated backgrounds. The magnitude of the effects may vary within indicated ranges for different signal masses, for different background processes within a given category, or for the different searches.}
+    \label{tab:systunc}
+  \end{center}
+\end{table}
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|l|r|r|}
+    \hline
+    \multicolumn{2}{|c|}{Channel} & \multicolumn{1}{c|}{\ttbar irreducible} & \multicolumn{1}{c|}{Major reducible} \\
+    \hline
+    \multirow{2}{*}{LQ}    &  \etau & 17\% & 16\% \\
+                           & \mutau & 19\% & 16\% \\
+    \hline
+    \multirow{2}{*}{\sTop} &  \etau & 16\% & 24\% \\
+                           & \mutau & 17\% & 23\% \\
+    \hline
+    \end{tabular}
+    \caption{The relative systematic uncertainties on the yields of the major backgrounds estimated from the observed data for each channel of each search.}
+    \label{tab:systuncdd}
+  \end{center}
+\end{table}
+
+The identification of light leptons can have systematic uncertainties associated with the efficiency of the HLT criteria, the identification algorithms, and the computation of the isolation. The contributions from these sources are measured together using tag and probe methods to compare \Zll events in the observed data and the simulation for electrons \cite{CMS-DP-2013-003} and muons \cite{CMS-DP-2013-009}. For both types of light leptons, the systematic uncertainty is found to be 2\%. The uncertainty in the identification and isolation of hadronic taus using the HPS algorithm is measured to be 6\%, using tag and probe methods with \Ztt events \cite{CMS-AN-2014-008}. The uncertainty in the performance of the lepton-tau discriminators is negligible.
+
+The correction factors applied to the simulation for b-tagging and mistagging efficiencies have associated uncertainties of ${\sim}4\%$ and ${\sim}10\%$, respectively, with dependence on \pt and $\eta$. The effects of these uncertainties are propagated to the yields estimated from the simulation by varying the correction factors. The relative systematic uncertainties in the simulated yields are 1--3\% from the b-tagging efficiency corrections and 1--4\% from the mistagging efficiency corrections.
+
+Pileup interactions at the LHC contribute additional energy to events beyond the energy from the primary hard-scattering interaction. The uncertainty in the modeling of pileup interactions in the simulation is estimated to be 6\% \cite{CMS-AN-2012-481}. This can affect lepton isolation and the jet energy scale. However, the CMS reconstruction algorithms for leptons and jets have approximately pileup-independent performance after rejecting pileup contributions when calculating isolation and energy scales. Therefore, the effect of the pileup uncertainty on the final event yields is expected to be small. A conservative relative uncertainty of 3\% is assigned to the simulated signal and background yields.
+
+The normalization of the simulated samples involves the calculated cross sections and the measured integrated luminosity for the observed data. As discussed in Sec. \ref{sec:lumimeas}, the uncertainty in the measured luminosity is 2.6\%. The uncertainties in the calculated cross sections of the simulated background processes are assessed by comparison to measurements in observed data. For the \Z + jets process, the uncertainty is found to be 2\% \cite{PhysRevLett.112.191802}. For the diboson processes, the uncertainty varies from 5--14\% depending on the process \cite{WZxsec}. For the single top quark process, the uncertainty is 14\% \cite{CMS-PAS-TOP-2012-002}. An additional uncertainty of 20--40\% is assigned to the simulated backgrounds, based on the statistical uncertainty due to the limited number of events in the simulation. The uncertainty in the modeling of initial- and final-state radiation in the simulation affects the signal yield at the level of 4\% and has a negligible effect on the background yields. The theoretical cross section for the signal has uncertainties of 7--32\% from the measurement of PDFs and 14--80\% from the variation of QCD renormalization and factorization scales, as shown in Sec. \ref{sec:LQ}.
+
+The uncertainty in the modeling of energy scales and energy resolutions for reconstructed objects in the simulation can affect both the yields and the \ST distributions. To account for this, the energy scale or energy resolution is varied independently for each type of object, and then the whole analysis is repeated with the varied quantity. This produces a varied \ST distribution whose difference from the nominal \ST distribution is considered to be the uncertainty in the distribution. The effects of these uncertainties on all of the \ST distributions, which are estimated from the simulation for both the simulation-based and data-driven backgrounds as well as the signal, are considered. The effect of the light lepton energy scales is negligible, as the disagreement between the simulation and the observed data is only 1\%. The uncertainties in the tau energy scale and energy resolution are 3\% and 10\% \cite{TauID}. These lead to uncertainties in the signal yield of 0--5\% and 1--9\%, respectively, and uncertainties in in the simulated background yields of 5--19\% and 20\%, respectively. The jet energy scale uncertainty varies with \pt and $\eta$, with a typical level of ${\sim}4\%$; the jet energy resolution uncertainty varies with $\eta$ between 5--10\% \cite{CMS-JEC,CMS-DP-2013-033}. These both cause uncertainties in the signal yield of 1\%, and in the simulated background yields 0--7\% and 0--5\%, respectively.
