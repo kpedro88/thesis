@@ -52,6 +52,8 @@
 \right)%
 }
 
+\newcommand{\neghphantom}[1]{\settowidth{\dimen0}{#1}\hspace*{-\dimen0}}
+
 \newcommand{\tauh}{\ensuremath{\tau_{\text{h}}}\xspace}
 \newcommand{\Pe}{\ensuremath{\cmsSymbolFace{e}}\xspace}
 \newcommand{\Pep}{\ensuremath{\cmsSymbolFace{e}^{+}}\xspace}
@@ -64,6 +66,7 @@
 \newcommand{\ltau}{\ensuremath{\ell\tauh}\xspace}
 \newcommand{\pbwo}{\ensuremath{\text{PbWO}_{4}}\xspace}
 \newcommand{\MLQ}{\ensuremath{M_{\text{LQ}}}\xspace}
+\newcommand{\Mstop}{\ensuremath{M_{\sTop}}\xspace}
 
 %superfield symbols
 \providecommand{\PU}{\ensuremath{\cmsSymbolFace{U}}\xspace}
@@ -206,13 +209,14 @@
 %\newcommand{\LL}{\ensuremath{\ell\ell}}%
 \newcommand{\MW}{\ensuremath{{m}_\PW}}%
 \newcommand{\MZ}{\ensuremath{{m}_\PZ}}%
-\newcommand{\MT}{\ensuremath{{M}_{\mathrm{T}}}}%
+\newcommand{\MT}{\ensuremath{{M}_{\text{T}}}\xspace}%
 \newcommand{\MLL}{\ensuremath{{M}_{\LpLm}}}%
 
 \newcommand{\Wmn}{\ensuremath{\PW \ra \MN}}%
 \newcommand{\Wpmn}{\ensuremath{\PWp \ra \MpN}}%
 \newcommand{\Wmmn}{\ensuremath{\PWm \ra \MmN}}%
-\newcommand{\Zmm}{\ensuremath{\PZ \ra \MpMm}\xspace}%
+%\newcommand{\Zmm}{\ensuremath{\PZ \ra \MpMm}\xspace}%
+\newcommand{\Zmm}{\ensuremath{\Z \ra \mu\mu}\xspace}%
 \newcommand{\Znn}{\ensuremath{\PZ \ra \nu\nu}}%
 \newcommand{\ZLL}{\ensuremath{\PZ \ra \ell\ell}\xspace}%
 \newcommand{\ppWmn}{\pp \ra \PW + X \ra \MN + X}%
@@ -235,7 +239,8 @@
 \newcommand{\Ztt}{\ensuremath{\PZ \ra \TpTm}\xspace}%
 \newcommand{\Zttll}{\ensuremath{\PZ \ra \TpTm/\LpLm}\xspace}%
 
-\newcommand{\Wln}{\ensuremath{\PW \ra \LN}}%
+%\newcommand{\Wln}{\ensuremath{\PW \ra \LN}}%
+\newcommand{\Wln}{\ensuremath{\W \rightarrow \ell\nu}\xspace}%
 \newcommand{\Wpln}{\ensuremath{\PWp \ra \LpN}}%
 \newcommand{\Wmln}{\ensuremath{\PWm \ra \LmN}}%
 \newcommand{\Zll}{\ensuremath{\PZ \ra \LpLm}\xspace}%
@@ -320,8 +325,8 @@
 
 \def\ST{\ensuremath{S_{\text{T}}}\xspace}
 
-\def\MassTJ{\ensuremath{\mathrm{M}(\tau,\mbox{j})}\xspace}
-\def\MassLJ{\ensuremath{\mathrm{M}(\ell,\mbox{j})}\xspace}
+\def\MassTJ{\ensuremath{M(\tauh,\text{jet})}\xspace}
+\def\MassLJ{\ensuremath{M(\ell,\text{jet})}\xspace}
 
 
 
@@ -503,7 +508,7 @@
 \begin{tabular}{@{}ll}
 Title of dissertation:    & {\large  Search for Pair Production of}\\
                           & {\large  Third-Generation Scalar Leptoquarks} \\
-                          & {\large  and R-Parity-Violating Top Squarks} \\
+                          & {\large  and R-Parity Violating Top Squarks} \\
                           & {\large  in Proton-Proton Collisions at $\sqrt{s} = 8\TeV$} \\
                           & \\
                           & {\large  Kevin Pedro, Doctor of Philosophy, 2014} \\
@@ -532,7 +537,7 @@ insert abstract here
 \small\normalsize
 \begin{center}
 
-\large{Search for Pair Production of Third-Generation Scalar Leptoquarks and R-Parity-Violating Top Squarks in Proton-Proton Collisions at $\sqrt{s} = 8\TeV$}\\
+\large{Search for Pair Production of Third-Generation Scalar Leptoquarks and R-Parity Violating Top Squarks in Proton-Proton Collisions at $\sqrt{s} = 8\TeV$}\\
 \ \\
 \ \\
 \large{by} \\
@@ -674,6 +679,7 @@ CSCTF      & Cathode Strip Chamber Track Finder \\
 CTEQ       & Coordinated Theoretical-Experimental Project on QCD \\
 CTF        & Combinatorial Track Finder \\
 DAQ        & Data Acquisition \\
+DAS        & Data Aggregation System \\
 DGLAP      & Dokshitzer-Gribov-Lipatov-Altarelli-Parisi \\
 DT         & Drift Tube \\
 DTTF       & Drift Tube Track Finder \\
@@ -720,6 +726,7 @@ MVA        & Multivariate \\
 NH         & Neutral Hadron \\
 NLO        & Next-to-Leading Order \\
 NNLO       & Next-to-Next-to-Leading Order \\
+NNLL       & Next-to-Next-to-Leading Logarithmic \\
 PD         & Primary Dataset \\
 PF         & Particle Flow \\
 PDF        & Parton Distribution Function \\
@@ -741,6 +748,7 @@ SiPM       & Silicon Photomultiplier \\
 SLHA       & SUSY Les Houches Accord \\
 SM         & Standard Model \\
 SPS        & Super Proton Synchrotron \\
+SS/OS      & Same-Sign/Opposite-Sign \\
 SUSY       & Supersymmetry \\
 TCS        & Trigger Control System \\
 TEC        & Tracker End Cap \\
@@ -826,10 +834,13 @@ The fermions are arranged into multiplets based on their chirality. The left-han
 \end{center}
 \end{figure}
 
-\addtocounter{section}{-1}
+%\addtocounter{section}{-1}
 \renewcommand{\thesection}{\thechapter.{$\frac{1}{2}$}}
 \section{Beyond the Standard Model}
-\renewcommand{\thesection}{\thechapter.\arabic{section}} % back to regular numbering
+\newcounter{sectionprime}
+\addtocounter{sectionprime}{\value{section}}
+\addtocounter{sectionprime}{-1}
+\renewcommand{\thesection}{\thechapter.\arabic{sectionprime}} % use offset numbering
 
 The predictions of the standard model have been confirmed by decades of precise experimental tests. However, as an effective field theory, its domain of applicability is ultimately limited; at a high enough energy, the theory will break down. Further, the standard model is unable to account for some observations. These limitations and indications of new phenomena motivate various searches for physics beyond the standard model (BSM), include the searches which will be presented in this dissertation.
 
@@ -837,16 +848,17 @@ The most obvious limitation of the standard model is that it depends on 19 free 
 
 Astrophysics provides numerous indications of the need for BSM theories. Most notably, gravity is not included in the standard model. A successful unification of general relativity and quantum field theory has not been achieved, due to the difficulty of constructing a renormalizable theory for the spin-2 graviton. At the Planck scale, gravitational effects become comparable to SM interactions, which calls for a new theory. The measurement of galactic rotation curves and galaxy cluster collisions \cite{BulletCluster} indicates that ${\sim} 85\%$ of the matter in the universe is dark matter, which interacts gravitationally but not electromagnetically. Dark matter is likely to be a new particle not present in the standard model. The most popular type of dark matter candidate is a weakly interacting massive particle (WIMP) \cite{Morrissey20121}, but many other candidates have been proposed. The dearth of antimatter relative to the amount of matter in the universe requires greater violation of charge-parity (CP) symmetry than is contained in the SM. The accelerating expansion of the universe, observed using standard candle supernovae \cite{Supernova98,Supernova99}, implies that ${\sim} 70\%$ of the energy of the universe exists in a unknown form called dark energy. Dark energy may be a result of the cosmological constant of the universe, which can be related to the energy of the vacuum in quantum field theory. However, the standard model predicts that this cosmological constant would be $10^{120}$ times larger than the observed value, a clear failure of the theory. The recent tentative evidence for cosmic inflation from the Background Imaging of Cosmic Extragalactic Polarization (BICEP) experiment \cite{BICEP} implies the existence of the inflaton, a new scalar field.
 
-The following sections discuss the theories of leptoquarks and R-parity violating supersymmetry. The existence of leptoquarks can be a consequence of grand unification or other theories that address the parallels between leptons and quarks in the standard model. Supersymmetry is motivated by basic considerations of quantum field theory, the hierarchy problem, grand unification, and dark matter. The introduction of R-parity violation in supersymmetry evades existing limits on signatures with large missing transverse energy due to the stability of the lightest supersymmetric particle, while retaining some of the other desirable characteristics of supersymmetry. R-parity-violating supersymmetry can also act as a signature generator to suggest novel searches which might discover or rule out other BSM theories \cite{EvansSigGen}.
+The following sections discuss the theories of leptoquarks and R-parity violating supersymmetry. The existence of leptoquarks can be a consequence of grand unification or other theories that address the parallels between leptons and quarks in the standard model. Supersymmetry is motivated by basic considerations of quantum field theory, the hierarchy problem, grand unification, and dark matter. The introduction of R-parity violation in supersymmetry evades existing limits on signatures with large missing transverse energy due to the stability of the lightest supersymmetric particle, while retaining some of the other desirable characteristics of supersymmetry. R-parity violating supersymmetry can also act as a signature generator to suggest novel searches which might discover or rule out other BSM theories \cite{EvansSigGen}.
 
+\stepcounter{sectionprime}
 \section{Leptoquarks
 \label{sec:LQ}}
 
-Many BSM theories include a deeper relationship between leptons and quarks. Such a relationship is indicated by the cancellation of SM triangle anomalies, which requires each generation of matter to consist of quarks and leptons with the specific weak hypercharge values and multiplet arrangements that they possess in the SM \cite{Peskin}. Such theories introduce a class of particles called leptoquarks (LQs), which possess lepton number, baryon number, color charge, and fractional electric charge. Leptoquarks are bosons, either scalar with spin 0 or vector with spin 1. The values of the LQ quantum numbers, including those listed previously as well as weak isospin, which they may or may not possess, are model-dependent. A total fermion number $F$ can be defined as $F = 3B + L$ to characterize the combinations of lepton and baryon numbers found in LQs. The possible values are $F=0$ for LQs which couple to $\overline{\ell}\cPq$ or $\ell\overline{\cPq}$ pairs and $|F|=2$ for coupling to $\ell\cPq$ or $\overline{\ell}\overline{\cPq}$ pairs.
+Many BSM theories include a deeper relationship between leptons and quarks. Such a relationship is indicated by the cancellation of SM gauge anomalies from triangle diagrams, which requires each generation of matter to consist of quarks and leptons with the specific weak hypercharge values and multiplet arrangements that they possess in the SM \cite{Peskin}. Such theories introduce a class of particles called leptoquarks (LQs), which possess lepton number, baryon number, color charge, and fractional electric charge. Leptoquarks are bosons, either scalar with spin 0 or vector with spin 1. The values of the LQ quantum numbers, including those listed previously as well as weak isospin, which they may or may not possess, are model-dependent. A total fermion number $F$ can be defined as $F = 3B + L$ to characterize the combinations of lepton and baryon numbers found in LQs. The possible values are $F=0$ for LQs which couple to $\overline{\ell}\cPq$ or $\ell\overline{\cPq}$ pairs and $|F|=2$ for coupling to $\ell\cPq$ or $\overline{\ell}\overline{\cPq}$ pairs.
 
 The first BSM theory to include leptoquarks was Pati-Salam $SU(4)$ \cite{SU4}, a GUT which casts lepton number as the fourth type of color charge, hence the $SU(4)$ symmetry instead of the SM $SU(3)$. Another GUT, Georgi-Glashow $SU(5)$ \cite{GUT}, also contains leptoquarks. In general, grand unified theories group leptons and quarks together in multiplets. However, the symmetry breaking in these theories typically occurs at the GUT scale, rendering the expected LQ masses very large and therefore unable to be directly produced at colliders. $E_6$ superstring theory \cite{SUPERSTR} can also contain LQs, as it behaves similarly to GUTs below the string compactification scale, which is typically near the Planck scale. In other models, leptoquarks may be composite particles \cite{LQ3b}. These include extended technicolor theories \cite{TC3}, which postulate a new strong interaction similar to QCD and provide spontaneous masses to SM fermions using technifermions. A techniquark and anti-technilepton can bind together to form a technimeson which interacts with SM fermions as a leptoquark with a model-dependent coupling. Technicolor, though, has become disfavored with the confirmation of the Higgs mechanism for EWSB and fermion masses.
 
-The Buchm\"{u}ller-R\"{u}ckl-Wyler (BRW) model of leptoquarks includes all renormalizable Lagrangian terms compatible with the standard model \cite{BRW,BRWerr}. There are several constraints imposed in the BRW model:
+The Buchm\"{u}ller-R\"{u}ckl-Wyler (BRW) model of leptoquarks includes all renormalizable Lagrangian terms compatible with the standard model \cite{BRW}. There are several constraints imposed in the BRW model:
 \begin{enumerate}
 \item LQ interactions are dimensionless, in order to be renormalizable.
 \item LQ interactions are invariant under the overall SM symmetry $SU(3) \times SU(2) \times U(1)$.
@@ -969,15 +981,21 @@ $\MLQ$ & $\sigma (\mu = \MLQ)$ & $\delta (\text{PDF}) $ & $\sigma (\mu = \MLQ/2)
 \end{center}
 \end{table}
 
-In this dissertation, a search is performed for pair production of scalar leptoquarks decaying to third generation fermions. The symbol $B$ is used for the branching fraction for the decay $\text{LQ} \rightarrow \tau \cPqb$. This results a final state with two tau leptons and two bottom quarks. One tau lepton is required to decay leptonically: $\tau \rightarrow \ell \overline{\nu_{\ell}} \nu_{\tau}$, where $\ell$ can be a muon or an electron, which are collectively called light leptons. The other tau lepton is required to decay hadronically, denoted as \tauh; see Sec. \ref{sec:hpstau} for more information about hadronic decays of tau leptons. These decays result in two channels based on the leptonic decay of the tau, which are labeled as \etau and \mutau, or collectively \ltau when the light lepton flavor is unimportant. Both bottom quarks hadronize into b-jets, as described in Sec. \ref{sec:b-tagging}. Currently, the strongest mass limits on such third-generation scalar leptoquarks come from direct searches. Assuming $B=100\%$, the lower limit is approximately 530\GeV, set by both the CMS \cite{CMSLQ3} and ATLAS \cite{ATLASLQ3} experiments using 4.7--4.8\fbinv of data from $\Pp\Pp$ collisions with $\sqrt{s}=7\TeV$. Indirect limits from low-energy processes are discussed in Refs. \cite{ModelIndLQ,Leurer:1993em, MuchAdo, LQreview}.
+In this dissertation, a search is performed for pair production of scalar leptoquarks decaying to third generation fermions. The symbol $\mathcal{B}$ is used for the branching fraction for the decay $\text{LQ} \rightarrow \tau \cPqb$. This results a final state with two tau leptons and two bottom quarks. One tau lepton is required to decay leptonically: $\tau \rightarrow \ell \overline{\nu_{\ell}} \nu_{\tau}$, where $\ell$ can be a muon or an electron, which are collectively called light leptons. The other tau lepton is required to decay hadronically, denoted as \tauh; see Sec. \ref{sec:hpstau} for more information about hadronic decays of tau leptons. These decays result in two channels based on the leptonic decay of the tau, which are labeled as \etau and \mutau, or collectively \ltau when the light lepton flavor is unimportant. Both bottom quarks hadronize into b-jets, as described in Sec. \ref{sec:b-tagging}. Currently, the strongest mass limits on such third-generation scalar leptoquarks come from direct searches. Assuming $\mathcal{B}=100\%$, the lower limit is approximately 530\GeV, set by both the CMS \cite{CMSLQ3} and ATLAS \cite{ATLASLQ3} experiments using 4.7--4.8\fbinv of data from $\Pp\Pp$ collisions with $\sqrt{s}=7\TeV$. Indirect limits from low-energy processes are discussed in Refs. \cite{ModelIndLQ,Leurer:1993em, MuchAdo, LQreview}.
 
 %talk about reinterpreted search to cover low B?
 
-\section{R-Parity-Violating Supersymmetry}
+\stepcounter{sectionprime}
+\section{R-Parity Violating Supersymmetry
+\label{sec:RPVSUSY}}
 
 At the most basic level, supersymmetry proposes a symmetry between bosons and fermions. Such a symmetry appeals to mathematical considerations in quantum field theory by simplifying many calculations \cite{Peskin}. However, the primary motivation for a theory of SUSY with effects at the electroweak scale and therefore accessible at the LHC is the hierarchy problem. The mass of the Higgs boson, experimentally measured as $M_{\PH} = 125\GeV$, is theoretically sensitive to quantum corrections via loop diagrams from any particle that couples to it. This sensitivity makes the experimentally-measured value highly suspicious. Precise cancellations must occur among the various quantum corrections to produce such a small mass value, relative to the expected energy scales of new physics. Any BSM theory lacking a simple mechanism to produce such cancellations must undergo unnatural fine-tuning in order to arrive at the correct value of $M_{\PH}$. The following discussion of supersymmetry is drawn primarily from Ref. \cite{Primer}.
 
-The Higgs mass parameter $m_{\PH}^{2}$ appears in the Higgs potential, $V = m_{\PH}^{2}|\PH|^{2} + \lambda_{\PH}|\PH|^{4}$. Consider the one-loop contribution to $m_{\PH}^{2}$ from a fermion $f$ which has a Yukawa coupling to the Higgs field, $-y_{f} \overline{f}_{L} \PH f_{R}$. The correction term in the mass parameter calculation can be written as follows:
+The Higgs mass parameter $m_{\PH}^{2}$ appears in the Higgs potential:
+\begin{equation}
+V = m_{\PH}^{2}|\PH|^{2} + \lambda_{\PH}|\PH|^{4}.
+\end{equation}
+Consider the one-loop contribution to $m_{\PH}^{2}$ from a fermion $f$ which has a Yukawa coupling to the Higgs field, $-y_{f} \overline{f}_{L} \PH f_{R}$. The correction term in the mass parameter calculation can be written as follows:
 \begin{equation}
 \Delta_{f} m_{\PH}^{2} = -\frac{|y_{f}|^{2}}{8\pi^{2}}\Lambda_{\text{UV}}^{2} + \cdots. \label{eq:DMH-fermion}
 \end{equation}
@@ -985,7 +1003,7 @@ The factor $\Lambda_{\text{UV}}$ is the cutoff scale used to handle the ultravio
 \begin{equation}
 \Delta_{S} m_{\PH}^{2} = \frac{y_{S}}{16\pi^{2}}\Lambda_{\text{UV}}^{2} + \cdots. \label{eq:DMH-scalar}
 \end{equation}
-Both one-loop diagrams are shown in Fig. \ref{fig:higgs-cancel}. The leading terms of Eqs. \eqref{eq:DMH-fermion} and \eqref{eq:DMH-scalar} have opposite signs. This suggests that the two terms could cancel if there were two scalars for each fermion, with $y_{S} = |y_{f}|^2$.
+Both one-loop diagrams are shown in Fig. \ref{fig:higgs-cancel}. The leading terms of Eqs. \eqref{eq:DMH-fermion} and \eqref{eq:DMH-scalar} have opposite signs, which suggests that the two terms could cancel if there were two scalars for each fermion, with $y_{S} = |y_{f}|^2$.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -997,7 +1015,7 @@ Both one-loop diagrams are shown in Fig. \ref{fig:higgs-cancel}. The leading ter
 
 This observation motivates SUSY as an extension of the standard model. While many formulations of SUSY exist, it is instructive to consider the minimal supersymmetric model (MSSM) to understand the fundamental components of the class of SUSY theories. SM particles are paired with new particles called superpartners with a spin difference of 1/2; SM fermions have scalar boson superpartners and SM bosons have spin-1/2 fermion superpartners. The scalar superpartners are named after the corresponding SM fermions with the prefix ``s-'', e.g. squarks and sleptons. The fermionic superpartners are named after the corresponding SM bosons with the suffix ``-ino'', e.g. higgsinos and gauginos. The symbols for superpartners are indicated by a tilde $\widetilde{\hphantom{H}}$. SM particles and their superpartners are arranged together in supermultiplets which extend the multiplets listed in Table \ref{tab:q-num}. Chiral supermultiplets contain scalar bosons and spin-1/2 fermions, while gauge supermultiplets contain spin-1/2 fermions and vector bosons. The superpartners possess the same quantum numbers as the corresponding SM particles, except for spin.
 
-The Higgs boson, as a scalar, therefore becomes part of a chiral supermultiplet with weak hypercharge values $Y = \pm 1/2$. However, the existence of such chiral higgsinos creates new triangle anomalies which must be cancelled to preserve the consistency of the theory. In addition, the weak hypercharge values of the Higgs supermultiplet restrict the possible Yukawa interactions with the other chiral supermultiplets, which are necessary for spontaneous fermion masses. For both of these reasons, the MSSM contains two Higgs doublets, conventionally labeled \Hone and \Htwo to indicate their couplings to up-type quarks or down-type quarks and charged leptons, respectively. Each Higgs doublet has its own VEV, labeled $v_{\cPqu}$ and $v_{\cPqd}$, which are considered to be two components of a general $v$, implying an angle $\beta$ can be defined as $\text{tan}(\beta) = v_{\cPqu}/v_{\cPqd}$.
+The Higgs boson, as a scalar, therefore becomes part of a chiral supermultiplet with weak hypercharge values $Y = \pm 1/2$. However, the existence of such chiral higgsinos creates new triangle gauge anomalies which must be cancelled to preserve the consistency of the theory. In addition, the weak hypercharge values of the Higgs supermultiplet restrict the possible Yukawa interactions with the other chiral supermultiplets, which are necessary for spontaneous fermion masses. For both of these reasons, the MSSM contains two Higgs doublets, conventionally labeled \Hone and \Htwo to indicate their couplings to up-type quarks or down-type quarks and charged leptons, respectively. Each Higgs doublet has its own VEV, labeled $v_{\cPqu}$ and $v_{\cPqd}$, which are considered to be two components of an underlying $v$, implying an angle $\beta$ can be defined as $\text{tan}(\beta) = v_{\cPqu}/v_{\cPqd}$.
 
 Given these details, the superpotential of the MSSM, $W_{\text{MSSM}}$, contains these terms:
 \begin{equation}
@@ -1010,7 +1028,7 @@ The superpotential is limited to these terms by requiring the conservation of $R
 R &= 3B+L+2S = 3(B-L)+2S, \label{eq:Rdef} \\
 R_{p} &= (-1)^{R}. \label{eq:Rparity}
 \end{align}
-All SM particles have $R_{p} = +1$, while all superpartners have $R_{p} = -1$. Therefore, if $R$-parity is conserved, interactions which violate lepton or baryon number are not allowed. Notably, there must necessarily be a lightest supersymmetric particle (LSP) that is stable in order to conserve $R$-parity in the decay of any SUSY particle. In many models, the LSP is the lightest neutralino, a state created by mixing between the neutral higgsinos and gauginos from EWSB. As a weakly interacting massive particle, the neutralino LSP is a promising candidate for WIMP dark matter.
+All SM particles have $R_{p} = +1$, while all superpartners have $R_{p} = -1$. If $R$-parity is conserved, interactions which violate lepton or baryon number are not allowed. Notably, there must necessarily be a lightest supersymmetric particle (LSP) that is stable in order to conserve $R$-parity in the decay of any SUSY particle. In many models, the LSP is the lightest neutralino, a state created by mixing between the neutral higgsinos and gauginos due to EWSB. As a weakly interacting massive particle, the neutralino LSP is a promising candidate for WIMP dark matter.
 
 If supersymmetry were unbroken, superpartners would have the same masses as their corresponding SM particles and would already have been detected. Therefore, there must be some mechanism responsible for breaking supersymmetry. In order for broken SUSY to continue to solve the hierarchy problem, it must preserve the conditions such as $y_{S} = |y_{f}|^2$ that lead to natural cancellations in the Higgs mass correction terms. So-called ``soft'' supersymmetry breaking accomplishes this by separating the Lagrangian into two separate terms:
 \begin{equation}
@@ -1018,7 +1036,7 @@ If supersymmetry were unbroken, superpartners would have the same masses as thei
 \end{equation}
 where $\mathcal{L}_{\text{SUSY}}$ is made up of the SUSY-preserving terms, including the Yukawa interactions from the superpotential as well as the gauge interactions, and $\mathcal{L}_{\text{soft}}$ is made up of the SUSY-violating terms. The contributions to $\mathcal{L}_{\text{soft}}$ must be only mass terms and couplings whose parameters have positive mass dimension. These include interactions between three scalars, two sfermions and a Higgs, such as $a_{\cPqu,ij} \sUp_{i}^{c} \sQua_{j} \Hone$, where $a_{\cPqu,ij}$ are the soft couplings for those interactions. All such soft couplings are either at or below the mass scale $m_{\text{soft}}$, which is expected to be around the TeV scale from hierarchy problem considerations.
 
-In general, the soft SUSY breaking terms can introduce FCNCs and CP violation that are strictly limited by precision measurements. This can be avoided by assuming the sfermion masses are universal; in other words, all sfermions of a given type should have the same mass regardless of flavor. This ``flavor-blindness'' eliminates mixing between flavors, and as a bonus, greatly reduces the number of free parameters in the MSSM. For first- and second-generation sfermions, flavor-blind universal masses are the norm. However, in the third generation, the sfermion masses can differ from the other two generations. In SUSY calculations, the couplings and mass parameters are treated as running factors which change based on renormalization group (RG) equations. These RG equations lead to corrections which tend to be small for Yukawa interactions, except for third generation particles which have relatively large Yukawa couplings. The effects of RG evolution in SUSY on the gauge couplings for the three fundamental forces significantly aid grand unification, which is another motivation for SUSY.
+In general, the soft SUSY breaking terms can introduce FCNCs and CP violation that are strictly limited by precision measurements. This can be avoided by assuming the sfermion masses are universal; in other words, all sfermions should have the same mass regardless of flavor. This ``flavor-blindness'' eliminates mixing between flavors, and as a bonus, greatly reduces the number of free parameters in the MSSM. For first- and second-generation sfermions, flavor-blind universal masses are the norm. However, in the third generation, the sfermion masses can differ from the other two generations. In SUSY calculations, the couplings and mass parameters are treated as running factors which change based on renormalization group (RG) equations. These RG equations lead to corrections which tend to be small for Yukawa interactions, except for third generation particles which have relatively large Yukawa couplings. The effects of RG evolution in SUSY on the gauge couplings for the three fundamental forces significantly aid grand unification, which is another motivation for SUSY.
 
 The concept of naturalness, described in Ref. \cite{NaturalSUSY}, indicates that the third-generation sfermion masses should in fact be significantly lighter than the other superpartners. The tree level relationship $M_{\Z}^{2} \propto |\mu|^{2} + |m_{\Hone}^{2}|$ implies that the superpartners with the largest contributions to $\mu$ and $m_{\Hone}^{2}$ must have masses near the electroweak scale. This applies especially to the higgsinos due to their involvement with $\mu$ and to the top squark which generates the largest correction to $m_{\Hone}^{2}$. To some extent, the other third-generation sfermions and the gluino are also affected by this consideration. In addition, because the top squark masses are not flavor-blind, the mass eigenstates can involve significant mixing between the chiral eigenstates. The top squark mass matrix is written as follows:
 \begin{equation}
@@ -1028,9 +1046,9 @@ m_{\PQ 3}^{2} + m_{\cPqt}^{2} + \Delta_{\sUp_{L}} & v(a_{\cPqt}^{\ast}\text{sin}
 v(a_{\cPqt}\text{sin}(\beta) - \mu^{\ast} y_{\cPqt}\text{cos}(\beta)) & m_{\PU 3}^{2} + m_{\cPqt}^{2} + \Delta_{\sUp_{R}}
 \end{pmatrix}.
 \end{equation}
-Here, the terms $\Delta_{\sUp_{L}}$ and $\Delta_{\sUp_{R}}$ arise via hyperfine splitting from quartic interactions and are defined in Ref. \cite{Primer}. When this mass matrix is diagonalized, a large mixing angle typically occurs because of the off-diagonal entries, which contain terms involving the large top Yukawa coupling and soft coupling. This means that one top squark mass eigenstate will be lighter than the other, and in fact it will be the lightest squark. This mass splitting, together with the general consideration of naturalness that implies a light top squark mass, suggests that top squarks are likely to be accessible at the LHC.
+The terms $\Delta_{\sUp_{L}}$ and $\Delta_{\sUp_{R}}$ arise via hyperfine splitting from quartic interactions and are defined in Ref. \cite{Primer}. When this mass matrix is diagonalized, a large mixing angle typically occurs because of the off-diagonal entries, which contain terms involving the large top Yukawa coupling and soft coupling. This means that one top squark mass eigenstate will be lighter than the other, and in fact it will be the lightest squark. This mass splitting, together with the general consideration of naturalness that implies a light top squark mass, suggests that top squarks are likely to be accessible at the LHC.
 
-In $R$-parity-conserving (RPC) SUSY, all decays of superpartners eventually produce at least one LSP. As a weakly interacting particle, the LSP will escape a particle detector without being detected, leading to events with signatures including large missing transverse momentum or \MET. The precise details of the production and decay of SUSY particles depend on which model is considered. This section has focused on the MSSM, but many variations of this model exist. These include, but are not limited to \cite{PDG}: the constrained MSSM, in which there are only five parameters: the sfermion mass $m_0$, the gaugino mass $m_{1/2}$, the soft parameter scale $A_{0}$, $\text{tan}(\beta)$, and $\mu$; the phenomenological MSSM, which uses experimental limits to restrict the number of free parameters to ${\sim}19$; and the next-to-MSSM, which introduces a gauge singlet field to explain the electroweak-scale value of $\mu$ \cite{NMSSM}. In order to produce results with the broadest possible applicability, the CMS experiment uses simplified models, sometimes called decoupled models, in which the SUSY particles not under direct consideration are assumed to have masses too large to contribute significantly to the interactions. The latest results from the broad program of SUSY searches at the CMS experiment with $\sqrt{s}=8\TeV$ are summarized in Fig. \ref{fig:cms-susy-limits}. The requirements for naturalness introduced in Ref. \cite{NaturalSUSY}, which include top squark and bottom squark masses less than 500--700\GeV and gluino mass less than 900-1500\GeV, are very nearly excluded at this point. In addition, recent measurements of the decay $\Bz_{\cPqs} \rightarrow \mu^{+} \mu^{-}$ from the CMS \cite{CMS-BSmumu} and LHCb \cite{LHCb-BSmumu} experiments are in agreement with the SM prediction, further limiting the possible forms of SUSY, which is expected to enhance this decay.
+In $R$-parity conserving (RPC) SUSY, all decays of superpartners eventually produce at least one LSP. As a weakly interacting particle, the LSP will escape a particle detector without being detected, leading to events with signatures including large missing transverse energy or \met. The precise details of the production and decay of SUSY particles depend on which model is considered. This section has focused on the MSSM, but many variations of this model exist. These include, but are not limited to \cite{PDG}: the constrained MSSM, in which there are only five parameters: the sfermion mass $m_0$, the gaugino mass $m_{1/2}$, the soft parameter scale $A_{0}$, $\text{tan}(\beta)$, and $\mu$; the phenomenological MSSM, which uses experimental limits to restrict the number of free parameters to ${\sim}19$; and the next-to-MSSM, which introduces a gauge singlet field to explain the electroweak-scale value of $\mu$ \cite{NMSSM}. In order to produce results with the broadest possible applicability, the CMS experiment uses simplified models, sometimes called decoupled models, in which the SUSY particles not under direct consideration are assumed to have masses too large to contribute significantly to the interactions. The latest results from the broad program of SUSY searches at the CMS experiment with $\sqrt{s}=8\TeV$ are summarized in Fig. \ref{fig:cms-susy-limits}. The requirements for naturalness introduced in Ref. \cite{NaturalSUSY}, which include top squark and bottom squark masses less than 500--700\GeV and gluino mass less than 900-1500\GeV, are very nearly excluded at this point. In addition, recent measurements of the decay $\Bz_{\cPqs} \rightarrow \mu^{+} \mu^{-}$ from the CMS \cite{CMS-BSmumu} and LHCb \cite{LHCb-BSmumu} experiments are in agreement with the SM prediction, further limiting the possible forms of SUSY, which would enhance this decay.
 
 \afterpage{
 \begin{landscape}
@@ -1044,7 +1062,7 @@ In $R$-parity-conserving (RPC) SUSY, all decays of superpartners eventually prod
 \end{landscape}
 }
 
-The introduction of $R$-parity violating (RPV) terms in the SUSY Lagrangian is one way to evade these limits. If $R$-parity is violated, SUSY particles can decay to final states containing only SM particles, avoiding the characteristically large \MET from the LSP, which is no longer stable. This generally eliminates the LSP as a dark matter candidate, making it a less popular option. However, RPV SUSY still solves the hierarchy problem and assists in grand unification. The possible RPV terms in the superpotential are \cite{Barbier}:
+The introduction of $R$-parity violating (RPV) terms in the SUSY Lagrangian is one way to evade these limits. If $R$-parity is violated, SUSY particles can decay to final states containing only SM particles, avoiding the characteristically large \met from the LSP, which is no longer stable. This generally eliminates the LSP as a dark matter candidate, making it a less popular option. However, RPV SUSY still solves the hierarchy problem and assists in grand unification. The possible RPV terms in the superpotential are \cite{Barbier}:
 \begin{equation}
 W_{\text{RPV}} = \frac{1}{2}\lambda_{ijk}\PL_{i}\PL_{j}\PE_{k}^{c} + \lambda_{ijk}^{\prime}\PL_{i}\PQ_{j}\PD_{k}^{c} + \frac{1}{2}\lambda_{ijk}^{\prime \prime}\PU_{i}^{c}\PD_{j}^{c}\PD_{k}^{c} + \mu_{i}\PL_{i}\Hone. \label{eq:WRPV}
 \end{equation}
@@ -1060,15 +1078,17 @@ The different RPV coupling constants are denoted as $\lambda_{ijk}$, $\lambda^{\
 
 This dissertation considers the pair production of top squarks with two different RPV decays, using a decoupled model as described above. As a strongly-interacting scalar particle, the top squark production cross section is identical to the leptoquark production cross section at leading order. In decoupled models, the cross section depends on the squark mass scale and the top squark mixing angle only at higher order, and the corrections from these terms amount to less than 2\% \cite{StopCrossSec}. The first decay considered is $\sTop \rightarrow \tau \cPqb$ via the coupling $\lambda_{333}^{\prime}$. The final-state signature and kinematic distributions of this signal are identical to those from the pair production of third-generation scalar leptoquarks, as described in Sec. \ref{sec:LQ}. Therefore, the results of the leptoquark search can be directly reinterpreted to apply to the $\lambda_{333}^{\prime}$ decay of top squarks.
 
-In some natural SUSY models, if the higgsinos are lighter than the top squark, or if the RPV couplings that allow direct decays to SM particles are sufficiently small, the top squark decay may preferentially proceed via superpartners \cite{Jared}. This motivates the second search in the dissertation, which focuses on a scenario in which the dominant RPC decay of the top squark is $\sTop \rightarrow \chipm\cPqb$. This requires a small mass splitting between the top squark and the chargino, which is chosen to be 100\GeV. The chargino is assumed to be a pure higgsino that decays as $\chipm \rightarrow \sNu\tau^{\pm} \rightarrow \cPq\cPq\tau^{\pm}$. The decay of the sneutrino occurs via the RPV coupling $\lambda_{3jk}^{\prime}$, where the cases $j, k = 1, 2$ are considered. Such a signal can only be probed by searches that do not require large \MET, as chiral suppression prevents the other possible decay of the chargino, $\chipm\to\nu\sTau$, from contributing to scenarios involving the $\lambda_{3jk}^{\prime}$ coupling.
+In some natural SUSY models, if the higgsinos are lighter than the top squark, or if the RPV couplings that allow direct decays to SM particles are sufficiently small, the top squark decay may preferentially proceed via superpartners \cite{Jared}. This motivates the second search in the dissertation, which focuses on a scenario in which the dominant RPC decay of the top squark is $\sTop \rightarrow \chipm\cPqb$. This requires the mass splitting between the top squark and the chargino to be less than the mass of the top quark, so it is chosen to be 100\GeV. The chargino is assumed to be a pure higgsino and to be nearly degenerate in mass with the neutralino, with a decay $\chipm \rightarrow \sNu\tau^{\pm} \rightarrow \cPq\cPq\tau^{\pm}$. The decay of the sneutrino occurs via the RPV coupling $\lambda_{3jk}^{\prime}$, where the cases $j, k = 1, 2$ are considered. Such a signal can only be probed by searches that do not require large \met, as chiral suppression prevents the other possible decay of the chargino, $\chipm\to\nu\sTau$, from contributing to scenarios involving the $\lambda_{3jk}^{\prime}$ coupling.
 
-The final state from pair production of top squarks undergoing this chargino-mediated RPV decay contains two tau leptons, two b-jets, and at least four additional jets. The search for the signal with this final state is called the top squark search, to distinguish it from the similar but not identical final state in the leptoquark search. As in the leptoquark search, the analysis is divided into two channels \etau and \mutau based on the required leptonic decay of one of the tau leptons. The symbol $B$ in the top squark search is used to represent the branching fraction for the decay $\sTop \rightarrow \chipm\cPqb, \chipm \rightarrow \sNu\tau^{\pm} \rightarrow \cPq\cPq\tau^{\pm}$.  This dissertation presents the first search for the chargino-mediated $\lambda_{3jk}^{\prime}$ decay of the top squark.
+The final state from pair production of top squarks undergoing this chargino-mediated RPV decay contains two tau leptons, two b-jets, and at least four additional jets. The search for the signal with this final state is called the top squark search, to distinguish it from the similar but not identical final state in the leptoquark search. As in the leptoquark search, the analysis is divided into two channels \etau and \mutau based on the required leptonic decay of one of the tau leptons. The symbol $\mathcal{B}$ in the top squark search is used to represent the branching fraction for the decay $\sTop \rightarrow \chipm\cPqb, \chipm \rightarrow \sNu\tau^{\pm} \rightarrow \cPq\cPq\tau^{\pm}$.  This dissertation presents the first search for the chargino-mediated $\lambda_{3jk}^{\prime}$ decay of the top squark.
+
+\renewcommand{\thesection}{\thechapter.\arabic{section}} % back to regular numbering
 % input: [cmsexperiment.tex]
 \chapter{Compact Muon Solenoid Experiment
 \label{ch:cmsexperiment}}
 \setcounter{section}{-1}
 
-The Compact Muon Solenoid experiment is one of two general-purpose detectors at the LHC. It is located about 100\unit{m} underground at Point 5 of the LHC ring, near Cessy, France. The detector is cylindrically shaped, with total length 22\unit{m}, diameter 15\unit{m}, and weight 14000\unit{tons}. Figure \ref{fig:cms-overall} shows the overall layout of the detector.
+The Compact Muon Solenoid (CMS) experiment is one of two general-purpose detectors at the LHC. It is located about 100\unit{m} underground at Point 5 of the LHC ring, near Cessy, France. The detector is cylindrically shaped, with total length 22\unit{m}, diameter 15\unit{m}, and weight 14000\unit{tons}. Figure \ref{fig:cms-overall} shows the overall layout of the detector. The following sections describe the LHC, based on Ref. \cite{LHCmachine}, and the CMS subdetector systems, based on Ref. \cite{CMSJINST}.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -1078,17 +1098,11 @@ The Compact Muon Solenoid experiment is one of two general-purpose detectors at 
 \end{center}
 \end{figure}
 
-The center of the detector, the interaction point (IP), is used as the origin of the right-handed coordinate system that describes locations and directions within the detector. The $z$-axis is assigned to the direction of the LHC beam line, pointing anti-clockwise in the direction of Beam 2. The polar angle $\theta$ is defined as the angle away from the positive $z$-axis. This angle is often transformed into pseudorapidity, defined as $\eta = -\text{ln}[\text{tan}(\theta/2)]$, which has several desirable properties. It is independent of the particle mass and energy, and it is approximately equal to the rapidity for relativistic particles. Differences in pseudorapidity are Lorentz invariant for boosts in the $z$ direction, and particle production is approximately uniform in $\eta$.
-
-The plane transverse to the $z$-axis comprises the $x$- and $y$-axes, with the $x$-axis pointing toward the center of the LHC ring and the $y$-axis pointing upward in the normal direction. The azimuthal angle $\phi$ is defined as the angle away from the positive $x$-axis in the transverse plane, and the radial coordinate $r$ is defined as the distance from the origin in the transverse plane. The magnitude of the component of momentum in the transverse plane is labeled \pt. The total transverse momentum of every event must be conserved, so the negative vector sum of \vecpt for all particles in the event is defined as the missing transverse momentum: $\vecmet = - \sum_{i} \vecpt^{(i)}$. The magnitude of this quantity is called the missing transverse energy, denoted as \met.
-
-As a general purpose detector, the CMS experiment detects all long-lived SM particles, except neutrinos, which can only be measured by omission in the transverse plane via \met. These particles can be categorized as electrons, photons, muons, charged hadrons, and neutral hadrons. The latter two categories are usually found grouped into cones called jets, and can originate from gluons, light quarks, bottom quarks with displaced vertices, or hadronically decaying tau leptons. The identification of particles and related objects with the CMS detector is described in more detail in Ch. \ref{ch:reconstruction}.
-
-The CMS detector must measure these particles with sufficient accuracy to accomplish the experiment's physics goals, imposing requirements which are met by the combination of the CMS subdetectors. The inner tracker measures event vertices and charged-particle momentum, with the help of the superconducting solenoid. The measurement of muon momentum is supplemented by the muon system. The electromagnetic calorimeter measures electron and photon energy, and the hadron calorimeter measures the energy from charged and neutral hadrons. In addition, the LHC operates at a high instantaneous luminosity, approaching $10^{34}\percms$; with an expected proton-proton cross section of 100\unit{mb} at the LHC center-of-mass energies, the collision rate is approximately 1\unit{MHz}. To cope with this incredibly high collision rate, the CMS experiment employs a trigger system to select interesting events at a rate slow enough to be stored and processed by the computing systems. The delivered luminosity is also measured by the detector, using several different techniques. The following sections describe the LHC, based on Ref. \cite{LHCmachine}, and the CMS subdetector systems, based on Ref. \cite{CMSJINST}.
+The center of the detector, the interaction point (IP), is used as the origin of the right-handed coordinate system that describes locations and directions within the detector. The $z$-axis is assigned to the direction of the LHC beam line. The polar angle $\theta$ is often transformed into pseudorapidity, defined as $\eta = -\text{ln}[\text{tan}(\theta/2)]$. Differences in pseudorapidity are Lorentz invariant for boosts in the $z$ direction, and particle production is approximately uniform in $\eta$. The plane transverse to the $z$-axis comprises the $x$- and $y$-axes, with the $x$-axis pointing toward the center of the LHC ring and the $y$-axis pointing upward in the normal direction. The azimuthal angle $\phi$ and the radial coordinate $r$ are also defined in the transverse plane. The magnitude of the component of momentum in the transverse plane is labeled \pt.
 
 \section{The Large Hadron Collider}
 
-The Large Hadron Collider is the largest machine ever built and the highest-energy collider in the world. It uses the tunnel originally constructed for the Large Electron-Positron Collider (LEP) with a circumference of 26.7\unit{km}. The tunnel is located underground in Switzerland and France, near Geneva. Figure \ref{fig:lhc-diagram} shows a diagram of the LHC with the major experiments labeled. Opposite from CMS is A Toroidal LHC ApparatuS (ATLAS) at Point 1, the other general purpose detector. To the right of ATLAS at Point 8 is the LHC beauty (LHCb) experiment, which studies flavor physics. To the left of ATLAS at Point 2 is A Large Ion Collider Experiment (ALICE), which studies heavy ion physics in Pb-Pb and p-Pb collisions.
+The Large Hadron Collider is the largest machine ever built and the highest-energy collider in the world. It uses the tunnel originally constructed for the Large Electron-Positron Collider (LEP) with a circumference of 26.7\unit{km}. The tunnel is located underground in Switzerland and France, near Geneva. Figure \ref{fig:lhc-diagram} shows a diagram of the LHC. The location of the CMS experiment is provided and the other major experiments are also indicated.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -1098,7 +1112,7 @@ The Large Hadron Collider is the largest machine ever built and the highest-ener
 \end{center}
 \end{figure}
 
-The LHC is designed to accelerate two beams of protons up to energies of 7\TeV each, at instantaneous luminosities up to $10^{34}\percms$. It is also designed to accelerate lead ions up to energies of 1.38\TeV per nucleon, at instantaneous luminosities up to $10^{27}\percms$. The LHC can achieve energies several orders of magnitude higher than LEP in the same tunnel by using protons instead of electrons; the larger mass of protons reduces losses from synchrotron radiation by $(m_{\Pp}/m_{\Pe})^{4} = 1836^{4} = 1.136\times10^{13}$. The use of supercooled superconducting magnets, discussed below, is also crucial. Several stages of CERN accelerators are used to inject proton beams into the LHC, as shown in Fig. \ref{fig:lhc-injectors}. These include the linear accelerator Linac2, the Proton Synchrotron Booster (PSB), the Proton Synchrotron (PS), and the Super Proton Synchrotron (SPS). For lead ions, Linac3 and the Low Energy Ion Ring (LEIR), repurposed from the Low Energy Antiproton Ring (LEAR), are used instead of Linac2 and the PSB, respectively. The accelerated protons are grouped into bunches using radio frequency (RF) electromagnetic fields. The LHC is designed to accommodate a bunch spacing of 25\unit{ns}.
+The LHC is designed to accelerate two beams of protons up to energies of 7\TeV each, at instantaneous luminosities up to $10^{34}\percms$. The use of supercooled superconducting magnets, discussed below, is crucial. Several stages of CERN accelerators are used to inject proton beams into the LHC, as shown in Fig. \ref{fig:lhc-injectors}. These include the linear accelerator Linac2, the Proton Synchrotron Booster (PSB), the Proton Synchrotron (PS), and the Super Proton Synchrotron (SPS). The accelerated protons are grouped into bunches using radio frequency (RF) electromagnetic fields. The LHC is designed to accommodate a bunch spacing of 25\unit{ns}.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -1228,9 +1242,9 @@ To complement the DTs and CSCs, RPCs are installed in both the barrel and endcap
 
 \section{Trigger}
 
-The CMS trigger is necessary to reduce the roughly 1\unit{MHz} rate of collision events produced by the LHC to a rate which can be stored and processed. The trigger system consists of two stages. The first stage uses hardware and is called the Level-1 (L1) Trigger. The L1 Trigger is designed to have a maximum output rate of 100\unit{kHz}. The second stage is the High Level Trigger (HLT), which uses software and reduces the output rate to $\mathcal{O}(100\unit{Hz})$.
+The LHC operates at a high instantaneous luminosity, up to $10^{34}\percms$. With an expected proton-proton cross section of 100\unit{mb} at the LHC center-of-mass energies, the collision rate is approximately 1\unit{MHz}. The CMS trigger is necessary to reduce this high rate of collision events to a rate which can be stored and processed. The trigger system consists of two stages. The first stage uses hardware and is called the Level-1 (L1) Trigger. The L1 Trigger is designed to have a maximum output rate of 100\unit{kHz}. The second stage is the High Level Trigger (HLT), which uses software and reduces the output rate to $\mathcal{O}(100\unit{Hz})$.
 
-The L1 Trigger uses custom-built programmable electronics, including field-programmable gate arrays (FPGAs), application-specific integrated circuits (ASICs), and memory lookup tables (LUTs). All of the subdetectors send input to the L1 Trigger, which is organized into local, regional, and global components as shown in Fig. \ref{fig:L1-trigger}. The local components, Trigger Primitive Generators (TPGs), are constructed from energy deposits in the calorimeters and track segments or hit patters from the muon system.
+The L1 Trigger uses custom-built programmable electronics, including field-programmable gate arrays (FPGAs), memory lookup tables (LUTs), and application-specific integrated circuits (ASICs). All of the subdetectors send input to the L1 Trigger, which is organized into local, regional, and global components as shown in Fig. \ref{fig:L1-trigger}. The local components, Trigger Primitive Generators (TPGs), are constructed from energy deposits in the calorimeters and track segments or hit patters from the muon system.
 
 The TPGs from the ECAL, the HCAL, and the HF are combined into the Regional Calorimeter Trigger (RCT). The RCT groups calorimeter trigger towers into regions, which are made up of four towers in the barrel and endcap, and one tower in the HF. These regions are used to determine electron and photon candidates, as well as transverse energy sums (\sumet) and tau-jet vetoes. The RCT also passes MIP and isolation information to the muon triggers. Using information from the RCT, the Global Calorimeter Trigger (GCT) determines jet candidates and counts, providing up to four jets and four tau-jets from the central HCAL and four jets from the HF. The GCT also determines total \ET, \met, and \HT, which is calculated as \sumet for all jets above a certain threshold.
 
@@ -1263,7 +1277,7 @@ The HF is used as a second method of measuring the luminosity. This is possible 
 \chapter{Event Reconstruction
 \label{ch:reconstruction}}
 
-Particles created in proton-proton collisions pass through the CMS detector and leave signals in different subdetectors. Figure \ref{fig:cms-slice} shows examples of typical signals for different types of particles. Each type of particle has a different characteristic signature from which it can be identified using information from the various subdetectors. Muons, electrons, and charged hadrons create tracks in the tracker, while photons and neutral hadrons do not. Muons also create hits in the muon systems. Electrons and photons deposit energy in the ECAL, while charged and neutral hadrons deposit most of their energy in the HCAL.
+Particles created in proton-proton collisions pass through the CMS detector and leave signals in different subdetectors. Figure \ref{fig:cms-slice} shows examples of typical signals for different types of particles. Each type of particle has a different characteristic signature from which it can be identified using information from the various subdetectors. Muons, electrons, and charged hadrons create tracks in the tracker, while photons and neutral hadrons do not. Muons also create hits in the muon systems. Electrons and photons deposit energy in the ECAL, while charged and neutral hadrons deposit most of their energy in the HCAL. Neutrinos do not deposit any energy in the detector. Their presence must be inferred from missing transverse momentum, defined as the negative vector sum of \vecpt for all particles in the event: $\vecmet = - \sum_{i} \vecpt^{(i)}$. The magnitude of this quantity is called the missing transverse energy, denoted as \met. Because the incident proton beams have momentum only in the $z$ direction, any imbalance of measured momentum in the tranverse plane indicates particles which were not detected.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -1293,7 +1307,7 @@ Protons are most basically considered to be composed of two up quarks and one do
 \end{center}
 \end{figure}
 
-The DGLAP equations allow large logarithmic factors, for example from collinear emission of gluons, to be included in the definition of the PDFs. This statement is the QCD factorization theorem, which applies to all hard-scattering processes. With this theorem, the interaction of parton $a$ in proton $A$ with parton $b$ in proton $B$, producing the final state $X$, can be written simply:
+The DGLAP equations allow large logarithmic factors, for example from col\-lin\-ear emission of gluons, to be included in the definition of the PDFs. This statement is the QCD factorization theorem, which applies to all hard-scattering processes. With this theorem, the interaction of parton $a$ in proton $A$ with parton $b$ in proton $B$, producing the final state $X$, can be written simply:
 \begin{equation} \label{eq:hard-scatter}
 \sigma_{AB \rightarrow X}(s) = \int{\text{dx}_{a}\text{dx}_{b} f_{a/A}(x_a,\mu_{F}^{2}) f_{b/A}(x_b,\mu_{F}^{2}) \hat{\sigma}_{ab \rightarrow X}(\hat{s},\mu_{R}^{2})}
 \end{equation}
@@ -1352,6 +1366,8 @@ The reconstructed tracks are used to reconstruct the primary vertices from the e
 
 Once the deterministic annealing algorithm produces a list of vertex candidates, an adaptive vertex fitter is applied to each vertex candidate. This fitter weights each track in the vertex based on the agreement between the track and vertex positions. Using those weights, it fits the parameters of the vertex, including the $(x,y,z)$ position, the covariance matrix, and the number of degrees of freedom, $n_{\text{dof}} = -3 + 2 \sum{w_i}$, where $w_i$ is the weight for the $i$th track. The variable $n_{\text{dof}}$ can be used to select vertices which correspond to actual proton-proton interactions, as it is closely related to the number of tracks compatible with the vertex.
 
+Several requirements are applied to the reconstructed primary vertices to ensure high quality \cite{CMS-PAS-TRK-10-005}. The number of degrees of freedom $n_{\text{dof}}$ must be greater than 4. The longitudinal position $z$ of the vertex must obey $|z|<24\mm$, and the transverse position $\rho$ must obey $|\rho|<2\mm$. In addition, the vertex must be reconstructed by a fit to tracks. The other reconstructed objects described below can be assigned to a reconstructed vertex. The closest vertex to the track associated with the object is chosen as its vertex. For electrons, the GSF track is used; for muons, the best track is used; and for hadronically decaying tau leptons, the track of the leading charged hadron is used.
+
 %add 2012 performance (efficiency, fake rate, vtx resolution)? references only have 2011 performance...
 
 \section{Particle Flow
@@ -1365,17 +1381,46 @@ PF reconstruction algorithms classify the blocks as different types of particles
 
 The remaining tracks are linked to clusters to form PF charged hadrons, if the total cluster energy is similar to but smaller than the total track momentum. More than one track can link to a given cluster, but for a given track, only the link to the closest cluster is kept. This reflects the coarser segmentation of the calorimeter system as compared to that of the tracker. In cases where the total cluster energy is significantly smaller than the total track momentum, additional PF muons may be found using tracks from the block, and some tracks may be classified as fake and removed from consideration. Finally, an excess of energy in the clusters, above the total track momentum, is assumed to come from neutral particles. The excess energy is typically classified as a PF photon. If the total excess cluster energy in a block is larger than the total ECAL energy in the cluster, a PF neutral hadron is created from the excess energy remaining after assigning the ECAL excess energy to a PF photon. The remaining clusters not linked to any tracks are used to create PF photons in ECAL and PF neutral hadrons in HCAL.
 
-\section{Electrons}
+\section{Electrons
+\label{sec:ele-reco}}
 
 The electron candidates reconstructed by the PF algorithm are considered to be ``tracker-driven'' \cite{CMS-PAS-EGM-10-004}. This approach is suitable for low-\pt electrons and electrons produced by jets. For higher-\pt electrons, an alternative ``ECAL-driven'' approach is used. ECAL clusters are grouped into superclusters to account for bremsstrahlung photons radiated by electrons as they traverse the tracker, as well as the spread of energy in the $\phi$-direction due to the magnetic field \cite{ElectronReco}. Similarly to the PF algorithm, these superclusters are matched with track seeds and a GSF is used to reconstruct the trajectory of the electron track. Using a mixture of Gaussians to select the electron track better accounts for the energy loss from bremsstrahlung, as compared to the standard CMS track finding procedure \cite{ElectronGSF}. The lists of tracker-driven and ECAL-driven electron candidates are compared to avoid double counting.
 
-Quality cuts on various kinematic variables are applied to the GSF electron candidates to identify whether or not they are genuine electrons \cite{ElectronCutBased}. A set of cut values is called a working point, and multiple working points are defined based on the strictness of the cut values. The kinematic variables used in the quality cuts are described here, and the specific values of the quality cuts used in the dissertation will be listed in Sec. \ref{sec:blah}. The $\eta$ width of the supercluster, $\sigma_{i\eta i\eta}$, is taken from the covariance matrix of the $\eta$ positions of the included crystals compared to the seed cluster. A modified $\eta$ variable which accounts for the crystal spacing is used, and each crystal's contribution is weighted using the logarithm of the ratio of its energy to the seed cluster energy \cite{EgammaShowerShape}. The differences in position of the supercluster, $(\eta_{\text{sc}},\phi_{\text{sc}})$, and the extrapolated track, $(\eta_{\text{in}}^{\text{extrap}},\phi_{\text{in}}^{\text{extrap}})$, are defined as $|\Delta \eta_{\text{in}}| = |\eta_{\text{sc}} - \eta_{\text{in}}^{\text{extrap}}|$ and $|\Delta \phi_{\text{in}}| = |\phi_{\text{sc}} - \phi_{\text{in}}^{\text{extrap}}|$. The leakage energy $H$ in the HCAL tower located behind the ECAL seed cluster is compared to the energy of the seed cluster $E$ in the variable $H/E$. The transverse and longitudinal impact parameters of the vertex associated with the electron, $d_{0}^{\text{vtx}}$ and $z_{0}^{\text{vtx}}$, are used. The variable $|1/E - 1/p|$, comparing the electron energy and momentum, is also considered. Finally, the isolation is computed by summing the \pt of charged hadron (CH), neutral hadron (NH), and photon ($\gamma$) PF candidates within a cone of $\Delta R < 0.3$ of the electron candidate, including a correction for contributions from pileup based on the median energy per area $\rho$ and the effective area of the electron $A_{\text{eff}}$:
+Quality cuts on various kinematic variables are applied to the GSF electron candidates to identify whether or not they are genuine electrons \cite{ElectronCutBased}. A set of cut values is called a working point, and multiple working points are defined based on the strictness of the cut values. The $\eta$ width of the supercluster, $\sigma_{i\eta i\eta}$, is taken from the covariance matrix of the $\eta$ positions of the included crystals compared to the seed cluster. A modified $\eta$ variable which accounts for the crystal spacing is used, and each crystal's contribution is weighted using the logarithm of the ratio of its energy to the seed cluster energy \cite{EgammaShowerShape}. The differences in position of the supercluster, $(\eta_{\text{sc}},\phi_{\text{sc}})$, and the extrapolated track, $(\eta_{\text{in}}^{\text{extrap}},\phi_{\text{in}}^{\text{extrap}})$, are defined as $|\Delta \eta_{\text{in}}| = |\eta_{\text{sc}} - \eta_{\text{in}}^{\text{extrap}}|$ and $|\Delta \phi_{\text{in}}| = |\phi_{\text{sc}} - \phi_{\text{in}}^{\text{extrap}}|$. The leakage energy $H$ in the HCAL tower located behind the ECAL seed cluster is compared to the energy of the seed cluster $E$ in the variable $H/E$. The transverse and longitudinal impact parameters of the vertex associated with the electron, $d_{0}^{\text{vtx}}$ and $z_{0}^{\text{vtx}}$, are used. The variable $|1/E - 1/p|$, comparing the electron energy and momentum, is also considered. Finally, the isolation is computed by summing the \pt of charged hadron (CH), neutral hadron (NH), and photon ($\gamma$) PF candidates within a cone of $\Delta R < 0.3$ of the electron candidate, including a correction for contributions from pileup based on the median energy per area $\rho$ and the effective area of the electron $A_{\text{eff}}$:
 \begin{equation}
 I^{\text{PF}}_{\Pe} = \sum_{\Delta R < 0.3}{\pt^{(\text{CH})}} + \text{max}\left( \sum_{\Delta R < 0.3}{\pt^{(\text{NH})}} + \sum_{\Delta R < 0.3}{\pt^{(\gamma)}} - \rho A_{\text{eff}}, 0 \right).
 \end{equation}
 The relative isolation $I^{\text{PF}}_{\Pe}/\pt^{(\Pe)}$, scaled by the \pt of the electron, is used for the quality cuts.
 
-\section{Muons}
+Two working points for the quality cuts described in Sec. \ref{sec:ele-reco} are used to identify reconstructed electrons in this dissertation. Table \ref{tab:eleWP} lists the various requirements for each working point. Electrons are required to be in the barrel with $|\eta|<1.444$ or in the endcap with $1.56<|\eta|<2.5$. The leading electron in the \etau channel is selected with the medium working point. In addition to these quality cuts, it is required to have $\pt>30\GeV$ to match the specifications of the HLT criterion used to collect the primary dataset, as described in Sec. \ref{sec:obsdatasamples}. The loose working point is used to veto additional electrons and for selections in some control regions. The less restrictive kinematic cut $\pt>20\GeV$ is applied to electrons identified with the loose working point.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|r|c|c|c|c|}
+      \hline
+      \multirow{3}{*}{Cut Variable} & \multicolumn{4}{|c|}{Cut Value} \\
+      \cline{2-5}
+                                    & \multicolumn{2}{|c|}{Medium} & \multicolumn{2}{|c|}{Loose} \\
+      \cline{2-5}
+                                    & Barrel & Endcap & Barrel  & Endcap    \\
+      \hline
+      $I^{\text{PF}}_{\Pe}/\pt<$    & 0.15     & 0.15     & 0.15      & 0.15      \\      
+      $\sigma_{i\eta i\eta}<$       & 0.01     & 0.03     & 0.01      & 0.03    \\ 
+      $|\Delta\phi_{\text{in}}|<$   & 0.06     & 0.03     & 0.15      & 0.10    \\ 
+      $|\Delta\eta_{\text{in}}|<$   & 0.004    & 0.007    & 0.007     & 0.009    \\ 
+      $H/E<$                        & 0.12     & 0.10     & 0.12      & 0.10     \\ 
+      $|d_0^{\text{vtx}}|<$         & 0.02     & 0.02     & 0.02      & 0.02     \\              
+      $|d_z^{\text{vtx}}|<$         & 0.1      & 0.1      & 0.2       & 0.2      \\              
+      $|1/E - 1/p|<$                & 0.05     & 0.05     & 0.05      & 0.05     \\
+      \hline
+    \end{tabular}
+    \caption{The quality cuts for the medium and loose working points of the electron identification. }
+    \label{tab:eleWP}
+  \end{center}
+\end{table}
+
+\section{Muons
+\label{sec:muon-reco}}
 
 The PF muon candidates are used for muon reconstruction. In addition, two supplementary methods are used to reconstruct muons \cite{CMS-PAS-MUO-10-002}. The first method considers all charged-particle tracks from the tracker, above minimal \pt and $p$ cuts, and creates a tracker muon from any track whose extrapolated position matches a track segment in the muon system. This method is efficient for low-momentum muons. The second method produces global muons. This method starts with a standalone muon from a track segment in the muon system and finds a matching track from the tracker. A global muon fit is then performed using both the muon system and tracker tracks, which can provide better momentum resolution for high-\pt muons. The global and track muon candidates, along with any remaining standalone muons which were not matched to a charged-particle track, are combined into one collection in order to prevent double counting.
 
@@ -1383,9 +1428,50 @@ As with electrons, working points are defined based on sets of quality cuts with
 \begin{equation}
 I^{\text{PF}}_{\mu} = \sum_{\Delta R < 0.4}{\pt^{(\text{CH})}} + \text{max}\left( \sum_{\Delta R < 0.4}{\pt^{(\text{NH})}} + \sum_{\Delta R < 0.4}{\pt^{(\gamma)}} - \Delta\beta \sum_{\Delta R < 0.4}{\pt^{(\text{PU})}}, 0 \right).
 \end{equation}
-A $\Delta\beta$ pileup (PU) correction is applied using the \pt of PU particles, which are identified as charged PF candidates from a different vertex than the muon. The $\Delta\beta$ factor is assigned a value of 0.5 based on the expected ratio of charged to neutral particles in pileup \cite{CMS-PAS-PFT-10-002}. Again, cuts are made on the relative isolation $I^{\text{PF}}_{\mu}/\pt^{(\mu)}$. The selections on these quantities are intended to minimize the contribution from cosmic ray muons, muons from heavy flavor decays, and leakage from hadronic showers. They also ensure precise measurement of the muon \pt. Section \ref{sec:blah} will provide the specific cuts for the working points used in the dissertation.
+A $\Delta\beta$ pileup (PU) correction is applied using the \pt of PU particles, which are identified as charged PF candidates from a different vertex than the muon. The $\Delta\beta$ factor is assigned a value of 0.5 based on the expected ratio of charged to neutral particles in pileup \cite{CMS-PAS-PFT-10-002}. Again, cuts are made on the relative isolation $I^{\text{PF}}_{\mu}/\pt^{(\mu)}$. The selections on these quantities are intended to minimize the contribution from cosmic ray muons, muons from heavy flavor decays, and leakage from hadronic showers. They also ensure precise measurement of the muon \pt.
 
-\section{Jets}
+Two working points for these quality cuts are used to identify reconstructed muons in this dissertation. Table \ref{tab:muonWP} lists the various requirements for each working point. The leading muon in the \mutau channel is selected with the tight working point. In addition to these quality cuts, it is required to have $\pt>30\GeV$ and $|\eta|<2.1$ to match the specifications of the HLT criterion used to collect the primary dataset, as described in Sec. \ref{sec:obsdatasamples}. The loose working point is used to veto additional muons and for selections in some control regions. Less restrictive kinematic cuts $\pt>20\GeV$ and $|\eta|<2.4$ are applied to muons identified with the loose working point.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{Working Point}\\
+\hline
+\multicolumn{1}{|c|}{Tight} & \multicolumn{1}{c|}{Loose} \\
+\hline
+PF muon & PF muon \\
+Global muon & Global muon OR tracker muon \\
+$\begin{aligned}
+I^{\text{PF}}_{\mu}/\pt &< 0.12 \\
+d_0 &< 0.2\cm \\
+d_z &< 0.5\cm \\
+\text{Global track fit } \chi^2/n_{\text{dof}} &< 10 \\
+\text{Global track fit } n_{\text{muon segment}} &> 0 \\
+n_{\text{hits}}(\text{pixel}) &> 0 \\
+n_{\text{layers}}(\text{tracker}) &> 5 \\
+n_{\text{stations}}(\text{muon}) &> 1
+\end{aligned}$
+&
+$\begin{aligned}
+I^{\text{PF}}_{\mu}/\pt &< 0.3 \\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\end{aligned}$ \\
+\hline
+    \end{tabular}
+    \caption{The quality cuts for the tight and loose working points of the muon identification.}
+    \label{tab:muonWP}
+  \end{center}
+\end{table}
+
+\section{Jets
+\label{sec:jet-reco}}
 
 Due to QCD confinement, strongly interacting particles, quarks and gluons, cannot exist in a bare state. They immediately form multiple color singlet bound states, hadrons, using the energy from the gluon field in a process called hadronization. These hadrons tend to be produced in a narrow spray, which is called a jet \cite{Salam:2009jx}. To reconstruct a jet, the component particles must be clustered together. CMS uses the anti-\kt algorithm \cite{Cacciari:2008gp} to perform this clustering. This algorithm is a specific case of a generalized iterative cone algorithm, using the following equations:
 \begin{align}
@@ -1407,7 +1493,28 @@ CMS chooses the value $R = 0.5$ for the size parameter and uses PF candidates fo
 
 Once a jet is reconstructed, several important types of corrections are applied to its energy response \cite{CMS-JEC}. First, minimum bias events are used to estimate the contributions from electronic noise and pileup, and those are subtracted in the offset correction. Next, the energy response is made uniform in $\eta$ using the multiplicative relative correction, derived from dijet events. Finally, the multiplicative absolute correction is derived from \GZJ events, exploiting the precise energy resolution of the ECAL and the tracker, and applied to make the energy response uniform in \pt.
 
-To ensure the quality of reconstructed jets used in data analysis, a set of variables is used for PF jet identification \cite{CMS-AN-2010-003}. These variables include: the fraction of neutral hadrons in the jet, the fraction of neutral EM particles, the fraction of charged hadrons, the fraction of charged EM particles, the number of constituents, and the multiplicity of charged particles. Multiple sets of cuts on these variables are defined as working points \cite{PFJetID}. The specific working point used in this dissertation will be given in Sec. \ref{sec:blah}.
+To ensure the quality of reconstructed jets used in data analysis, a set of variables is used for PF jet identification \cite{CMS-AN-2010-003}. These variables include: the fraction of neutral hadrons in the jet $f_{\text{NH}}$, the fraction of neutral EM particles $f_{\gamma}$, the fraction of charged hadrons $f_{\text{CH}}$, the fraction of charged EM particles $f_{\text{EM}}$, the number of constituents $n_{\text{constituents}}$, and the multiplicity of charged particles $n_{\text{charged}}$. Multiple sets of cuts on these variables are defined as working points \cite{PFJetID}. The loose working point of the PF jet identification algorithm is used to identify reconstructed jets in this dissertation. The requirements for the loose working point are summarized in Table \ref{tab:jetWP}. To eliminate jets from pileup interactions, each selected jet is required to have $\pt>30\GeV$. The cut $|\eta|<2.4$ is also applied, in order to include only jets measured in the best-performing regions of the detector.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|r|c|}
+      \hline
+      \multirow{2}{*}{Cut Variable} & Cut Value \\
+      \cline{2-2}
+                                    & Loose \\
+      \hline
+      $f_{\text{CH}}>$              & 0.0 \\
+      $f_{\text{NH}}<$              & 0.99 \\
+      $f_{\gamma}<$                 & 0.99 \\
+      $f_{\text{EM}}<$              & 0.99 \\
+      $n_{\text{charged}}>$         & 0 \\
+      $n_{\text{constituents}}>$    & 1 \\
+      \hline
+    \end{tabular}
+    \caption{The quality cuts for the loose working point of the jet identification. }
+    \label{tab:jetWP}
+  \end{center}
+\end{table}
 
 \section{Taus
 \label{sec:hpstau}}
@@ -1455,13 +1562,33 @@ Isolation is an important tool in discriminating between $\tauh$s and jets. The 
 \begin{equation}
 I^{\text{PF}}_{\tauh} = \sum_{\Delta R < 0.5}{\pt^{(\text{CH})}} + \text{max}\left( \sum_{\Delta R < 0.5}{\pt^{(\gamma)}} - \Delta\beta \sum_{\Delta R < 0.8}{\pt^{(\text{PU})}}, 0 \right).
 \end{equation}
-The HPS algorithm uses the absolute isolation $I^{\text{PF}}_{\tauh}$ for the different working point quality cuts. The isolation discrimination also requires that each track associated with the \tauh contain at least three hits in the tracker. In addition to isolation, it is necessary to discriminate against electrons and muons which are misidentified as $\tauh$s. The anti-electron discriminator uses a multivariate (MVA) approach, training boosted decision trees (BDTs) using numerous variables depending on different cases of \tauh. These cases include: the possible association of the primary charged hadron in the \tauh with a GSF track; the possible association of the \tauh with a GSF electron within a cone of $\Delta R < 0.3$; whether or not the \tauh includes strips; and whether the \tauh $\eta$ coordinate lies in the EB or EE range. Multiple trainings for the anti-electron MVA discriminator were performed and multiple working points are defined. The anti-muon discriminator uses a cut-based approach, with multiple sets of cuts and working points defined. The cuts include requirements to minimize the activity in the muon system in the direction of the \tauh and to veto MIP muons based on energy and momentum. The specific working points for each discriminator used in this dissertation will be described in Sec. \ref{sec:blah}.
+The HPS algorithm uses the absolute isolation $I^{\text{PF}}_{\tauh}$ for the different working point quality cuts. The isolation discrimination also requires that each track associated with the \tauh contain at least three hits in the tracker. In addition to isolation, it is necessary to discriminate against electrons and muons which are misidentified as $\tauh$s. The electron-tau discriminator uses a multivariate (MVA) approach, training boosted decision trees (BDTs) using numerous variables depending on different cases of \tauh. These cases include: the possible association of the primary charged hadron in the \tauh with a GSF track; the possible association of the \tauh with a GSF electron within a cone of $\Delta R < 0.3$; whether or not the \tauh includes strips; and whether the \tauh $\eta$ coordinate lies in the EB or EE range. Multiple trainings for the anti-electron MVA discriminator were performed and multiple working points are defined. The muon-tau discriminator uses a cut-based approach, with multiple sets of cuts and working points defined. The cuts include requirements to minimize the activity in the muon system in the direction of the \tauh and to veto MIP muons based on energy and momentum. 
 %The \tauh candidate must not match any muon track segments or any hits in the two outermost muon stations within a cone of $\Delta R < 0.5$. In the single hadron decay mode, the charged hadron in the \tauh must have $(E_{\text{ECAL}} + E_{\text{ECAL}})/p_{\text{track}} > 0.2$.
+
+In this dissertation, the working points for each discriminator can differ for each channel, as listed in Table \ref{tab:tauWP}. The loose working point for the combined isolation requires $I^{\text{PF}}_{\tauh}<2\GeV$. A tighter working point for the muon-tau discriminator is used in the \mutau channel to increase the rejection of muons misidentified as tau leptons from, e.g., the $\Z \rightarrow \mu\mu$ process. The loose working point for the electron-tau discriminator was found to be optimal for both channels. In addition to these discriminators, each reconstructed tau lepton is required to have $\pt>30\GeV$ and $|\eta|<2.3$.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \multirow{2}{*}{Discriminator} & \multicolumn{2}{|c|}{Working Point} \\
+      \cline{2-3}
+                                    & \etau & \mutau \\
+      \hline
+      Isolation                     & Loose (3 hits)   & Loose (3 hits) \\
+      $\Pe$-$\tau$                  & Loose MVA (v3)   & Loose MVA (v3) \\
+      $\mu$-$\tau$                  & Loose (v2)       & Tight (v2) \\
+      \hline
+    \end{tabular}
+    \caption{The working points for the different tau discriminators used in the tau lepton identification. }
+    \label{tab:tauWP}
+  \end{center}
+\end{table}
 
 \section{b-tagging
 \label{sec:b-tagging}}
 
-Bottom quarks are associated with many interesting physical signatures, including decays of top quarks and Higgs bosons, as well as many BSM theories, including supersymmetry, that privilege or otherwise relate to third-generation fermions. Jets generated by bottom quark hadronization, b-jets, can be identified using certain properties which set them apart from jets from lighter quarks or gluons \cite{BTV-12-001}. Bottom quarks form hadrons with relatively long lifetimes whose decay products tend to have high \pt. Numerous algorithms have been created to identify b-jets based on information from tracks or reconstructed secondary vertices from b-hadron decays. The most successful of these algorithms is the Combined Secondary Vertex (CSV) algorithm, which uses secondary vertices and adds information from the tracks. The CSV algorithm calculates a likelihood-based discriminator to separate b-jets and other jets. Loose, medium, and tight working points are defined for this discriminator, based on setting the probability of misidentifying a light quark or gluon jet as a b-jet to be 10\%, 1\%, and 0.1\%, respectively \cite{CMS-PAS-BTV-13-001}.
+Bottom quarks are associated with many interesting physical signatures, including decays of top quarks and Higgs bosons, as well as many BSM theories, including supersymmetry, that privilege or otherwise relate to third-generation fermions. Jets generated by bottom quark hadronization, b-jets, can be identified using certain properties which set them apart from jets from lighter quarks or gluons \cite{BTV-12-001}. Bottom quarks form hadrons with relatively long lifetimes whose decay products tend to have high \pt. Numerous algorithms have been created to identify b-jets based on information from tracks or reconstructed secondary vertices from b-hadron decays. The most successful of these algorithms is the Combined Secondary Vertex (CSV) algorithm, which uses secondary vertices and adds information from the tracks. The CSV algorithm calculates a likelihood-based discriminator to separate b-jets and other jets. Loose, medium, and tight working points are defined for this discriminator, based on setting the probability of misidentifying a light quark or gluon jet as a b-jet to be 10\%, 1\%, and 0.1\%, respectively \cite{CMS-PAS-BTV-13-001}. In this dissertation, the loose working point is used to select b-tagged jets, which requires the discriminator calculated by the CSV algorithm to have a value greater than 0.244.
 
 For a given jet, the CSV algorithm subjects the tracks within that jet to additional purity requirements, beyond those specified in Sec. \ref{sec:tracks}. The track must fall within a cone of $\Delta R < 0.3$ relative to the direction of the jet and the distance between the track and the jet at closest approach must be less than 0.07\cm. The track must include at least two pixel hits and at least eight total tracker hits, with $\chi^2/n_{\text{dof}} < 5$. The impact parameters between the track and the primary vertex must satisfy $d_0 < 0.2\cm$ and $d_z < 17\cm$. Finally, the track must have $\pt>1\GeVc$ and decay length less than 5\cm, where decay length is the distance between the primary vertex and the closest approach of the track and the jet. The significance of the track's impact parameter $S_{\text{ip}}$, defined as the value of the impact parameter divided by its uncertainty, is a powerful observable. The number of high-quality tracks in the jet is also used.
 
@@ -1478,41 +1605,732 @@ Secondary vertices are reconstructed using the adaptive vertex fitter, which was
 \chapter{Data Analysis
 \label{ch:analysis}}
 
+% input: [samples.tex]
 \section{Data Samples}
 
-\subsection{Observed Data}
+\subsection{Observed Data
+\label{sec:obsdatasamples}}
+
+The observed data analyzed in this dissertation consist of 19.712\fbinv of integrated luminosity, collected by the CMS detector during the 2012 run of the LHC. Figure \ref{fig:lumipublic-dqm} shows the total delivered, recorded, and validated integrated luminosity over time throughout the 2012 run. Events are included in the validated data only if the LHC and the CMS detector were fully operational when the event was recorded. The single electron and single muon primary datasets, listed in Table \ref{tab:data-samples}, are used for the \etau and \mutau channels, respectively. Within the single electron dataset, events are selected if they pass the HLT criterion HLT\_Ele27\_WP80, which requires a reconstructed electron with $\pt>27\GeV$ using the identification working point with 80\% efficiency. Similarly, in the single muon dataset, events are selected if they pass the HLT criterion HLT\_IsoMu24, which requires an isolated reconstructed muon with $\pt>24\GeV$. The average number of interactions per bunch crossing was 21 \cite{LumiPublic}.
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures/int_lumi_per_day_cumulative_pp_2012_SummerConf.png}
+\caption{A plot of the total integrated luminosity over time for the 2012 run of the LHC, showing the luminosity delivered by the LHC (blue), recorded by the CMS detector (dark orange), and validated as good for physics analysis (light orange) \cite{DataQuality}.}
+\label{fig:lumipublic-dqm}
+\end{center}
+\end{figure}
+
+\begin{table}[hbt]
+\begin{center}
+\begin{tabular}{|l|}
+\multicolumn{1}{c}{$\etau$ channel} \\
+\hline
+Dataset Name \\
+\hline
+/SingleElectron/Run2012A-22Jan2013-v1/AOD \\
+/SingleElectron/Run2012B-22Jan2013-v1/AOD \\
+/SingleElectron/Run2012C-22Jan2013-v1/AOD \\
+/SingleElectron/Run2012D-22Jan2013-v1/AOD \\
+\hline
+\multicolumn{1}{c}{$\mutau$ channel} \\ 
+\hline
+Dataset Name \\
+\hline
+/SingleMu/Run2012A-22Jan2013-v1/AOD \\
+/SingleMu/Run2012B-22Jan2013-v1/AOD \\
+/SingleMu/Run2012C-22Jan2013-v1/AOD \\
+/SingleMu/Run2012D-22Jan2013-v1/AOD \\
+\hline
+\end{tabular}
+\caption{The list of observed data samples used in each channel.}
+\label{tab:data-samples}
+\end{center}
+\end{table}
 
 \subsection{Monte Carlo}
 
+Monte Carlo (MC) simulation is used to study the SM background processes which can mimic the signatures of the signal processes. For some processes, the MC simulation is used for the estimation of the final yields and kinematic distributions. For other processes, the final yields and/or kinematic distributions may be estimated from control regions in the observed data. More details on the final background estimations are provided in Sec. \ref{sec:background}. The leptoquark and top squark signal processes are also modeled using MC. A full list of the MC samples used in this dissertation can be found in App. \ref{ch:datasets}.
+
+The \MADGRAPH v5.1.3.30 generator \cite{MadGraph} is used to model the \ttbar, \W + jets, and \Z + jets processes. This generation includes contributions from heavy-flavor and extra jets. For the \ttbar process, an inclusive sample is generated including all decay modes of the two \W bosons from the top quark decays. Exclusive samples with larger numbers of events are also generated, each including only one of three categories for the \W decays: fully leptonic, semileptonic, and fully hadronic. For the \W + jets and \Z + jets processes, inclusive samples including any number of jets are generated. Exclusive samples with larger numbers of events are also generated separately for events with 1 jet, 2 jets, 3 jets, and 4 jets. The single top quark production is modeled with the \POWHEG 1.0 r138 \cite{POWHEG2,POWHEG:singlet,POWHEG:singletW} generator. The \PYTHIA v6.4.24 generator \cite{Sjostrand:2006za} is used to model the diboson processes, including the production of $\W^{+}\W^{-}$, $\Wpm\Z$, and $\Z\Z$, collectively denoted as VV. Both the \MADGRAPH and \POWHEG generators are interfaced with \PYTHIA for hadronization and showering. The \TAUOLA program~\cite{TAUOLA} is used for tau lepton decays in all processes which produce genuine tau leptons. The cross sections for the \ttbar and single top quark processes are calculated at next-to-next-to-leading logarithmic (NNLL) accuracy \cite{TOPCrossSec}. The cross sections for the inclusive \W + jets and \Z + jets processes are calculated at NNLO accuracy, while the cross sections for the exclusive production with a specific number of jets are calculated at LO accuracy \cite{FEWZ}. For the VV processes, the cross sections are calculated at NLO accuracy \cite{MCFM}.
+
+The leptoquark and top squark signal processes are generated using \PYTHIA v6.4.24 \cite{Sjostrand:2006za}. The leptoquark pair production process is generated for $\MLQ=200\GeV$ to $\MLQ=1000\GeV$ in steps of 50\GeV, with the decay $\text{LQ} \rightarrow \tau \cPqb$ required. The cross section for leptoquark pair production is calculated at NLO accuracy \cite{LQxsec}. The theoretical uncertainties on these cross sections have been discussed in Sec. \ref{sec:LQ} and are listed in Table \ref{tab:lq-xsec}. As mentioned in Sec. \ref{sec:RPVSUSY}, the deviation between these LQ production cross sections and the corresponding top squark production cross sections is less than 2\%, so the same cross sections can be used to normalize the samples for both signals. The simulation of the chargino-mediated $\lambda_{3jk}^{\prime}$ decay of the top squark is summarized in Table \ref{tab:LQD321-samples}. Samples are generated for $\Mstop=200\GeV$ to $\Mstop=900\GeV$ in steps of 100\GeV. The MSSM parameters for the event generation are $M_1=1000\GeV$, $M_2=1000\GeV$, $M_3=1500\GeV$, $m_{\sLep}=1500\GeV$, $m_{\sQua}=1500\GeV$, $m_{\sNu}=2000\GeV$ and $\text{tan}(\beta)=40$. Here, $M_1$ is the bino mass term, $M_2$ is the wino mass term, and $M_3$ is the gluino mass term. The $\lambda_{321}^{\prime}$ coupling is selected for the generation; because reconstructed light-quark jets are generally indistinguishable regardless of the flavor of the initial quark, these samples can be used to model signals for all $\lambda_{3jk}^{\prime}$ couplings with $j,k=1,2$.
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|r|}
+\hline
+$\Mstop$ $[\GeVns]$    &    $M_{\chipm}$ $[\GeVns]$    &   $\mu$ $[\GeVns]$  & $\lambda_{321}^{\prime}$ & \multicolumn{1}{c|}{$N_{\text{events}}$} \\
+\hline \hline
+200   &      100   &  100.98 & 1  &   539,000   \\
+300   &      200   &  201.69 & 1  &   50,000   \\
+400   &      300   &  302.49 & 1  &   50,000   \\
+500   &      400   &  403.46 & 1  &   50,000   \\
+600   &      500   &  504.73 & 1  &   50,000   \\
+700   &      600   &  606.55 & 1  &   50,000   \\
+800   &      700   &  709.47 & 1  &   50,000   \\
+900   &      800   &  815.16 & 1  &   50,000   \\
+\hline
+\end{tabular}
+\caption{A summary of the generation of signal samples for the chargino-mediated $\lambda_{3jk}^{\prime}$ decay of the top squark. The chargino mass is determined by the value of $\mu$.}
+\label{tab:LQD321-samples}
+\end{center}
+\end{table}
+
+To account for known discrepancies between the MC simulation and the observed data, various correction factors are applied to the simulated samples. Corrections for the efficiency of muon trigger criteria, identification, and isolation are calculated using tag and probe methods \cite{MuonRefEffs}. Similar correction factors are calculated for electrons \cite{EgammaTagAndProbe,EgammaScaleFactors}. These correction factors depend on the lepton $\pt$ and $\eta$. The chosen working points for the hadronic tau lepton discriminators were found not to need any corrections in the simulation \cite{TauID}. Correction factors for b-tagging and mistagging efficiencies are applied using the method called ``event reweighting using scale factors and MC b-tagging efficiencies'' with the EPS13 prescription \cite{BTagSFMethods}.
+
+% input: [selection.tex]
 \section{Selection and Optimization}
 
-\subsection{Object Identification}
+The events analyzed in this dissertation are selected based on requirements for the numbers and types of different reconstructed objects and the relationships between those objects within each event. The selection criteria are applied in three stages. The most basic criteria are applied first in the preselection. This stage is used to validate the Monte Carlo background simulations by examining various relevant kinematic distributions. Second, additional criteria are applied in the main selection, which more closely addresses the expected properties of signal events. Kinematic distributions in the main selection are used to optimize the cuts for the final selection, in order to reduce the contributions from background while enhancing the signal. These optimizations maximize the expected limit from the MC background simulations. Separate final selections are defined for the leptoquark search and the top squark search.
 
-\subsubsection{Muons}
+\subsection{Preselection}
 
-\subsubsection{Electrons}
+At the preselection stage, a single primary well-identified light lepton $\ell$ is required. In the \etau channel, this is an electron satisfying the medium working point and kinematic criteria described in Sec. \ref{sec:ele-reco}. In the \mutau channel, this is a muon satisfying the tight working point and kinematic criteria described in Sec. \ref{sec:muon-reco}. In addition to the light lepton, the event must contain a hadronic tau identified by the HPS algorithm and associated discriminators as defined in Sec. \ref{sec:hpstau}. The two objects, light lepton and hadronic tau, must have opposite charges, originate from the same vertex, and be separated by $\Delta R > 0.5$. Two jets are also required, satisfying the loose working point and kinematic criteria described in Sec. \ref{sec:jet-reco}. The jets must be separated from the light lepton and the hadronic tau by $\Delta R > 0.5$.
 
-\subsubsection{Taus}
+Several cases of additional light leptons are vetoed. To suppress background from the \Z + jets process, events are rejected if they contain additional light leptons satisfying the loose working point and having the same flavor and opposite charge with respect to the primary lepton. This separates the contributions from the $\Z \rightarrow \ell\ell$+jets process into control regions which will be used for background estimation. To avoid overlap between the two channels, events are rejected if they contain additional light leptons satisfying the primary working point and kinematic criteria for leptons (medium for electrons and tight for muons) and having the opposite flavor and opposite charge with respect to the primary lepton. This also defines an \emu control region which will be used for background estimation.
 
-\subsubsection{Jets}
+Figures \ref{fig:preseletau} and \ref{fig:preselmutau} compare the observed data to the MC background simulation after the preselection in the \etau and \mutau channels, respectively. All histograms in this dissertation show the overflow, if any, in the last bin. The event yields for the observed data and the expected SM backgrounds after the preselection are summarized in Table \ref{tab:eventyieldpresel}. The discrepancy between the observed data and simulated background yields in the \etau channel is due to the presence of QCD multijet events in the observed data. This discrepancy is primarily observed at low \pt and high $\eta$, as expected from QCD. This process is not modeled in the MC simulation because of the difficulty in simulating enough events to be comparable to the amount of data collected by the CMS experiment in 2012. Instead, the yield from QCD is estimated using a same-sign/opposite-sign method which is described in detail in Sec. \ref{sec:qcdbkg}.
 
-\subsection{Event Selection}
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.465\textwidth]{figures/etau/etauMassMultJet.pdf}
+    \includegraphics[width=0.465\textwidth]{figures/etau/nBJetMultJet.pdf} \\
+    \includegraphics[width=0.465\textwidth]{figures/etau/elPtMultJet.pdf}
+    \includegraphics[width=0.465\textwidth]{figures/etau/elEtaMultJet.pdf} \\
+    \includegraphics[width=0.465\textwidth]{figures/etau/tauPtMultJet.pdf}
+    \includegraphics[width=0.465\textwidth]{figures/etau/tauEtaMultJet.pdf}
+    \caption{Plots of various kinematic quantities comparing observed data and simulated backgrounds in the \etau channel after the preselection: the visible mass of the electron and hadronic tau (top left), the number of b-tagged jets (top right), the \pt (left) and $\eta$ (right) of the electron (middle) and hadronic tau (bottom). The uncertainty band reflects the statistical uncertainty in the simulated backgrounds.}
+    \label{fig:preseletau}
+  \end{center}
+\end{figure}
 
-\subsubsection{Preselection}
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.465\textwidth]{figures/mutau/preselection/mass.pdf}
+    \includegraphics[width=0.465\textwidth]{figures/mutau/preselection/nbjet.pdf} \\
+    \includegraphics[width=0.465\textwidth]{figures/mutau/preselection/ptmu.pdf}
+    \includegraphics[width=0.465\textwidth]{figures/mutau/preselection/etamu.pdf} \\
+    \includegraphics[width=0.465\textwidth]{figures/mutau/preselection/pttau.pdf}
+    \includegraphics[width=0.465\textwidth]{figures/mutau/preselection/etatau.pdf}
+    \caption{Plots of various kinematic quantities comparing observed data and simulated backgrounds in the \mutau channel after the preselection: the visible mass of the muon and hadronic tau (top left), the number of b-tagged jets (top right), the \pt (left) and $\eta$ (right) of the muon (middle) and hadronic tau (bottom). The uncertainty band reflects the statistical uncertainty in the simulated backgrounds.}
+    \label{fig:preselmutau}
+  \end{center}
+\end{figure}
 
-\subsubsection{Main Selection}
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|l|r@{$\,\pm\,$}r|r@{$\,\pm\,$}r|}
+      \hline
+      & \multicolumn{2}{c|}{\etau channel} & \multicolumn{2}{c|}{\mutau channel} \\
+      \hline
+      \W + jets                       &  4221.6 & 188.1   & 4846.3 & 233.6  \\
+      \Z + jets                       &  4766.7 & 85.1    & 2369.1 & 80.7   \\
+      \ttbar                          &  6272.2 & 65.5    & 6430.5 & 69.8   \\
+      Single \cPqt                    &  462.9 & 14.4     & 512.3 & 16.0    \\
+      VV                              &  223.4 & 4.4      & 212.5 & 4.6     \\
+      QCD multijets                   &  (2452.6 & 512.1)\neghphantom{)} & \multicolumn{2}{c|}{---} \\ 
+      \hline                                                  
+      Total Bkg. (no QCD)             & 15946.8 & 232.9   & 14370.8 & 257.3 \\
+      \hline                                                  
+      \hline                                                  
+      Data                            & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{18177\hphantom{.0}} & & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{14351\hphantom{.0}} & \\
+      \hline
+    \end{tabular}
+    \caption{The simulated background and observed event yields after the preselection in the \etau and \mutau channels. The statistical uncertainties are given for each simulated background. The contribution from the QCD multijets process is not taken into account in the total background yield. }
+    \label{tab:eventyieldpresel}
+  \end{center}
+\end{table}
 
-\subsubsection{Final Selections}
+%\clearpage
 
-\section{Background Estimations}
+\subsection{Main Selection}
 
-\subsection{Irreducible Background (ttbar)}
+A preselected event satisfies the main selection if at least one of the selected jets in the event is b-tagged. Though the expected final state from the signal includes two b-jets, it was found that requiring b-tagging for only one jet improved the signal yield in comparison to the SM backgrounds. This is expected due to the reduced efficiency of applying the CSV algorithm for b-tagging multiple times per event. The second jet in the event may or may not be b-tagged. Plots comparing observed data to the simulated backgrounds after the main selection are shown in Figs. \ref{fig:mainseletau} and \ref{fig:mainselmutau}, and event yields are given in Table \ref{tab:eventyieldmainsel}.
 
-\subsection{Reducible Background (fake tau)}
+At this stage of the selection, several new observables are introduced. The first is the visible mass of the hadronic tau and a jet, \MassTJ. There are two possible pairings of the light lepton and the hadronic tau with the two selected jets. The pairing is chosen to minimize the difference between \MassTJ and \MassLJ. In signal events, these two values are expected to be similar, as both sets of correctly-paired particles will originate from the same mother particles, leptoquarks or top squarks. However, the visible mass variables will not directly measure the true mass of the mother particles; some of the energy will be lost in the form of neutrinos produced in tau lepton decays. According to the simulation of the signal process, this minimization selects the correct pairing in approximately 70\% of events. This observable will be used in the final selection for the leptoquark search.
 
-\subsection{Reducible Background (QCD)}
+The second new variable is \ST, which is defined as the scalar sum of \pt for all final-state objects:
+\begin{equation}
+\label{eq:STLQ}
+\ST(\text{LQ}) = \pt(\ell) + \pt(\tauh) + \pt(\text{b-jet}) + \pt(\text{jet}).
+\end{equation}
+As indicated in Eq. \eqref{eq:STLQ}, this definition of \ST is appropriate for the leptoquark search, which requires four objects in the final state: a light lepton, a hadronic tau, a b-tagged jet, and another jet. Figures \ref{fig:mainseletau} and \ref{fig:mainselmutau} show this version of \ST. An alternate definition appropriate for the top squark search, which has a slightly different final state, is given in Eq. \eqref{eq:STstop}.
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/etau/jet1PtBTag.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/etau/jet2PtBTag.pdf} \\
+    \includegraphics[width=0.49\textwidth]{figures/etau/finalMass.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/etau/STbjetBTag.pdf}
+    \caption{Plots of various kinematic quantities comparing observed data and simulated backgrounds in the \etau channel after the main selection: the \pt spectra (top) of the first (left) and second (right) selected jets, \MassTJ (bottom left), and \ST (bottom right). The uncertainty band reflects the statistical uncertainty in the simulated backgrounds.}
+    \label{fig:mainseletau}
+  \end{center}
+\end{figure}
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/mutau/mainselection/leadseljetpt.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/mutau/mainselection/secondseljetpt.pdf} \\
+    \includegraphics[width=0.49\textwidth]{figures/mutau/mainselection/masstaub.pdf}    
+    \includegraphics[width=0.49\textwidth]{figures/mutau/mainselection/st.pdf}
+    \caption{Plots of various kinematic quantities comparing observed data and simulated backgrounds in the \mutau channel after the main selection: the \pt spectra (top) of the first (left) and second (right) selected jets, \MassTJ (bottom left), and \ST (bottom right). The uncertainty band reflects the statistical uncertainty in the simulated backgrounds.}
+    \label{fig:mainselmutau}
+  \end{center}
+\end{figure}
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|l|r@{$\,\pm\,$}r|r@{$\,\pm\,$}r|}
+      \hline
+      & \multicolumn{2}{c|}{\etau channel} & \multicolumn{2}{c|}{\mutau channel} \\
+      \hline
+      \W + jets                       & 1201.9 & 104.0   & 1285.8 & 122.7 \\
+      \Z + jets                       & 1534.0 & 49.5    & 774.4 & 46.8   \\
+      \ttbar                          & 5783.6 & 63.5    & 5699.5 & 64.4  \\
+      Single \cPqt                    & 390.2  & 13.5    & 418.6 & 14.2   \\
+      VV                              & 82.9   & 2.7     & 74.1 & 2.7     \\
+      QCD multijets                   & (1226.0 & 131.0)\neghphantom{)}  & \multicolumn{2}{c|}{---}  \\
+      \hline                                                 
+      Total Bkg. (no QCD)             & 8992.6 & 141.2   & 8252.3 & 147.0 \\
+      \hline
+      \hline
+      Data                            & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{10113\hphantom{.0}} & & \multicolumn{1}{r@{\hphantom{$\,\pm\,$}}}{8866\hphantom{.0}} &  \\
+      \hline
+    \end{tabular}
+    \caption{The simulated background and observed event yields after the main selection in the \etau and \mutau channels. The statistical uncertainties are given for each simulated background. The contribution from the QCD multijets process is not taken into account in the total background yield. }
+    \label{tab:eventyieldmainsel}
+  \end{center}
+\end{table}
+
+%\clearpage
+
+\subsection{Final Selections}
+
+In the final stage of the selection for the leptoquark search, two additional requirements are applied. The selected hadronic tau must have $\pt>50\GeV$, and the selected events must have $\MassTJ>250\GeV$. This cut on the \MassTJ value is optimal for the expected limit based on the simulation for the entire range of leptoquark masses under consideration. The change in the kinematic properties of the signal for different mass values is taken into account when the \ST distribution is used to set $\text{CL}_{s}$ limits. The procedure for setting limits with a distribution is described in App. \ref{ch:limits}.
+
+Slightly different final selection criteria are applied for the top squark search. Again, the selected hadronic tau must have $\pt>50\GeV$. Instead of a cut on \MassTJ, which is not a meaningful variable for the top squark $\lambda^{\prime}_{3jk}$ decay chain, the selected events are required to have $N_{\text{jets}}\geq5$. The expected final state of the top squark signal has $N_{\text{jet}}=6$, and though it was found that requiring $N_{\text{jets}}\geq6$ would maximize the expected limit based on the simulation, the number of both signal and background events passing that cut was greatly reduced. Because this would also reduce the number of events in the control regions used to estimate the major backgrounds, the corresponding increase in systematic uncertainty would render the limit indistinguishable from the $N_{\text{jets}}\geq5$ case. Thus, the slightly looser $N_{\text{jets}}$ cut was chosen. Given this cut, the \ST variable for the top squark search is defined as:
+\begin{equation}
+\label{eq:STstop}
+\ST(\sTop) = \pt(\ell) + \pt(\tauh) + \pt(\text{b-jet}) + \sum_{i=1}^{4}\pt(\text{jet }i).
+\end{equation}
+
+Figure \ref{fig:finalcutscombined} shows the final selection variables for each search with both channels combined. Simulated signal distributions are added on top of the background to demonstrate the effect of the final selection cuts in removing background while preserving signal events. The common requirement $\pt(\tauh)>50\GeV$ is applied in these plots, and the major background yields are estimated from observed data. The background estimation techniques will be described in Sec. \ref{sec:background}.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/final/mtj_lq_log.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/final/njets_lqd321_log.pdf}
+    \caption{\MassTJ (left) and $N_{\text{jets}}$ (right) before the respective final selection cuts on these variables, with the \etau and \mutau channels combined. A signal sample for leptoquarks with a mass of 500\GeV (left) or top squarks with a mass of 300\GeV (right) is added on top of the background prediction. Both plots include the cut $\pt(\tauh)>50\GeV$ and the major backgrounds are estimated from observed data.}
+    \label{fig:finalcutscombined}
+  \end{center}
+\end{figure}
+
+% input: [backgrounds.tex]
+\section{Background Estimations
+\label{sec:background}}
+
+Several SM processes can mimic the final-state signatures expected from leptoquark or top squark pair production and decay. In this dissertation, the backgrounds are divided into three groups, which are denoted as \ttbar irreducible, major reducible, and other. The \ttbar irreducible background comes from the pair production of top quarks when both the light lepton and \tauh are genuine, each produced from the decay of a \W boson. In this case, the light lepton can originate either directly from the \W boson decay or from a decay chain $\W \rightarrow \tau  \cPgn_{\tau} \rightarrow \ell\cPgn_{\ell} \cPgn_{\tau} \cPgn_{\tau}$. The major reducible background consists of events in which a quark or gluon jet is
+misidentified as a \tauh. The processes contributing to the major reducible background are \W + jets, \Z + jets, and \ttbar. Additionally, a small contribution from the QCD multijet process is included, in which both the light lepton and the \tauh are misidentified jets. The contribution from QCD is only significant in the \etau channel of the leptoquark search. The third group, other backgrounds, consists of processes that make small contributions and may contain either genuine or misidentified tau leptons. The other backgrounds are estimated using the MC simulation, while the \ttbar irreducible and major reducible backgrounds are estimated using observed data. Both the major reducible and other backgrounds include events with both genuine and misidentified light leptons.
+
+%This includes the diboson and single-top-quark processes, the \ttbar and \Z+jets processes when a light lepton is misidentified as a \tauh, and the \Z+jets process when the Z boson decays to a pair of tau leptons.
+
+% input: [ttbarbkg.tex]
+\subsection{\texorpdfstring{\ttbar}{ttbar} Irreducible Background}
+
+% Special symbols for ttbar estimation
+\newcommand{\Be}{\ensuremath{\mathcal{B}_{\W\Pe}}\xspace}
+\newcommand{\Bm}{\ensuremath{\mathcal{B}_{\W\mu}}\xspace}
+\newcommand{\Bl}{\ensuremath{\mathcal{B}_{\W\ell}}\xspace}
+\newcommand{\Bte}{\ensuremath{\mathcal{B}_{\W\tau_{\Pe}}}\xspace}
+\newcommand{\Btm}{\ensuremath{\mathcal{B}_{\W\tau_{\mu}}}\xspace}
+\newcommand{\Btl}{\ensuremath{\mathcal{B}_{\W\tau_{\ell}}}\xspace}
+\newcommand{\Bth}{\ensuremath{\mathcal{B}_{\W\tauh}}\xspace}
+\newcommand{\Aem}{\ensuremath{\mathcal{A}_{\Pe\mu}}\xspace}
+\newcommand{\Amte}{\ensuremath{\mathcal{A}_{\mu\tau_{\Pe}}}\xspace}
+\newcommand{\Amtm}{\ensuremath{\mathcal{A}_{\mu\tau_{\mu}}}\xspace}
+\newcommand{\Amtl}{\ensuremath{\mathcal{A}_{\mu\tau_{\ell}}}\xspace}
+\newcommand{\Amth}{\ensuremath{\mathcal{A}_{\mu\tauh}}\xspace}
+\newcommand{\Aete}{\ensuremath{\mathcal{A}_{\Pe\tau_{\Pe}}}\xspace}
+\newcommand{\Aeth}{\ensuremath{\mathcal{A}_{\Pe\tauh}}\xspace}
+\newcommand{\Aetm}{\ensuremath{\mathcal{A}_{\Pe\tau_{\mu}}}\xspace}
+\newcommand{\Aetl}{\ensuremath{\mathcal{A}_{\Pe\tau_{\ell}}}\xspace}
+\newcommand{\Alte}{\ensuremath{\mathcal{A}_{\ell\tau_{\Pe}}}\xspace}
+\newcommand{\Altm}{\ensuremath{\mathcal{A}_{\ell\tau_{\mu}}}\xspace}
+\newcommand{\Altl}{\ensuremath{\mathcal{A}_{\ell\tau_{\ell}}}\xspace}
+\newcommand{\Alth}{\ensuremath{\mathcal{A}_{\ell\tauh}}\xspace}
+%\newcommand{\Atete}{\ensuremath{\mathcal{A}_{\ell\tau e}}\xspace}
+\newcommand{\Atetm}{\ensuremath{\mathcal{A}_{\tau_{\Pe}\tau_{\mu}}}\xspace}
+%\newcommand{\Atetl}{\ensuremath{\mathcal{A}_{\ell\tau \ell}}\xspace}
+\newcommand{\Atlth}{\ensuremath{\mathcal{A}_{\tau_{\ell}\tauh}}\xspace}
+\newcommand{\Ee}{\ensuremath{\varepsilon_{\Pe}^{\text{ID}}}\xspace}
+\newcommand{\Emu}{\ensuremath{\varepsilon_{\mu}^{\text{ID}}}\xspace}
+\newcommand{\El}{\ensuremath{\varepsilon_{\ell}^{\text{ID}}}\xspace}
+\newcommand{\Eth}{\ensuremath{\varepsilon_{\tauh}^{\text{ID}}}\xspace}
+\newcommand{\Etl}{\ensuremath{\varepsilon_{\tau_{\ell}}^{\text{ID}}}\xspace}
+
+A large fraction of the background from the \ttbar process is irreducible, due to its similar signature to the signal when both \W bosons produce one muon or electron and one hadronic tau. Thus, the \ttbar irreducible background is one of the dominant backgrounds and has to be estimated precisely. The use of single muon and single electron HLT criteria, along with extra lepton vetoes, enables the definition of a control region of observed events containing one electron and one muon. This \emu control region is used to extrapolate the yield of the \ttbar background in the signal region. It is defined using the selection from the \mutau channel, with the hadronic tau replaced by an electron. For example, the final cut on $\pt(\tauh)$ is applied to the electron in this selection. Figure \ref{fig:ttCC} shows the \ST distributions after the leptoquark final selection in the $\emu$ channel, with good agreement between the observed data and the simulation. The \emu sample consists of approximately 87\% \ttbar events; the residual background from other processes is simulated and subtracted from the observed data. The signal contamination in this sample has been found to be negligible for any signal mass hypothesis. This is expected due to the small branching fraction, only 3\%, for both tau leptons in the signal final state to decay leptonically.
+
+%add more figures here?
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/STbjetFinalEMu.pdf}
+    \caption{The \ST distribution in the $\emu$ control region after the leptoquark final selection. The uncertainty band reflects the statistical uncertainty in the simulated backgrounds.}
+    \label{fig:ttCC}
+  \end{center}
+\end{figure}
+
+
+The \ttbar yields in the \emu control region, $N_{\emu}$, and in the signal regions, $N_{\ltau}$, are defined in Eqs. \eqref{eq:Nemu} and \eqref{eq:Nltau}. Throughout this section, the convention $\ell = \Pe, \mu$ will be used.
+\begin{alignat}{2}
+\label{eq:Nemu}
+  N_{\emu} &= \sigma \mathcal{L} &&\times \left(\Ee \Emu \varepsilon^{\text{sel}}_{\emu} \rho^{\text{sel}}_{\emu} \right)  \nonumber \\
+           &                     &&\times 2 \left[\vphantom{\Btm} \Aem\Be\Bm + \Amte\Bm\Bte \right. \\
+           &                     &&+ \left. \Aetm\Be\Btm  + \Atetm\Bte\Btm \right],  \nonumber \\
+ N_{\ltau} &= \sigma \mathcal{L} &&\times \left(\El \Eth \varepsilon^{\text{sel}}_{\ltau} \rho^{\text{sel}}_{\ltau} \right) \nonumber \\
+           &                     &&\times 2 \left[\Alth\Bl\Bth + \Atlth\Btl\Bth \right].  \label{eq:Nltau}
+\end{alignat}
+Here, $\sigma$ is the \ttbar production cross section; $\mathcal{L}$ is the integrated luminosity; $\varepsilon_{x}^{\text{ID}}$ is the selection efficiency for the identification and isolation of a lepton $x$ in the simulation; $\varepsilon^{\text{sel}}_{i}$ is the analysis selection efficiency in the simulation, including the jet multiplicity cut, the b-tagging requirement, and so forth, for the channel $i$; and $\rho^{\text{sel}}_{i}$ is the simulation to data scale factor associated with the selection efficiency for the channel $i$. The branching fractions $\mathcal{B}$ of the \W boson decay for each leptonic decay channel are labeled as follows:
+\begin{align}
+\mathcal{B}(\W \rightarrow \ell \nu_{\ell}) &= \Bl, \\
+\mathcal{B}(\W \rightarrow \tau\nu_{\tau} \rightarrow \ell \nu_{\tau} \nu_{\ell}) &= \Btl, \\
+\mathcal{B}(\W \rightarrow \tau\nu_{\tau} \rightarrow \text{hadrons} + \nu_{\tau}) &= \Bth.
+\end{align}
+Similarly, the acceptance for a process creating one lepton $\ell$ and one lepton $\ell^{\prime}$ is called $\mathcal{A}_{\ell\ell^{\prime}}$. The acceptances are computed using the MC simulation of the \ttbar process and are defined for each leptonic decay channel:
+\begin{equation}
+  \mathcal{A} = \frac{N_{\text{sel}}(\ell\ell^{\prime})}{N_{\text{gen}}(\ell\ell^{\prime})}.
+\end{equation}
+$N_{\text{gen}}(\ell\ell^{\prime})$ is the number of generated events containing two leptons $\ell$ and $\ell^{\prime}$, and $N_{\text{sel}}(\ell\ell^{\prime})$ is the number of those generated events that are selected when kinematic requirements are imposed. The requirements used are the \pt and $\eta$ cuts used for the selection of the primary electrons, muons, and hadronic taus in the signal region. The acceptances for each decay channel are listed in Table \ref{tab:TTAcc}.
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|l|r|c|l|r|}
+      \cline{1-2}\cline{4-5}
+      channel & \multicolumn{1}{c|}{$\mathcal{A}$ (\%)} && channel & \multicolumn{1}{c|}{$\mathcal{A}$ (\%)} \\
+      \cline{1-2}\cline{4-5}
+      $\Pe\tauh$ & $23.6\pm0.3$ && $\mu\tauh$ & $23.7\pm0.3$ \\
+      $\tau_{\Pe}\tauh$ & $10.4\pm0.5$ && $\tau_{\mu}\tauh$ & $10.5\pm0.4$ \\
+      $\Pe\tau_{\mu}$ & $13.9\pm0.4$ && $\mu\tau_{\Pe}$ & $12.3\pm0.4$ \\
+      $\Pe\mu$ & $41.6\pm0.3$ && $\tau_{\Pe}\tau_{\mu}$ & $3.4\pm0.5$ \\
+      \cline{1-2}\cline{4-5}
+    \end{tabular}
+    \caption{Acceptances (in \%) for the \ttbar process in each leptonic decay channel of the \W boson produced by the top quark decays. Variations in the acceptances are mostly due to differences in the \pt distributions for each type of lepton.}
+    \label{tab:TTAcc}
+  \end{center}
+\end{table}
+
+Equations \eqref{eq:Nltau} and \eqref{eq:Nemu} can be combined to eliminate $\sigma\mathcal{L}$, which produces a formula to extrapolate the \ttbar yield from the \emu control region to the \ltau signal region:
+\begin{align}
+\label{eq:ttbartot}
+N_{\ltau} &= N_{\emu} \times \frac{\El\Eth}{\Ee\Emu} \times \frac{\varepsilon^{\text{sel}}_{\ltau}\rho^{\text{sel}}_{\ltau}}{\varepsilon^{\text{sel}}_{\emu}\rho^{\text{sel}}_{\emu}} \nonumber \\
+&\times \frac{\Alth\Bl\Bth + \Atlth\Btl\Bth}{\Aem\Be\Bm + \Amte\Bm\Bte + \Aetm\Be\Btm + \Atetm\Bte\Btm}.
+\end{align}
+$N_{\emu}$ is the yield from the \emu control region in the observed data, with the residual non-\ttbar background subtracted. The yield in the signal region $N_{\ltau}$ is extrapolated from $N_{\emu}$ via multiplication by selection and identification efficiencies, data/MC scale factors, acceptances, and branching fractions.
+
+The selection efficiencies $\varepsilon$ and the data/MC scale factors $\rho$ are derived from several different sources. The standard efficiencies for the lepton identification algorithms are computed in \Z events. However, differences in topology between \ttbar and \Z events make these values inappropriate for the \ttbar background estimation. The identification efficiencies are therefore calculated using simulated \ttbar events. The reconstructed leptons in these events are required to be matched with genuine leptons at the generator level, and the results are listed in Table \ref{tab:ttlepeff}. The standard efficiencies for the HLT criteria are used. The standard data/MC scale factors for the lepton identification, HLT efficiency, and b-tagging are also used. The difference in performance between the observed data and the MC simulation is assumed to be due to inherent properties of the simulation without any dependence on the type of event.
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      lepton & $\varepsilon$ from \ttbar events (\%) & $\rho$ from \Z events \\
+      \hline\hline
+      \Pe     & $77.3 \pm 0.1$ & $1.011 \pm 0.001$ \\
+      $\mu$   & $81.3 \pm 0.1$ & $0.995 \pm 0.001$ \\
+      $\tauh$ & $35.5 \pm 4.9$ & $1.000\vphantom{{}\pm0.001}$ \\
+      \hline
+    \end{tabular}
+    \caption{Lepton identification efficiencies $\varepsilon$ measured in simulated \ttbar events and associated scale factors $\rho$ measured in \Z events.}
+    \label{tab:ttlepeff}
+  \end{center}
+\end{table}
+
+The analysis selection efficiencies are calculated using the \ttbar simulation. The efficiencies are computed for each selection requirement, including: vertex matching between the two leptons, opposite charge between the two leptons, additional lepton veto, $N_{\text{jets}}\geq2$, $N_{\text{b-jets}}\geq1$, and $\pt(\tauh)>50\GeV$. The final selection cuts $\MassTJ>250\GeV$ for the leptoquark search and $N_{\text{jets}}\geq5$ for the top squark search are also considered. In order to compute the data/MC scale factors in a \ttbar enriched sample, the order of the selection cuts is altered. First, the jet multiplicity requirement is applied: $N_{\text{jets}}\geq2$ for the leptoquark search or $N_{\text{jets}}\geq5$ for the top squark search. Next, the b-tagging requirement is applied, and then the \MassTJ cut is applied for the leptoquark search. The other selection requirements are applied subsequently.
+
+The overall data/MC scale factors associated with the vertex matching, opposite charge, lepton veto, and final hadronic tau \pt cut are computed in the control region defined by requiring events with two b-jets and $\MassTJ<120\GeV$. The separate control region with $120\GeV < \MassTJ < 250\GeV$ is used to check that the scale factors do not depend on the value of the $\MassTJ$ cuts. Due to the lack of a pure \ttbar control region to estimate the data/MC scale factor at the level of the jet multiplicity requirement, no scale factor is applied and an additional systematic uncertainty is assigned. For similar reasons, no scale factor is applied for the \MassTJ cut. The results of these selection efficiency and scale factor calculations are listed in Table \ref{tab:tteff}.
+
+\afterpage{
+\begin{landscape}
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|l|r|c|r|c|r|c|}
+      \hline
+      \multirow{2}{*}{Selection} & \multicolumn{2}{c|}{$\etau$ channel} & \multicolumn{2}{c|}{$\mutau$ channel} & \multicolumn{2}{c|}{$\emu$ channel} \\
+      \cline{2-7}
+      & \multicolumn{1}{c|}{$\varepsilon$ (\%)} & $\rho$ & \multicolumn{1}{c|}{$\varepsilon$ (\%)} & $\rho$ & \multicolumn{1}{c|}{$\varepsilon$ (\%)} & $\rho$ \\
+      \hline \hline
+      $\varepsilon_{\ell}\varepsilon_{\ell^{\prime}}$ & $27.4\pm0.1$ & $1.011\pm0.001$ & $28.9\pm0.1$ & $0.995\pm0.001$ & $62.8\pm0.1$ & $1.006\pm0.001$ \\
+      $\varepsilon_{\text{HLT}}$ & $91.4\pm0.1$ & $-$ & $89.2\pm0.1$ & $-$ & $89.2\pm0.1$ & $-$ \\ 
+      \hline
+      & \multicolumn{6}{c|}{Leptoquark search} \\ 
+      \hline
+      $\varepsilon_{\text{jet}}$ & $76.1\pm0.5$ & $-$ & $74.1\pm0.5$ & $-$ & $79.5\pm0.2$ & $-$ \\
+      $\varepsilon_{\text{b-tag}}$ & $94.2\pm0.3$ & $-$ & $92.7\pm0.4$ & $-$ & $94.0\pm0.1$ & $-$ \\
+      $\varepsilon_{\text{vtx},~\text{OS},~\ell~\text{veto},~\pt(\tauh)}$ & $38.2\pm1.5$ & $0.987\pm0.042$ & $38.2\pm1.6$ & $0.947\pm0.038$ & $60.5\pm1.0$ & $1.002\pm0.020$ \\
+      $\varepsilon_{\text{mass}}$ & $6.8\pm0.6$ & $-$ & $5.3\pm0.6$ & $-$ & $7.1\pm0.1$ & $-$ \\ 
+      \hline
+      & \multicolumn{6}{c|}{Top squark search} \\ 
+      \hline
+      $\varepsilon_{\text{jet}}$ & $3.7\pm0.2$ & $-$ & $2.8\pm0.2$ & $-$ & $4.2\pm0.2$ & $-$ \\
+      $\varepsilon_{\text{b-tag}}$ & $98.3\pm0.3$ & $-$ & $99.0\pm0.3$ & $-$ & $98.0\pm0.1$ & $-$ \\
+      $\varepsilon_{\text{vtx},~\text{OS},~\ell~\text{veto},~\pt(\tauh)}$ & $51.7\pm2.0$ & $0.987\pm0.042$ & $45.9\pm2.1$ & $0.947\pm0.038$ & $66.7\pm2.0$ & $1.002\pm0.020$ \\
+      \hline
+    \end{tabular}
+    \caption{The relative selection efficiencies (in \%) and data/MC scale factors $\rho$ for the \ttbar process in each channel \etau, \mutau, and \emu. The total selection efficiency is the product of all the relative selection efficiencies for a given search.}
+    \label{tab:tteff}
+  \end{center}
+\end{table}
+\end{landscape}
+}
+
+The systematic uncertainty assigned to the jet multiplicity requirement is defined as the difference between data and simulation in the efficiency of the requirement. This difference is calculated in a control region consisting of 95\% \ttbar events, which is selected by requiring both \W bosons in each event to decay to muons. Additional requirements are applied to reduce the contamination from non-\ttbar processes: $\met > 50\GeV$, $20\GeV < M_{\mu\mu} < 70\GeV$ or $M_{\mu\mu} > 120\GeV$. The data/MC differences in the efficiency of the jet multiplicity requirements are found to be 1\% for $N_{\text{jets}}\geq2$ in the leptoquark search and 3\% for $N_{\text{jets}}\geq5$ in the top squark search. These differences are propagated through the \ttbar estimation method as systematic uncertainties.
+
+The systematic uncertainty assigned to the \MassTJ requirement is calculated from two sources. The first source is the relative difference between the efficiencies in data and simulation in the $\ttbar \rightarrow \mu\mu$ control sample, which is found to be 6\%. The second source is the difference between the efficiencies obtained in data in the $\emu$ channel with and without the residual non-\ttbar background. This difference is also found to be 6\%. The two sources are taken to be independent, so they are added in quadrature to produce a total uncertainty of 8.5\%.
+
+To describe the calculation of the total systematic uncertainty from the propagation of the uncertainty in the acceptances, efficiencies, and scale factors, it is instructive to assign shorthand notation to the factors in Eq. \eqref{eq:ttbartot}:
+\begin{equation}
+\label{eq:ttbartot2}
+N_{\ltau} = N_{\emu} \times R_{\text{ID}} \times R_{\text{sel}} \times R_{\mathcal{A}\mathcal{B}}.
+\end{equation}
+As indicated by comparing Eq. \eqref{eq:ttbartot} and Eq. \eqref{eq:ttbartot2}, $R_{\text{ID}}$ is the ratio of the identification efficiencies, $R_{\text{sel}}$ is the ratio of the selection efficiencies and scale factors, and $R_{\mathcal{A}\mathcal{B}}$ is the ratio of the acceptances and branching fractions. Equation \eqref{eq:dsyst} shows a simplified version of the propagation of the uncertainties from these three ratio factors:
+\begin{equation}
+\label{eq:dsyst}
+\delta_{\text{syst}} = \sqrt{ (\delta_{\text{ID}} \times R_{\text{sel}} \times R_{\mathcal{A}\mathcal{B}})^2 + (R_{\text{ID}} \times \delta_{\text{sel}} \times R_{\mathcal{A}\mathcal{B}})^2 + (R_{\text{ID}} \times R_{\text{sel}} \times \delta_{\mathcal{A}\mathcal{B}})^2}.
+\end{equation}
+The uncertainty in the ratio $R_x$ is written as $\delta_x$. In the particular case of $\delta_{\text{sel}}$, the uncertainty value is modified by the additional uncertainties assigned to the $N_{\text{jets}}$ and \MassTJ cuts, as discussed above:
+\begin{equation}
+\delta_{\text{sel}} \rightarrow \sqrt{ \delta_{\text{sel}}^2 + (R_{\text{sel}} \times U_{N_{\text{jets}}})^2 + (R_{\text{sel}} \times U_{\MassTJ})^2}.
+\end{equation}
+$U_x$ is the additional uncertainty associated with the cut $x$. In the top squark search, the uncertainty associated with the \MassTJ cut is not included, as that cut is not applied.
+
+Using Eq. \ref{eq:ttbartot}, the extrapolated yield of the \ttbar irreducible background is computed for each \ltau channel. The results are summarized in Table \ref{tab:ttYieldsLQ} for the leptoquark search and in Table \ref{tab:ttYieldsLQD} for the top squark search. This estimation method is applied to a simulated \emu sample as a cross-check, and the results agree within one standard deviation when compared to the expectation from the direct simulation of the irreducible \ttbar contributions to the \ltau channels. The extrapolation from observed data is also in agreement with both the expectation from the direct \ttbar \ltau simulation and the extrapolation from the \emu simulation. For each \ltau channels, the \ttbar \ST distribution is estimated from the exclusive $\ttbar \rightarrow b\ell\nu b\ell\nu$ MC simulation.
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|l|c|c|c|}
+	  \multicolumn{4}{c}{Leptoquark search} \\
+      \hline
+      \multirow{3}{*}{} & \multicolumn{3}{c|}{$\emu$ channel} \\
+      \cline{2-4}
+      & \ttbar MC & data & data $-$ residual MC \\
+      \cline{2-4}
+      & $966.71\pm27.3$ & $1065 ({}\pm 32.6)$ & $920.0\pm8.3 \pm 32.6$  \\
+      \hline\hline
+      \multirow{2}{*}{} & \multicolumn{3}{c|}{$\ltau$ channel} \\
+      \hline
+      channel & \ttbar MC (genuine \tauh) & \ttbar MC extrap. & data extrap. \\
+      \hline
+      $\etau$         & $94.4\pm8.3$ & $94.0\pm2.7\pm14.9$ & $98.7\pm3.6\pm17.7$ \\ %2.6*1.3
+      $\mutau$       & $72.8\pm8.5$ & $72.2\pm2.0\pm12.6$ & $64.2\pm2.3\pm12.4$ \\ %2.9*1.3
+      \hline
+    \end{tabular}
+    \caption{The estimated \ttbar irreducible yields after the leptoquark final selection, from: direct simulation, extrapolation from the $\emu$ simulation, and extrapolation from the observed $\emu$ data. In the extrapolated results, the first uncertainty value corresponds to the statistical uncertainty in the simulation and observed data, while the second uncertainty value corresponds to the propagation of the uncertainties in the acceptances, efficiencies and scale factors. }
+    \label{tab:ttYieldsLQ}
+  \end{center}
+\end{table}
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|l|c|c|c|}
+      \multicolumn{4}{c}{Top squark search} \\
+      \hline
+      \multirow{3}{*}{} & \multicolumn{3}{c|}{$\emu$ channel} \\
+      \cline{2-4}
+      & \ttbar MC & data & data $-$ residual MC \\
+      \cline{2-4}
+      & $823.9\pm26.3$ & $733 ({}\pm 27.1)$ & $700.0\pm7.2 \pm 27.1$ \\
+      \hline\hline
+      \multirow{2}{*}{} & \multicolumn{3}{c|}{$\ltau$ channel} \\
+      \hline
+      channel & \ttbar MC (genuine \tauh) & \ttbar MC extrap. & data extrap. \\
+      \hline
+      $\etau$         & $80.4\pm7.5$ & $81.7\pm2.6\pm12.5$ & $76.6\pm3.1\pm13.3$ \\
+      $\mutau$       & $57.9\pm6.4$ & $65.8\pm2.1\pm10.3$ & $52.2\pm2.1\pm9.3$ \\
+      \hline
+    \end{tabular}
+    \caption{The estimated \ttbar irreducible yields after the top squark final selection, from: direct simulation, extrapolation from the $\emu$ simulation, and extrapolation from the observed $\emu$ data. In the extrapolated results, the first uncertainty value corresponds to the statistical uncertainty in the simulation and observed data, while the second uncertainty value corresponds to the propagation of the uncertainties in the acceptances, efficiencies and scale factors. }
+    \label{tab:ttYieldsLQD}
+  \end{center}
+\end{table}
+
+This estimation of the \ttbar irreducible background estimation does not account for events with jets or leptons misidentified as hadronic taus, but does include events with jets or photons misidentified as electrons or muons. The yield from events in which an electron or a muon is identified as a hadronic tau is estimated from the simulation and added to the yield of the \ttbar irreducible background. This contribution is estimated to be $6.9\pm 2.1$ ($2.5\pm 1.3$) for the \etau (\mutau) channel in the leptoquark search and $11.7\pm 2.7$ ($2.8 \pm 1.3$) for the \etau (\mutau) channel in the top squark search. The estimation of the background from events with jets misidentified as hadronic taus will be discussed in the next section.
+
+% input: [faketaubkg.tex]
+\subsection{Major Reducible Background
+\label{sec:faketaubkg}}
+
+The major reducible background comes from events with jets misidentified as hadronic taus. This background has contributions from the \W + jets, \Z + jets, \ttbar, and QCD multijet processes. The contribution from \W + jets, \Z + jets, and \ttbar is estimated from observed data by measuring the misidentification probability or ``fake rate''. The QCD events contain mostly gluon jets, while the events from the other processes contain mostly quark jets. Gluon jets tend to be wider than quark jets, so they are less likely to pass isolation and therefore have a lower fake rate. The fake rate is measured in a control region that is appropriate for the quark jet processes. Therefore, this fake rate cannot produce an accurate estimate of the contribution from QCD. This contribution is estimated using a same-sign/opposite-sign (SS/OS) method, which is described in Sec. \ref{sec:qcdbkg}. The contribution from QCD is non-negligible only in the \etau channel of the leptoquark search. In this case, the reconstructed electron is also a misidentified jet. A jet is much less likely to be misidentified as a muon, so QCD does not contribute in the \mutau channel. In the top squark search, the high jet multiplicity requirement eliminates any significant contribution from QCD.
+
+The probability for a jet to be misidentified as a hadronic tau is measured from the observed data in a \Zmm + jets control region. The selection of the primary muon uses the same criteria as the \mutau channel in the signal region. The second muon is selected using the loose working point for identification and isolation, along with looser kinematic cuts. The two muons are required to have the same vertex, opposite charges, and a separation of $\Delta R > 0.5$. This ensures the orthogonality of the control region because of the opposite-sign additional lepton veto in the signal region. The selection of hadronic tau candidates, which are misidentified jets in the \Zmm + jets control region, uses the same identification, discriminator working points, and kinematic cuts as the signal selection. However, the hadronic tau candidates are not required to be isolated, as the isolation variable is used to compute the fake rate. All selected hadronic taus must originate from the same vertex as the two muons and must be separated from each muon with $\Delta R > 0.5$. A cut on the invariant mass of the two muons is also applied, $M_{\mu\mu} > 50\GeV$, in order to match the generation of the simulated \Z + jets samples.
+
+This selection produces a control region which consists of $95\%$ \Z + jets events. The simulated \Z + jets sample is normalized to the yield from the observed data, with the yield from the other simulated backgrounds subtracted. The normalization factor is: $N[\text{data}~-~\text{other MC}]/N[\text{Z + jets}] = 0.924 \pm 0.003$. Figure \ref{Bkg:fig:Zregion} shows the dimuon mass $M_{\mu\mu}$ and the multiplicity of extra jets, which are not misidentified as hadronic taus, in the \Zmm + jets control region. Good agreement is seen between data and simulation, demonstrating the validity of the control region. The majority of events contain no extra jets, but an appreciable percentage, around $40\%$, contain one or more extra jets.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/massdimuon.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/njet.pdf}
+    \caption{Comparison of observed data and simulation in the \Zmm + jets control region for $M_{\mu\mu}$ (left) and multiplicity of extra jets, which are not misidentified as hadronic taus (right). \label{Bkg:fig:Zregion}}
+  \end{center}
+\end{figure}
+
+All hadronic tau candidates in the \Zmm + jets control region are considered when calculating the fake rate. These hadronic tau candidates are misidentified jets which pass all selection requirements for hadronic taus, except that isolation is not required. The subset of these candidates which also pass the isolation requirement would be fully misidentified as hadronic taus. The fake rate is therefore the rate at which the hadronic tau candidates pass the isolation requirement. It is parameterized as a function of the transverse momentum of the tau candidates, as shown in Eq. \eqref{Bkg:eq:FR}:
+\begin{equation} f(\pt) = \frac{N_{\text{iso}~\tau}^{(\Zmm)}(\pt)}{N_{\text{all}~\tau}^{(\Zmm)}(\pt)} \label{Bkg:eq:FR} \end{equation}
+
+%When calculating the fake rate from the observed data, the contribution from the residual backgrounds is subtracted from both the numerator and the denominator of Eq. \eqref{Bkg:eq:FR}. The residual backgrounds include the diboson and single top processes. The fake rate from the simulation includes both the \Z + jets and \ttbar contributions. The \ttbar contribution is included in the simulated fake rate rather than in the residual backgrounds because its contribution is enhanced in events with extra jets. Such events more closely resemble the main region where at least two jets are required. The observed data and simulated fake rates calculated from all \Zmm + jets events, from events with one or more extra jets, and from events with two or more extra jets are shown in Fig. \ref{Bkg:fig:fakerate}. The fake rate calculated from all \Zmm + jets events is called the inclusive fake rate, since it includes all events regardless of the number of extra jets.
+
+When calculating the fake rate from the observed data, the contribution from the residual backgrounds is subtracted from both the numerator and the denominator of Eq. \eqref{Bkg:eq:FR}. The residual backgrounds include the \ttbar, diboson, and single top processes. The observed data and simulated fake rates calculated from all \Zmm + jets events, from events with one or more extra jets, and from events with two or more extra jets are shown in Fig. \ref{Bkg:fig:fakerate}. The fake rate calculated from all \Zmm + jets events is called the inclusive fake rate, since it includes all events regardless of the number of extra jets.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_dmc.pdf}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_dmc_1jet.pdf}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_dmc_2jet.pdf}
+    \caption{The fake rates measured in the \Zmm + jets control region, using all events (left), only events with one or more extra jets (middle), only events with two or more extra jets (right). \label{Bkg:fig:fakerate}}
+  \end{center}
+\end{figure}
+
+Events from semileptonic \ttbar decays make up a significant portion of the major reducible background. These events resemble events from the \W + jets process, but with higher jet multiplicities. The relative difference in the fake rate between \Zmm + jets events with $N_{\text{jet}} \geq 1$ and semileptonic \ttbar events is estimated from the simulation and found to be $18\%$. Figure \ref{fig:fakeratettbardiff} shows the simulated fake rates versus hadronic tau \pt and the calculation of the relative difference, which is independent of \pt. This relative difference is multiplied by the percentage of the major reducible background consisting of semileptonic \ttbar events, $35\%$ in the leptoquark search and $95\%$ in the top squark search according to the simulation, and applied as a systematic uncertainty to account for any differences between the types of processes.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/ttbar_fr_comp_final.pdf}
+    \includegraphics[width=0.32\textwidth]{figures/bkgEstim/tfr_diff_ttbar_incl.pdf}
+    \caption{Comparison of the fake rates between \Zmm + jets events with at least one extra jet and semileptonic \ttbar events, from the simulation (left). The difference in the two fake rates is found to be 18\%, independent of the hadronic tau \pt (right). \label{fig:fakeratettbardiff}}
+  \end{center}
+\end{figure}
+
+To estimate the total yield of the major reducible background in the signal region, a second control region is needed. This control region is defined identically to the signal region, except that events are rejected if any selected hadronic tau passes isolation. This creates an orthogonal region of events in which all selected hadronic taus fail isolation, called the ``anti-isolated'' region. Figures \ref{Bkg:fig:antiiso} and \ref{Bkg:fig:antiiso-lqd321} shows the hadronic tau \pt spectrum and multiplicity in the anti-isolated region for both channels after the leptoquark and top squark final selections, respectively. There is good agreement between observed data and simulated backgrounds in the \mutau channel. In the \etau channel in the leptoquark search, there is an expected disagreement due to a contribution from QCD multijet events in the observed data, which will be addressed. The simulated contributions labeled \W + jets, \Z + jets, and \ttbar contain only events where the hadronic tau candidates are misidentified jets based on matching between the generated and reconstructed particles. The residual background is defined to include events from two categories. The first category consists of events from the diboson and single-top-quark processes, which are not included in the major reducible background. The second category consists of events from the \W + jets, \Z + jets, and \ttbar processes with genuine hadronic taus that fail isolation.
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_mutau.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_mutau.pdf} \\
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_etau.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_etau.pdf} 
+    \caption{Plots of the anti-isolated control region after the leptoquark final selection, showing the hadronic tau \pt spectrum (left) and multiplicity (right) in the \mutau channel (top) and the \etau channel (bottom). \label{Bkg:fig:antiiso}}
+  \end{center}
+\end{figure}
+
+\begin{figure}[hbtp]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_mutau_lqd321.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_mutau_lqd321.pdf} \\
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/pttauantiisoall_etau_lqd321.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/bkgEstim/ntauantiiso_etau_lqd321.pdf}
+    \caption{Plots of the anti-isolated control region after the top squark final selection, showing the hadronic tau \pt spectrum (left) and multiplicity (right) in the \mutau channel (top) and the \etau channel (bottom). \label{Bkg:fig:antiiso-lqd321}}
+  \end{center}
+\end{figure}
+
+The fake rate is used to weight the anti-isolated events in order to extrapolate to the signal region. Because $f(\pt)$ is the probability for a fake hadronic tau candidate to be isolated, $1-f(\pt)$ is the probability for a fake hadronic tau candidate to fail isolation:
+\begin{align}
+P(\tau\text{ w/ given \pt is isolated}) &= f(\pt(\tau)), \\
+P(\tau\text{ w/ given \pt is anti-isolated}) &= 1 - f(\pt(\tau)). \label{Bkg:eq:Pantiiso}
+\end{align}
+The signal region and the anti-isolated region are two complementary parts of a total region containing all events with hadronic tau candidates, passing or failing isolation. The probability that any given event in this total region is part of the anti-isolated region is equivalent to the probability that all hadronic taus in that event fail isolation. The isolation status of each tau in an event is independent, so this probability is given by the product of Eq. \eqref{Bkg:eq:Pantiiso} for each tau, shown in Eq. \eqref{Bkg:eq:Pantiisoall}. The signal region contains all events with at least one isolated hadronic tau. Therefore, the probability that an event in the total region is part of the signal region is given by the complement of the anti-isolated region probability, shown in Eq. \eqref{Bkg:eq:Piso1}.
+\begin{align}
+P(\text{all }\tau\text{s in event are anti-isolated}) &= \prod_{\tau}^{\text{(event)}}[1-f(\pt(\tau))] \label{Bkg:eq:Pantiisoall} \\
+P(\text{at least 1 }\tau\text{ in event is isolated}) &= 1-\prod_{\tau}^{\text{(event)}}[1-f(\pt(\tau))] \label{Bkg:eq:Piso1}
+\end{align}
+Equation \eqref{Bkg:eq:faketauest} sums over all events in the anti-isolated region, using these complementary probabilities to produce a data-driven estimate of the major reducible background in the signal region.
+\begin{equation} N_{\text{misID}~\tau} = \sum_{\text{events}}^{\text{(anti-iso)}} \frac{1 - \prod_{\tau}[1-f(\pt(\tau))]}{\prod_{\tau}[1-f(\pt(\tau))]} \label{Bkg:eq:faketauest} \end{equation}
+
+Events in the signal region from the exclusive samples simulated for the \W + jets, \Z + jets, and \ttbar processes are used to predict the \ST distributions for the major reducible background. Because the dependency of the fake rate on \pt is similar in data and simulation, as shown in Fig. \ref{Bkg:fig:fakerate}, the simulated distributions are expected not to be biased with respect to the observed data. Only the events in which the leading selected hadronic tau is a misidentified jet, based on matching between reconstructed and generated particles, are considered. The simulated distributions are normalized to the data-driven estimation of the major reducible background yield.
+
+In the leptoquark search, the central value for the yield estimation is calculated using the inclusive fake rate from the observed data and the observed events in the anti-isolated region. Systematic errors on this estimation are assigned based on variations in the fake rate and in the anti-isolated region. The inclusive fake rate is varied by the statistical uncertainty $\sigma_{\text{stat}}$ in both directions $f+1\sigma_{\text{stat}}$ and $f-1\sigma_{\text{stat}}$ separately for each bin. Each of the two variations is applied to the observed events in the anti-isolated region. The larger difference between the estimations from the two statistical variations and the central value is taken as a systematic uncertainty. Similarly, the $N_{\text{jet}} \geq 1$ fake rate from the observed data is applied to the observed events in the anti-isolated region, and the difference is taken as a systematic uncertainty. The contribution from residual backgrounds in the anti-isolated region is estimated using the inclusive fake rate from the observed data and included as an additional uncertainty. As mentioned previously, an uncertainty is also assessed due to the systematic difference in fake rates between \Zmm + jets events and semileptonic \ttbar events. In the top squark search, the systematic uncertainties are computed in the same way. However, the central value for the yield estimation is calculated using the $N_{\text{jet}} \geq 1$ fake rate from the observed data, in order to account for the higher jet multiplicity. Correspondingly, the $N_{\text{jet}} \geq 2$ fake rate from the observed data is used as a variation.
+
+Tables \ref{Bkg:tab:faketauresultsmutauLQ} and \ref{Bkg:tab:faketauresultsmutauLQD} show the results of the major reducible background estimation in the \mutau channel for the leptoquark search and the top squark search, respectively. The predictions from the simulation are in agreement with the data-driven values and with the closure test performed using the simulated fake rate and simulated anti-isolated events. These predictions are taken from \W + jets, \Z + jets, and \ttbar events in the signal region with matching between generated jets and reconstructed hadronic taus, normalized to $\lumi = \thelumi$. When contributions from all sources of systematic uncertainty are added in quadrature, the overall uncertainties are $16\%$ for the leptoquark search and $23\%$ for the top squark search. The statistical uncertainty from the anti-isolated region is approximately $1-2\%$ in all cases, which is negligible in comparison.
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|c|r|r|}
+      \multicolumn{4}{c}{\mutau channel} \\
+      \hline
+      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{c|}{LQ Results} \\
+      \hline
+      anti-iso      & fake rate                                           & \multicolumn{1}{c|}{yield}  & \multicolumn{1}{c|}{variation}\\
+      \hline
+      data          & data (incl.)                                        & 117.3 & (central)\\
+      data          & data (incl.) ${}\pm 1\sigma_{\text{stat}}$          & 128.3 & 11.0 \\
+      data          & data ($N_{\text{jet}} \geq 1$)                      & 106.5 & 10.7    \\
+      residual bkg. & data (incl.)                                        & ---   & 7.0     \\
+      \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times35\%$)} & ---   & 7.4 \\
+      \hline
+      \multicolumn{2}{|c|}{Final Result}         & \multicolumn{2}{c|}{$117.3 \pm 18.5$}\\
+      \multicolumn{2}{|c|}{Simulated Prediction} & \multicolumn{2}{c|}{$117.7 \pm 28.7$}\\
+      \multicolumn{2}{|c|}{Closure Test}         & \multicolumn{2}{c|}{$121.7 \pm \hphantom{1}3.5$}\\
+      \hline
+    \end{tabular}
+    \caption{The results of the data-driven major reducible background estimation for the leptoquark search in the \mutau channel. This table shows all sources of systematic uncertainty and a comparison to the simulated prediction. Only statistical uncertainty is given for the simulated prediction and the closure test.}
+    \label{Bkg:tab:faketauresultsmutauLQ}
+  \end{center}
+\end{table}
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|c|r|r|}
+      \multicolumn{4}{c}{\mutau channel} \\
+      \hline
+      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{c|}{$\sTop$ Results} \\
+      \hline
+      anti-iso    & fake rate                                                    & \multicolumn{1}{c|}{yield}  & \multicolumn{1}{c|}{variation}\\
+      \hline
+      data        & data ($N_{\text{jet}} \geq 1$)                               & 59.8 & (central) \\
+      data        & data ($N_{\text{jet}} \geq 1$) ${}\pm 1\sigma_{\text{stat}}$ & 67.0 & 7.2 \\
+      data        & data ($N_{\text{jet}} \geq 2$)                               & 54.4 & 5.4     \\
+      residual MC & data ($N_{\text{jet}} \geq 1$)                               & ---  & 2.1      \\
+      \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times95\%$)}        & ---  & 10.2 \\
+      \hline
+      \multicolumn{2}{|c|}{Final Result}         & \multicolumn{2}{c|}{$59.8 \pm 13.8$}\\
+      \multicolumn{2}{|c|}{Simulated Prediction} & \multicolumn{2}{c|}{$57.5 \pm \hphantom{1}6.5$} \\
+      \multicolumn{2}{|c|}{Closure Test}         & \multicolumn{2}{c|}{$58.0 \pm \hphantom{1}1.3$} \\
+      \hline
+    \end{tabular}
+    \caption{The results of the data-driven major reducible background estimation for the top squark search in the \mutau channel. This table shows all sources of systematic uncertainty and a comparison to the simulated prediction. Only statistical uncertainty is given for the simulated prediction and the closure test.}
+    \label{Bkg:tab:faketauresultsmutauLQD}
+  \end{center}
+\end{table}
+
+In the \etau channel, there is a significant contribution from QCD events in the anti-isolated region. As described previously at the beginning of Sec. \ref{sec:faketaubkg}, the fake rate measured in the \Zmm + jets control region is not appropriate for QCD events. The QCD contribution must be subtracted from the major reducible background estimation calculated using the fake rate. Tables \ref{Bkg:tab:faketauresultsetauLQ} and \ref{Bkg:tab:faketauresultsetauLQD} show the results of the estimation in the \etau channel for the leptoquark search and the top squark search, respectively. The QCD contribution is already subtracted in these tables; the details of the subtraction will be discussed in Sec. \ref{sec:qcdbkg}. The sources of systematic uncertainty are the same as those considered in the \mutau channel, with an additional systematic uncertainty from the uncertainty on the subtracted QCD contribution. The results from the data-drive estimations are consistent with the simulated predictions and closure tests. The total uncertainty on the \etau channel yield is $17\%$ for the leptoquark search and $24\%$ for the top squark search.
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|c|r|r|}
+      \multicolumn{4}{c}{\etau channel} \\
+      \hline
+      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{|c|}{LQ Results} \\
+      \hline
+      anti-iso    & fake rate                                             & \multicolumn{1}{c|}{yield}  & \multicolumn{1}{c|}{variation} \\
+      \hline
+      data        & data (incl.)                                          & 124.2 & (central)   \\
+      data        & data (incl.) ${}\pm 1\sigma_{\text{stat}}$            & 138.5 & 14.3 \\
+      data        & data ($N_{\text{jet}} \geq 1$)                        & 113.9 & 10.3         \\ 
+      residual MC & data (incl.)                                          & ---   & 7.1              \\
+      QCD         & data (incl.)                                          & ---   & 2.7  \\
+      \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times35\%$)} & --- & 7.8 \\
+      \hline
+      \multicolumn{2}{|c|}{Final Result}         & \multicolumn{2}{c|}{$124.2 \pm 20.7$} \\
+      \multicolumn{2}{|c|}{Simulated Prediction} & \multicolumn{2}{c|}{$106.8 \pm 27.3$} \\
+      \multicolumn{2}{|c|}{Closure Test}         & \multicolumn{2}{c|}{$129.5 \pm \hphantom{1}3.6$} \\
+      \hline
+    \end{tabular}
+    \caption{The results of the data-driven major reducible background estimation for the leptoquark search in the \etau channel. This table shows all sources of systematic uncertainty and a comparison to the simulated prediction. Only statistical uncertainty is given for the simulated prediction and the closure test.}
+    \label{Bkg:tab:faketauresultsetauLQ}
+  \end{center}
+\end{table}
+
+\begin{table}[hbt]
+  \begin{center}
+    \begin{tabular}{|c|c|r|r|}
+      \multicolumn{4}{c}{\etau channel} \\
+      \hline
+      \multicolumn{2}{|c|}{Sources} & \multicolumn{2}{|c|}{$\sTop$ Results} \\
+      \hline
+      anti-iso    & fake rate                                                  & \multicolumn{1}{c|}{yield}  & \multicolumn{1}{c|}{variation} \\
+      \hline
+      data        & data ($N_{\text{jet}} \geq 1$)                               & 65.7 & (central) \\
+      data        & data ($N_{\text{jet}} \geq 1$) ${}\pm 1\sigma_{\text{stat}}$ & 74.6 & 8.9 \\
+      data        & data ($N_{\text{jet}} \geq 2$)                               & 59.8 & 5.9   \\
+      residual MC & data ($N_{\text{jet}} \geq 1$)                               & ---  & 1.8      \\
+      QCD         & data ($N_{\text{jet}} \geq 1$)                               & ---  & 0.1 \\
+      \multicolumn{2}{|c|}{\Zmm vs. \ttbar fake rates ($18\%\times95\%$)}        & ---  & 11.2 \\
+      \hline
+      \multicolumn{2}{|c|}{Final Result}         & \multicolumn{2}{c|}{$65.7 \pm 15.6$}\\
+      \multicolumn{2}{|c|}{Simulated Prediction} & \multicolumn{2}{c|}{$66.7 \pm \hphantom{1}7.6$} \\
+      \multicolumn{2}{|c|}{Closure Test}         & \multicolumn{2}{c|}{$61.6 \pm \hphantom{1}1.4$} \\
+      \hline
+    \end{tabular}
+    \caption{The results of the data-driven major reducible background estimation for the top squark search in the \etau channel. This table shows all sources of systematic uncertainty and a comparison to the simulated prediction. Only statistical uncertainty is given for the simulated prediction and the closure test.}
+    \label{Bkg:tab:faketauresultsetauLQD}
+  \end{center}
+\end{table}
+
+% input: [qcdbkg.tex]
+\subsubsection{QCD Multijet Reducible Background}
+\label{sec:qcdbkg}
+
+The estimation of the contribution from the QCD multijet process in the \etau channel requires two steps. The presence of QCD events in the observed data in the \etau anti-isolated control region biases the previous estimation, as these events are weighted by the inappropriate quark-jet fake rate. Therefore, the first step must be to estimate the yield and \pt distribution of the QCD events in the anti-isolated observed data, in order to correct that bias by subtracting the inappropriate portion of the fake rate estimation. The second step is to perform an independent estimation of the QCD contribution in the signal region using the observed data.
+
+In both steps, a same-sign/opposite-sign (SS/OS) method is used to estimate the number of QCD events in a given region of the data. A same-sign control region is defined by requiring that the light lepton and hadronic tau have the same electric charge, instead of the opposite charge. Because both objects are misidentified jets in QCD events, their charge assignments are expected to be random, so the number of events in which both objects have the same charge should be the same as for the opposite charge. In practice, a slight deviation between the numbers of same-sign and opposite-sign events is possible, for example due to charge asymmetries in proton-proton collisions. The scale factor relating the numbers of same-sign and opposite-sign events was measured to be 1.06 in Ref. \cite{CMS-AN-2013-178}.
+
+The non-QCD background in the same-sign control region is estimated using the simulation and subtracted from the observed data; any remaining events are assumed to originate from the QCD process. The scale factor of 1.06 is applied to extrapolate from this yield $N_{\text{QCD}}^{\text{SS}}$ to the opposite-sign region $N_{\text{QCD}}^{\text{OS}}$:
+\begin{align}
+N_{\text{QCD}}^{\text{SS}} & = N_{\text{data}}^{\text{SS}} - N_{\text{MC}}^{\text{SS}}, \label{bkg:QCDss}\\
+N_{\text{QCD}}^{\text{OS}} & = 1.06 N_{\text{QCD}}^{\text{SS}}. \label{bkg:QCDos}
+\end{align}
+The subtraction of non-QCD backgrounds can potentially involve a large number of events. In order to ensure the validity of the subtraction, the normalization of the simulated samples must be carefully checked.
+
+To check the normalization of the simulated \W + jets, \Zll, and \Ztt samples, a region of data is defined using the preselection criteria without the cut $N_{\text{jets}}\geq2$. Most of the events at the preselection level are eventually eliminated from the signal region by the stricter main and final selections, so the contents of the signal region make up a relatively small portion of this larger region. The transverse mass of the electron and \met system, $\MT(\Pe,\met)$, is defined in Eq. \eqref{eq:MTdef}:
+\begin{equation}
+\MT(\Pe,\met) = \sqrt{2\pt^{(\Pe)}\met\left[1-\text{cos}\left(\Delta\phi\left(\Pe,\met\right)\right)\right]}. \label{eq:MTdef}
+\end{equation}
+This definition assumes both particles in the system are massless, which is a good approximation for highly relativistic electrons and neutrinos. The \MT distribution in the region defined above is used to determine normalization parameters for the simulated samples by comparing them to the observed data:
+\begin{equation}
+\MT^{\text{(data)}} = r_{\W}\MT^{\text{(\W + jets)}} + r_{\tau}\MT^{(\Ztt)} + r_{\ell}\MT^{(\Zll)} + \MT^{\text{(\ttbar,\cPqt,VV)}}. \label{Bkg:eq:MTmin}
+\end{equation}
+The difference between the sum of the simulated \MT distributions and the observed \MT distribution is minimized by varying the three normalization parameters $r_{\W}$, $r_{\tau}$, and $r_{\ell}$. The normalization of the other processes, \ttbar, single top, and diboson, is not addressed in this minimization. The observed distribution contains a contribution from QCD which is not modeled in the simulation. Therefore, at least one of the normalization parameters will be inflated during the minimization in order to include this contribution. Measurements of the inclusive \W and \Z production cross sections have demonstrated a similarity between the \MT distributions for \Zll and QCD events when using a selection tuned for \Wln events \cite{CMS-AN-2010-359,CMS:2011aa}. Hypothesizing that this similarity holds for the selection considered here, the parameter $r_{\ell}$ should scale the simulated \Zll yield to include the QCD yield.
+
+The minimization in Eq. \eqref{Bkg:eq:MTmin} provides the following values for the $r$ parameters: $r_{W} = 0.86$, $r_{\tau} = 1.21$, $r_{\ell} = 2.02$. Using these parameters, corrected yields $N$ can be defined for the simulated samples, based on the uncorrected yields $N_{\text{MC}}$:
+\begin{align}
+N(\text{\W + jets}) &= r_{\W}N_{\text{MC}}(\text{\W + jets}), \\
+N(\Ztt) &= r_{\tau}N_{\text{MC}}(\text{\Ztt}), \\
+N(\Zll) + N(\text{QCD}) &= r_{\ell}N_{\text{MC}}(\text{\Zll}). \label{Bkg:eq:NZllQCD}
+\end{align}
+Equation \eqref{Bkg:eq:NZllQCD} arises from the hypothesis that the \Zll yield will be scaled to include the QCD yield. This can be used to check the validity of the \MT minimization method for correcting the simulated sample normalizations. The parameter $r_{\tau}$ is assigned to be the normalization correction for both the \Zll and \Ztt samples, in order to solve for $N(\text{QCD})$ in terms of known quantities:
+\begin{align}
+N(\Zll) &= r_{\tau}N_{\text{MC}}(\text{\Zll}), \label{eq:NZll} \\
+N(\text{QCD}) &= r_{\ell}N_{\text{MC}}(\text{\Zll}) - r_{\tau}N_{\text{MC}}(\text{\Zll}). \label{eq:NQCDZ}
+\end{align}
+Equation \eqref{eq:NQCDZ} follows from the combination of Eqs. \eqref{Bkg:eq:NZllQCD} and \eqref{eq:NZll}. This equation produces the value $N(\text{QCD}) = 24765 \pm 1411$ for the region defined by the preselection criteria without the cut $N_{\text{jets}}\geq2$. In comparison, the SS/OS method applied directly to this region predicts the value $N(\text{QCD}) = 26424 \pm 1250$. These two values agree within uncertainties, validating the assumptions made in the \MT minimization method. The normalization parameters $r_{\W}$ and $r_{\tau}$ will be used for the \W + jets and \Z + jets normalizations in the various same-sign and anti-isolated control regions necessary to conduct the two steps of the QCD estimation in the signal region. A separate control region requiring $N_{\text{b-jet}}\geq2$ and $\MT>70\GeV$ is used to check the normalization of the \ttbar simulation, and no correction is found to be necessary.
+
+To measure the QCD portion of the observed data in the anti-isolated region, the SS/OS method described by Eqs. \eqref{bkg:QCDss} and \eqref{bkg:QCDos} is applied, using the normalization parameters. Figure \ref{fig:QCDSSAiso} shows the \MT(\Pe,\met) distribution in the same-sign anti-isolated control region for the leptoquark search, with an overall excess in the observed data indicating the presence of QCD. This method predicts $3026\pm210$ QCD events after the leptoquark final selection and $152\pm15$ events after the top squark final selection. In order to subtract these events' contribution from the reducible background estimation, the \pt distribution of the hadronic tau candidates in the QCD events is needed. Figure \ref{Bkg:fig:antiiso} shows that the QCD events in the \etau anti-isolated region are found primarily in the single tau multiplicity bin. Therefore, it is sufficient to subtract the simulated tau \pt distribution from the observed tau \pt distribution to obtain the QCD tau \pt distribution. A simplified version of Eq. \eqref{Bkg:eq:faketauest} can be used to weight these single-tau events:
+\begin{equation}
+N_{\text{misID}~\tau}^{\text{(QCD)}} = N_{\text{anti-iso}}^{\text{(QCD)}} \sum_{\pt}{\frac{f(\pt)}{1-f(\pt)}}. \label{Bkq:eq:faketausubQCD}
+\end{equation}
+Using Eq. \eqref{Bkq:eq:faketausubQCD}, the QCD yield to subtract is found to be $38.5\pm2.7$ events in the leptoquark search and $1.5\pm0.1$ events in the top squark search. The subtraction of these QCD yields is already included in the results shown in Tables \ref{Bkg:tab:faketauresultsetauLQ} and \ref{Bkg:tab:faketauresultsetauLQ}, with the statistical uncertainties on the QCD yields included as additional systematic uncertainties on the final major reducible background estimation.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/etau/eMETTMassSSAIsoFinal.pdf}
+    \caption{The transverse mass of the electron and missing transverse energy system for the same-sign anti-isolated control region, after the leptoquark final selection. The overall excess in the observed data, not localized in a specific range of \MT values, indicates the presence of QCD events.}
+    \label{fig:QCDSSAiso}
+  \end{center}
+\end{figure}
+
+Having subtracted the improperly estimated QCD contribution, the actual contribution from QCD, if any, must be obtained. Again, the SS/OS method is used, now with the signal region. To decrease the statistical uncertainty in this estimation, the same-sign control region is defined before the final selection. For the leptoquark search, this means that the cut $\MassTJ>250\GeV$ is not applied. Figure \ref{fig:QCDSSMET} shows the \met distribution in this control region, with an excess in the observed data at low \met indicating the presence of QCD. Using the normalization corrections derived previously, the simulated yield in this control region is found to be $474\pm18$ events, while the observed yield is found to be $736\pm27$, which gives $N_{\text{QCD}}^{\text{SS}} = 262\pm32$ and correspondingly $N_{\text{QCD}}^{\text{OS}} = 277\pm34$. To extrapolate this QCD yield to the region defined by the leptoquark final selection, the efficiency of the cut $\MassTJ>250\GeV$ is measured in a same-sign control region which vetoes events containing one or more b-tagged jets, enhancing the contribution from QCD. The QCD yields before and after the mass cut are defined as the subtraction of the simulated yields from the observed yields:
+\begin{alignat}{8}
+N_{\text{QCD}}^{\text{before}} &= N_{\text{data}}^{\text{before}} &&- N_{\text{MC}}^{\text{before}} &&= (793 &&\pm 28) &&- (469 &&\pm 19) &&= 324 &&\pm 34, \\
+N_{\text{QCD}}^{\text{after}} &= N_{\text{data}}^{\text{after}}   &&- N_{\text{MC}}^{\text{after}}  &&= (\hphantom{7}93  &&\pm 10) &&- (\hphantom{4}66  &&\pm \hphantom{1}7)  &&= \hphantom{3}27  &&\pm 12.
+\end{alignat}
+The ratio of these two yields is the efficiency of the cut, $\varepsilon_{\MassTJ}=8.5\%\pm4.0\%$. Thus, Eq. \eqref{eq:NQCDfinal} calculates the final yield from QCD in the leptoquark search:
+\begin{equation}
+N_{\text{QCD}}^{\text{final}} = N_{\text{QCD}}^{\text{OS}} \times \varepsilon_{\MassTJ} = (277\pm 34) \times (8.5\% \pm 4\%) = 23.6 \pm 12. \label{eq:NQCDfinal}
+\end{equation}
+To check this estimation, the SS/OS method is applied to the signal region after the cut $\MassTJ>250\GeV$. This check gives a less precise result $N_{\text{QCD}}^{\text{SS/OS}} = 31.8 \pm 21.2$, which is fully compatible with the above result within uncertainties.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/etau/metPtSSIso.pdf}
+    \caption{The missing transverse energy spectrum for the same-sign control region selected before the $\MassTJ>250\GeV$ requirement for the leptoquark search. The excess of observed events at low \met is an indication of the presence of QCD events.}
+    \label{fig:QCDSSMET}
+  \end{center}
+\end{figure}
+
+In addition to the yield, the \ST distribution for the QCD process has to be estimated from the observed data, as no simulated sample is available to produce it. The distribution is obtained by subtracting the simulated \ST distribution from the observed \ST distribution in the same-sign control region after the full leptoquark final selection, as shown in Fig. \ref{fig:residQCD}. The bins with negative values, all of which are equivalent to zero within their statistical uncertainties, are set to be zero to avoid unphysical values in the distribution. The QCD \ST distribution obtained from this method is then added to the major reducible \ST distribution for the \etau channel. The propagated statistical uncertainty on the QCD yield, $\pm 12$ events, is added in quadrature with the systematic uncertainty from the major reducible background estimation.
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/bkgEstim/residualQCD.pdf}
+    \caption{The QCD \ST distribution estimated by subtracting the simulated distribution from the observed distribution in the same-sign control region after the leptoquark final selection. The negative values are set to zero when using the distribution.}
+    \label{fig:residQCD}
+  \end{center}
+\end{figure}
+
+In the top squark search, the QCD background is found to be $0 \pm 13$ using the SS/OS method with an extrapolation of the efficiency of the cut $N_{\text{jets}}\geq5$. Applying the SS/OS method after the final selection to check that prediction finds $0 \pm 18$. These predictions agree and are both equivalent to zero events, so no QCD background is added to the \etau channel in the top squark search. This lack of QCD background is expected due to the high jet multiplicity requirement in this selection.
+
 
 \subsection{Other Backgrounds}
+
+The \ttbar irreducible and major reducible backgrounds described above are the major backgrounds for the signal processes considered in this dissertation. Some background categories are not included in these data-driven estimations. These backgrounds contribute only a small number of events after the final selections. They are estimated from the simulation, normalized using the cross sections listed in Table \ref{tab:mcsamplesBG}. The contributions from the diboson and single-top-quark processes are entirely estimated using the simulation. Matching between the generator-level particles and the reconstructed tau object is used to identify the irreducible contribution from \Ztt + jets. The reducible contributions from \ttbar with two light leptons and \Zll + jets, when a light lepton is misidentified as a hadronic tau, are also estimated from the simulation.
 
 \section{Systematic Uncertainties}
 
@@ -1573,6 +2391,90 @@ To set a mass limit on the signal hypothesis, the calculation of $\text{CL}_{s}$
 % input: [datasets.tex]
 \chapter{Table of Monte Carlo Datasets
 \label{ch:datasets}}
+
+Tables \ref{tab:mcsamplesLQ} and \ref{tab:mcsamplesBG} list all MC samples for the LQ signal and SM background processes, respectively. These samples are centrally produced by the CMS collaboration and stored in a database called the Data Aggregation System (DAS). The location of each sample in DAS is given by the ``Dataset Name'' field in the tables.
+
+\afterpage{
+\begin{landscape}
+\begin{table}[hbt]
+\begin{center}
+{\footnotesize
+\begin{tabular}{|l|l|c|l|}
+\hline
+\multicolumn{4}{|c|}{Signal Processes} \\
+\hline
+\MLQ [\GeVns] & Dataset Name & $\sigma$ [pb] & $\alpha_{s}$ order \\
+\hline
+200  & /LQToTauB\_M-200\_beta-1\_TuneZ2star\_8TeV-pythia6  & 17.4     & NLO \\
+250  & /LQToTauB\_M-250\_beta-1\_TuneZ2star\_8TeV-pythia6  & 5.26     & NLO \\
+300  & /LQToTauB\_M-300\_beta-1\_TuneZ2star\_8TeV-pythia6  & 1.89     & NLO \\
+350  & /LQToTauB\_M-350\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.77     & NLO \\
+400  & /LQToTauB\_M-400\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.342    & NLO \\
+450  & /LQToTauB\_M-450\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.163    & NLO \\
+500  & /LQToTauB\_M-500\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.082    & NLO \\
+550  & /LQToTauB\_M-550\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.0431   & NLO \\
+600  & /LQToTauB\_M-600\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.0235   & NLO \\
+650  & /LQToTauB\_M-650\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.0132   & NLO \\
+700  & /LQToTauB\_M-700\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00761  & NLO \\
+750  & /LQToTauB\_M-750\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00448  & NLO \\
+800  & /LQToTauB\_M-800\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00269  & NLO \\
+850  & /LQToTauB\_M-850\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00164  & NLO \\
+900  & /LQToTauB\_M-900\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.00101  & NLO \\
+950  & /LQToTauB\_M-950\_beta-1\_TuneZ2star\_8TeV-pythia6  & 0.000634 & NLO \\
+1000 & /LQToTauB\_M-1000\_beta-1\_TuneZ2star\_8TeV-pythia6 & 0.000401 & NLO \\
+\hline
+\end{tabular}
+}
+\caption{The full list of MC samples for the LQ signal used in the analysis. Each dataset name should be followed by \emph{/Summer12\_DR53X-PU\_S10\_START53\_V7A-v1/AODSIM}. Cross sections $\sigma$ are given at the specified perturbative order in $\alpha_{s}$ for each process.}
+\label{tab:mcsamplesLQ}
+\end{center}
+\end{table}
+\end{landscape}
+}
+
+\afterpage{
+\begin{landscape}
+\begin{table}[hbt]
+\begin{center}
+{\footnotesize
+\begin{tabular}{|l|l|c|l|}
+\hline
+\multicolumn{4}{|c|}{Background Processes} \\
+\hline
+Process                            &   Dataset Name  & $\sigma$ [pb] & $\alpha_{s}$ order \\
+\hline
+$t\bar{t}$                                  & /TTJets\_MassiveBinDECAY\_TuneZ2star\_8TeV-madgraph-tauola  & 234      & NNLL \\
+$t\bar{t} \rightarrow b\ell\nu b\ell\nu$    & /TTJets\_FullLeptMGDecays\_8TeV-madgraph-tauola             & 24.56    & NNLL  \\
+$t\bar{t} \rightarrow b\ell\nu bqq^{\prime}$         & /TTJets\_SemiLeptMGDecays\_8TeV-madgraph-tauola    & 102.51   & NNLL  \\
+$t\bar{t} \rightarrow bqq^{\prime} bqq^{\prime}$              & /TTJets\_HadronicMGDecays\_8TeV-madgraph  & 106.96   & NNLL  \\
+$t\rightarrow b\ell\nu$ ($s$-channel)       & /T\_s-channel\_TuneZ2star\_8TeV-powheg-tauola               & 1.76     & NNLL \\
+$t\rightarrow b\ell\nu$ ($t$-channel)       & /T\_t-channel\_TuneZ2star\_8TeV-powheg-tauola               & 30.7     & NNLL \\
+$t\rightarrow X$ ($tW$)                     & /T\_tW-channel-DR\_TuneZ2star\_8TeV-powheg-tauola           & 11.1     & NNLL \\
+$\bar{t}\rightarrow b\ell\nu$ ($s$-channel) & /Tbar\_s-channel\_TuneZ2star\_8TeV-powheg-tauola            & 3.79     & NNLL \\
+$\bar{t}\rightarrow b\ell\nu$ ($t$-channel) & /Tbar\_t-channel\_TuneZ2star\_8TeV-powheg-tauola            & 56.4     & NNLL \\
+$\bar{t}\rightarrow X$ ($tW$)               & /Tbar\_tW-channel-DR\_TuneZ2star\_8TeV-powheg-tauola        & 11.1     & NNLL \\
+$W + \text{jets}$                           & /WJetsToLNu\_TuneZ2Star\_8TeV-madgraph-tarball              & 37509.0  & NNLO \\
+$W + 1~\text{jet}$                          & /W1JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 6440.58  & LO  \\
+$W + 2~\text{jets}$                         & /W2JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 2087.225 & LO  \\
+$W + 3~\text{jets}$                         & /W3JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 619.0113 & LO  \\
+$W + 4~\text{jets}$                         & /W4JetsToLNu\_TuneZ2Star\_8TeV-madgraph                     & 255.2378 & LO  \\
+$Z + \text{jets}$                           & /DYJetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph-tarball        & 3503.7   & NNLO \\
+$Z + 1~\text{jet}$                          & /DY1JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 666.3    & LO \\
+$Z + 2~\text{jets}$                         & /DY2JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 214.97   & LO \\
+$Z + 3~\text{jets}$                         & /DY3JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 60.69    & LO \\
+$Z + 4~\text{jets}$                         & /DY4JetsToLL\_M-50\_TuneZ2Star\_8TeV-madgraph               & 27.36    & LO \\
+$WW$                                        & /WW\_TuneZ2star\_8TeV\_pythia6\_tauola                      & 55.47    & NLO \\
+$WZ$                                        & /WZ\_TuneZ2star\_8TeV\_pythia6\_tauola                      & 33.59    & NLO \\
+$ZZ$                                        & /ZZ\_TuneZ2star\_8TeV\_pythia6\_tauola                      & 8.27     & NLO \\
+\hline
+\end{tabular}
+}
+\caption{The full list of MC samples for the SM background used in the analysis. Each dataset name should be followed by \emph{/Summer12\_DR53X-PU\_S10\_START53\_V7A-v1/AODSIM}. Cross sections $\sigma$ are given at the specified perturbative order in $\alpha_{s}$ for each process.}
+\label{tab:mcsamplesBG}
+\end{center}
+\end{table}
+\end{landscape}
+}
 % input: [collaboration.tex]
 \chapter{CMS Collaboration
 \label{ch:collaboration}}
@@ -1583,7 +2485,7 @@ To set a mass limit on the signal hypothesis, the calculation of $\text{CL}_{s}$
 \normalsize
 \phantomsection
 %*input: [mainthesis.bbl]
-\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}%
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{100}%
 \makeatletter
 \providecommand{\hrefCMSnoop }[0]{\@secondoftwo}%
 \makeatother
@@ -1697,12 +2599,7 @@ S.~Perlmutter\hrefCMSnoop {} { {et~al.}, ``Measurements of $\Omega$ and
   in lepton-quark collisions}'',} \textit{ Phys. Lett. B} \textbf{ 191} (1987)
   442,
   \href{http://dx.doi.org/10.1016/0370-2693(87)90637-X}{\doi{10.1016/0370-2693(87)90637-X}}.
-
-\bibitem{BRWerr}
-\hrefCMSnoop {} {W.~Buchm{\"u}ller, R.~R{\"u}ckl, and D.~Wyler, ``Erratum:
-  Leptoquarks in lepton-quark collisions'',} \textit{ Phys. Lett. B} \textbf{
-  448} (1999) 320,
-  \href{http://dx.doi.org/10.1016/S0370-2693(99)00014-3}{\doi{10.1016/S0370-2693(99)00014-3}}.
+  [Erratum: \doi{10.1016/S0370-2693(99)00014-3}].
 
 \bibitem{ModelIndLQ}
 \hrefCMSnoop {} {S.~Davidson, D.~Bailey, and B.~A. Campbell, ``Model
@@ -1983,6 +2880,11 @@ J.~Allison\hrefCMSnoop {} { {et~al.}, ``Geant4 developments and
   Conf.} \textbf{ 396} (2012), no.~2, 022044,
   \href{http://dx.doi.org/10.1088/1742-6596/396/2/022044}{\doi{10.1088/1742-6596/396/2/022044}}.
 
+\bibitem{CMS-PAS-TRK-10-005}
+\href {http://cds.cern.ch/record/1279383/} {{ CMS} Collaboration, ``{Tracking
+  and Primary Vertex Results in First 7 TeV Collisions}'',} CMS Physics
+  Analysis Summary CMS-PAS-TRK-10-005, CERN, Geneva, 2010.
+
 \bibitem{CMS-PAS-PFT-09-001}
 \href {http://cds.cern.ch/record/1194487} {{ CMS} Collaboration,
   ``Particle-Flow Event Reconstruction in CMS and Performance for Jets, Taus,
@@ -2100,6 +3002,99 @@ S.~Baffioni\hrefCMSnoop {} { {et~al.}, ``Electron reconstruction in CMS'',}
   ``{Performance of b tagging at $\sqrt{s} =$ 8 TeV in multijet, ttbar and
   boosted topology events}'',} CMS Physics Analysis Summary CMS-PAS-BTV-13-001,
   CERN, Geneva, 2013.
+
+\bibitem{DataQuality}
+\href {https://twiki.cern.ch/twiki/bin/view/CMSPublic/DataQuality} {{ CMS}
+  Collaboration, ``{Public CMS Data Quality Information }'',} (Jun, 2013).
+
+\bibitem{POWHEG2}
+\hrefCMSnoop {} {S.~Frixione, P.~Nason, and C.~Oleari, ``Matching {NLO QCD}
+  computations with parton shower simulations: the {POWHEG} method'',} \textit{
+  JHEP} \textbf{ 11} (2007) 070,
+  \href{http://dx.doi.org/10.1088/1126-6708/2007/11/070}{\doi{10.1088/1126-6708/2007/11/070}},
+  \href{http://www.arXiv.org/abs/0709.2092}{\texttt{ arXiv:0709.2092}}.
+
+\bibitem{POWHEG:singlet}
+\hrefCMSnoop {} {S.~Alioli, P.~Nason, C.~Oleari, and E.~Re, ``{NLO single-top
+  production matched with shower in POWHEG: $s$- and $t$-channel
+  contributions}'',} \textit{ JHEP} \textbf{ 09} (2009) 111,
+  \href{http://dx.doi.org/10.1088/1126-6708/2009/09/111}{\doi{10.1088/1126-6708/2009/09/111}},
+  \href{http://www.arXiv.org/abs/0907.4076}{\texttt{ arXiv:0907.4076}}.
+[Erratum: \doi{10.1007/JHEP02(2010)011}].
+%%CITATION = ARXIV:0907.4076;%%.
+
+\bibitem{POWHEG:singletW}
+\hrefCMSnoop {} {E.~Re, ``{Single-top $Wt$-channel production matched with
+  parton showers using the POWHEG method}'',} \textit{ Eur. Phys. J. C}
+  \textbf{ 71} (2011) 1547,
+  \href{http://dx.doi.org/10.1140/epjc/s10052-011-1547-z}{\doi{10.1140/epjc/s10052-011-1547-z}},
+\href{http://www.arXiv.org/abs/1009.2450}{\texttt{ arXiv:1009.2450}}.
+%%CITATION = ARXIV:1009.2450;%%.
+
+\bibitem{TOPCrossSec}
+\hrefCMSnoop {} {N.~Kidonakis, ``{Differential and total cross sections for top
+  pair and single top production}'',} in \textit{ Proc. of {XX} Int. Workshop
+  on Deep-Inelastic Scattering and Related Subjects}, p.~831.
+\newblock 2012.
+\newblock \href{http://www.arXiv.org/abs/1205.3453}{\texttt{ arXiv:1205.3453}}.
+\newblock
+\href{http://dx.doi.org/10.3204/DESY-PROC-2012-02/251}{\doi{10.3204/DESY-PROC-2012-02/251}}.
+%%CITATION = ARXIV:1205.3453;%%.
+
+\bibitem{FEWZ}
+\hrefCMSnoop {} {K.~Melnikov and F.~Petriello, ``Electroweak gauge boson
+  production at hadron colliders through $\mathcal{O}(\alpha_{s}^2)$'',}
+  \textit{ Phys. Rev. D} \textbf{ 74} (2006) 114017,
+  \href{http://dx.doi.org/10.1103/PhysRevD.74.114017}{\doi{10.1103/PhysRevD.74.114017}},
+  \href{http://www.arXiv.org/abs/hep-ph/0609070}{\texttt{
+  arXiv:hep-ph/0609070}}.
+
+\bibitem{MCFM}
+\hrefCMSnoop {} {J.~M. Campbell, R.~K. Ellis, and C.~Williams, ``Vector boson
+  pair production at the {LHC}'',} \textit{ JHEP} \textbf{ 07} (2011) 018,
+  \href{http://dx.doi.org/10.1007/JHEP07(2011)018}{\doi{10.1007/JHEP07(2011)018}},
+  \href{http://www.arXiv.org/abs/1105.0020}{\texttt{ arXiv:1105.0020}}.
+
+\bibitem{MuonRefEffs}
+\href {https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonReferenceEffs} {{ CMS}
+  Collaboration, ``Reference muon id and isolation efficiencies'',} (2013).
+
+\bibitem{EgammaTagAndProbe}
+\hrefCMSnoop {} {{The Egamma ID Group}, ``Tag and probe methodology for
+  analyses using electrons and photons'',} CMS Analysis Note CMS-AN-2012-116,
+  CERN, Geneva, May, 2012.
+
+\bibitem{EgammaScaleFactors}
+\href {https://twiki.cern.ch/twiki/bin/view/Main/EGammaScaleFactors2012} {{
+  CMS} Collaboration, ``{Single Electron efficiencies and Scale-Factors for cut
+  based Id - 2012}'',} (2013).
+
+\bibitem{TauID}
+\href {https://twiki.cern.ch/twiki/bin/viewauth/CMS/TauIDRecommendation} {{
+  CMS} Collaboration, ``TauID: recommendation from the Tau POG'',} (2013).
+
+\bibitem{BTagSFMethods}
+\href {https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagSFMethods} {{ CMS}
+  Collaboration, ``Methods to apply b-tagging efficiency scale factors'',}
+  (2013).
+
+\bibitem{CMS-AN-2013-178}
+A.~Apyan\hrefCMSnoop {} { {et~al.}, ``Search for Higgs to Tau Tau in the
+  Muon-Tau and Electron-Tau Channels'',} CMS Analysis Note CMS-AN-2013-178,
+  CERN, Geneva, Oct, 2013.
+
+\bibitem{CMS-AN-2010-359}
+\hrefCMSnoop {} {M.~Marionneau, ``Missing transverse energy studies for events
+  with W and Z bosons decaying into electrons channels using 2010 data'',} CMS
+  Analysis Note CMS-AN-2010-359, CERN, Geneva, Feb, 2011.
+
+\bibitem{CMS:2011aa}
+\hrefCMSnoop {} {{ CMS} Collaboration, ``{Measurement of the inclusive W and Z
+  production cross sections in pp collisions at $\sqrt{s}=7$ TeV with the CMS
+  experiment}'',} \textit{ JHEP} \textbf{ 1110} (2011) 132,
+  \href{http://dx.doi.org/10.1007/JHEP10(2011)132}{\doi{10.1007/JHEP10(2011)132}},
+\href{http://www.arXiv.org/abs/1107.4789}{\texttt{ arXiv:1107.4789}}.
+%%CITATION = ARXIV:1107.4789;%%.
 
 \bibitem{Read:CLs}
 \href {http://cdsweb.cern.ch/record/451614} {A.~L. Read, ``Modified frequentist
