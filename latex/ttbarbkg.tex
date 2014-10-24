@@ -53,17 +53,19 @@ The \ttbar yields in the \emu control region, $N_{\emu}$, and in the signal regi
  N_{\ltau} &= \sigma \mathcal{L} &&\times \left(\El \Eth \varepsilon^{\text{sel}}_{\ltau} \rho^{\text{sel}}_{\ltau} \right) \nonumber \\
            &                     &&\times 2 \left[\Alth\Bl\Bth + \Atlth\Btl\Bth \right].  \label{eq:Nltau}
 \end{alignat}
-Here, $\sigma$ is the \ttbar production cross section; $\mathcal{L}$ is the integrated luminosity; $\varepsilon_{x}^{\text{ID}}$ is the selection efficiency for the identification and isolation of a lepton $x$ in the simulation; $\varepsilon^{\text{sel}}_{i}$ is the analysis selection efficiency in the simulation, including the jet multiplicity cut, the b-tagging requirement, and so forth, for the channel $i$; and $\rho^{\text{sel}}_{i}$ is the simulation to data scale factor associated with the selection efficiency for the channel $i$. The branching fractions $\mathcal{B}$ of the \W boson decay for each leptonic decay channel are labeled as follows:
+Here, $\sigma$ is the \ttbar production cross section; $\mathcal{L}$ is the integrated luminosity; $\varepsilon_{x}^{\text{ID}}$ is the selection efficiency for the identification and isolation of a lepton $x$ in the simulation; $\varepsilon^{\text{sel}}_{i}$ is the analysis selection efficiency in the simulation, including the jet multiplicity cut, the b-tagging requirement, and so forth, for the channel $i$; $\rho^{\text{sel}}_{i}$ is the simulation to data scale factor associated with the selection efficiency for the channel $i$; $\mathcal{A}_{\ell\ell^{\prime}}$ is the kinematic acceptance for a process that produces one lepton $\ell$ and another lepton $\ell^{\prime}$; and $\mathcal{B}$ is the branching fraction for a given leptonic decay channel.
+
+The branching fractions $\mathcal{B}$ of the \W boson decay for each leptonic decay channel are labeled as follows:
 \begin{align}
 \mathcal{B}(\W \rightarrow \ell \nu_{\ell}) &= \Bl, \\
 \mathcal{B}(\W \rightarrow \tau\nu_{\tau} \rightarrow \ell \nu_{\ell} \nu_{\tau}) &= \Btl, \\
 \mathcal{B}(\W \rightarrow \tau\nu_{\tau} \rightarrow \text{hadrons} + \nu_{\tau}) &= \Bth.
 \end{align}
-Similarly, the acceptance for a process that produces one lepton $\ell$ and another lepton $\ell^{\prime}$ is called $\mathcal{A}_{\ell\ell^{\prime}}$. The acceptances are computed using the MC simulation of the \ttbar process and are defined for each leptonic decay channel:
+The kinematic acceptances $\mathcal{A}$ are computed using the MC simulation of the \ttbar process and are defined for each leptonic decay channel:
 \begin{equation}
   \mathcal{A} = \frac{N_{\text{sel}}(\ell\ell^{\prime})}{N_{\text{gen}}(\ell\ell^{\prime})}.
 \end{equation}
-$N_{\text{gen}}(\ell\ell^{\prime})$ is the number of generated events containing two leptons $\ell$ and $\ell^{\prime}$, and $N_{\text{sel}}(\ell\ell^{\prime})$ is the number of those generated events that are selected when kinematic requirements are imposed. The requirements used are the \pt and $\eta$ cuts used for the selection of the primary electrons, muons, and hadronic taus in the signal region. The acceptances for each decay channel are listed in Table \ref{tab:TTAcc}.
+$N_{\text{gen}}(\ell\ell^{\prime})$ is the number of generated events containing two leptons $\ell$ and $\ell^{\prime}$, and $N_{\text{sel}}(\ell\ell^{\prime})$ is the number of those generated events that pass the \pt and $\eta$ cuts used for the selection of the primary leptons (electrons, muons, or hadronic taus) in the signal region. The acceptances for each decay channel are listed in Table \ref{tab:TTAcc}.
 
 \begin{table}
   \begin{center}
@@ -82,35 +84,27 @@ $N_{\text{gen}}(\ell\ell^{\prime})$ is the number of generated events containing
   \end{center}
 \end{table}
 
-Equations \eqref{eq:Nltau} and \eqref{eq:Nemu} can be combined to eliminate $\sigma\mathcal{L}$, which produces a formula to extrapolate the \ttbar yield from the \emu control region to the \ltau signal region:
-\begin{align}
-\label{eq:ttbartot}
-N_{\ltau} &= N_{\emu} \times \frac{\El\Eth}{\Ee\Emu} \times \frac{\varepsilon^{\text{sel}}_{\ltau}\rho^{\text{sel}}_{\ltau}}{\varepsilon^{\text{sel}}_{\emu}\rho^{\text{sel}}_{\emu}} \nonumber \\
-&\times \frac{\Alth\Bl\Bth + \Atlth\Btl\Bth}{\Aem\Be\Bm + \Amte\Bm\Bte + \Aetm\Be\Btm + \Atetm\Bte\Btm}.
-\end{align}
-$N_{\emu}$ is the yield from the \emu control region in the observed data, with the residual non-\ttbar background subtracted. The yield in the signal region $N_{\ltau}$ is extrapolated from $N_{\emu}$ via multiplication by selection and identification efficiencies, data/MC scale factors, acceptances, and branching fractions.
-
-The selection efficiencies $\varepsilon$ and the data/MC scale factors $\rho$ are derived from several different sources. The standard efficiencies for the lepton identification algorithms are estimated using \Z events. However, differences in topology between \ttbar and \Z events make these values inappropriate for the \ttbar background estimation. The identification efficiencies are therefore calculated using simulated \ttbar events. The reconstructed leptons in these events are required to be matched with genuine leptons at the generator level, and the results are listed in Table \ref{tab:ttlepeff}. The standard efficiencies for the HLT criteria are used. The standard data/MC scale factors for the lepton identification, HLT efficiency, and b-tagging are also used. The difference in performance between the observed data and the MC simulation is assumed to be due to inherent properties of the simulation without any dependence on the type of event.
+The efficiencies $\varepsilon$ and the data/MC scale factors $\rho$ are derived from several different sources. The standard efficiencies for the lepton identification algorithms are estimated using \Z events. However, differences in topology between \ttbar and \Z events make these values inappropriate for the \ttbar background estimation. The identification efficiencies are therefore calculated using simulated \ttbar events. The reconstructed leptons in these events are required to be matched with genuine leptons at the generator level, and the results are listed in Table \ref{tab:ttlepeff}. The standard efficiencies for the HLT criteria are used. The standard data/MC scale factors for the lepton identification, HLT efficiency, and b-tagging are also used. The difference in performance between the observed data and the MC simulation is assumed to be due to inherent properties of the simulation of the individual objects, without any dependence on the type of event.
 
 \begin{table}
   \begin{center}
     \begin{tabular}{|c|c|c|}
       \hline
-      lepton & $\varepsilon$ from \ttbar events (\%) & $\rho$ from \Z events \\
+      lepton & $\varepsilon^{\text{ID}}$ from \ttbar events (\%) & $\rho$ from \Z events \\
       \hline\hline
       \Pe     & $77.3 \pm 0.1$ & $1.011 \pm 0.001$ \\
       $\mu$   & $81.3 \pm 0.1$ & $0.995 \pm 0.001$ \\
       $\tauh$ & $35.5 \pm 4.9$ & $1.000\vphantom{{}\pm0.001}$ \\
       \hline
     \end{tabular}
-    \caption{Lepton identification efficiencies $\varepsilon$ measured in simulated \ttbar events and associated scale factors $\rho$ measured in \Z events.}
+    \caption{Lepton identification efficiencies $\varepsilon^{\text{ID}}$ measured in simulated \ttbar events and associated scale factors $\rho$ measured in \Z events.}
     \label{tab:ttlepeff}
   \end{center}
 \end{table}
 
-The analysis selection efficiencies are calculated using the \ttbar simulation. The efficiencies are computed for each selection requirement, including: vertex matching between the two leptons, opposite charge between the two leptons, additional lepton veto, $N_{\text{jets}}\geq2$, $N_{\text{b-jets}}\geq1$, and $\pt(\tauh)>50\GeV$. Efficiences are also computed for the final selection cuts ($\MassTJ>250\GeV$ for the leptoquark search and $N_{\text{jets}}\geq5$ for the top squark search). In order to compute the data/MC scale factors in a \ttbar enriched sample, the order of the selection cuts is altered. First, the jet multiplicity requirement is applied: $N_{\text{jets}}\geq2$ for the leptoquark search or $N_{\text{jets}}\geq5$ for the top squark search. Next, the b-tagging requirement is applied, and then the \MassTJ cut is applied for the leptoquark search. The other selection requirements are applied subsequently.
+The analysis selection efficiencies are calculated using the \ttbar simulation. The efficiencies are computed for each selection requirement, including: vertex matching between the two leptons, opposite charge between the two leptons, additional lepton veto, $N_{\text{jets}}\geq2$, $N_{\text{b-jets}}\geq1$, and $\pt(\tauh)>50\GeV$. Efficiencies are also computed for the final selection cuts ($\MassTJ>250\GeV$ for the leptoquark search and $N_{\text{jets}}\geq5$ for the top squark search). To create a \ttbar enriched sample in the observed data for the computation of the data/MC scale factors, the order of the selection cuts listed in Sec. \ref{sec:sel} must be altered. In the altered order, the jet multiplicity requirement is applied first: $N_{\text{jets}}\geq2$ for the leptoquark search or $N_{\text{jets}}\geq5$ for the top squark search. Next, the b-tagging requirement is applied, and then the \MassTJ cut is applied for the leptoquark search. The other selection requirements are applied subsequently.
 
-The overall data/MC scale factors associated with the vertex matching, opposite charge, lepton veto, and final hadronic tau \pt cut are computed in the control region defined by requiring events with two b-jets and $\MassTJ<120\GeV$. The separate control region with $120\GeV < \MassTJ < 250\GeV$ is used to check that the scale factors do not depend on the value of the $\MassTJ$ cuts. Due to the lack of a pure \ttbar control region to estimate the data/MC scale factor at the level of the jet multiplicity requirement, no scale factor is applied and an additional systematic uncertainty is assigned. For similar reasons, no scale factor is applied for the \MassTJ cut. The results of these selection efficiency and scale factor calculations are listed in Table \ref{tab:tteff}.
+The overall data/MC scale factors associated with the vertex matching, opposite charge, lepton veto, and final hadronic tau \pt cut are computed in the control region defined by requiring events with two b-jets and $\MassTJ<120\GeV$. The separate control region with $120\GeV < \MassTJ < 250\GeV$ is used to check that the scale factors do not depend on the value of the $\MassTJ$ cuts. Due to the lack of a pure \ttbar control region to estimate the data/MC scale factor at the level of the jet multiplicity requirement, no scale factor is applied and an additional systematic uncertainty is assigned. For similar reasons, no scale factor is applied for the \MassTJ cut. The results of these selection efficiency and scale factor calculations are listed in Table \ref{tab:tteff}. The primary source of disagreement between the data and the simulation is mismodeling of the hadronic tau energy scale and momentum in the \ttbar MC samples.
 
 \afterpage{
 \begin{landscape}
@@ -146,9 +140,17 @@ The overall data/MC scale factors associated with the vertex matching, opposite 
 \end{landscape}
 }
 
-The systematic uncertainty assigned to the jet multiplicity requirement is defined as the difference between data and simulation in the efficiency of the requirement. This difference is calculated in a control region consisting of 95\% \ttbar events, which is selected by requiring both \W bosons in each event to decay to muons. Additional requirements are applied to reduce the contamination from non-\ttbar processes: $\met > 50\GeV$, $20\GeV < M_{\mu\mu} < 70\GeV$ or $M_{\mu\mu} > 120\GeV$. The data/MC differences in the efficiency of the jet multiplicity requirements are found to be 1\% for $N_{\text{jets}}\geq2$ in the leptoquark search and 3\% for $N_{\text{jets}}\geq5$ in the top squark search. These differences are propagated through the \ttbar estimation method as systematic uncertainties.
+The systematic uncertainty assigned to the jet multiplicity requirement is defined as the difference between data and simulation in the efficiency of the requirement. This difference is calculated in a control region consisting of 95\% \ttbar events, which is selected by requiring both \W bosons in each event to decay to muons. Additional requirements are applied to reduce the contamination from non-\ttbar processes: $\met > 50\GeV$, $20\GeV < M_{\mu\mu} < 70\GeV$ or $M_{\mu\mu} > 120\GeV$. This control region contains enough events for an accurate comparison between data and MC. It is used to derive a systematic uncertainty because it is not kinematically similar enough to the signal region to provide an appropriate scale factor. The data/MC differences in the efficiency of the jet multiplicity requirements are found to be 1\% for $N_{\text{jets}}\geq2$ in the leptoquark search and 3\% for $N_{\text{jets}}\geq5$ in the top squark search. These differences are propagated through the \ttbar estimation method as systematic uncertainties.
 
 The systematic uncertainty assigned to the \MassTJ requirement is calculated from two sources. The first source is the relative difference between the efficiencies in data and simulation in the $\ttbar \rightarrow \mu\mu$ control sample, which is found to be 6\%. The second source is the difference between the efficiencies obtained in data in the $\emu$ channel with and without the residual non-\ttbar background. This difference is also found to be 6\%. The two sources are taken to be independent, so they are added in quadrature to produce a total uncertainty of 8.5\%.
+
+Equations \eqref{eq:Nltau} and \eqref{eq:Nemu} can be combined to eliminate $\sigma\mathcal{L}$, which produces a formula to estimate the \ttbar yield in the \ltau signal region from the \emu control region:
+\begin{align}
+\label{eq:ttbartot}
+N_{\ltau} &= N_{\emu} \times \frac{\El\Eth}{\Ee\Emu} \times \frac{\varepsilon^{\text{sel}}_{\ltau}\rho^{\text{sel}}_{\ltau}}{\varepsilon^{\text{sel}}_{\emu}\rho^{\text{sel}}_{\emu}} \nonumber \\
+&\times \frac{\Alth\Bl\Bth + \Atlth\Btl\Bth}{\Aem\Be\Bm + \Amte\Bm\Bte + \Aetm\Be\Btm + \Atetm\Bte\Btm}.
+\end{align}
+$N_{\emu}$ is the yield from the \emu control region in the observed data, with the residual non-\ttbar background subtracted. The yield in the signal region $N_{\ltau}$ is calculated from $N_{\emu}$ via multiplication by selection and identification efficiencies, data/MC scale factors, acceptances, and branching fractions.
 
 To describe the calculation of the total systematic uncertainty from the propagation of the uncertainty in the acceptances, efficiencies, and scale factors, a shorthand notation is used to simplify Eq. \eqref{eq:ttbartot}:
 \begin{equation}
@@ -166,7 +168,7 @@ The uncertainty in the ratio $R_x$ is written as $\delta_x$. In the particular c
 \end{equation}
 $U_x$ is the additional uncertainty associated with the cut $x$. In the top squark search, the uncertainty associated with the \MassTJ cut is not included, as that cut is not applied.
 
-Using Eq. \ref{eq:ttbartot}, the extrapolated yield of the \ttbar irreducible background is computed for each \ltau channel. The results are summarized in Table \ref{tab:ttYieldsLQ} for the leptoquark search and in Table \ref{tab:ttYieldsLQD} for the top squark search. This estimation method is applied to a simulated \emu sample as a cross-check, and the results agree within one standard deviation when compared to the expectation from the direct simulation of the irreducible \ttbar contributions to the \ltau channels. The extrapolation from observed data is also in agreement with both the expectation from the direct \ttbar \ltau simulation and the extrapolation from the \emu simulation. For each \ltau channels, the \ttbar \ST distribution is estimated from the exclusive $\ttbar \rightarrow b\ell\nu b\ell\nu$ MC simulation.
+Using Eq. \ref{eq:ttbartot}, the estimated yield of the \ttbar irreducible background is computed for each \ltau channel. The results are summarized in Table \ref{tab:ttYieldsLQ} for the leptoquark search and in Table \ref{tab:ttYieldsLQD} for the top squark search. This estimation method is applied to a simulated \emu sample as a cross-check, and the results agree within one standard deviation when compared to the expectation from the direct simulation of the irreducible \ttbar contributions to the \ltau channels. The calculation from observed data is also in agreement with both the expectation from the direct \ttbar \ltau simulation and the closure test using the \emu simulation. For each \ltau channel, the \ttbar \ST distribution is estimated from the exclusive $\ttbar \rightarrow b\ell\nu b\ell\nu$ MC simulation.
 
 \begin{table}[hbt]
   \begin{center}
@@ -177,17 +179,17 @@ Using Eq. \ref{eq:ttbartot}, the extrapolated yield of the \ttbar irreducible ba
       \cline{2-4}
       & \ttbar MC & data & data $-$ residual MC \\
       \cline{2-4}
-      & $966.71\pm27.3$ & $1065 ({}\pm 32.6)$ & $920.0\pm8.3 \pm 32.6$  \\
+      & $966.71 \pm 27.3$ & $1065~(\pm~32.6)$ & $920.0 \pm 8.3 \pm 32.6$  \\
       \hline\hline
       \multirow{2}{*}{} & \multicolumn{3}{c|}{$\ltau$ channel} \\
       \hline
-      channel & \ttbar MC (genuine \tauh) & \ttbar MC extrap. & data extrap. \\
+      channel & \ttbar MC (genuine \tauh) & \ttbar MC closure test & data result \\
       \hline
       $\etau$         & $94.4\pm8.3$ & $94.0\pm2.7\pm14.9$ & $98.7\pm3.6\pm17.7$ \\ %2.6*1.3
       $\mutau$       & $72.8\pm8.5$ & $72.2\pm2.0\pm12.6$ & $64.2\pm2.3\pm12.4$ \\ %2.9*1.3
       \hline
     \end{tabular}
-    \caption{The estimated \ttbar irreducible yields after the leptoquark final selection, from: direct simulation, extrapolation from the $\emu$ simulation, and extrapolation from the observed $\emu$ data. In the extrapolated results, the first uncertainty value corresponds to the statistical uncertainty in the simulation and observed data, while the second uncertainty value corresponds to the propagation of the uncertainties in the acceptances, efficiencies and scale factors. }
+    \caption{The estimated \ttbar irreducible yields after the leptoquark final selection, from: direct simulation, closure test from the $\emu$ simulation, and calculation from the observed $\emu$ data. In the closure test and the data result, the first uncertainty value corresponds to the statistical uncertainty in the simulation and observed data, while the second uncertainty value corresponds to the propagation of the uncertainties in the acceptances, efficiencies and scale factors. }
     \label{tab:ttYieldsLQ}
   \end{center}
 \end{table}
@@ -201,17 +203,17 @@ Using Eq. \ref{eq:ttbartot}, the extrapolated yield of the \ttbar irreducible ba
       \cline{2-4}
       & \ttbar MC & data & data $-$ residual MC \\
       \cline{2-4}
-      & $823.9\pm26.3$ & $733 ({}\pm 27.1)$ & $700.0\pm7.2 \pm 27.1$ \\
+      & $823.9 \pm 26.3$ & $733~(\pm~27.1)$ & $700.0 \pm 7.2 \pm 27.1$ \\
       \hline\hline
       \multirow{2}{*}{} & \multicolumn{3}{c|}{$\ltau$ channel} \\
       \hline
-      channel & \ttbar MC (genuine \tauh) & \ttbar MC extrap. & data extrap. \\
+      channel & \ttbar MC (genuine \tauh) & \ttbar MC closure test & data result \\
       \hline
       $\etau$         & $80.4\pm7.5$ & $81.7\pm2.6\pm12.5$ & $76.6\pm3.1\pm13.3$ \\
       $\mutau$       & $57.9\pm6.4$ & $65.8\pm2.1\pm10.3$ & $52.2\pm2.1\pm9.3$ \\
       \hline
     \end{tabular}
-    \caption{The estimated \ttbar irreducible yields after the top squark final selection, from: direct simulation, extrapolation from the $\emu$ simulation, and extrapolation from the observed $\emu$ data. In the extrapolated results, the first uncertainty value corresponds to the statistical uncertainty in the simulation and observed data, while the second uncertainty value corresponds to the propagation of the uncertainties in the acceptances, efficiencies and scale factors. }
+    \caption{The estimated \ttbar irreducible yields after the top squark final selection, from: direct simulation, closure test from the $\emu$ simulation, and calculation from the observed $\emu$ data. In the closure test and the data result, the first uncertainty value corresponds to the statistical uncertainty in the simulation and observed data, while the second uncertainty value corresponds to the propagation of the uncertainties in the acceptances, efficiencies and scale factors. }
     \label{tab:ttYieldsLQD}
   \end{center}
 \end{table}
