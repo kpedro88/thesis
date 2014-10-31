@@ -1,3 +1,5 @@
 BR(LQLQ->emu): 3% -> 6%
 
 R-parity italicized in theory chapter, unitalicized elsewhere
+
+update "submitted" references
